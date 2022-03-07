@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/category/show', [CategoriesController::class,'categoryShow']
+)->name('category.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.pages.index');
