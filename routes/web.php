@@ -18,8 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/category/show', [CategoriesController::class,'categoryShow']
-)->name('category.show');
+Route::get('/category/show', [CategoriesController::class,'categoryShow'])->name('category.show');
+
+
+Route::post('/category/add', [CategoriesController::class,'categoryAdd'])->name('category.add');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.pages.index');
