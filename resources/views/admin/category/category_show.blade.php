@@ -10,19 +10,6 @@
             </div>
             <div class="card-body">
 
-                <!-- display message -->
-                @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-                @endif
-
-                @if (session('warning'))
-                <div class="alert alert-warning">
-                    {{ session('warning') }}
-                </div>
-                @endif
-                <!-- display message -->
 
                 <form method="POST" action="{{route('category.add')}}">
                     @csrf
@@ -41,10 +28,12 @@
                                 Looks good!
                             </div>
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" name="status" id="exampleCheck1" checked>
-                            <label class="form-check-label" for="exampleCheck1">Status</label>
-                        </div>
+                        <!-- <div class="col-md-12 mb-3">
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" name="status" id="exampleCheck1" checked>
+                                <label class="form-check-label" for="exampleCheck1">Status</label>
+                            </div>
+                        </div> -->
                     </div>
                     <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                 </form>
@@ -71,15 +60,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($data as $datam)
+                        @foreach($data as $datum)
                         <tr>
                             <td scope="row">#</td>
-                            <td><img src="{{ asset ($datam->cat_img) }}" alt="default image" width="100px" height="80px"></td>
-                            <td>{{ $datam->cat_name}}</td>
-                            <td>{{ $datam->status}}</td>
+                            <td><img src="{{ asset ($datum->cat_img) }}" alt="default image" width="100px" height="80px"></td>
+                            <td>{{ $datum->cat_name}}</td>
+                            <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
-                                <a class="btn btn-sm btn-warning" href="">Edit</a> ||
-                                <a class="btn btn-sm btn-danger" href="">Detlete</a>
+                                <a href="{{ route ('category.edit', ['id' => $datum -> id]) }}" class="btn btn-sm btn-warning">Edit</a> ||
+                                <a href="{{ route ('category.delete', ['id' => $datum -> id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger" href="">Detlete</a>
                             </td>
                         </tr>
                         @endforeach
