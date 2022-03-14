@@ -19,7 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('/category/show', [CategoriesController::class,'categoryShow'])->name('category.show');
+Route::get('/category/add/page', [CategoriesController::class,'categoryAddPage'])->name('category.add.page');
 Route::get('/category/edit/{id}', [CategoriesController::class,'categoryEdit'])->name('category.edit');
+Route::get('/category/edit/image/{id}', [CategoriesController::class,'categoryEditImage'])->name('category.edit.image');
 Route::get('/category/status/{id}', [CategoriesController::class,'categoryStatus'])->name('category.status');
 Route::get('/category/delete/{id}', [CategoriesController::class,'categoryDelete'])->name('category.delete');
 
@@ -27,6 +29,7 @@ Route::get('/category/delete/{id}', [CategoriesController::class,'categoryDelete
 
 Route::post('/category/add', [CategoriesController::class,'categoryAdd'])->name('category.add');
 Route::post('/category/update/{id}', [CategoriesController::class,'categoryUpdate'])->name('category.update');
+Route::post('/category/image/update/{id}', [CategoriesController::class,'categoryImageUpdate'])->name('category.image.update');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.pages.index');

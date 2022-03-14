@@ -25,10 +25,15 @@
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{asset('backend/assets/css/sleek.css')}}" />
 
+    <!-- DataTable css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
+    <!-- toastr css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- FAVICON -->
     <link href="assets/img/favicon.png" rel="shortcut icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -78,9 +83,6 @@
 
                     <!-- sidebar menu -->
                     <ul class="nav sidebar-inner" id="sidebar-menu">
-
-
-
                         <li class="has-sub active expand">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
@@ -97,8 +99,6 @@
 
                                         </a>
                                     </li>
-
-
                                 </div>
                             </ul>
                         </li>
@@ -132,16 +132,9 @@
 
                                         </a>
                                     </li>
-
-
-
-
                                 </div>
                             </ul>
                         </li>
-
-
-
                     </ul>
 
                 </div>
@@ -257,7 +250,6 @@
                     </div>
                 </nav>
 
-
             </header>
 
 
@@ -302,6 +294,12 @@
     <script src="{{ asset('backend/assets/js/map.js') }} "></script>
     <script src="{{ asset('backend/assets/js/custom.js') }} "></script>
 
+    <!-- datatables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- toastr js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- toastr js -->
 
     <script>
         @if(Session::has('message'))
@@ -326,6 +324,8 @@
         @endif
     </script>
 
+    <!-- script tags from other pages -->
+    @yield('scripts')
 
 </body>
 
