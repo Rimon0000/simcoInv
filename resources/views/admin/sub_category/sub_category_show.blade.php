@@ -21,6 +21,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Sub Category Name</th>
                             <th scope="col">Category Name</th>
+                            <th scope="col">User Name</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -30,8 +31,9 @@
                         <tr>
                             <td scope="row">#</td>
                             <td>{{ $datum->sub_cat_name}}</td>
-                            <td>{{ $datum->cat_name}}</td>
-                            <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
+                            <td>{{ $datum->categoryName->cat_name }}</td>
+                            <td>{{ $datum->userName->name }}</td>
+                            <td><a href="{{ route ('subcategory.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -39,9 +41,8 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
-                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('subcategory.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('subcategory.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>

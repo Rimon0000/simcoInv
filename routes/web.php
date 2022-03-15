@@ -33,16 +33,16 @@ Route::post('/category/image/update/{id}', [CategoriesController::class,'categor
 
 
 //sub category route
-Route::get('/subcategory/show', [SubCategoriesController::class,'subcategoryShow'])->name('subcategory.show');
-Route::get('/subcategory/add/page', [SubCategoriesController::class,'subcategoryAddPage'])->name('subcategory.add.page');
-Route::get('/subcategory/edit/{id}', [SubCategoriesController::class,'subcategoryEdit'])->name('subcategory.edit');
-Route::get('/subcategory/edit/image/{id}', [SubCategoriesController::class,'subcategoryEditImage'])->name('subcategory.edit.image');
-Route::get('/subcategory/status/{id}', [SubCategoriesController::class,'subcategoryStatus'])->name('subcategory.status');
-Route::get('/subcategory/delete/{id}', [SubCategoriesController::class,'subcategoryDelete'])->name('subcategory.delete');
+Route::get('/subcategory/show', [SubCategoriesController::class,'subCategoryShow'])->name('subcategory.show');
+Route::get('/subcategory/add/page', [SubCategoriesController::class,'subCategoryAddPage'])->name('subcategory.add.page');
+Route::get('/subcategory/edit/{id}', [SubCategoriesController::class,'subCategoryEdit'])->name('subcategory.edit');
+Route::get('/subcategory/edit/image/{id}', [SubCategoriesController::class,'subCategoryEditImage'])->name('subcategory.edit.image');
+Route::get('/subcategory/status/{id}', [SubCategoriesController::class,'subCategoryStatus'])->name('subcategory.status');
+Route::get('/subcategory/delete/{id}', [SubCategoriesController::class,'subCategoryDelete'])->name('subcategory.delete');
 
-Route::post('/subcategory/add', [SubCategoriesController::class,'subcategoryAdd'])->name('subcategory.add');
-Route::post('/subcategory/update/{id}', [SubCategoriesController::class,'subcategoryUpdate'])->name('subcategory.update');
-Route::post('/subcategory/image/update/{id}', [SubCategoriesController::class,'subcategoryImageUpdate'])->name('subcategory.image.update');
+Route::post('/subcategory/add', [SubCategoriesController::class,'subCategoryAdd'])->name('subcategory.add');
+Route::post('/subcategory/update/{id}', [SubCategoriesController::class,'subCategoryUpdate'])->name('subcategory.update');
+Route::post('/subcategory/image/update/{id}', [SubCategoriesController::class,'subCategoryImageUpdate'])->name('subcategory.image.update');
 
 
 

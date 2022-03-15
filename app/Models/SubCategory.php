@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class SubCategory extends Model
 {
     use HasFactory;
+
+    public function userName()
+    {
+        # code...
+        return $this->hasOne(user::class, 'id', 'user');
+    }
+
+    public function categoryName()
+    {
+        # code...
+        return $this->hasOne(Category::class, 'id', 'cat_id');
+    }
 }

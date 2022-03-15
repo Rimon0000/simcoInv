@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SubCategoriesController extends Controller
@@ -19,72 +20,57 @@ class SubCategoriesController extends Controller
     }
 
     // Sub category add page
-     public function subCategoryAddPage()
-     {
-         $data = Category::all();
+    public function subCategoryAddPage()
+    {
+        $data = Category::where('status', '=', '1')->orderBy('cat_name')->get();
         return view('admin.sub_category.sub_category_add', compact('data'));
-     }
+    }
 
     // Sub category add function
     public function subCategoryAdd(Request $request)
     {
-        //validate the input items
+
+        // //validate the input items
         $validated = $request->validate(
             [
-                'cat_name' => 'required|unique:categories|max:50',
-                'cat_img' => 'image|mimes:jpg,png,jpeg',
+                'sub_cat_name' => 'required|unique:sub_categories|max:50',
+                'cat_id' => 'required',
             ],
 
             // modified msg
             [
-                'cat_name.required' => 'Input field Cannnot be empty',
-                'cat_name.unique'   => 'Category name alreay taken',
-                'cat_name.max'      => 'Category name should not be more than 30 characters',
+                'sub_cat_name.required' => 'Input field can not be empty',
+                'sub_cat_name.unique'   => 'Sub Category name alreay taken',
+                'sub_cat_name.max'      => 'Sub Category name should not be more than 30 characters',
 
-                'cat_img.image'      => 'Image should be .png, .jpg, .jpeg',
+                'cat_id'      => 'Please select category',
             ],
         );
 
-        // //getting data from category add form
-        $cat_name = $request->cat_name;
-        $cat_img = $request->file('cat_img');
-
-        if ($cat_img == null) {
-            // check if the user had choosen the image or not
-            $cat_img = ($cat_img == null) ? null : $cat_img;
-        } else {
-            // //unique ID generate
-            $img_name_gen = hexdec(uniqid());
-            // //Original ext
-            $img_ext      = strtolower($cat_img->getClientOriginalExtension());
-            // //img new create
-            $img_name =  $img_name_gen . '.' . $img_ext;
-            // //where I'll keep the image --path
-            $upload_to    = 'backend/assets/img/category/';
-
-            // //Moving the image to a folder path 
-            $cat_img->move($upload_to, $img_name);
-            $cat_img =   $upload_to . $img_name;
-        }
+        // // //getting data from category add form
+        $sub_cat_name = $request->sub_cat_name;
+        $cat_id       = $request->cat_id;
+       
 
         $result = DB::table('sub_categories')->insert([
-            'cat_name' => $cat_name,
-            'cat_img' => $cat_img,
-            'status' => 1
+            'sub_cat_name' =>$sub_cat_name,
+            'cat_id' => $cat_id,
+            'status' => 1,
+            'user'   => Auth::id(),
 
         ]);
         if ($result) {
             $notification = [
-                'message' => 'Category Added Successfully',
+                'message' => 'Sub Category Added Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('category.show')->with($notification);
+            return redirect()->route('subcategory.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('category.show')->with($notification);
+            return redirect()->route('subcategory.show')->with($notification);
         }
     }
 
@@ -109,13 +95,13 @@ class SubCategoriesController extends Controller
                 'message' => 'Status Updated Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('category.show')->with($notification);
+            return redirect()->route('subcategory.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('category.show')->with($notification);
+            return redirect()->route('subcategory.show')->with($notification);
         }
     }
 
@@ -124,80 +110,55 @@ class SubCategoriesController extends Controller
     {
 
         $data = SubCategory::find($id);
-        return view('admin.category.category_edit', compact('data'));
+        return view('admin.sub_category.sub_category_edit', compact('data'));
     }
 
-      //Sub category Update function
+    //Sub category Update function
     public function subCategoryUpdate(Request $request, $id)
     {
 
         #code ...
-        $cat_name = $request->cat_name;
+        $sub_cat_name = $request->sub_cat_name;
 
         $dataUpdated = DB::table('sub_categories')
             ->where('id', $id)
             ->update(
-                ['cat_name' => $cat_name,]
+                ['sub_cat_name' =>  $sub_cat_name,]
             );
 
         if ($dataUpdated) {
             $notification = [
-                'message' => 'Category Name Updated Successfully',
+                'message' => 'Sub Category Name Updated Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('category.show')->with($notification);
+            return redirect()->route('subcategory.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('category.show')->with($notification);
+            return redirect()->route('subcategory.show')->with($notification);
         }
     }
 
     //Sub Category delete function
     public function subCategoryDelete($id)
-    {
-        //find the image
-        $image = SubCategory::find($id);
-
-        if ($image->cat_img == null) {
+    {    
             //delete the row from thr table
             $deleted = DB::table('sub_categories')->where('id', '=', $id)->delete();
 
             if ($deleted) {
                 $notification = [
-                    'message' => 'Category Deleted Successfully',
+                    'message' => 'Sub Category Deleted Successfully',
                     'alert-type' => 'error'
                 ];
-                return redirect()->route('category.show')->with($notification);
+                return redirect()->route('subcategory.show')->with($notification);
             } else {
                 $notification = [
                     'message' => 'Something Went Wrong',
                     'alert-type' => 'warning'
                 ];
-                return redirect()->route('category.show')->with($notification);
-            };
-        } else {
-
-            //Unlink the image from the folder 
-            unlink($image->cat_img);
-            //delete the row from thr table
-            $deleted = DB::table('sub_categories')->where('id', '=', $id)->delete();
-
-            if ($deleted) {
-                $notification = [
-                    'message' => 'Category Deleted Successfully',
-                    'alert-type' => 'error'
-                ];
-                return redirect()->route('category.show')->with($notification);
-            } else {
-                $notification = [
-                    'message' => 'Something Went Wrong',
-                    'alert-type' => 'warning'
-                ];
-                return redirect()->route('category.show')->with($notification);
+                return redirect()->route('subcategory.show')->with($notification);
             };
         }
-    }
 }
