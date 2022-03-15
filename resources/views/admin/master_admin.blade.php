@@ -121,7 +121,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="chartjs.html">
+                                        <a class="sidenav-item-link" href="{{route('subcategory.show')}}">
                                             <span class="nav-text">Sub Category One</span>
 
                                         </a>
