@@ -90,9 +90,6 @@
                             </a>
                             <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-
-
-
                                     <li class="active">
                                         <a class="sidenav-item-link" href="index.html">
                                             <span class="nav-text">Ecommerce</span>
@@ -103,7 +100,64 @@
                             </ul>
                         </li>
 
+                        <!-- Expanse start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#expanse" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Expanse</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="expanse" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Expanse Type</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Expanse Details</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Expanse end -->
 
+                        <!-- Supplier start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#suppliers" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Suppliers</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="suppliers" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Supplier</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Supplier end -->
+                        <!-- Customers start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#customers" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Customers</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="customers" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Customers</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Customers end -->
+                        <!-- Product start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#products" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
@@ -111,30 +165,51 @@
                             </a>
                             <ul class="collapse" id="products" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-
-
-
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
                                             <span class="nav-text">Category</span>
-
                                         </a>
                                     </li>
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('subcategory.show')}}">
                                             <span class="nav-text">Sub Category One</span>
-
                                         </a>
                                     </li>
                                     <li>
                                         <a class="sidenav-item-link" href="chartjs.html">
                                             <span class="nav-text">Sub Category Two</span>
-
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Brand List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Product List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Product Details</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Product List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Slider</span>
                                         </a>
                                     </li>
                                 </div>
                             </ul>
                         </li>
+                        <!-- Product end -->
+
                     </ul>
 
                 </div>

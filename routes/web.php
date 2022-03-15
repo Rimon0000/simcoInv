@@ -19,6 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//expanse route
+Route::get('/expanse/show', [CategoriesController::class,'expanseShow'])->name('expanse.show');
+Route::get('/expanse/add/page', [CategoriesController::class,'expanseAddPage'])->name('expanse.add.page');
+Route::get('/expanse/edit/{id}', [CategoriesController::class,'expanseEdit'])->name('expanse.edit');
+Route::get('/expanse/delete/{id}', [CategoriesController::class,'expanseDelete'])->name('expanse.delete');
+
+Route::post('/expanse/add', [CategoriesController::class,'expanseAdd'])->name('expanse.add');
+Route::post('/expanse/update/{id}', [CategoriesController::class,'expanseUpdate'])->name('expanse.update');
+
+
+
 //category route
 Route::get('/category/show', [CategoriesController::class,'categoryShow'])->name('category.show');
 Route::get('/category/add/page', [CategoriesController::class,'categoryAddPage'])->name('category.add.page');
