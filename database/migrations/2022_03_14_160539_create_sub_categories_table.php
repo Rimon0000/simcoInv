@@ -18,9 +18,10 @@ class CreateSubCategoriesTable extends Migration
 
             $table->integer('cat_id');
             $table->string('sub_cat_name');
-            $table->integer('user')->nullable();
             $table->integer('isUsed')->default(0);
-            $table->integer('status');
+            $table->integer('status')->default(1);
+            $table->integer('created_by');
+            $table->integer('updated_by')->nullable();
 
 
             $table->timestamps();

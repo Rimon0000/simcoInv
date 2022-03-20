@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\SubCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,13 +51,13 @@ class SubCategoriesController extends Controller
         // // //getting data from category add form
         $sub_cat_name = $request->sub_cat_name;
         $cat_id       = $request->cat_id;
-       
+
 
         $result = DB::table('sub_categories')->insert([
-            'sub_cat_name' =>$sub_cat_name,
+            'sub_cat_name' => $sub_cat_name,
             'cat_id' => $cat_id,
-            'status' => 1,
-            'user'   => Auth::id(),
+            'created_by' => Auth::user()->id,
+            'created_at' => Carbon::now(),
 
         ]);
         if ($result) {
@@ -123,7 +124,11 @@ class SubCategoriesController extends Controller
         $dataUpdated = DB::table('sub_categories')
             ->where('id', $id)
             ->update(
-                ['sub_cat_name' =>  $sub_cat_name,]
+                [
+                    'sub_cat_name' =>  $sub_cat_name,
+                    'updated_by' => Auth::user()->id,
+                    'updated_at' => Carbon::now(),
+                ]
             );
 
         if ($dataUpdated) {
@@ -143,22 +148,22 @@ class SubCategoriesController extends Controller
 
     //Sub Category delete function
     public function subCategoryDelete($id)
-    {    
-            //delete the row from thr table
-            $deleted = DB::table('sub_categories')->where('id', '=', $id)->delete();
+    {
+        //delete the row from thr table
+        $deleted = DB::table('sub_categories')->where('id', '=', $id)->delete();
 
-            if ($deleted) {
-                $notification = [
-                    'message' => 'Sub Category Deleted Successfully',
-                    'alert-type' => 'error'
-                ];
-                return redirect()->route('subcategory.show')->with($notification);
-            } else {
-                $notification = [
-                    'message' => 'Something Went Wrong',
-                    'alert-type' => 'warning'
-                ];
-                return redirect()->route('subcategory.show')->with($notification);
-            };
-        }
+        if ($deleted) {
+            $notification = [
+                'message' => 'Sub Category Deleted Successfully',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('subcategory.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('subcategory.show')->with($notification);
+        };
+    }
 }

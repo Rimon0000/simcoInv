@@ -12,7 +12,7 @@ class SubCategory extends Model
     public function userName()
     {
         # code...
-        return $this->hasOne(user::class, 'id', 'user');
+        return $this->hasOne(user::class, 'id', 'created_by');
     }
 
     public function categoryName()
