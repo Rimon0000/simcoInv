@@ -25,6 +25,9 @@
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{asset('backend/assets/css/sleek.css')}}" />
 
+    <!-- SELECT 2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <!-- DataTable css -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
@@ -141,6 +144,29 @@
                             </ul>
                         </li>
                         <!-- Site end -->
+
+                        <!-- Contact start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#contacts" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Contacts</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="contacts" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Contacts</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Subscribers</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Contact end -->
 
                         <!-- Expanse start -->
                         <li class="has-sub">
@@ -518,6 +544,9 @@
 
     <!-- datatables JS -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Select 2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- toastr js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

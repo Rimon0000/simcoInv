@@ -25,6 +25,23 @@
                                 Looks good!
                             </div>
                         </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Category Name</label>
+                            <select class="form-control js-sub-category-edit" name="cat_id">
+                                <span class="text-danger" value=""> Select Category </span>
+                                <option value="">select category</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ ($data->cat_id == $category->id) ? "Selected":"" }} >{{ $category->cat_name }}</option>
+                                @endforeach
+                            </select>
+
+                            <div class="pt-1">
+                                @error('cat_id')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <button class="btn btn-warning btn-sm" type="submit">Update</button>
                 </form>
@@ -34,4 +51,12 @@
 </div>
 
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.js-sub-category-edit').select2();
+    });
+</script>
 @endsection

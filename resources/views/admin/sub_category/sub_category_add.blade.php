@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Category Name</label>
-                            <select class="form-control" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="cat_id">
                                 <span class="text-danger" value=""> Select Category </span>
                                 <option value="">select category</option>
                                 @foreach($data as $datum)
@@ -51,4 +51,12 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 @endsection

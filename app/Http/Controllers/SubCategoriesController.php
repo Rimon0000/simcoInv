@@ -111,7 +111,8 @@ class SubCategoriesController extends Controller
     {
 
         $data = SubCategory::find($id);
-        return view('admin.sub_category.sub_category_edit', compact('data'));
+        $categories = Category::where('status', '=', '1')->orderBy('cat_name')->get();
+        return view('admin.sub_category.sub_category_edit', compact('data','categories'));
     }
 
     //Sub category Update function
@@ -120,12 +121,14 @@ class SubCategoriesController extends Controller
 
         #code ...
         $sub_cat_name = $request->sub_cat_name;
+        $cat_id       = $request->cat_id;
 
         $dataUpdated = DB::table('sub_categories')
             ->where('id', $id)
             ->update(
                 [
                     'sub_cat_name' =>  $sub_cat_name,
+                    'cat_id' =>  $cat_id,
                     'updated_by' => Auth::user()->id,
                     'updated_at' => Carbon::now(),
                 ]
