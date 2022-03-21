@@ -34,6 +34,25 @@ Route::get('/contact/delete/{id}', [ContactController::class,'contactDelete'])->
 Route::get('/subscribe/show', [SubscribeController::class,'subscribeShow'])->name('subscribe.show');
 Route::get('/subscribe/status/{id}', [SubscribeController::class,'subscribeStatus'])->name('subscribe.status');
 Route::get('/subscribe/delete/{id}', [SubscribeController::class,'subscribeDelete'])->name('subscribe.delete');
+
+
+//About route
+Route::prefix('about')->group(function(){
+Route::get('/show', [AboutController::class,'aboutShow'])->name('about.show');
+
+Route::post('/edit/{id}', [AboutController::class,'aboutEdit'])->name('about.edit');
+Route::post('/add', [AboutController::class,'aboutAdd'])->name('about.add');
+});
+
+
+//Address route
+Route::prefix('address')->group(function(){
+    Route::get('/show', [AddressController::class,'addressShow'])->name('address.show');
+    
+    Route::post('/edit/{id}', [AddressController::class,'addressEdit'])->name('address.edit');
+    Route::post('/add', [AddressController::class,'addressAdd'])->name('address.add');
+    });
+
 ##################################################################################################
 // Frontend end
 ###################################################################################################
