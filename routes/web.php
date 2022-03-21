@@ -85,7 +85,7 @@ Route::post('/category/update/{id}', [CategoriesController::class, 'categoryUpda
 Route::post('/category/image/update/{id}', [CategoriesController::class, 'categoryImageUpdate'])->name('category.image.update');
 
 
-//sub category route
+//sub-category route
 Route::get('/subcategory/show', [SubCategoriesController::class, 'subCategoryShow'])->name('subcategory.show');
 Route::get('/subcategory/add/page', [SubCategoriesController::class, 'subCategoryAddPage'])->name('subcategory.add.page');
 Route::get('/subcategory/edit/{id}', [SubCategoriesController::class, 'subCategoryEdit'])->name('subcategory.edit');
