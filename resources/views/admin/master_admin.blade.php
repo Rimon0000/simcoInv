@@ -154,12 +154,12 @@
                             <ul class="collapse" id="contacts" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('contact.show')}}">
                                             <span class="nav-text">Contacts</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('subscribe.show')}}">
                                             <span class="nav-text">Subscribers</span>
                                         </a>
                                     </li>

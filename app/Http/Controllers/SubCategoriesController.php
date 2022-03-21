@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class SubCategoriesController extends Controller
 {
-    //
     //Sub category show function
     public function subCategoryShow()
     {

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SubCategoriesController;
+use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+##################################################################################################
+// Frontend start
+###################################################################################################
+//contact route
+Route::get('/contact/show', [ContactController::class,'contactShow'])->name('contact.show');
+Route::get('/contact/status/{id}', [ContactController::class,'contactStatus'])->name('contact.status');
+Route::get('/contact/delete/{id}', [ContactController::class,'contactDelete'])->name('contact.delete');
+
+
+//Subscribe route
+Route::get('/subscribe/show', [SubscribeController::class,'subscribeShow'])->name('subscribe.show');
+Route::get('/subscribe/status/{id}', [SubscribeController::class,'subscribeStatus'])->name('subscribe.status');
+Route::get('/subscribe/delete/{id}', [SubscribeController::class,'subscribeDelete'])->name('subscribe.delete');
+##################################################################################################
+// Frontend end
+###################################################################################################
+
+
+
 
 
 //expanse route
