@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SubCategoriesController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,20 @@ Route::prefix('address')->group(function () {
 
     Route::post('/edit/{id}', [AddressController::class, 'addressEdit'])->name('address.edit');
     Route::post('/add', [AddressController::class, 'addressAdd'])->name('address.add');
+});
+
+//Social route
+Route::prefix('social')->group(function () {
+    Route::get('/show', [SocialController::class, 'socialShow'])->name('social.show');
+    Route::get('/add/page', [SocialController::class, 'socialAddPage'])->name('social.add.page');
+    Route::get('/edit/{id}', [SocialController::class, 'socialEdit'])->name('social.edit');
+    Route::get('/status/{id}', [SocialController::class, 'socialStatus'])->name('social.status');
+    Route::get('/delete/{id}', [SocialController::class, 'socialDelete'])->name('social.delete');
+    Route::get('/edit/image/{id}', [SocialController::class, 'socialEditImage'])->name('social.edit.image');
+    
+    Route::post('/add', [SocialController::class, 'socialAdd'])->name('social.add');
+    Route::post('/update/{id}', [SocialController::class, 'socialUpdate'])->name('social.update');
+    Route::post('/image/update/{id}', [SocialController::class, 'socialImageUpdate'])->name('social.image.update');
 });
 
 ##################################################################################################
