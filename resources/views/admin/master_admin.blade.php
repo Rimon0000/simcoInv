@@ -129,7 +129,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('address.show')}}">
                                             <span class="nav-text">Address</span>
                                         </a>
                                     </li>
