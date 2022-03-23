@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SubCategoriesController;
 use App\Http\Controllers\SubscribeController;
@@ -67,6 +68,17 @@ Route::prefix('social')->group(function () {
     Route::post('/add', [SocialController::class, 'socialAdd'])->name('social.add');
     Route::post('/update/{id}', [SocialController::class, 'socialUpdate'])->name('social.update');
     Route::post('/image/update/{id}', [SocialController::class, 'socialImageUpdate'])->name('social.image.update');
+});
+
+//FAQ route
+Route::prefix('faq')->group(function () {
+    Route::get('/show', [FaqController::class, 'faqShow'])->name('faq.show');
+    Route::get('/add/page', [FaqController::class, 'faqAddPage'])->name('faq.add.page');
+    Route::get('/edit/{id}', [FaqController::class, 'faqEdit'])->name('faq.edit');
+    Route::get('/delete/{id}', [FaqController::class, 'faqDelete'])->name('faq.delete');
+    
+    Route::post('/add', [FaqController::class, 'faqAdd'])->name('faq.add');
+    Route::post('/update/{id}', [FaqController::class, 'faqUpdate'])->name('faq.update');
 });
 
 ##################################################################################################

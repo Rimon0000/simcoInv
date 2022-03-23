@@ -139,6 +139,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a class="sidenav-item-link" href="{{route('faq.show')}}">
+                                            <span class="nav-text">FAQ</span>
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
                                             <span class="nav-text">Terms & Condition</span>
                                         </a>
