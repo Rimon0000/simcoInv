@@ -102,7 +102,7 @@ class FaqController extends Controller
             ],
         );
 
-        //   // // //getting data from address add form
+        // //getting data from address add form
         $question = $request->question;
         $answer   = $request->answer;
 
