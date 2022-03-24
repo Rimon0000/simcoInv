@@ -147,7 +147,7 @@
                             <ul class="collapse" id="site" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('about.show')}}">
                                             <span class="nav-text">About us</span>
                                         </a>
                                     </li>
@@ -213,7 +213,12 @@
                                 <div class="sub-menu">
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Supplier</span>
+                                            <span class="nav-text">Suppliers List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Supplier Add</span>
                                         </a>
                                     </li>
                                 </div>
@@ -230,7 +235,12 @@
                                 <div class="sub-menu">
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Customers</span>
+                                            <span class="nav-text">Customers List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Customer Add</span>
                                         </a>
                                     </li>
                                 </div>
@@ -278,11 +288,6 @@
                                     <li>
                                         <a class="sidenav-item-link" href="chartjs.html">
                                             <span class="nav-text">Product Details</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="chartjs.html">
-                                            <span class="nav-text">Product List</span>
                                         </a>
                                     </li>
                                     <li>
