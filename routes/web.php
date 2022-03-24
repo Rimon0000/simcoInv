@@ -7,6 +7,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SubCategoriesController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\SubSubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -126,6 +127,17 @@ Route::post('/subcategory/update/{id}', [SubCategoriesController::class, 'subCat
 Route::post('/subcategory/image/update/{id}', [SubCategoriesController::class, 'subCategoryImageUpdate'])->name('subcategory.image.update');
 
 
+//sub-sub-category route
+Route::get('/subsubcategory/show', [SubSubCategoryController::class, 'subSubCategoryShow'])->name('subsubcategory.show');
+Route::get('/subsubcategory/add/page', [SubSubCategoryController::class, 'subSubCategoryAddPage'])->name('subsubcategory.add.page');
+Route::get('/subsubcategory/edit/{id}', [SubSubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
+Route::get('/subsubcategory/edit/image/{id}', [SubSubCategoryController::class, 'subSubCategoryEditImage'])->name('subsubcategory.edit.image');
+Route::get('/subsubcategory/status/{id}', [SubSubCategoryController::class, 'subSubCategoryStatus'])->name('subsubcategory.status');
+Route::get('/subsubcategory/delete/{id}', [SubSubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
+
+Route::post('/subsubcategory/add', [SubSubCategoryController::class, 'subSubCategoryAdd'])->name('subsubcategory.add');
+Route::post('/subsubcategory/update/{id}', [SubSubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
+Route::post('/subsubcategory/image/update/{id}', [SubSubCategoryController::class, 'subSubCategoryImageUpdate'])->name('subsubcategory.image.update');
 
 
 
