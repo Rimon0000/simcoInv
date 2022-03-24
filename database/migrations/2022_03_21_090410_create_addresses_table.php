@@ -18,6 +18,7 @@ class CreateAddressesTable extends Migration
 
             $table->text('address');
             $table->string('mobile');
+            $table->string('whatsapp');
             $table->string('hotline')->nullable();
             $table->string('email');
             $table->integer('created_by');
