@@ -115,13 +115,36 @@
                         </li>
                         <!-- Dashboard end -->
 
-                        <!-- Site start -->
+                        <!-- Expanse start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#expanse" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Site Info</span> <b class="caret"></b>
+                                <span class="nav-text">Expanse</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="expanse" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('expanse.show')}}">
+                                            <span class="nav-text">Expanse Type</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
+                                            <span class="nav-text">Expanse Details</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Expanse end -->
+
+                        <!-- Site start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#site" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Site Info</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="site" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
@@ -180,30 +203,6 @@
                             </ul>
                         </li>
                         <!-- Contact end -->
-
-                        <!-- Expanse start -->
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#expanse" aria-expanded="false" aria-controls="charts">
-                                <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Expanse</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse" id="expanse" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Expanse Type</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Expanse Details</span>
-                                        </a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                        <!-- Expanse end -->
-
                         <!-- Supplier start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#suppliers" aria-expanded="false" aria-controls="charts">
@@ -416,12 +415,7 @@
                     </button>
                     <!-- search form -->
                     <div class="search-form d-none d-lg-inline-block">
-                        <div class="input-group">
-                            <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                                <i class="mdi mdi-magnify"></i>
-                            </button>
-                            <input type="text" name="query" id="search-input" class="form-control" placeholder="'button', 'chart' etc." autofocus autocomplete="off" />
-                        </div>
+
                         <div id="search-results-container">
                             <ul id="search-results"></ul>
                         </div>

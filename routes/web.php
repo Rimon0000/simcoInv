@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -98,16 +99,28 @@ Route::prefix('faq')->group(function () {
 
 
 
+// Expanse Type Routes
+Route::prefix('expanse/type')->group(function () {
+    Route::get('/show', [ExpanseController::class, 'expanseShow'])->name('expanse.show');
+    Route::get('/add/page', [ExpanseController::class, 'expanseAddPage'])->name('expanse.add.page');
+    Route::get('/edit/{id}', [ExpanseController::class, 'expanseEdit'])->name('expanse.edit');
+    Route::get('/status/{id}', [ExpanseController::class, 'expanseStatus'])->name('expanse.status');
+    Route::get('/delete/{id}', [ExpanseController::class, 'expanseDelete'])->name('expanse.delete');
+    
+    Route::post('/add', [ExpanseController::class, 'expanseAdd'])->name('expanse.add');
+    Route::post('/update/{id}', [ExpanseController::class, 'expanseUpdate'])->name('expanse.update');
+});
 
-//expanse route
-Route::get('/expanse/show', [CategoriesController::class, 'expanseShow'])->name('expanse.show');
-Route::get('/expanse/add/page', [CategoriesController::class, 'expanseAddPage'])->name('expanse.add.page');
-Route::get('/expanse/edit/{id}', [CategoriesController::class, 'expanseEdit'])->name('expanse.edit');
-Route::get('/expanse/delete/{id}', [CategoriesController::class, 'expanseDelete'])->name('expanse.delete');
-
-Route::post('/expanse/add', [CategoriesController::class, 'expanseAdd'])->name('expanse.add');
-Route::post('/expanse/update/{id}', [CategoriesController::class, 'expanseUpdate'])->name('expanse.update');
-
+// Expanse Detail Routes
+Route::prefix('expanse/detail')->group(function () {
+    Route::get('/show', [ExpanseController::class, 'expanseDetailShow'])->name('expanse.detail.show');
+    Route::get('/add/page', [ExpanseController::class, 'expanseDetailAddPage'])->name('expanse.detail.add.page');
+    Route::get('/edit/{id}', [ExpanseController::class, 'expanseDetailEdit'])->name('expanse.detail.edit');
+    Route::get('/delete/{id}', [ExpanseController::class, 'expanseDetailDelete'])->name('expanse.detail.delete');
+    
+    Route::post('/add', [ExpanseController::class, 'expanseDetailAdd'])->name('expanse.detail.add');
+    Route::post('/update/{id}', [ExpanseController::class, 'expanseDetailUpdate'])->name('expanse.detail.update');
+});
 
 
 //category route
