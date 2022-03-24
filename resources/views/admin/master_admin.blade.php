@@ -138,6 +138,39 @@
                         </li>
                         <!-- Expanse end -->
 
+                        <!-- Employee start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#employee" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Employee</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="employee" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('expanse.show')}}">
+                                            <span class="nav-text">Employee List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
+                                            <span class="nav-text">Employee Add</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
+                                            <span class="nav-text">Employee Salary</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
+                                            <span class="nav-text">Employee Advance Salary</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Employee end -->
+
                         <!-- Site start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#site" aria-expanded="false" aria-controls="charts">
