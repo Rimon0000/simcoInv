@@ -200,7 +200,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('tnc.show')}}">
                                             <span class="nav-text">Terms & Condition</span>
                                         </a>
                                     </li>

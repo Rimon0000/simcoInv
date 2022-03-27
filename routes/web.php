@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\SubCategoriesController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\SubSubCategoryController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TNCController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -89,6 +91,22 @@ Route::prefix('faq')->group(function () {
 
     Route::post('/add', [FaqController::class, 'faqAdd'])->name('faq.add');
     Route::post('/update/{id}', [FaqController::class, 'faqUpdate'])->name('faq.update');
+});
+
+//TNC route
+Route::prefix('tnc')->group(function () {
+    Route::get('/show', [TNCController::class, 'tncShow'])->name('tnc.show');
+
+    Route::post('/edit/{id}', [TNCController::class, 'tncEdit'])->name('tnc.edit');
+    Route::post('/add', [TNCController::class, 'tncAdd'])->name('tnc.add');
+});
+
+//Policy route
+Route::prefix('policy')->group(function () {
+    Route::get('/show', [PolicyController::class, 'policyShow'])->name('policy.show');
+
+    Route::post('/edit/{id}', [PolicyController::class, 'policyEdit'])->name('policy.edit');
+    Route::post('/add', [PolicyController::class, 'policyAdd'])->name('policy.add');
 });
 
 
