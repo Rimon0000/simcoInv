@@ -64,7 +64,6 @@
     <div class="mobile-sticky-body-overlay"></div>
 
     <div class="wrapper">
-
         <!--
           ====================================
           ——— LEFT SIDEBAR WITH FOOTER
@@ -90,7 +89,7 @@
                     <!-- sidebar menu -->
                     <ul class="nav sidebar-inner" id="sidebar-menu">
                         <!-- POS start -->
-                        <li class="has-sub active">
+                        <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">POS</span>
@@ -114,6 +113,24 @@
                             </ul>
                         </li>
                         <!-- Dashboard end -->
+
+                        <!-- Attribute start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#attribute" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Attribute</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="attribute" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Logo</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Attribute end -->
 
                         <!-- Expanse start -->
                         <li class="has-sub">
@@ -146,6 +163,22 @@
                             </a>
                             <ul class="collapse" id="employee" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Area</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Designation</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Department</span>
+                                        </a>
+                                    </li>
+
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('expanse.show')}}">
                                             <span class="nav-text">Employee List</span>
@@ -268,7 +301,12 @@
                                 <div class="sub-menu">
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Customers List</span>
+                                            <span class="nav-text">Customer Type</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Customer List</span>
                                         </a>
                                     </li>
                                     <li>
@@ -284,7 +322,7 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#products" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Product Management</span> <b class="caret"></b>
+                                <span class="nav-text">Product MGMT</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="products" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -306,6 +344,16 @@
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('brand.show')}}">
                                             <span class="nav-text">Brand List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Varity Section</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Product Unit</span>
                                         </a>
                                     </li>
                                     <li>
@@ -409,39 +457,6 @@
                             </ul>
                         </li>
                         <!-- Invoice end -->
-
-                        <!-- Attribute start -->
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#attribute" aria-expanded="false" aria-controls="charts">
-                                <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Attribute</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse" id="attribute" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Product Unit</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Area</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Designation</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Department</span>
-                                        </a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                        <!-- Attribute end -->
 
                     </ul>
 
