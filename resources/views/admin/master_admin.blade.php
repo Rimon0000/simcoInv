@@ -205,8 +205,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Others</span>
+                                        <a class="sidenav-item-link" href="{{route('policy.show')}}">
+                                            <span class="nav-text">Privacy Policy</span>
                                         </a>
                                     </li>
                                 </div>

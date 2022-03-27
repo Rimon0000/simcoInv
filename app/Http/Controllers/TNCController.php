@@ -60,7 +60,7 @@ class TNCController extends Controller
         }
     }
 
-    // Address Edit function
+    //TNC Edit function
     public function tncEdit(Request $request, $id)
     {
 

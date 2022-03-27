@@ -10,7 +10,7 @@
                 <div class="card-header" id="headingFive">
                     <button class="btn btn-sm btn-info btn-link collapsed show " data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                         <div class="card-header card-header-border-bottom">
-                            <h2><i class="fa-solid fa-circle-plus text-danger"></i> Terms & Conditions</h2>
+                            <h2><i class="fa-solid fa-circle-plus text-danger"></i>{{ empty($data) ? 'Add' : 'Edit' }} Terms & Conditions</h2>
                         </div>
                     </button>
                 </div>
@@ -63,13 +63,5 @@
         });
     });
 
-    function showPreview(event) {
-        if (event.target.files.length > 0) {
-            var src = URL.createObjectURL(event.target.files[0]);
-            var preview = document.getElementById("file-ip-1-preview");
-            preview.src = src;
-            preview.style.display = "block";
-        }
-    }
 </script>
 @endsection

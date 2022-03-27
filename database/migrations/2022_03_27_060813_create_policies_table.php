@@ -16,7 +16,7 @@ class CreatePoliciesTable extends Migration
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
 
-            $table->text('policies');
+            $table->text('policy');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
 
