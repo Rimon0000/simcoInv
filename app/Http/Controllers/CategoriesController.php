@@ -18,6 +18,8 @@ class CategoriesController extends Controller
         return view('admin.category.category_show', compact('data'));
     }
 
+    
+    //category Add Page function
     public function categoryAddPage()
     {
         return view('admin.category.category_add');
@@ -138,6 +140,7 @@ class CategoriesController extends Controller
         return view('admin.category.category_edit', compact('data'));
     }
 
+     //category Update function
     public function categoryUpdate(Request $request, $id)
     {
 

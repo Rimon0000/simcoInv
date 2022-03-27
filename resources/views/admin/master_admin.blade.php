@@ -304,7 +304,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="chartjs.html">
+                                        <a class="sidenav-item-link" href="{{route('brand.show')}}">
                                             <span class="nav-text">Brand List</span>
                                         </a>
                                     </li>
