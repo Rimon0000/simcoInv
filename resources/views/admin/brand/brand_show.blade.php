@@ -71,7 +71,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('#categoryTable').DataTable();
+        $('#brandTable').DataTable();
     });
 </script>
 @endsection

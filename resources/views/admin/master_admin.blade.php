@@ -142,7 +142,7 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#employee" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Employee</span> <b class="caret"></b>
+                                <span class="nav-text">Employee MGT</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="employee" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -310,11 +310,6 @@
                                     </li>
                                     <li>
                                         <a class="sidenav-item-link" href="chartjs.html">
-                                            <span class="nav-text">Product Units</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="chartjs.html">
                                             <span class="nav-text">Product List</span>
                                         </a>
                                     </li>
@@ -415,23 +410,38 @@
                         </li>
                         <!-- Invoice end -->
 
-                        <!-- Employee start -->
+                        <!-- Attribute start -->
                         <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Employee" aria-expanded="false" aria-controls="charts">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#attribute" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Employee Mgmt</span> <b class="caret"></b>
+                                <span class="nav-text">Attribute</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="Employee" data-parent="#sidebar-menu">
+                            <ul class="collapse" id="attribute" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Employee</span>
+                                            <span class="nav-text">Product Unit</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Area</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Designation</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                            <span class="nav-text">Department</span>
                                         </a>
                                     </li>
                                 </div>
                             </ul>
                         </li>
-                        <!-- Employee end -->
+                        <!-- Attribute end -->
 
                     </ul>
 
