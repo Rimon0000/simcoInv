@@ -4,7 +4,7 @@
 
 <div class="row p-3">
     <div class="col-lg-6">
-        <a href="{{ route ('category.add.page')}}" class="btn btn-info btn-sm"> <i class="fa-solid fa-circle-plus text-danger"></i>Add Category</a>
+        <a href="{{ route ('product.list.add.page')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i>Add Product List</a>
     </div>
 </div>
 
@@ -12,7 +12,7 @@
     <div class="col-lg-12">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Category Table</h2>
+                <h2>Product List Table</h2>
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="categoryTable" class="display" style="width:100%">
@@ -49,7 +49,7 @@
                                             @php
                                             $countData = App\Models\subCategory::where('cat_id',$datum->id)->count();
                                             @endphp
-                                            @if($countData<1)
+                                            @if( $countData <1 )
                                             <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                             @endif
                                         </ul>

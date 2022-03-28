@@ -3,7 +3,7 @@
 
 <div class="row p-3">
     <div class="col-lg-6">
-        <a href="{{ route ('category.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
+        <a href="{{ route ('category.show')}}" class="btn btn-info btn-sm"> <i class="fa-solid fa-circle-left text-dark"></i> Back</a>
     </div>
 </div>
 

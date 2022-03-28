@@ -12,6 +12,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SubCategoriesController;
@@ -239,18 +240,6 @@ Route::prefix('brand')->group(function () {
     Route::post('/image/update/{id}', [BrandController::class, 'brandImageUpdate'])->name('brand.image.update');
 });
 
-//Product_Unit route
-Route::prefix('unit')->group(function () {
-    Route::get('/show', [UnitController::class, 'unitShow'])->name('unit.show');
-    Route::get('/add/page', [UnitController::class, 'unitAddPage'])->name('unit.add.page');
-    Route::get('/edit/{id}', [UnitController::class, 'unitEdit'])->name('unit.edit');
-    Route::get('/status/{id}', [UnitController::class, 'unitStatus'])->name('unit.status');
-    Route::get('/delete/{id}', [UnitController::class, 'unitDelete'])->name('unit.delete');
-
-    Route::post('/add', [UnitController::class, 'unitAdd'])->name('unit.add');
-    Route::post('/update/{id}', [UnitController::class, 'unitUpdate'])->name('unit.update');
-});
-
 //Display Section route
 Route::prefix('displaysection')->group(function () {
     Route::get('/show', [DisplaySectionController::class, 'displaySectionShow'])->name('displaysection.show');
@@ -263,20 +252,30 @@ Route::prefix('displaysection')->group(function () {
     Route::post('/update/{id}', [DisplaySectionController::class, 'displaySectionUpdate'])->name('displaysection.update');
 });
 
+//Product Unit route
+Route::prefix('unit')->group(function () {
+    Route::get('/show', [UnitController::class, 'unitShow'])->name('unit.show');
+    Route::get('/add/page', [UnitController::class, 'unitAddPage'])->name('unit.add.page');
+    Route::get('/edit/{id}', [UnitController::class, 'unitEdit'])->name('unit.edit');
+    Route::get('/status/{id}', [UnitController::class, 'unitStatus'])->name('unit.status');
+    Route::get('/delete/{id}', [UnitController::class, 'unitDelete'])->name('unit.delete');
 
+    Route::post('/add', [UnitController::class, 'unitAdd'])->name('unit.add');
+    Route::post('/update/{id}', [UnitController::class, 'unitUpdate'])->name('unit.update');
+});
 
 //Product route
-Route::prefix('product')->group(function () {
-    Route::get('/show', [ProductController::class, 'productShow'])->name('product.show');
-    Route::get('/add/page', [ProductController::class, 'productAddPage'])->name('product.add.page');
-    Route::get('/edit/{id}', [ProductController::class, 'productEdit'])->name('product.edit');
-    Route::get('/edit/image/{id}', [ProductController::class, 'productEditImage'])->name('product.edit.image');
-    Route::get('/status/{id}', [ProductController::class, 'productStatus'])->name('product.status');
-    Route::get('/delete/{id}', [ProductController::class, 'productDelete'])->name('product.delete');
+Route::prefix('product-list')->group(function () {
+    Route::get('/show', [ProductListController::class, 'productListShow'])->name('product.list.show');
+    Route::get('/add/page', [ProductListController::class, 'productListAddPage'])->name('product.list.add.page');
+    Route::get('/edit/{id}', [ProductListController::class, 'productListEdit'])->name('product.list.edit');
+    Route::get('/edit/image/{id}', [ProductListController::class, 'productListEditImage'])->name('product.list.edit.image');
+    Route::get('/status/{id}', [ProductListController::class, 'productListStatus'])->name('product.list.status');
+    Route::get('/delete/{id}', [ProductListController::class, 'productListDelete'])->name('product.list.delete');
 
-    Route::post('/add', [ProductController::class, 'productAdd'])->name('product.add');
-    Route::post('/update/{id}', [ProductController::class, 'productUpdate'])->name('product.update');
-    Route::post('/image/update/{id}', [ProductController::class, 'productImageUpdate'])->name('product.image.update');
+    Route::post('/add', [ProductListController::class, 'productListAdd'])->name('product.list.add');
+    Route::post('/update/{id}', [ProductListController::class, 'productListUpdate'])->name('product.list.update');
+    Route::post('/image/update/{id}', [ProductListController::class, 'productListImageUpdate'])->name('product.list.image.update');
 });
 
 

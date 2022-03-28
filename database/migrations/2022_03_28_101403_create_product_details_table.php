@@ -21,6 +21,16 @@ class CreateProductDetailsTable extends Migration
             $table->text('long_details');
             $table->text('faq')->nullable();
             $table->text('warranty_policy')->nullable();
+
+            $table->string('product_img_1')->nullable();
+            $table->string('product_img_2')->nullable();
+            $table->string('product_img_3')->nullable();
+            $table->string('product_img_4')->nullable();
+            $table->string('product_alt_1')->nullable();
+            $table->string('product_alt_2')->nullable();
+            $table->string('product_alt_3')->nullable();
+            $table->string('product_alt_4')->nullable();
+
             $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
