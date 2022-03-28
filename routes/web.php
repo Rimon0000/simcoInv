@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DisplaySectionController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\OrderController;
@@ -249,6 +250,20 @@ Route::prefix('unit')->group(function () {
     Route::post('/add', [UnitController::class, 'unitAdd'])->name('unit.add');
     Route::post('/update/{id}', [UnitController::class, 'unitUpdate'])->name('unit.update');
 });
+
+//Display Section route
+Route::prefix('displaysection')->group(function () {
+    Route::get('/show', [DisplaySectionController::class, 'displaySectionShow'])->name('displaysection.show');
+    Route::get('/add/page', [DisplaySectionController::class, 'displaySectionAddPage'])->name('displaysection.add.page');
+    Route::get('/edit/{id}', [DisplaySectionController::class, 'displaySectionEdit'])->name('displaysection.edit');
+    Route::get('/status/{id}', [DisplaySectionController::class, 'displaySectionStatus'])->name('displaysection.status');
+    Route::get('/delete/{id}', [DisplaySectionController::class, 'displaySectionDelete'])->name('displaysection.delete');
+
+    Route::post('/add', [DisplaySectionController::class, 'displaySectionAdd'])->name('displaysection.add');
+    Route::post('/update/{id}', [DisplaySectionController::class, 'displaySectionUpdate'])->name('displaysection.update');
+});
+
+
 
 //Product route
 Route::prefix('product')->group(function () {

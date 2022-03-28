@@ -347,7 +347,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="chartjs.html">
+                                        <a class="sidenav-item-link" href="{{route('displaysection.show')}}">
                                             <span class="nav-text">Varity Section</span>
                                         </a>
                                     </li>

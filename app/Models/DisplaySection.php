@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class DisplaySection extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    
+    public function userName()
+    {
+        # code...
+        return $this->hasOne(user::class, 'id', 'created_by');
+    }
 }
