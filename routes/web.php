@@ -238,18 +238,16 @@ Route::prefix('brand')->group(function () {
     Route::post('/image/update/{id}', [BrandController::class, 'brandImageUpdate'])->name('brand.image.update');
 });
 
-//Unit route
+//Product_Unit route
 Route::prefix('unit')->group(function () {
     Route::get('/show', [UnitController::class, 'unitShow'])->name('unit.show');
     Route::get('/add/page', [UnitController::class, 'unitAddPage'])->name('unit.add.page');
     Route::get('/edit/{id}', [UnitController::class, 'unitEdit'])->name('unit.edit');
-    Route::get('/edit/image/{id}', [UnitController::class, 'unitEditImage'])->name('unit.edit.image');
     Route::get('/status/{id}', [UnitController::class, 'unitStatus'])->name('unit.status');
     Route::get('/delete/{id}', [UnitController::class, 'unitDelete'])->name('unit.delete');
 
     Route::post('/add', [UnitController::class, 'unitAdd'])->name('unit.add');
     Route::post('/update/{id}', [UnitController::class, 'unitUpdate'])->name('unit.update');
-    Route::post('/image/update/{id}', [UnitController::class, 'unitImageUpdate'])->name('unit.image.update');
 });
 
 //Product route

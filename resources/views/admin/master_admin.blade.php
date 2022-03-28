@@ -352,7 +352,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('unit.show')}}">
                                             <span class="nav-text">Product Unit</span>
                                         </a>
                                     </li>
