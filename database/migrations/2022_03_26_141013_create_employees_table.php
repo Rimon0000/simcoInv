@@ -16,8 +16,8 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
 
-            $table->string('emp_id');
-            $table->string('nid')->nullable();
+            $table->string('emp_id')->unique();
+            $table->string('nid')->nullable()->unique();
             $table->string('emp_name');
             $table->integer('designation');
             $table->integer('department')->nullable();
@@ -25,9 +25,9 @@ class CreateEmployeesTable extends Migration
             $table->double('salary');
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
-            $table->integer('gender');
+            $table->string('gender');
             $table->string('DOB')->nullable();
-            $table->integer('marital')->nullable();
+            $table->string('marital')->nullable();
             $table->text('present_address');
             $table->text('permanent_address')->nullable();
             $table->string('contact');
