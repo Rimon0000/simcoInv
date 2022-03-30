@@ -28,12 +28,12 @@ class ProductListController extends Controller
     //Product List Add Page function
     public function productListAddPage()
     {
-        $categories = Category::all();
-        $subcategories = SubCategory::all();
+        $categories       = Category::all();
+        $subcategories    = SubCategory::all();
         $subsubcategories = SubSubCategory::all();
-        $brands = Brand::all();
-        $units = Unit::all();
-        $displaysections = DisplaySection::all();
+        $brands           = Brand::all();
+        $units            = Unit::all();
+        $displaysections  = DisplaySection::all();
         return view('admin.product_list.product_list_add',compact('categories', 'subcategories', 'subsubcategories','brands','units', 'displaysections'));
     }
 

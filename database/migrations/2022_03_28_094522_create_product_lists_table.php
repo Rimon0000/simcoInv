@@ -31,8 +31,8 @@ class CreateProductListsTable extends Migration
             $table->integer('variation_swatch')->default(0);
             $table->string('color')->nullable();
             $table->string('size')->nullable();
-            $table->integer('pcs')->nullable();
-            $table->integer('weight')->nullable();
+            $table->string('pcs')->nullable();
+            $table->string('weight')->nullable();
             $table->integer('unit')->default(0);
             $table->integer('stock')->nullable();
             $table->integer('alert_stock')->nullable();
@@ -40,9 +40,9 @@ class CreateProductListsTable extends Migration
             $table->integer('tax')->nullable();
             $table->text('tags')->nullable();
             $table->text('promotion')->nullable();
-            $table->string('product_img');
+            $table->string('product_img')->nullable();
             $table->string('product_alt')->nullable();
-            $table->integer('warranty')->nullable();
+            $table->string('warranty')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();

@@ -58,7 +58,7 @@ class CategoriesController extends Controller
 
         // //getting data from category add form
         $cat_name = $request->cat_name;
-        $cat_img = $request->file('cat_img');
+        $cat_img  = $request->file('cat_img');
 
         if ($cat_img == null) {
             // check if the user had choosen the image or not

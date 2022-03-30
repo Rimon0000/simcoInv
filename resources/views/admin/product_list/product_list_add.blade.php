@@ -44,7 +44,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Category Name</label>
-                            <select class="form-control js-example-basic-single" name="category">
+                            <select class="form-control js-example-basic-single" name="category" required>
                                 <span class="text-danger" value=""> Select Category </span>
                                 <option value="">Select Category</option>
 
@@ -104,7 +104,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Brand</label>
-                            <select class="form-control js-example-basic-single" name="brand">
+                            <select class="form-control js-example-basic-single" name="brand" required>
                                 <span class="text-danger" value=""> Select Brand </span>
                                 <option value="">Select Brand</option>
 
@@ -140,7 +140,7 @@
                             <label for="validationServer01">Varity Section</label>
                             <select class="form-control js-example-basic-single" name="display_section">
                                 <span class="text-danger" value=""> Select Varity Section </span>
-                                <option value="">Select Varity Section</option>
+                                <option value="NA">Select Varity Section</option>
 
                                 @foreach($displaysections as $displaysection)
                                 <option value="{{ $displaysection->id }}">{{ $displaysection->display_section }}</option>
@@ -162,7 +162,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock No.</label>
-                            <input type="text" class="form-control" name="stock" id="validationServer01" placeholder="Stock No." required>
+                            <input type="text" class="form-control form-control-sm" name="stock" id="validationServer01" placeholder="Stock No." required>
                             <div class="pt-1">
                                 @error('stock')
                                 <span class="text-danger"> {{$message}} </span>
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Alert</label>
-                            <input type="text" class="form-control" name="alert_stock" id="validationServer01" placeholder="Stock Alert" required>
+                            <input type="text" class="form-control form-control-sm" name="alert_stock" id="validationServer01" placeholder="Stock Alert" required>
                             <div class="pt-1">
                                 @error('alert_stock')
                                 <span class="text-danger"> {{$message}} </span>
@@ -180,7 +180,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Units</label>
-                            <select class="form-control js-example-basic-single" name="unit">
+                            <select class="form-control js-example-basic-single" name="unit" required>
                                 <span class="text-danger" value=""> Select Units </span>
                                 <option value="">Select Units</option>
 
@@ -220,7 +220,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Color (s)</label>
-                            <input type="text" class="form-control" name="color" id="validationServer01" placeholder="Product Color" required>
+                            <input type="text" class="form-control" name="color" id="validationServer01" value="NA" placeholder="Product Color" required>
                             <div class="pt-1">
                                 @error('color')
                                 <span class="text-danger"> {{$message}} </span>
@@ -229,7 +229,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Size (s)</label>
-                            <input type="text" class="form-control" name="size" id="validationServer01" placeholder="Product Size" required>
+                            <input type="text" class="form-control" name="size" id="validationServer01" value="NA" placeholder="Product Size" required>
                             <div class="pt-1">
                                 @error('size')
                                 <span class="text-danger"> {{$message}} </span>
@@ -238,7 +238,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Piece (s)</label>
-                            <input type="text" class="form-control" name="pcs" id="validationServer01" placeholder="Product Piece">
+                            <input type="text" class="form-control" name="pcs" id="validationServer01" value="NA" placeholder="Product Piece">
                             <div class="pt-1">
                                 @error('pcs')
                                 <span class="text-danger"> {{$message}} </span>
@@ -247,7 +247,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Weight</label>
-                            <input type="text" class="form-control" name="weight" id="validationServer01" placeholder="Product Weight">
+                            <input type="text" class="form-control" name="weight" id="validationServer01" value="NA" placeholder="Product Weight">
                             <div class="pt-1">
                                 @error('weight')
                                 <span class="text-danger"> {{$message}} </span>
@@ -261,7 +261,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Price</label>
-                            <input type="text" class="form-control" name="price" id="validationServer01" placeholder="Price">
+                            <input type="text" class="form-control" name="price" id="validationServer01" placeholder="Price" required>
                             <div class="pt-1">
                                 @error('price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -270,7 +270,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Sale Price</label>
-                            <input type="text" class="form-control" name="sale_price" id="validationServer01" placeholder="Sale Price">
+                            <input type="text" class="form-control" name="sale_price" id="validationServer01" placeholder="Sale Price" required>
                             <div class="pt-1">
                                 @error('sale_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -279,7 +279,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount Price</label>
-                            <input type="text" class="form-control" name="discount_price" id="validationServer01" placeholder="Discount Price">
+                            <input type="text" class="form-control" name="discount_price" value="0" id="validationServer01" placeholder="Discount Price">
                             <div class="pt-1">
                                 @error('discount_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -288,7 +288,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount %</label>
-                            <input type="text" class="form-control" name="discount_percent" id="validationServer01" placeholder="Discount %">
+                            <input type="text" class="form-control" name="discount_percent" value="0" id="validationServer01" placeholder="Discount %">
                             <div class="pt-1">
                                 @error('discount_percent')
                                 <span class="text-danger"> {{$message}} </span>
@@ -302,7 +302,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Warranty</label>
-                            <input type="text" class="form-control" name="warranty" id="validationServer01" placeholder="Warranty" required>
+                            <input type="text" class="form-control" name="warranty" id="validationServer01" placeholder="Warranty" value="No Warranty">
                             <div class="pt-1">
                                 @error('warranty')
                                 <span class="text-danger"> {{$message}} </span>
@@ -311,7 +311,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Vat/Tax</label>
-                            <input type="text" class="form-control" name="tax" id="validationServer01" placeholder="Vat/Tax" required>
+                            <input type="text" class="form-control" name="tax" value="0" id="validationServer01" placeholder="Vat/Tax">
                             <div class="pt-1">
                                 @error('tax')
                                 <span class="text-danger"> {{$message}} </span>
@@ -320,7 +320,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Variation Swatches</label>
-                            <select class="form-control js-example-basic-single" name="variation_swatch">
+                            <select class="form-control" name="variation_swatch">
                                 <span class="text-danger" value=""> Variation Swatches </span>
                                 <option value="0" selected>No</option>
                                 <option value="1">Yes</option>
@@ -335,12 +335,11 @@
                     </div>
                     <!-- Product warranty, Vat/Tax , Variation Swatches Section End -->
 
-
                     <!-- Product Tags Starts -->
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Tags</label>
-                            <input type="text" class="form-control" name="tags" id="validationServer01" placeholder="Product Tags" required>
+                            <input type="text" class="form-control" name="tags" id="validationServer01" placeholder="Product Tags">
                             <div class="pt-1">
                                 @error('tags')
                                 <span class="text-danger"> {{$message}} </span>
@@ -354,7 +353,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Promotion</label>
-                            <input type="text" class="form-control" name="promotion" id="validationServer01" placeholder="Product Promotion" required>
+                            <input type="text" class="form-control" name="promotion" id="validationServer01" placeholder="Product Promotion" >
                             <div class="pt-1">
                                 @error('promotion')
                                 <span class="text-danger"> {{$message}} </span>
