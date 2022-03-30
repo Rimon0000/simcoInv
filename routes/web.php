@@ -298,6 +298,7 @@ Route::prefix('product-attribute')->group(function () {
 //Product Detail route
 Route::prefix('product-detail')->group(function () {
     Route::get('/show', [ProductDetailController::class, 'productDetailShow'])->name('product.detail.show');
+    Route::get('/display/{id}', [ProductDetailController::class, 'productDetailDisplayShow'])->name('product.detail.display');
     Route::get('/add/page', [ProductDetailController::class, 'productDetailAddPage'])->name('product.detail.add.page');
     Route::get('/edit/{id}', [ProductDetailController::class, 'productDetailEdit'])->name('product.detail.edit');
     Route::get('/edit/image/{id}', [ProductDetailController::class, 'productDetailEditImage'])->name('product.detail.edit.image');

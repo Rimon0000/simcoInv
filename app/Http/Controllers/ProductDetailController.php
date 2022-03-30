@@ -12,12 +12,22 @@ class ProductDetailController extends Controller
     {
         $data = ProductDetail::orderByDesc('id')->get();
 
-        return view('admin.product_attribute.product_attribute_show', compact('data'));
+        return view('admin.product_details.product_details_show', compact('data'));
     }
 
     //Product Detail Add Page function
     public function productDetailAddPage()
     {
-        return view('admin.product_attribute.product_attribute_add');
+        return view('admin.product_details.product_details_add');
     }
+
+    //Product Detail Display Page function
+    public function productDetailDisplayShow($id)
+    {
+        $data = ProductDetail::find($id);
+
+        return view('admin.product_details.product_details_display', compact('data'));
+    }
+
+    
 }
