@@ -34,7 +34,7 @@ class ProductListController extends Controller
         $brands           = Brand::all();
         $units            = Unit::all();
         $displaysections  = DisplaySection::all();
-        return view('admin.product_list.product_list_add',compact('categories', 'subcategories', 'subsubcategories','brands','units', 'displaysections'));
+        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections'));
     }
 
     //product list add function
@@ -106,7 +106,7 @@ class ProductListController extends Controller
 
         $result = DB::table('product_lists')->insert([
             'product_id'       => $product_id,
-            'title'            => $title ,
+            'title'            => $title,
             'price'            => $price,
             'sale_price'       => $sale_price,
             'discount_price'   => $discount_price,
@@ -152,38 +152,64 @@ class ProductListController extends Controller
         }
     }
 
-      //product list status function
-      public function productListStatus($id)
-      {
-  
-          $data = ProductList::find($id);
-          $statusCheck = $data->status;
-  
-          //check status
-          $statusCheck = ($statusCheck == '1') ? 0 : 1;
-  
-          $dataUpdated = DB::table('product_lists')
-              ->where('id', $id)
-              ->update(
-                  ['status' => $statusCheck,]
-              );
-  
-          if ($dataUpdated) {
-              $notification = [
-                  'message' => 'Status Updated Successfully',
-                  'alert-type' => 'success'
-              ];
-              return redirect()->route('product.list.show')->with($notification);
-          } else {
-              $notification = [
-                  'message' => 'Something Went Wrong',
-                  'alert-type' => 'warning'
-              ];
-              return redirect()->route('product.list.show')->with($notification);
-          }
-      }
+    //product list status function
+    public function productListStatus($id)
+    {
 
-      //product list delete function
+        $data = ProductList::find($id);
+        $statusCheck = $data->status;
+
+        //check status
+        $statusCheck = ($statusCheck == '1') ? 0 : 1;
+
+        $dataUpdated = DB::table('product_lists')
+            ->where('id', $id)
+            ->update(
+                ['status' => $statusCheck,]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Status Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        }
+    }
+
+
+    //product edit image function
+    public function categoryEditImage($id)
+    {
+
+        //fetching data from category table
+        $data = category::find($id);
+
+        return view('admin.category.category_edit_image', compact('data'));
+    }
+
+    //category Edit function
+    public function productListEdit($id)
+    {
+
+        $data             = ProductList::find($id);
+        $categories       = Category::all();
+        $subcategories    = SubCategory::all();
+        $subsubcategories = SubSubCategory::all();
+        $brands           = Brand::all();
+        $units            = Unit::all();
+        $displaysections  = DisplaySection::all();
+
+        return view('admin.product_list.product_list_edit', compact('data','categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections'));
+    }
+
+    //product list delete function
     public function productListDelete($id)
     {
         //find the image

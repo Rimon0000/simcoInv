@@ -153,8 +153,8 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
+                                            <li class="p-1"><a href="{{ route('product.list.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('product.list.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
                                             <li class="p-1"><a href="{{ route('product.list.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
 
                                         </ul>
