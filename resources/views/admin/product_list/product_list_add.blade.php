@@ -44,48 +44,54 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Category Name</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="category">
                                 <span class="text-danger" value=""> Select Category </span>
                                 <option value="">Select Category</option>
 
-                                <option value="">Test</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('category')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Sub Category One</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="sub_category">
                                 <span class="text-danger" value=""> Select Sub Category One</span>
                                 <option value="">Select Sub Category One</option>
 
-                                <option value="">Test</option>
+                                @foreach($subcategories as $subcategory)
+                                <option value="{{ $subcategory->id }}">{{ $subcategory->sub_cat_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('sub_category')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Sub Category Two</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="sub_sub_category">
                                 <span class="text-danger" value=""> Select Category Two</span>
                                 <option value="">Select Category Two</option>
 
-                                <option value="">Test</option>
+                                @foreach($subsubcategories as $subsubcategory)
+                                <option value="{{ $subsubcategory->id }}">{{ $subsubcategory->sub_sub_cat_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('sub_sub_category')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -98,48 +104,52 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Brand</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="brand">
                                 <span class="text-danger" value=""> Select Brand </span>
                                 <option value="">Select Brand</option>
 
-                                <option value="">Test</option>
+                                @foreach($brands as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('brand')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Origin</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="origin">
                                 <span class="text-danger" value=""> Select Origin </span>
                                 <option value="">Select Origin</option>
 
-                                <option value="">Test</option>
+                                <option value="1">Test</option>
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('origin')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Varity Section</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="display_section">
                                 <span class="text-danger" value=""> Select Varity Section </span>
                                 <option value="">Select Varity Section</option>
 
-                                <option value="">Test</option>
+                                @foreach($displaysections as $displaysection)
+                                <option value="{{ $displaysection->id }}">{{ $displaysection->display_section }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('display_section')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -152,50 +162,52 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock No.</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Stock No." required>
+                            <input type="text" class="form-control" name="stock" id="validationServer01" placeholder="Stock No." required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('stock')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Alert</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Stock Alert" required>
+                            <input type="text" class="form-control" name="alert_stock" id="validationServer01" placeholder="Stock Alert" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('alert_stock')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Units</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="unit">
                                 <span class="text-danger" value=""> Select Units </span>
                                 <option value="">Select Units</option>
 
-                                <option value="">Test</option>
+                                @foreach($units as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('unit')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Bar Code</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="bar_code">
                                 <span class="text-danger" value=""> Select Bar Code </span>
                                 <option value="">Select Bar Code</option>
 
-                                <option value="">Test</option>
+                                <option value="1">Test</option>
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('bar_code')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -208,36 +220,36 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Color (s)</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Color" required>
+                            <input type="text" class="form-control" name="color" id="validationServer01" placeholder="Product Color" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('color')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Size (s)</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Size" required>
+                            <input type="text" class="form-control" name="size" id="validationServer01" placeholder="Product Size" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('size')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Piece (s)</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Piece">
+                            <input type="text" class="form-control" name="pcs" id="validationServer01" placeholder="Product Piece">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('pcs')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Weight</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Weight">
+                            <input type="text" class="form-control" name="weight" id="validationServer01" placeholder="Product Weight">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('weight')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -249,36 +261,36 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Price</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Price">
+                            <input type="text" class="form-control" name="price" id="validationServer01" placeholder="Price">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('price')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Sale Price</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Sale Price">
+                            <input type="text" class="form-control" name="sale_price" id="validationServer01" placeholder="Sale Price">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('sale_price')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount Price</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Discount Price">
+                            <input type="text" class="form-control" name="discount_price" id="validationServer01" placeholder="Discount Price">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('discount_price')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount %</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Discount %">
+                            <input type="text" class="form-control" name="discount_percent" id="validationServer01" placeholder="Discount %">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('discount_percent')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -290,32 +302,32 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Warranty</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Warranty" required>
+                            <input type="text" class="form-control" name="warranty" id="validationServer01" placeholder="Warranty" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('warranty')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Vat/Tax</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Vat/Tax" required>
+                            <input type="text" class="form-control" name="tax" id="validationServer01" placeholder="Vat/Tax" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('tax')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Variation Swatches</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="variation_swatch">
                                 <span class="text-danger" value=""> Variation Swatches </span>
                                 <option value="0" selected>No</option>
                                 <option value="1">Yes</option>
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('variation_swatch')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -328,9 +340,9 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Tags</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Tags" required>
+                            <input type="text" class="form-control" name="tags" id="validationServer01" placeholder="Product Tags" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('tags')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -342,9 +354,9 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Promotion</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Promotion" required>
+                            <input type="text" class="form-control" name="promotion" id="validationServer01" placeholder="Product Promotion" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('promotion')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -356,18 +368,18 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer02">Product List Image</label>
-                            <input type="file" class="form-control" name="cat_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="product_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
                             <div class="pt-1">
-                                @error('cat_img')
+                                @error('product_img')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="validationServer01">Image Alt</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Image Alt" required>
+                            <input type="text" class="form-control" name="product_alt" id="validationServer01" placeholder="Image Alt">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('product_alt')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -401,4 +413,12 @@
 </script>
 
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 @endsection
