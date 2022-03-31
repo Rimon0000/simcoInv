@@ -71,23 +71,23 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Category</em></th>
-                                                            <td scope="col">{{ $datum->category }}</td>
+                                                            <td scope="col">{{ $datum->categoryName->cat_name }}</td>
                                                             <th scope="col"><em>Sub Category</em></th>
-                                                            <td scope="col">{{ $datum->sub_category }}</td>
+                                                            <td scope="col">{{ $datum->subCategoryName->sub_cat_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Sub Category Two </em></th>
-                                                            <td scope="col">{{ $datum->sub_sub_category }}</td>
+                                                            <td scope="col">{{ $datum->subSubCategoryName->sub_sub_cat_name }}</td>
                                                             <th scope="col"><em>Brand</em></th>
-                                                            <td scope="col">{{ $datum->brand }}</td>
+                                                            <td scope="col">{{ $datum->brandName->brand_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Display Section</em></th>
-                                                            <td scope="col">{{ $datum->display_section }}</td>
+                                                            <td scope="col">{{ $datum->displaySection->display_section }}</td>
                                                             <th scope="col"><em>Origin</em></th>
-                                                            <td scope="col">{{ $datum->origin }}</td>
+                                                            <td scope="col">{{ $datum->originName->origin}}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
@@ -113,7 +113,7 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Unit</em></th>
-                                                            <td scope="col">{{ $datum->unit }}</td>
+                                                            <td scope="col">{{ $datum->unitName->unit_name }}</td>
                                                             <th scope="col"><em>Bar Code</em></th>
                                                             <td scope="col">{{ $datum->bar_code }}</td>
                                                         </tr>

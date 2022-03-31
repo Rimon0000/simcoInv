@@ -10,6 +10,7 @@ use App\Http\Controllers\DisplaySectionController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OriginController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductController;
@@ -322,6 +323,18 @@ Route::prefix('slider')->group(function () {
     Route::post('/add', [SliderController::class, 'sliderAdd'])->name('slider.add');
     Route::post('/update/{id}', [SliderController::class, 'sliderUpdate'])->name('slider.update');
     Route::post('/image/update/{id}', [SliderController::class, 'sliderImageUpdate'])->name('slider.image.update');
+});
+
+//Origin route
+Route::prefix('origin')->group(function () {
+    Route::get('/show', [OriginController::class, 'originShow'])->name('origin.show');
+    Route::get('/add/page', [OriginController::class, 'originAddPage'])->name('origin.add.page');
+    Route::get('/edit/{id}', [OriginController::class, 'originEdit'])->name('origin.edit');
+    Route::get('/status/{id}', [OriginController::class, 'originStatus'])->name('origin.status');
+    Route::get('/delete/{id}', [OriginController::class, 'originDelete'])->name('origin.delete');
+
+    Route::post('/add', [OriginController::class, 'originAdd'])->name('origin.add');
+    Route::post('/update/{id}', [OriginController::class, 'originUpdate'])->name('origin.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\DisplaySection;
+use App\Models\Origin;
 use App\Models\ProductList;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
@@ -34,7 +35,8 @@ class ProductListController extends Controller
         $brands           = Brand::all();
         $units            = Unit::all();
         $displaysections  = DisplaySection::all();
-        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections'));
+        $origins  = Origin::all();
+        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections','origins'));
     }
 
     //product list add function

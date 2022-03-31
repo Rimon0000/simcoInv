@@ -11,7 +11,7 @@
     <div class="col-lg-6">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Add Sub Category</h2>
+                <h2>Add Product Unit</h2>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{route('unit.add')}}">

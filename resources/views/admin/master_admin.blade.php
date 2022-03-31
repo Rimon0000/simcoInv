@@ -357,6 +357,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a class="sidenav-item-link" href="{{route('origin.show')}}">
+                                            <span class="nav-text">Product Origin</span>
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a class="sidenav-item-link" href="{{ route('product.list.show') }}">
                                             <span class="nav-text">Product List</span>
                                         </a>
