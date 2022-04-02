@@ -381,6 +381,16 @@
                                             <span class="nav-text">Slider</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Campaign</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Coupon</span>
+                                        </a>
+                                    </li>
                                 </div>
                             </ul>
                         </li>

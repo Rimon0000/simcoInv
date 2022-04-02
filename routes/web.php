@@ -4,8 +4,10 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
@@ -374,6 +376,32 @@ Route::prefix('department')->group(function () {
 
     Route::post('/add', [DepartmentController::class, 'departmentAdd'])->name('department.add');
     Route::post('/update/{id}', [DepartmentController::class, 'departmentUpdate'])->name('department.update');
+});
+
+//Campaign route
+Route::prefix('campaign')->group(function () {
+    Route::get('/show', [CampaignController::class, 'campaignShow'])->name('campaign.show');
+    Route::get('/add/page', [CampaignController::class, 'campaignAddPage'])->name('campaign.add.page');
+    Route::get('/edit/{id}', [CampaignController::class, 'campaignEdit'])->name('campaign.edit');
+    Route::get('/edit/image/{id}', [CampaignController::class, 'campaignEditImage'])->name('campaign.edit.image');
+    Route::get('/status/{id}', [CampaignController::class, 'campaignStatus'])->name('campaign.status');
+    Route::get('/delete/{id}', [CampaignController::class, 'campaignDelete'])->name('campaign.delete');
+
+    Route::post('/add', [CampaignController::class, 'campaignAdd'])->name('campaign.add');
+    Route::post('/update/{id}', [CampaignControllerr::class, 'campaignUpdate'])->name('campaign.update');
+    Route::post('/image/update/{id}', [CampaignController::class, 'campaignImageUpdate'])->name('campaign.image.update');
+});
+
+//Coupon route
+Route::prefix('coupon')->group(function () {
+    Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
+    Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
+    Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
+    Route::get('/status/{id}', [CouponController::class, 'couponStatus'])->name('coupon.status');
+    Route::get('/delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
+
+    Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
+    Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
