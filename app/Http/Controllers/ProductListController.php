@@ -35,7 +35,7 @@ class ProductListController extends Controller
         $brands           = Brand::all();
         $units            = Unit::all();
         $displaysections  = DisplaySection::all();
-        $origins  = Origin::all();
+        $origins          = Origin::all();
         return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections','origins'));
     }
 
@@ -206,9 +206,10 @@ class ProductListController extends Controller
         $subsubcategories = SubSubCategory::all();
         $brands           = Brand::all();
         $units            = Unit::all();
+        $origins          = Origin::all();
         $displaysections  = DisplaySection::all();
 
-        return view('admin.product_list.product_list_edit', compact('data','categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections'));
+        return view('admin.product_list.product_list_edit', compact('data','categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections','origins'));
     }
 
     //product list delete function

@@ -126,7 +126,9 @@
                                 <span class="text-danger" value=""> Select Origin </span>
                                 <option value="">Select Origin</option>
 
-                                <option value="1">Test</option>
+                                @foreach($origins as $origin)
+                                <option value="{{ $origin->id }}" {{ ($data->origin == $origin->id) ? "Selected" : "" }}>{{ $origin->origin }}</option>
+                                @endforeach
 
                             </select>
 
