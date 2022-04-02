@@ -143,7 +143,7 @@
                                 <option value="NA">Select Varity Section</option>
 
                                 @foreach($displaysections as $displaysection)
-                                <option value="{{ $displaysection->id }}" {{ ($data->displaysection == $displaysection->id) ? "Selected" : "" }} >{{ $displaysection->display_section }}</option>
+                                <option value="{{ $displaysection->id }}" {{ ($data->display_section == $displaysection->id) ? "Selected" : "" }} >{{ $displaysection->display_section }}</option>
                                 @endforeach
 
                             </select>
