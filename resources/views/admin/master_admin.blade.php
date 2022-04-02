@@ -169,12 +169,12 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('designation.show')}}">
                                             <span class="nav-text">Designation</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('department.show')}}">
                                             <span class="nav-text">Department</span>
                                         </a>
                                     </li>

@@ -7,6 +7,8 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DisplaySectionController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
@@ -348,6 +350,30 @@ Route::prefix('area')->group(function () {
 
     Route::post('/add', [AreaController::class, 'areaAdd'])->name('area.add');
     Route::post('/update/{id}', [AreaController::class, 'areaUpdate'])->name('area.update');
+});
+
+//Designation route
+Route::prefix('designation')->group(function () {
+    Route::get('/show', [DesignationController::class, 'designationShow'])->name('designation.show');
+    Route::get('/add/page', [DesignationController::class, 'designationAddPage'])->name('designation.add.page');
+    Route::get('/edit/{id}', [DesignationController::class, 'designationEdit'])->name('designation.edit');
+    Route::get('/status/{id}', [DesignationController::class, 'designationStatus'])->name('designation.status');
+    Route::get('/delete/{id}', [DesignationController::class, 'designationDelete'])->name('designation.delete');
+
+    Route::post('/add', [DesignationController::class, 'designationAdd'])->name('designation.add');
+    Route::post('/update/{id}', [DesignationController::class, 'designationUpdate'])->name('designation.update');
+});
+
+//Department route
+Route::prefix('department')->group(function () {
+    Route::get('/show', [DepartmentController::class, 'departmentShow'])->name('department.show');
+    Route::get('/add/page', [DepartmentController::class, 'departmentAddPage'])->name('department.add.page');
+    Route::get('/edit/{id}', [DepartmentController::class, 'departmentEdit'])->name('department.edit');
+    Route::get('/status/{id}', [DepartmentController::class, 'departmentStatus'])->name('department.status');
+    Route::get('/delete/{id}', [DepartmentController::class, 'departmentDelete'])->name('department.delete');
+
+    Route::post('/add', [DepartmentController::class, 'departmentAdd'])->name('department.add');
+    Route::post('/update/{id}', [DepartmentController::class, 'departmentUpdate'])->name('department.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
