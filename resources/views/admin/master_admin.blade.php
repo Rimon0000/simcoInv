@@ -164,7 +164,7 @@
                             <ul class="collapse" id="employee" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('area.show')}}">
                                             <span class="nav-text">Area</span>
                                         </a>
                                     </li>

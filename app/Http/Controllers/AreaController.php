@@ -12,48 +12,48 @@ class AreaController extends Controller
 {
     //
     //Area show function
-    public function unitShow()
+    public function areaShow()
     {
         $data = Area::orderByDesc('id')->get();
-        return view('admin.product_unit.product_unit_show', compact('data'));
+        return view('admin.employee_area.employee_area_show', compact('data'));
     }
 
     // Area add page
-    public function unitAddPage()
+    public function areaAddPage()
     {
-        $data = Area::where('status', '=', '1')->orderBy('unit_name')->get();
-        return view('admin.product_unit.product_unit_add', compact('data'));
+        $data = Area::where('status', '=', '1')->orderBy('area')->get();
+        return view('admin.employee_area.employee_area_add', compact('data'));
     }
 
     // Area add function
-    public function unitAdd(Request $request)
+    public function areaAdd(Request $request)
     {
 
         // //validate the input items
         $validated = $request->validate(
             [
-                'unit_name' => 'required|unique:units|max:50',
-                'short_name' => 'unique:units|max:50',
+                'area' => 'required|unique:areas|max:50',
+                'short_name' => 'unique:areas|max:50',
             ],
 
             // modified msg
             [
-                'unit_name.required' => 'Input field can not be empty',
-                'unit_name.unique'   => 'Product Unit name alreay taken',
-                'unit_name.max'      => 'Product Unit name should not be more than 40 characters',
+                'area.required' => 'Input field can not be empty',
+                'area.unique'   => 'Employee Area name alreay taken',
+                'area.max'      => 'Employee Area name should not be more than 40 characters',
 
-                'short_name.unique'   => 'Unit Short name alreay taken',
-                'short_name.max'      => 'Unit Short name should not be more than 40 characters',
+                'short_name.unique'   => 'Area Short name alreay taken',
+                'short_name.max'      => 'Area Short name should not be more than 40 characters',
             ],
         );
 
         // // //getting data from add form
-        $unit_name    = $request->unit_name;
+        $area    = $request->area;
         $short_name   = $request->short_name;
 
 
-        $result = DB::table('units')->insert([
-            'unit_name' => $unit_name,
+        $result = DB::table('areas')->insert([
+            'area' => $area,
             'short_name' => $short_name,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
@@ -61,21 +61,21 @@ class AreaController extends Controller
         ]);
         if ($result) {
             $notification = [
-                'message' => 'Product Unit Added Successfully',
+                'message' => 'Employee Area Added Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         }
     }
 
     //Area status function
-    public function unitStatus($id)
+    public function areaStatus($id)
     {
 
         $data = Area::find($id);
@@ -84,7 +84,7 @@ class AreaController extends Controller
         //check status
         $statusCheck = ($statusCheck == '1') ? 0 : 1;
 
-        $dataUpdated = DB::table('units')
+        $dataUpdated = DB::table('areas')
             ->where('id', $id)
             ->update(
                 ['status' => $statusCheck,]
@@ -95,55 +95,55 @@ class AreaController extends Controller
                 'message' => 'Status Updated Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         }
     }
 
     //Area Edit function
-    public function  unitEdit($id)
+    public function  areaEdit($id)
     {
 
         $data = Area::find($id);
-        return view('admin.product_unit.product_unit_edit', compact('data'));
+        return view('admin.employee_area.employee_area_edit', compact('data'));
     }
 
     //Area Update function
-    public function unitUpdate(Request $request, $id)
+    public function areaUpdate(Request $request, $id)
     {
 
         #code ...
          //validate the input items
          $validated = $request->validate(
             [
-                'unit_name' => 'required|unique:units,id|max:50',
-                'short_name' => 'unique:units,id|max:50',
+                'area' => 'required|unique:areas,id|max:50',
+                'short_name' => 'unique:areas,id|max:50',
             ],
 
             // modified msg
             [
-                'unit_name.required' => 'Input field can not be empty',
-                'unit_name.unique'   => 'Product Unit name alreay taken',
-                'unit_name.max'      => 'Product Unit name should not be more than 40 characters',
+                'area.required' => 'Input field can not be empty',
+                'area.unique'   => 'Employee Area name alreay taken',
+                'area.max'      => 'Employee Area name should not be more than 40 characters',
 
-                'short_name.unique'   => 'Unit Short name alreay taken',
-                'short_name.max'      => 'Unit Short name should not be more than 40 characters',
+                'short_name.unique'   => 'Area Short name alreay taken',
+                'short_name.max'      => 'Area Short name should not be more than 40 characters',
             ],
         );
         //getting data from add form
-        $unit_name    = $request->unit_name;
-        $short_name   = $request->short_name;
+        $area        = $request->area;
+        $short_name  = $request->short_name;
 
-        $dataUpdated = DB::table('units')
+        $dataUpdated = DB::table('areas')
             ->where('id', $id)
             ->update(
                 [
-                    'unit_name' => $unit_name,
+                    'area' => $area,
                     'short_name' => $short_name,
                     'updated_by' => Auth::user()->id,
                     'updated_at' => Carbon::now(),
@@ -152,37 +152,37 @@ class AreaController extends Controller
 
         if ($dataUpdated) {
             $notification = [
-                'message' => 'Product Unit Name Updated Successfully',
+                'message' => 'Employee Area Name Updated Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         }
     }
 
     //Area delete function
-    public function unitDelete($id)
+    public function areaDelete($id)
     {
         //delete the row from thr table
-        $deleted = DB::table('units')->where('id', '=', $id)->delete();
+        $deleted = DB::table('areas')->where('id', '=', $id)->delete();
 
         if ($deleted) {
             $notification = [
-                'message' => 'Product Unit Deleted Successfully',
+                'message' => 'Employee Area Deleted Successfully',
                 'alert-type' => 'error'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('unit.show')->with($notification);
+            return redirect()->route('area.show')->with($notification);
         };
     }
 }

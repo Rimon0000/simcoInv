@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
@@ -335,6 +336,18 @@ Route::prefix('origin')->group(function () {
 
     Route::post('/add', [OriginController::class, 'originAdd'])->name('origin.add');
     Route::post('/update/{id}', [OriginController::class, 'originUpdate'])->name('origin.update');
+});
+
+//Area route
+Route::prefix('area')->group(function () {
+    Route::get('/show', [AreaController::class, 'areaShow'])->name('area.show');
+    Route::get('/add/page', [AreaController::class, 'areaAddPage'])->name('area.add.page');
+    Route::get('/edit/{id}', [AreaController::class, 'areaEdit'])->name('area.edit');
+    Route::get('/status/{id}', [AreaController::class, 'areaStatus'])->name('area.status');
+    Route::get('/delete/{id}', [AreaController::class, 'areaDelete'])->name('area.delete');
+
+    Route::post('/add', [AreaController::class, 'areaAdd'])->name('area.add');
+    Route::post('/update/{id}', [AreaController::class, 'areaUpdate'])->name('area.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
