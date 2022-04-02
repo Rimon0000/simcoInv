@@ -185,14 +185,82 @@ class ProductListController extends Controller
     }
 
 
-    //product edit image function
-    public function categoryEditImage($id)
+    //product list edit image function
+    public function productListEditImage($id)
     {
 
         //fetching data from category table
-        $data = category::find($id);
+        $data = ProductList ::find($id);
 
-        return view('admin.category.category_edit_image', compact('data'));
+        return view('admin.product_list.product_list_edit_image', compact('data'));
+    }
+
+    //Product List image update function
+    public function productListImageUpdate(Request $request, $id)
+    {
+        //validate the input item
+        $validated = $request->validate(
+            [
+                'product_img' => 'required|image|mimes:jpg,png,jpeg',
+            ],
+            //modified msg
+            [
+                //product img msg
+                'product_img.required' => 'please choose an image',
+                'product_img.image' => 'image should be .png, .jpeg, .jpg',
+            ]
+        );
+
+        //Getting the data form the form
+        $product_img = $request->file('product_img');
+
+        //Find the image
+        $image = ProductList::find($id);
+
+        if (!empty($image->product_img)) {
+            //Unlink the image from the folder
+            unlink($image->product_img);
+        }
+
+        // //unique ID generate
+        $img_name_gen = hexdec(uniqid());
+
+        // //Original ext
+        $img_ext      = strtolower($product_img->getClientOriginalExtension());
+
+        // //img new create
+        $img_name =  $img_name_gen . '.' . $img_ext;
+
+        // //where I'll keep the image --path
+        $upload_to    = 'backend/assets/img/product_list/';
+
+        // //Moving the image to a folder path 
+        $product_img->move($upload_to, $img_name);
+
+        $product_img =   $upload_to . $img_name;
+
+        $dataUpdated = DB::table('product_lists')
+            ->where('id', $id)
+            ->update(
+                [
+                    'product_img'    => $product_img,
+
+                ]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Image Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong!!',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        }
     }
 
     //Product list Edit function
