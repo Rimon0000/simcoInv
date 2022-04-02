@@ -2,54 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
     //
-    //Area show function
-    public function areaShow()
+    //department show function
+    public function departmentShow()
     {
-        $data = Area::orderByDesc('id')->get();
-        return view('admin.employee_area.employee_area_show', compact('data'));
+        $data = Department::orderByDesc('id')->get();
+        return view('admin.employee_department.employee_department_show', compact('data'));
     }
 
-    // Area add page
-    public function areaAddPage()
+    // department add page
+    public function departmentAddPage()
     {
-        $data = Area::where('status', '=', '1')->orderBy('area')->get();
-        return view('admin.employee_area.employee_area_add', compact('data'));
+        $data = Department::where('status', '=', '1')->orderBy('department')->get();
+        return view('admin.employee_department.employee_department_add', compact('data'));
     }
 
-    // Area add function
-    public function areaAdd(Request $request)
+    // department add function
+    public function departmentAdd(Request $request)
     {
 
         // //validate the input items
         $validated = $request->validate(
             [
-                'area' => 'required|unique:areas|max:50',
-                'short_name' => 'unique:areas|max:50',
+                'department' => 'required|unique:departments|max:50',
+                'short_name' => 'unique:departments|max:50',
             ],
 
             // modified msg
             [
-                'area.required' => 'Input field can not be empty',
-                'area.unique'   => 'Employee Area name alreay taken',
-                'area.max'      => 'Employee Area name should not be more than 40 characters',
+                'department.required' => 'Input field can not be empty',
+                'department.unique'   => 'Employee Department name alreay taken',
+                'department.max'      => 'Employee Department name should not be more than 40 characters',
 
-                'short_name.unique'   => 'Area Short name alreay taken',
-                'short_name.max'      => 'Area Short name should not be more than 40 characters',
+                'short_name.unique'   => 'Department Short name alreay taken',
+                'short_name.max'      => 'Department Short name should not be more than 40 characters',
             ],
         );
 
         // // //getting data from add form
-        $area    = $request->area;
+        $department    = $request->department;
         $short_name   = $request->short_name;
 
 
-        $result = DB::table('areas')->insert([
-            'area' => $area,
+        $result = DB::table('departments')->insert([
+            'department' => $department,
             'short_name' => $short_name,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
@@ -57,30 +61,30 @@ class DepartmentController extends Controller
         ]);
         if ($result) {
             $notification = [
-                'message' => 'Employee Area Added Successfully',
+                'message' => 'Employee Department Added Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         }
     }
 
-    //Area status function
-    public function areaStatus($id)
+    //department status function
+    public function departmentStatus($id)
     {
 
-        $data = Area::find($id);
+        $data = Department::find($id);
         $statusCheck = $data->status;
 
         //check status
         $statusCheck = ($statusCheck == '1') ? 0 : 1;
 
-        $dataUpdated = DB::table('areas')
+        $dataUpdated = DB::table('departments')
             ->where('id', $id)
             ->update(
                 ['status' => $statusCheck,]
@@ -91,55 +95,56 @@ class DepartmentController extends Controller
                 'message' => 'Status Updated Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         }
     }
 
-    //Area Edit function
-    public function  areaEdit($id)
+    //department Edit function
+    public function  departmentEdit($id)
     {
 
-        $data = Area::find($id);
-        return view('admin.employee_area.employee_area_edit', compact('data'));
+        $data = Department::find($id);
+        return view('admin.employee_department.employee_department_edit', compact('data'));
     }
 
-    //Area Update function
-    public function areaUpdate(Request $request, $id)
+    //department Update function
+    public function departmentUpdate(Request $request, $id)
     {
 
         #code ...
          //validate the input items
          $validated = $request->validate(
             [
-                'area' => 'required|unique:areas,id|max:50',
-                'short_name' => 'unique:areas,id|max:50',
+                'department' => 'required|unique:departments|max:50',
+                'short_name' => 'unique:departments|max:50',
             ],
 
             // modified msg
             [
-                'area.required' => 'Input field can not be empty',
-                'area.unique'   => 'Employee Area name alreay taken',
-                'area.max'      => 'Employee Area name should not be more than 40 characters',
+                'department.required' => 'Input field can not be empty',
+                'department.unique'   => 'Employee Department name alreay taken',
+                'department.max'      => 'Employee Department name should not be more than 40 characters',
 
-                'short_name.unique'   => 'Area Short name alreay taken',
-                'short_name.max'      => 'Area Short name should not be more than 40 characters',
+                'short_name.unique'   => 'Department Short name alreay taken',
+                'short_name.max'      => 'Department Short name should not be more than 40 characters',
             ],
         );
-        //getting data from add form
-        $area        = $request->area;
-        $short_name  = $request->short_name;
 
-        $dataUpdated = DB::table('areas')
+        // // //getting data from add form
+        $department    = $request->department;
+        $short_name   = $request->short_name;
+
+        $dataUpdated = DB::table('departments')
             ->where('id', $id)
             ->update(
                 [
-                    'area' => $area,
+                    'department' => $department,
                     'short_name' => $short_name,
                     'updated_by' => Auth::user()->id,
                     'updated_at' => Carbon::now(),
@@ -148,37 +153,37 @@ class DepartmentController extends Controller
 
         if ($dataUpdated) {
             $notification = [
-                'message' => 'Employee Area Name Updated Successfully',
+                'message' => 'Employee Department Name Updated Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         }
     }
 
-    //Area delete function
-    public function areaDelete($id)
+    //department delete function
+    public function departmentDelete($id)
     {
         //delete the row from thr table
-        $deleted = DB::table('areas')->where('id', '=', $id)->delete();
+        $deleted = DB::table('departments')->where('id', '=', $id)->delete();
 
         if ($deleted) {
             $notification = [
-                'message' => 'Employee Area Deleted Successfully',
+                'message' => 'Employee Department Deleted Successfully',
                 'alert-type' => 'error'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('area.show')->with($notification);
+            return redirect()->route('department.show')->with($notification);
         };
     }
 }
