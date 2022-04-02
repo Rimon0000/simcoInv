@@ -164,17 +164,17 @@
                             <ul class="collapse" id="employee" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('area.show')}}">
                                             <span class="nav-text">Area</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('designation.show')}}">
                                             <span class="nav-text">Designation</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('department.show')}}">
                                             <span class="nav-text">Department</span>
                                         </a>
                                     </li>
@@ -379,6 +379,16 @@
                                     <li>
                                         <a class="sidenav-item-link" href="chartjs.html">
                                             <span class="nav-text">Slider</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Campaign</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="chartjs.html">
+                                            <span class="nav-text">Coupon</span>
                                         </a>
                                     </li>
                                 </div>

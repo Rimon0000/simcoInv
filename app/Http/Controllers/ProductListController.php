@@ -35,8 +35,8 @@ class ProductListController extends Controller
         $brands           = Brand::all();
         $units            = Unit::all();
         $displaysections  = DisplaySection::all();
-        $origins  = Origin::all();
-        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections','origins'));
+        $origins          = Origin::all();
+        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins'));
     }
 
     //product list add function
@@ -59,7 +59,7 @@ class ProductListController extends Controller
         //     ],
         // );
 
-        // //getting data from category add form
+        // //getting data from  add form
         $product_id       = $request->product_id;
         $title            = $request->title;
         $price            = $request->price;
@@ -137,7 +137,6 @@ class ProductListController extends Controller
             'created_by'       => Auth::user()->id,
             'created_at'       => Carbon::now(),
 
-
         ]);
         if ($result) {
             $notification = [
@@ -186,17 +185,85 @@ class ProductListController extends Controller
     }
 
 
-    //product edit image function
-    public function categoryEditImage($id)
+    //product list edit image function
+    public function productListEditImage($id)
     {
 
         //fetching data from category table
-        $data = category::find($id);
+        $data = ProductList ::find($id);
 
-        return view('admin.category.category_edit_image', compact('data'));
+        return view('admin.product_list.product_list_edit_image', compact('data'));
     }
 
-    //category Edit function
+    //Product List image update function
+    public function productListImageUpdate(Request $request, $id)
+    {
+        //validate the input item
+        $validated = $request->validate(
+            [
+                'product_img' => 'required|image|mimes:jpg,png,jpeg',
+            ],
+            //modified msg
+            [
+                //product img msg
+                'product_img.required' => 'please choose an image',
+                'product_img.image' => 'image should be .png, .jpeg, .jpg',
+            ]
+        );
+
+        //Getting the data form the form
+        $product_img = $request->file('product_img');
+
+        //Find the image
+        $image = ProductList::find($id);
+
+        if (!empty($image->product_img)) {
+            //Unlink the image from the folder
+            unlink($image->product_img);
+        }
+
+        // //unique ID generate
+        $img_name_gen = hexdec(uniqid());
+
+        // //Original ext
+        $img_ext      = strtolower($product_img->getClientOriginalExtension());
+
+        // //img new create
+        $img_name =  $img_name_gen . '.' . $img_ext;
+
+        // //where I'll keep the image --path
+        $upload_to    = 'backend/assets/img/product_list/';
+
+        // //Moving the image to a folder path 
+        $product_img->move($upload_to, $img_name);
+
+        $product_img =   $upload_to . $img_name;
+
+        $dataUpdated = DB::table('product_lists')
+            ->where('id', $id)
+            ->update(
+                [
+                    'product_img'    => $product_img,
+
+                ]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Image Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong!!',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        }
+    }
+
+    //Product list Edit function
     public function productListEdit($id)
     {
 
@@ -206,9 +273,95 @@ class ProductListController extends Controller
         $subsubcategories = SubSubCategory::all();
         $brands           = Brand::all();
         $units            = Unit::all();
+        $origins          = Origin::all();
         $displaysections  = DisplaySection::all();
 
-        return view('admin.product_list.product_list_edit', compact('data','categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections'));
+        return view('admin.product_list.product_list_edit', compact('data', 'categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins'));
+    }
+
+    //Product List Update function
+    public function productListUpdate(Request $request, $id)
+    {
+
+        #code ...
+        // //getting data from  add form
+        $product_id       = $request->product_id;
+        $title            = $request->title;
+        $price            = $request->price;
+        $sale_price       = $request->sale_price;
+        $discount_price   = $request->discount_price;
+        $discount_percent = $request->discount_percent;
+        $category         = $request->category;
+        $sub_category     = $request->sub_category;
+        $sub_sub_category = $request->sub_sub_category;
+        $brand            = $request->brand;
+        $display_section  = $request->display_section;
+        $origin           = $request->origin;
+        $variation_swatch = $request->variation_swatch;
+        $color            = $request->color;
+        $size             = $request->size;
+        $pcs              = $request->pcs;
+        $weight           = $request->weight;
+        $unit             = $request->unit;
+        $stock            = $request->stock;
+        $alert_stock      = $request->alert_stock;
+        $bar_code         = $request->bar_code;
+        $tax              = $request->tax;
+        $tags             = $request->tags;
+        $promotion        = $request->promotion;
+        $product_img      = $request->file('product_img');
+        $product_alt      = $request->product_alt;
+        $warranty         = $request->warranty;
+
+        $dataUpdated = DB::table('product_lists')
+            ->where('id', $id)
+            ->update(
+                [
+                    'product_id'       => $product_id,
+                    'title'            => $title,
+                    'price'            => $price,
+                    'sale_price'       => $sale_price,
+                    'discount_price'   => $discount_price,
+                    'discount_percent' => $discount_percent,
+                    'category'         => $category,
+                    'sub_category'     => $sub_category,
+                    'sub_sub_category' => $sub_sub_category,
+                    'brand'            => $brand,
+                    'display_section'  => $display_section,
+                    'origin'           => $origin,
+                    'variation_swatch' => $variation_swatch,
+                    'color'            => $color,
+                    'size'             => $size,
+                    'pcs'              => $pcs,
+                    'weight'           => $weight,
+                    'unit'             => $unit,
+                    'stock'            => $stock,
+                    'alert_stock'      => $alert_stock,
+                    'bar_code'         => $bar_code,
+                    'tax'              => $tax,
+                    'tags'             => $tags,
+                    'promotion'        => $promotion,
+                    'product_img'      => $product_img,
+                    'product_alt'      => $product_alt,
+                    'warranty'         => $warranty,
+                    'created_by'       => Auth::user()->id,
+                    'created_at'       => Carbon::now(),
+                ]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Product List Name Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        }
     }
 
     //product list delete function

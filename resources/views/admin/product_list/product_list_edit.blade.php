@@ -67,7 +67,7 @@
                                 <option value="">Select Sub Category One</option>
 
                                 @foreach($subcategories as $subcategory)
-                                <option value="{{ $subcategory->id }}" {{ ($data->subcategory == $subcategory->id) ? "Selected" : "" }} >{{ $subcategory->sub_cat_name }}</option>
+                                <option value="{{ $subcategory->id }}" {{ ($data->sub_category == $subcategory->id) ? "Selected" : "" }} >{{ $subcategory->sub_cat_name }}</option>
                                 @endforeach
 
                             </select>
@@ -85,7 +85,7 @@
                                 <option value="">Select Category Two</option>
 
                                 @foreach($subsubcategories as $subsubcategory)
-                                <option value="{{ $subsubcategory->id }}"  {{ ($data->subsubcategory == $subsubcategory->id) ? "Selected" : "" }} >{{ $subsubcategory->sub_sub_cat_name }}</option>
+                                <option value="{{ $subsubcategory->id }}"  {{ ($data->sub_sub_category == $subsubcategory->id) ? "Selected" : "" }} >{{ $subsubcategory->sub_sub_cat_name }}</option>
                                 @endforeach
 
                             </select>
@@ -126,7 +126,9 @@
                                 <span class="text-danger" value=""> Select Origin </span>
                                 <option value="">Select Origin</option>
 
-                                <option value="1">Test</option>
+                                @foreach($origins as $origin)
+                                <option value="{{ $origin->id }}" {{ ($data->origin == $origin->id) ? "Selected" : "" }}>{{ $origin->origin }}</option>
+                                @endforeach
 
                             </select>
 
@@ -143,7 +145,7 @@
                                 <option value="NA">Select Varity Section</option>
 
                                 @foreach($displaysections as $displaysection)
-                                <option value="{{ $displaysection->id }}" {{ ($data->displaysection == $displaysection->id) ? "Selected" : "" }} >{{ $displaysection->display_section }}</option>
+                                <option value="{{ $displaysection->id }}" {{ ($data->display_section == $displaysection->id) ? "Selected" : "" }} >{{ $displaysection->display_section }}</option>
                                 @endforeach
 
                             </select>

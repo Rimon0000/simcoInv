@@ -2,10 +2,15 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DisplaySectionController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
@@ -339,6 +344,68 @@ Route::prefix('origin')->group(function () {
 
     Route::post('/add', [OriginController::class, 'originAdd'])->name('origin.add');
     Route::post('/update/{id}', [OriginController::class, 'originUpdate'])->name('origin.update');
+});
+
+//Area route
+Route::prefix('area')->group(function () {
+    Route::get('/show', [AreaController::class, 'areaShow'])->name('area.show');
+    Route::get('/add/page', [AreaController::class, 'areaAddPage'])->name('area.add.page');
+    Route::get('/edit/{id}', [AreaController::class, 'areaEdit'])->name('area.edit');
+    Route::get('/status/{id}', [AreaController::class, 'areaStatus'])->name('area.status');
+    Route::get('/delete/{id}', [AreaController::class, 'areaDelete'])->name('area.delete');
+
+    Route::post('/add', [AreaController::class, 'areaAdd'])->name('area.add');
+    Route::post('/update/{id}', [AreaController::class, 'areaUpdate'])->name('area.update');
+});
+
+//Designation route
+Route::prefix('designation')->group(function () {
+    Route::get('/show', [DesignationController::class, 'designationShow'])->name('designation.show');
+    Route::get('/add/page', [DesignationController::class, 'designationAddPage'])->name('designation.add.page');
+    Route::get('/edit/{id}', [DesignationController::class, 'designationEdit'])->name('designation.edit');
+    Route::get('/status/{id}', [DesignationController::class, 'designationStatus'])->name('designation.status');
+    Route::get('/delete/{id}', [DesignationController::class, 'designationDelete'])->name('designation.delete');
+
+    Route::post('/add', [DesignationController::class, 'designationAdd'])->name('designation.add');
+    Route::post('/update/{id}', [DesignationController::class, 'designationUpdate'])->name('designation.update');
+});
+
+//Department route
+Route::prefix('department')->group(function () {
+    Route::get('/show', [DepartmentController::class, 'departmentShow'])->name('department.show');
+    Route::get('/add/page', [DepartmentController::class, 'departmentAddPage'])->name('department.add.page');
+    Route::get('/edit/{id}', [DepartmentController::class, 'departmentEdit'])->name('department.edit');
+    Route::get('/status/{id}', [DepartmentController::class, 'departmentStatus'])->name('department.status');
+    Route::get('/delete/{id}', [DepartmentController::class, 'departmentDelete'])->name('department.delete');
+
+    Route::post('/add', [DepartmentController::class, 'departmentAdd'])->name('department.add');
+    Route::post('/update/{id}', [DepartmentController::class, 'departmentUpdate'])->name('department.update');
+});
+
+//Campaign route
+Route::prefix('campaign')->group(function () {
+    Route::get('/show', [CampaignController::class, 'campaignShow'])->name('campaign.show');
+    Route::get('/add/page', [CampaignController::class, 'campaignAddPage'])->name('campaign.add.page');
+    Route::get('/edit/{id}', [CampaignController::class, 'campaignEdit'])->name('campaign.edit');
+    Route::get('/edit/image/{id}', [CampaignController::class, 'campaignEditImage'])->name('campaign.edit.image');
+    Route::get('/status/{id}', [CampaignController::class, 'campaignStatus'])->name('campaign.status');
+    Route::get('/delete/{id}', [CampaignController::class, 'campaignDelete'])->name('campaign.delete');
+
+    Route::post('/add', [CampaignController::class, 'campaignAdd'])->name('campaign.add');
+    Route::post('/update/{id}', [CampaignControllerr::class, 'campaignUpdate'])->name('campaign.update');
+    Route::post('/image/update/{id}', [CampaignController::class, 'campaignImageUpdate'])->name('campaign.image.update');
+});
+
+//Coupon route
+Route::prefix('coupon')->group(function () {
+    Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
+    Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
+    Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
+    Route::get('/status/{id}', [CouponController::class, 'couponStatus'])->name('coupon.status');
+    Route::get('/delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
+
+    Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
+    Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -133,7 +133,7 @@ class BrandController extends Controller
         }
     }
 
-    //category Edit function
+    //Brand Edit function
     public function  brandEdit($id)
     {
 

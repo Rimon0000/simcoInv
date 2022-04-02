@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+    public function userName()
+    {
+        # code...
+        return $this->hasOne(user::class, 'id', 'created_by');
+    }
 }

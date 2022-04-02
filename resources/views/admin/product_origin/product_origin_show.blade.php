@@ -30,7 +30,7 @@
                         @foreach($data as $datum)
                         <tr>
                             <td scope="row">#</td>
-                            <td>{{ $datum->origin_name}}</td>
+                            <td>{{ $datum->origin}}</td>
                             <td>{{ $datum->short_name }}</td>
                             <td>{{ $datum->userName->name }}</td>
                             <td><a href="{{ route ('origin.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
