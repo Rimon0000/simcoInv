@@ -36,7 +36,7 @@ class ProductListController extends Controller
         $units            = Unit::all();
         $displaysections  = DisplaySection::all();
         $origins          = Origin::all();
-        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections','origins'));
+        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins'));
     }
 
     //product list add function
@@ -59,7 +59,7 @@ class ProductListController extends Controller
         //     ],
         // );
 
-        // //getting data from category add form
+        // //getting data from  add form
         $product_id       = $request->product_id;
         $title            = $request->title;
         $price            = $request->price;
@@ -137,7 +137,6 @@ class ProductListController extends Controller
             'created_by'       => Auth::user()->id,
             'created_at'       => Carbon::now(),
 
-
         ]);
         if ($result) {
             $notification = [
@@ -196,7 +195,7 @@ class ProductListController extends Controller
         return view('admin.category.category_edit_image', compact('data'));
     }
 
-    //category Edit function
+    //Product list Edit function
     public function productListEdit($id)
     {
 
@@ -209,7 +208,92 @@ class ProductListController extends Controller
         $origins          = Origin::all();
         $displaysections  = DisplaySection::all();
 
-        return view('admin.product_list.product_list_edit', compact('data','categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections','origins'));
+        return view('admin.product_list.product_list_edit', compact('data', 'categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins'));
+    }
+
+    //Product List Update function
+    public function productListUpdate(Request $request, $id)
+    {
+
+        #code ...
+        // //getting data from  add form
+        $product_id       = $request->product_id;
+        $title            = $request->title;
+        $price            = $request->price;
+        $sale_price       = $request->sale_price;
+        $discount_price   = $request->discount_price;
+        $discount_percent = $request->discount_percent;
+        $category         = $request->category;
+        $sub_category     = $request->sub_category;
+        $sub_sub_category = $request->sub_sub_category;
+        $brand            = $request->brand;
+        $display_section  = $request->display_section;
+        $origin           = $request->origin;
+        $variation_swatch = $request->variation_swatch;
+        $color            = $request->color;
+        $size             = $request->size;
+        $pcs              = $request->pcs;
+        $weight           = $request->weight;
+        $unit             = $request->unit;
+        $stock            = $request->stock;
+        $alert_stock      = $request->alert_stock;
+        $bar_code         = $request->bar_code;
+        $tax              = $request->tax;
+        $tags             = $request->tags;
+        $promotion        = $request->promotion;
+        $product_img      = $request->file('product_img');
+        $product_alt      = $request->product_alt;
+        $warranty         = $request->warranty;
+
+        $dataUpdated = DB::table('product_lists')
+            ->where('id', $id)
+            ->update(
+                [
+                    'product_id'       => $product_id,
+                    'title'            => $title,
+                    'price'            => $price,
+                    'sale_price'       => $sale_price,
+                    'discount_price'   => $discount_price,
+                    'discount_percent' => $discount_percent,
+                    'category'         => $category,
+                    'sub_category'     => $sub_category,
+                    'sub_sub_category' => $sub_sub_category,
+                    'brand'            => $brand,
+                    'display_section'  => $display_section,
+                    'origin'           => $origin,
+                    'variation_swatch' => $variation_swatch,
+                    'color'            => $color,
+                    'size'             => $size,
+                    'pcs'              => $pcs,
+                    'weight'           => $weight,
+                    'unit'             => $unit,
+                    'stock'            => $stock,
+                    'alert_stock'      => $alert_stock,
+                    'bar_code'         => $bar_code,
+                    'tax'              => $tax,
+                    'tags'             => $tags,
+                    'promotion'        => $promotion,
+                    'product_img'      => $product_img,
+                    'product_alt'      => $product_alt,
+                    'warranty'         => $warranty,
+                    'created_by'       => Auth::user()->id,
+                    'created_at'       => Carbon::now(),
+                ]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Product List Name Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('product.list.show')->with($notification);
+        }
     }
 
     //product list delete function
