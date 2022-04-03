@@ -180,18 +180,13 @@
                                     </li>
 
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('expanse.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('employee.show')}}">
                                             <span class="nav-text">Employee List</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('employee.add.page')}}">
                                             <span class="nav-text">Employee Add</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
-                                            <span class="nav-text">Employee Salary</span>
                                         </a>
                                     </li>
                                     <li>

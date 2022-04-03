@@ -12,6 +12,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DisplaySectionController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\OrderController;
@@ -403,6 +404,32 @@ Route::prefix('coupon')->group(function () {
     Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
     Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
 });
+
+//Employee route
+Route::prefix('employee')->group(function () {
+    Route::get('/show', [EmployeeController::class, 'employeeShow'])->name('employee.show');
+    Route::get('/display/{id}', [EmployeeController::class, 'employeeDisplayShow'])->name('employee.display');
+    Route::get('/add/page', [EmployeeController::class, 'employeeAddPage'])->name('employee.add.page');
+    Route::get('/edit/{id}', [ProductDetailCoEmployeeControllertroller::class, 'employeeEdit'])->name('employee.edit');
+    Route::get('/edit/image/{id}', [EmployeeController::class, 'employeeEditImage'])->name('employee.edit.image');
+    Route::get('/status/{id}', [EmployeeController::class, 'employeeStatus'])->name('employee.status');
+    Route::get('/delete/{id}', [EmployeeController::class, 'employeeDelete'])->name('employee.delete');
+
+    Route::post('/add', [EmployeeController::class, 'employeeAdd'])->name('employee.add');
+    Route::post('/update/{id}', [EmployeeController::class, 'employeeUpdate'])->name('employee.update');
+    Route::post('/image/update/{id}', [EmployeeController::class, 'employeeImageUpdate'])->name('employee.image.update');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.pages.index');
