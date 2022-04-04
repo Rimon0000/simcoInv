@@ -137,7 +137,7 @@ Route::prefix('expanse/type')->group(function () {
     Route::get('/edit/{id}', [ExpanseController::class, 'expanseEdit'])->name('expanse.edit');
     Route::get('/status/{id}', [ExpanseController::class, 'expanseStatus'])->name('expanse.status');
     Route::get('/delete/{id}', [ExpanseController::class, 'expanseDelete'])->name('expanse.delete');
-    
+
     Route::post('/add', [ExpanseController::class, 'expanseAdd'])->name('expanse.add');
     Route::post('/update/{id}', [ExpanseController::class, 'expanseUpdate'])->name('expanse.update');
 });
@@ -148,49 +148,10 @@ Route::prefix('expanse/detail')->group(function () {
     Route::get('/add/page', [ExpanseController::class, 'expanseDetailAddPage'])->name('expanse.detail.add.page');
     Route::get('/edit/{id}', [ExpanseController::class, 'expanseDetailEdit'])->name('expanse.detail.edit');
     Route::get('/delete/{id}', [ExpanseController::class, 'expanseDetailDelete'])->name('expanse.detail.delete');
-    
+
     Route::post('/add', [ExpanseController::class, 'expanseDetailAdd'])->name('expanse.detail.add');
     Route::post('/update/{id}', [ExpanseController::class, 'expanseDetailUpdate'])->name('expanse.detail.update');
 });
-
-
-//category route
-Route::get('/category/show', [CategoriesController::class, 'categoryShow'])->name('category.show');
-Route::get('/category/add/page', [CategoriesController::class, 'categoryAddPage'])->name('category.add.page');
-Route::get('/category/edit/{id}', [CategoriesController::class, 'categoryEdit'])->name('category.edit');
-Route::get('/category/edit/image/{id}', [CategoriesController::class, 'categoryEditImage'])->name('category.edit.image');
-Route::get('/category/status/{id}', [CategoriesController::class, 'categoryStatus'])->name('category.status');
-Route::get('/category/delete/{id}', [CategoriesController::class, 'categoryDelete'])->name('category.delete');
-
-Route::post('/category/add', [CategoriesController::class, 'categoryAdd'])->name('category.add');
-Route::post('/category/update/{id}', [CategoriesController::class, 'categoryUpdate'])->name('category.update');
-Route::post('/category/image/update/{id}', [CategoriesController::class, 'categoryImageUpdate'])->name('category.image.update');
-
-
-//sub-category route
-Route::get('/subcategory/show', [SubCategoriesController::class, 'subCategoryShow'])->name('subcategory.show');
-Route::get('/subcategory/add/page', [SubCategoriesController::class, 'subCategoryAddPage'])->name('subcategory.add.page');
-Route::get('/subcategory/edit/{id}', [SubCategoriesController::class, 'subCategoryEdit'])->name('subcategory.edit');
-Route::get('/subcategory/edit/image/{id}', [SubCategoriesController::class, 'subCategoryEditImage'])->name('subcategory.edit.image');
-Route::get('/subcategory/status/{id}', [SubCategoriesController::class, 'subCategoryStatus'])->name('subcategory.status');
-Route::get('/subcategory/delete/{id}', [SubCategoriesController::class, 'subCategoryDelete'])->name('subcategory.delete');
-
-Route::post('/subcategory/add', [SubCategoriesController::class, 'subCategoryAdd'])->name('subcategory.add');
-Route::post('/subcategory/update/{id}', [SubCategoriesController::class, 'subCategoryUpdate'])->name('subcategory.update');
-Route::post('/subcategory/image/update/{id}', [SubCategoriesController::class, 'subCategoryImageUpdate'])->name('subcategory.image.update');
-
-
-//sub-sub-category route
-Route::get('/subsubcategory/show', [SubSubCategoryController::class, 'subSubCategoryShow'])->name('subsubcategory.show');
-Route::get('/subsubcategory/add/page', [SubSubCategoryController::class, 'subSubCategoryAddPage'])->name('subsubcategory.add.page');
-Route::get('/subsubcategory/edit/{id}', [SubSubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
-Route::get('/subsubcategory/edit/image/{id}', [SubSubCategoryController::class, 'subSubCategoryEditImage'])->name('subsubcategory.edit.image');
-Route::get('/subsubcategory/status/{id}', [SubSubCategoryController::class, 'subSubCategoryStatus'])->name('subsubcategory.status');
-Route::get('/subsubcategory/delete/{id}', [SubSubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
-
-Route::post('/subsubcategory/add', [SubSubCategoryController::class, 'subSubCategoryAdd'])->name('subsubcategory.add');
-Route::post('/subsubcategory/update/{id}', [SubSubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
-Route::post('/subsubcategory/image/update/{id}', [SubSubCategoryController::class, 'subSubCategoryImageUpdate'])->name('subsubcategory.image.update');
 
 
 //Supplier route
@@ -235,6 +196,51 @@ Route::prefix('order')->group(function () {
     Route::post('/update/{id}', [OrderController::class, 'orderUpdate'])->name('order.update');
     Route::post('/image/update/{id}', [OrderController::class, 'orderImageUpdate'])->name('order.image.update');
 });
+
+
+
+
+############################################ Product MGT Start ###############################################################################
+
+//category route
+Route::get('/category/show', [CategoriesController::class, 'categoryShow'])->name('category.show');
+Route::get('/category/add/page', [CategoriesController::class, 'categoryAddPage'])->name('category.add.page');
+Route::get('/category/edit/{id}', [CategoriesController::class, 'categoryEdit'])->name('category.edit');
+Route::get('/category/edit/image/{id}', [CategoriesController::class, 'categoryEditImage'])->name('category.edit.image');
+Route::get('/category/status/{id}', [CategoriesController::class, 'categoryStatus'])->name('category.status');
+Route::get('/category/delete/{id}', [CategoriesController::class, 'categoryDelete'])->name('category.delete');
+
+Route::post('/category/add', [CategoriesController::class, 'categoryAdd'])->name('category.add');
+Route::post('/category/update/{id}', [CategoriesController::class, 'categoryUpdate'])->name('category.update');
+Route::post('/category/image/update/{id}', [CategoriesController::class, 'categoryImageUpdate'])->name('category.image.update');
+
+
+//sub-category route
+Route::get('/subcategory/show', [SubCategoriesController::class, 'subCategoryShow'])->name('subcategory.show');
+Route::get('/subcategory/add/page', [SubCategoriesController::class, 'subCategoryAddPage'])->name('subcategory.add.page');
+Route::get('/subcategory/edit/{id}', [SubCategoriesController::class, 'subCategoryEdit'])->name('subcategory.edit');
+Route::get('/subcategory/edit/image/{id}', [SubCategoriesController::class, 'subCategoryEditImage'])->name('subcategory.edit.image');
+Route::get('/subcategory/status/{id}', [SubCategoriesController::class, 'subCategoryStatus'])->name('subcategory.status');
+Route::get('/subcategory/delete/{id}', [SubCategoriesController::class, 'subCategoryDelete'])->name('subcategory.delete');
+
+Route::post('/subcategory/add', [SubCategoriesController::class, 'subCategoryAdd'])->name('subcategory.add');
+Route::post('/subcategory/update/{id}', [SubCategoriesController::class, 'subCategoryUpdate'])->name('subcategory.update');
+Route::post('/subcategory/image/update/{id}', [SubCategoriesController::class, 'subCategoryImageUpdate'])->name('subcategory.image.update');
+
+
+//sub-sub-category route
+Route::get('/subsubcategory/show', [SubSubCategoryController::class, 'subSubCategoryShow'])->name('subsubcategory.show');
+Route::get('/subsubcategory/add/page', [SubSubCategoryController::class, 'subSubCategoryAddPage'])->name('subsubcategory.add.page');
+Route::get('/subsubcategory/edit/{id}', [SubSubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
+Route::get('/subsubcategory/edit/image/{id}', [SubSubCategoryController::class, 'subSubCategoryEditImage'])->name('subsubcategory.edit.image');
+Route::get('/subsubcategory/status/{id}', [SubSubCategoryController::class, 'subSubCategoryStatus'])->name('subsubcategory.status');
+Route::get('/subsubcategory/delete/{id}', [SubSubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
+
+Route::post('/subsubcategory/add', [SubSubCategoryController::class, 'subSubCategoryAdd'])->name('subsubcategory.add');
+Route::post('/subsubcategory/update/{id}', [SubSubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
+Route::post('/subsubcategory/image/update/{id}', [SubSubCategoryController::class, 'subSubCategoryImageUpdate'])->name('subsubcategory.image.update');
+
+
 
 //Brand route
 Route::prefix('brand')->group(function () {
@@ -317,6 +323,18 @@ Route::prefix('product-detail')->group(function () {
     Route::post('/image/update/{id}', [ProductDetailController::class, 'productDetailImageUpdate'])->name('product.detail.image.update');
 });
 
+//Product Coupon route
+Route::prefix('coupon')->group(function () {
+    Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
+    Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
+    Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
+    Route::get('/status/{id}', [CouponController::class, 'couponStatus'])->name('coupon.status');
+    Route::get('/delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
+
+    Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
+    Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
+});
+
 //Slider route
 Route::prefix('slider')->group(function () {
     Route::get('/show', [SliderController::class, 'sliderShow'])->name('slider.show');
@@ -330,6 +348,25 @@ Route::prefix('slider')->group(function () {
     Route::post('/update/{id}', [SliderController::class, 'sliderUpdate'])->name('slider.update');
     Route::post('/image/update/{id}', [SliderController::class, 'sliderImageUpdate'])->name('slider.image.update');
 });
+
+//Product Campaign route
+Route::prefix('campaign')->group(function () {
+    Route::get('/show', [CampaignController::class, 'campaignShow'])->name('campaign.show');
+    Route::get('/add/page', [CampaignController::class, 'campaignAddPage'])->name('campaign.add.page');
+    Route::get('/edit/{id}', [CampaignController::class, 'campaignEdit'])->name('campaign.edit');
+    Route::get('/edit/image/{id}', [CampaignController::class, 'campaignEditImage'])->name('campaign.edit.image');
+    Route::get('/status/{id}', [CampaignController::class, 'campaignStatus'])->name('campaign.status');
+    Route::get('/delete/{id}', [CampaignController::class, 'campaignDelete'])->name('campaign.delete');
+
+    Route::post('/add', [CampaignController::class, 'campaignAdd'])->name('campaign.add');
+    Route::post('/update/{id}', [CampaignControllerr::class, 'campaignUpdate'])->name('campaign.update');
+    Route::post('/image/update/{id}', [CampaignController::class, 'campaignImageUpdate'])->name('campaign.image.update');
+});
+
+
+############################################ Product MGT End ################################################################################
+
+
 
 //Origin route
 Route::prefix('origin')->group(function () {
@@ -377,32 +414,6 @@ Route::prefix('department')->group(function () {
 
     Route::post('/add', [DepartmentController::class, 'departmentAdd'])->name('department.add');
     Route::post('/update/{id}', [DepartmentController::class, 'departmentUpdate'])->name('department.update');
-});
-
-//Campaign route
-Route::prefix('campaign')->group(function () {
-    Route::get('/show', [CampaignController::class, 'campaignShow'])->name('campaign.show');
-    Route::get('/add/page', [CampaignController::class, 'campaignAddPage'])->name('campaign.add.page');
-    Route::get('/edit/{id}', [CampaignController::class, 'campaignEdit'])->name('campaign.edit');
-    Route::get('/edit/image/{id}', [CampaignController::class, 'campaignEditImage'])->name('campaign.edit.image');
-    Route::get('/status/{id}', [CampaignController::class, 'campaignStatus'])->name('campaign.status');
-    Route::get('/delete/{id}', [CampaignController::class, 'campaignDelete'])->name('campaign.delete');
-
-    Route::post('/add', [CampaignController::class, 'campaignAdd'])->name('campaign.add');
-    Route::post('/update/{id}', [CampaignControllerr::class, 'campaignUpdate'])->name('campaign.update');
-    Route::post('/image/update/{id}', [CampaignController::class, 'campaignImageUpdate'])->name('campaign.image.update');
-});
-
-//Coupon route
-Route::prefix('coupon')->group(function () {
-    Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
-    Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
-    Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
-    Route::get('/status/{id}', [CouponController::class, 'couponStatus'])->name('coupon.status');
-    Route::get('/delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
-
-    Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
-    Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
 });
 
 //Employee route
