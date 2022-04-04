@@ -56,7 +56,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+        $('.js-example-basic-single').select2({ width: '100%' });
     });
 </script>
 @endsection

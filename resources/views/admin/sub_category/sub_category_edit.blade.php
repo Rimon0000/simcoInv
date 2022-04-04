@@ -56,7 +56,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('.js-sub-category-edit').select2();
+        $('.js-sub-category-edit').select2({ width: '100%' });
     });
 </script>
 @endsection
