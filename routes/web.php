@@ -128,7 +128,7 @@ Route::prefix('policy')->group(function () {
 ###################################################################################################
 
 
-
+############################################ Expanse MGT Start ###############################################################################
 
 // Expanse Type Routes
 Route::prefix('expanse/type')->group(function () {
@@ -152,6 +152,8 @@ Route::prefix('expanse/detail')->group(function () {
     Route::post('/add', [ExpanseController::class, 'expanseDetailAdd'])->name('expanse.detail.add');
     Route::post('/update/{id}', [ExpanseController::class, 'expanseDetailUpdate'])->name('expanse.detail.update');
 });
+
+############################################ Expanse MGT Start ##################################################################################
 
 
 //Supplier route
@@ -229,16 +231,21 @@ Route::post('/subcategory/image/update/{id}', [SubCategoriesController::class, '
 
 
 //sub-sub-category route
-Route::get('/subsubcategory/show', [SubSubCategoryController::class, 'subSubCategoryShow'])->name('subsubcategory.show');
-Route::get('/subsubcategory/add/page', [SubSubCategoryController::class, 'subSubCategoryAddPage'])->name('subsubcategory.add.page');
-Route::get('/subsubcategory/edit/{id}', [SubSubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
-Route::get('/subsubcategory/edit/image/{id}', [SubSubCategoryController::class, 'subSubCategoryEditImage'])->name('subsubcategory.edit.image');
-Route::get('/subsubcategory/status/{id}', [SubSubCategoryController::class, 'subSubCategoryStatus'])->name('subsubcategory.status');
-Route::get('/subsubcategory/delete/{id}', [SubSubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
+Route::prefix('subsubcategory')->group(
+    function(){
+        Route::get('/show', [SubSubCategoryController::class, 'subSubCategoryShow'])->name('subsubcategory.show');
+        Route::get('/add/page', [SubSubCategoryController::class, 'subSubCategoryAddPage'])->name('subsubcategory.add.page');
+        Route::get('/edit/{id}', [SubSubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
+        Route::get('/edit/image/{id}', [SubSubCategoryController::class, 'subSubCategoryEditImage'])->name('subsubcategory.edit.image');
+        Route::get('/status/{id}', [SubSubCategoryController::class, 'subSubCategoryStatus'])->name('subsubcategory.status');
+        Route::get('/delete/{id}', [SubSubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
+        
+        Route::post('/add', [SubSubCategoryController::class, 'subSubCategoryAdd'])->name('subsubcategory.add');
+        Route::post('/update/{id}', [SubSubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
+        Route::post('/image/update/{id}', [SubSubCategoryController::class, 'subSubCategoryImageUpdate'])->name('subsubcategory.image.update');
+    }
+);
 
-Route::post('/subsubcategory/add', [SubSubCategoryController::class, 'subSubCategoryAdd'])->name('subsubcategory.add');
-Route::post('/subsubcategory/update/{id}', [SubSubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
-Route::post('/subsubcategory/image/update/{id}', [SubSubCategoryController::class, 'subSubCategoryImageUpdate'])->name('subsubcategory.image.update');
 
 
 
