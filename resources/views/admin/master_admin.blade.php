@@ -314,12 +314,12 @@
                         </li>
                         <!-- Customers end -->
                         <!-- Product start -->
-                        <li class="has-sub">
+                        <li class="has-sub active expand">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#products" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
                                 <span class="nav-text">Product MGMT</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="products" data-parent="#sidebar-menu">
+                            <ul class="collapse show" id="products" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
