@@ -20,7 +20,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Product Attribute Image</th>
-                            <th scope="col">Product Attribute Name</th>
+                            <th scope="col">Product Code</th>
+                            <th scope="col">Details</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -33,11 +34,15 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td><img src="{{ $datum->product_img_1 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_1) }}" alt="default image" width="100px" height="80px"></td>
-                            <td>{{ $datum->cat_name}}</td>
+                            <td>
+                                <img src="{{ $datum->product_img_1 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_1) }}" alt="default image" width="80px" height="60px">
+                                || <img src="{{ $datum->product_img_1 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_2) }}" alt="default image" width="80px" height="60px">
+                            </td>
+                            <td>{{ $datum->product_id}}</td>
+                            <td> <button class="btn btn-sm btn-primary">Details</button> </td>
                             <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
-                            <div class="btn-group">
+                                <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         More..
                                     </button>
@@ -45,13 +50,7 @@
                                         <ul>
                                             <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
                                             <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
-
-                                            @php
-                                            $countData = App\Models\subCategory::where('cat_id',$datum->id)->count();
-                                            @endphp
-                                            @if( $countData <1 )
                                             <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
-                                            @endif
                                         </ul>
                                     </div>
                                 </div>

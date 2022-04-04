@@ -24,8 +24,8 @@ class ProductAttributeController extends Controller
     //Product atribute Add Page function
     public function productAttributeAddPage()
     {
-        $Productlists =  ProductList::all();
-        $units = Unit::all();
+        $Productlists =  ProductList::where('variation_swatch', 1)->get();
+        $units        = Unit::all();
         return view('admin.product_attribute.product_attribute_add', compact('Productlists','units'));
     }
 
@@ -50,6 +50,7 @@ class ProductAttributeController extends Controller
         // );
 
         // //getting data from  add form
+
         $product_id         = $request->product_id;
         $quantity           = $request->quantity ;
         $stock_alert        = $request->stock_alert;
@@ -109,7 +110,7 @@ class ProductAttributeController extends Controller
             'product_id'       => $product_id,
             'quantity'         => $quantity,
             'stock_alert'      => $stock_alert,
-            'unit_id '         => $unit_id ,
+            'unit_id'          => $unit_id ,
             'color'            => $color,
             'size'             => $size,
             'piece'            => $piece,

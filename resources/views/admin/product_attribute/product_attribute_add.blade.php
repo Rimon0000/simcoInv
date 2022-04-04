@@ -3,7 +3,7 @@
 
 <div class="row p-3">
     <div class="col-lg-6">
-        <a href="{{ route ('product.list.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
+        <a href="{{ route ('product.attribute.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{route('product.list.add')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('product.attribute.add')}}" enctype="multipart/form-data">
                     @csrf
 
                     <!-- Product Code, Stock Qty, Stock Alert, Units Start -->
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Qty</label>
-                            <input type="text" class="form-control" name="quantity" id="validationServer01" placeholder="Stock Qty" required>
+                            <input type="text" class="form-control form-control-sm" name="quantity" id="validationServer01" placeholder="Stock Qty" required>
                             <div class="pt-1">
                                 @error('quantity')
                                 <span class="text-danger"> {{$message}} </span>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Alert</label>
-                            <input type="text" class="form-control" name="stock_alert" id="validationServer01" placeholder="Stock Alert" required>
+                            <input type="text" class="form-control form-control-sm" name="stock_alert" id="validationServer01" placeholder="Stock Alert" required>
                             <div class="pt-1">
                                 @error('stock_alert')
                                 <span class="text-danger"> {{$message}} </span>
@@ -58,8 +58,8 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Units</label>
-                            <select class="form-control js-example-basic-single" name="unit_id">
-                                <span class="text-danger" value=""> Select Units </span>
+                            <select class="form-control js-example-basic-single" name="unit_id" required>
+                                <span class="text-danger"> Select Units </span>
                                 <option value="">Select Units</option>
 
                                 @foreach($units as $unit)
@@ -81,7 +81,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Color</label>
-                            <input type="text" class="form-control" name="color" id="validationServer01" placeholder="Product Color" required>
+                            <input type="text" class="form-control" name="color" id="validationServer01" value="NA" placeholder="Product Color">
                             <div class="pt-1">
                                 @error('color')
                                 <span class="text-danger"> {{$message}} </span>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Size</label>
-                            <input type="text" class="form-control" name="size" id="validationServer01" placeholder="Product Size" required>
+                            <input type="text" class="form-control" name="size" id="validationServer01" value="NA" placeholder="Product Size">
                             <div class="pt-1">
                                 @error('size')
                                 <span class="text-danger"> {{$message}} </span>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Piece</label>
-                            <input type="text" class="form-control" name="piece" id="validationServer01" placeholder="Product Piece">
+                            <input type="text" class="form-control" name="piece" id="validationServer01" value="0" placeholder="Product Piece">
                             <div class="pt-1">
                                 @error('piece')
                                 <span class="text-danger"> {{$message}} </span>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Weight</label>
-                            <input type="text" class="form-control" name="weight" id="validationServer01" placeholder="Product Weight">
+                            <input type="text" class="form-control" name="weight" id="validationServer01" value="NA" placeholder="Product Weight">
                             <div class="pt-1">
                                 @error('weight')
                                 <span class="text-danger"> {{$message}} </span>
@@ -122,7 +122,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Price</label>
-                            <input type="text" class="form-control" name="price" id="validationServer01" placeholder="Price">
+                            <input type="text" class="form-control" name="price" id="validationServer01" placeholder="Price" required>
                             <div class="pt-1">
                                 @error('price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Sale Price</label>
-                            <input type="text" class="form-control" name="sale_price" id="validationServer01" placeholder="Sale Price">
+                            <input type="text" class="form-control" name="sale_price" id="validationServer01" value="0" placeholder="Sale Price">
                             <div class="pt-1">
                                 @error('sale_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount Price</label>
-                            <input type="text" class="form-control" name="discount_price" id="validationServer01" placeholder="Discount Price">
+                            <input type="text" class="form-control" name="discount_price" id="validationServer01" value="0" placeholder="Discount Price">
                             <div class="pt-1">
                                 @error('discount_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount %</label>
-                            <input type="text" class="form-control" name="discount_percent" id="validationServer01" placeholder="Discount %">
+                            <input type="text" class="form-control" name="discount_percent" id="validationServer01" value="0" placeholder="Discount %">
                             <div class="pt-1">
                                 @error('discount_percent')
                                 <span class="text-danger"> {{$message}} </span>
@@ -221,7 +221,9 @@
     </div>
 </div>
 
+@endsection
 
+@section('scripts')
 <script>
     function showPreviewImg1(event) {
         if (event.target.files.length > 0) {
@@ -245,5 +247,9 @@
     }
 </script>
 
-
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({ width: '100%' });
+    });
+</script>
 @endsection
