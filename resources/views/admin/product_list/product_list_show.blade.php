@@ -71,23 +71,23 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Category</em></th>
-                                                            <td scope="col">{{ $datum->categoryName->cat_name }}</td>
+                                                            <td scope="col">{{ $datum->categoryName->cat_name   }}</td>
                                                             <th scope="col"><em>Sub Category</em></th>
-                                                            <td scope="col">{{ $datum->subCategoryName->sub_cat_name }}</td>
+                                                            <td scope="col">{{ empty($datum->sub_category) ? 'NA' : $datum->subCategoryName->sub_cat_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Sub Category Two </em></th>
-                                                            <td scope="col">{{ $datum->subSubCategoryName->sub_sub_cat_name }}</td>
+                                                            <td scope="col">{{ empty($datum->sub_category) ? 'NA' : $datum->subSubCategoryName->sub_sub_cat_name }}</td>
                                                             <th scope="col"><em>Brand</em></th>
                                                             <td scope="col">{{ $datum->brandName->brand_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Display Section</em></th>
-                                                            <td scope="col">{{ $datum->displaySection->display_section }}</td>
+                                                            <td scope="col">{{ empty($datum->display_section) ? 'NA' : $datum->displaySection->display_section }}</td>
                                                             <th scope="col"><em>Origin</em></th>
-                                                            <td scope="col">{{ $datum->originName->origin}}</td>
+                                                            <td scope="col">{{ empty($datum->origin) ? 'NA' : $datum->originName->origin}}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
@@ -115,7 +115,7 @@
                                                             <th scope="col"><em>Unit</em></th>
                                                             <td scope="col">{{ $datum->unitName->unit_name }}</td>
                                                             <th scope="col"><em>Bar Code</em></th>
-                                                            <td scope="col">{{ $datum->bar_code }}</td>
+                                                            <td scope="col">{{  empty($datum->bar_code) ? 'NA' :  $datum->bar_code }}</td>
                                                         </tr>
 
                                                         <tr>
@@ -123,17 +123,17 @@
                                                             <th scope="col"><em>Tax</em></th>
                                                             <td scope="col">{{ $datum->tax }}</td>
                                                             <th scope="col"><em>Variation Swatch</em></th>
-                                                            <td scope="col">{{ $datum->variation_swatch }}</td>
+                                                            <td scope="col">{{ empty($datum->variation_swatch) ? 'NA' :  $datum->variation_swatch }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Tags</em></th>
-                                                            <td colspan="3">{{ $datum->tags }}</td>
+                                                            <td colspan="3">{{ empty($datum->variation_swatch) ? 'NA' : $datum->tags }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Promotion</em></th>
-                                                            <td colspan="3">{{ $datum->promotion }}</td>
+                                                            <td colspan="3">{{ empty($datum->variation_swatch) ? 'NA' : $datum->promotion }}</td>
                                                         </tr>
 
                                                     </thead>

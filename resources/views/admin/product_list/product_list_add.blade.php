@@ -45,7 +45,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Category Name</label>
                             <select class="form-control js-example-basic-single" name="category" required>
-                                <span class="text-danger" value="0"> Select Category </span>
+                                <span class="text-danger" value=""> Select Category </span>
                                 <option value="">Select Category</option>
 
                                 @foreach($categories as $category)
@@ -63,7 +63,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Sub Category One</label>
                             <select class="form-control js-example-basic-single" name="sub_category">
-                                <span class="text-danger" value="0"> Select Sub Category One</span>
+                                <span class="text-danger" value=""> Select Sub Category One</span>
                                 <option value="">Select Sub Category One</option>
 
                                 @foreach($subcategories as $subcategory)
@@ -81,7 +81,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Sub Category Two</label>
                             <select class="form-control js-example-basic-single" name="sub_sub_category">
-                                <span class="text-danger" value="0"> Select Category Two</span>
+                                <span class="text-danger" value=""> Select Category Two</span>
                                 <option value="">Select Category Two</option>
 
                                 @foreach($subsubcategories as $subsubcategory)
@@ -105,7 +105,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Brand</label>
                             <select class="form-control js-example-basic-single" name="brand" required>
-                                <span class="text-danger" value="0"> Select Brand </span>
+                                <span class="text-danger" value=""> Select Brand </span>
                                 <option value="">Select Brand</option>
 
                                 @foreach($brands as $brand)
@@ -123,7 +123,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Origin</label>
                             <select class="form-control js-example-basic-single" name="origin">
-                                <span class="text-danger" value="0"> Select Origin </span>
+                                <span class="text-danger" value=""> Select Origin </span>
                                 <option value="">Select Origin</option>
 
                                 @foreach($origins as $origin)
@@ -141,8 +141,8 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Varity Section</label>
                             <select class="form-control js-example-basic-single" name="display_section">
-                                <span class="text-danger" value="0"> Select Varity Section </span>
-                                <option value="NA">Select Varity Section</option>
+                                <span class="text-danger" value=""> Select Varity Section </span>
+                                <option value="">Select Varity Section</option>
 
                                 @foreach($displaysections as $displaysection)
                                 <option value="{{ $displaysection->id }}">{{ $displaysection->display_section }}</option>
@@ -164,7 +164,7 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock No.</label>
-                            <input type="text" class="form-control form-control-sm" name="stock" id="validationServer01" placeholder="Stock No." required>
+                            <input type="text" class="form-control form-control-sm" name="stock" id="validationServer01" required placeholder="Stock No.">
                             <div class="pt-1">
                                 @error('stock')
                                 <span class="text-danger"> {{$message}} </span>
