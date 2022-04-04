@@ -22,50 +22,54 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Code</label>
-                            <select class="form-control js-example-basic-single" name="cat_id" required>
+                            <select class="form-control js-example-basic-single" name="product_id" required>
                                 <span class="text-danger" value=""> Product Code </span>
                                 <option value="">Product Code</option>
 
-                                <option value="">Test</option>
+                                @foreach($Productlists as $ProductList)
+                                <option value="{{ $ProductList->id }}">{{ $ProductList->product_id }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('product_id')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Qty</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Stock Qty" required>
+                            <input type="text" class="form-control" name="quantity" id="validationServer01" placeholder="Stock Qty" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('quantity')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Alert</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Stock Alert" required>
+                            <input type="text" class="form-control" name="stock_alert" id="validationServer01" placeholder="Stock Alert" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('stock_alert')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Units</label>
-                            <select class="form-control js-example-basic-single" name="cat_id">
+                            <select class="form-control js-example-basic-single" name="unit_id">
                                 <span class="text-danger" value=""> Select Units </span>
                                 <option value="">Select Units</option>
 
-                                <option value="">Test</option>
+                                @foreach($units as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('cat_id')
+                                @error('unit_id')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -77,36 +81,36 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Color</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Color" required>
+                            <input type="text" class="form-control" name="color" id="validationServer01" placeholder="Product Color" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('color')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Size</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Size" required>
+                            <input type="text" class="form-control" name="size" id="validationServer01" placeholder="Product Size" required>
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('size')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Piece</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Piece">
+                            <input type="text" class="form-control" name="piece" id="validationServer01" placeholder="Product Piece">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('piece')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Weight</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Weight">
+                            <input type="text" class="form-control" name="weight" id="validationServer01" placeholder="Product Weight">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('weight')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -118,36 +122,36 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Price</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Price">
+                            <input type="text" class="form-control" name="price" id="validationServer01" placeholder="Price">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('price')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Sale Price</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Sale Price">
+                            <input type="text" class="form-control" name="sale_price" id="validationServer01" placeholder="Sale Price">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('sale_price')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount Price</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Discount Price">
+                            <input type="text" class="form-control" name="discount_price" id="validationServer01" placeholder="Discount Price">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('discount_price')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount %</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Discount %">
+                            <input type="text" class="form-control" name="discount_percent" id="validationServer01" placeholder="Discount %">
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('discount_percent')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -159,18 +163,18 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer02">Product Attribute Image One</label>
-                            <input type="file" class="form-control" name="cat_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="product_img_1" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreviewImg1(event)">
                             <div class="pt-1">
-                                @error('cat_img')
+                                @error('product_img_1')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="validationServer01">Image Alt One</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Image Alt One" >
+                            <input type="text" class="form-control" name="product_img_alt_1" id="validationServer01" placeholder="Image Alt One" >
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('product_img_alt_1')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -186,18 +190,18 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer02">Product Attribute Image Two</label>
-                            <input type="file" class="form-control" name="cat_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="product_img_2" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreviewImg2(event)">
                             <div class="pt-1">
-                                @error('cat_img')
+                                @error('product_img_2')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="validationServer01">Image Alt Two</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Image Alt Two" >
+                            <input type="text" class="form-control" name="product_img_alt_2" id="validationServer01" placeholder="Image Alt Two" >
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('product_img_alt_2')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -205,7 +209,7 @@
                     </div>
 
                     <div class="preview">
-                        <img class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px">
+                        <img class="img img-thumbnail" id="file-ip-2-preview" width="150px" height="80px">
                     </div>
                     <!-- Product List Image End -->
 
@@ -219,10 +223,21 @@
 
 
 <script>
-    function showPreview(event) {
+    function showPreviewImg1(event) {
         if (event.target.files.length > 0) {
             var src = URL.createObjectURL(event.target.files[0]);
             var preview = document.getElementById("file-ip-1-preview");
+            preview.src = src;
+            preview.style.display = "block";
+
+        }
+    }
+</script>
+<script>
+    function showPreviewImg2(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-2-preview");
             preview.src = src;
             preview.style.display = "block";
 

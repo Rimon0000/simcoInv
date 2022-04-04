@@ -117,7 +117,7 @@
                                                             <th scope="col"><em>Bar Code</em></th>
                                                             <td scope="col">{{ $datum->bar_code }}</td>
                                                         </tr>
-                                                        
+
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Tax</em></th>

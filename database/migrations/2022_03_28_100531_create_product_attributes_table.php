@@ -17,13 +17,17 @@ class CreateProductAttributesTable extends Migration
             $table->id();
 
             $table->integer('product_id');
+            $table->integer('quantity')->nullable();
+            $table->integer('stock_alert')->nullable();
+            $table->integer('unit_id');
             $table->string('color');
             $table->string('size');
-            $table->integer('stock')->nullable();
+            $table->integer('piece')->nullable();
+            $table->string('weight');
             $table->integer('price');
             $table->integer('sale_price');
             $table->integer('discount_price')->nullable();
-            $table->integer('discount_parcent')->nullable();
+            $table->integer('discount_percent')->nullable();
             $table->string('product_img_1')->nullable();
             $table->string('product_img_2')->nullable();
             $table->string('product_img_alt_1')->nullable();
