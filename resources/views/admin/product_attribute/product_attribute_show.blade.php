@@ -20,9 +20,12 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Product Attribute Image</th>
-                            <th scope="col">Product Code</th>
+                            <th scope="col">Product SKU</th>
+                            <th scope="col">Buy Price</th>
+                            <th scope="col">Sale Price</th>
+                            <th scope="col"><em>Discount Price:</em></th>
+                            <th scope="col"><em>Discount Percent</em></th>
                             <th scope="col">Details</th>
-                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -39,8 +42,67 @@
                                 || <img src="{{ $datum->product_img_1 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_2) }}" alt="default image" width="80px" height="60px">
                             </td>
                             <td>{{ $datum->product_id}}</td>
-                            <td> <button class="btn btn-sm btn-primary">Details</button> </td>
-                            <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
+                            <td>{{ $datum->price}}</td>
+                            <td>{{ $datum->sale_price}}</td>
+                            <td>{{ $datum->discount_price}}</td>
+                            <td>{{ $datum->discount_percent}}</td>
+                            <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal{{$datum->id}}">
+                                    Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{$datum->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$datum->id}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Product SKU - {{ $datum->product_id }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Color</em></th>
+                                                            <td scope="col">{{ $datum->color }}</td>
+                                                            <th scope="col"><em>Size</em></th>
+                                                            <td scope="col">{{ $datum->size }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Pcs</em></th>
+                                                            <td scope="col">{{ $datum->piece }}</td>
+                                                            <th scope="col"><em>Weight</em></th>
+                                                            <td scope="col">{{ $datum->weight }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Stock</em></th>
+                                                            <td scope="col">{{ $datum->quantity }}</td>
+                                                            <th scope="col"><em>Alert Stock</em></th>
+                                                            <td scope="col" style="color: red;">{{ $datum->alert_stock }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Unit</em></th>
+                                                            <td scope="col">{{ $datum->unitName->unit_name }}</td>
+                                                            <th scope="col"></th>
+                                                            <td scope="col"></td>
+                                                        </tr>
+
+                                                    </thead>
+                                                </table>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
