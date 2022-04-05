@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductDetail;
+use App\Models\ProductList;
 use Illuminate\Http\Request;
 
 class ProductDetailController extends Controller
@@ -11,14 +12,14 @@ class ProductDetailController extends Controller
     public function productDetailShow()
     {
         $data = ProductDetail::orderByDesc('id')->get();
-
         return view('admin.product_details.product_details_show', compact('data'));
     }
 
     //Product Detail Add Page function
     public function productDetailAddPage()
     {
-        return view('admin.product_details.product_details_add');
+        $productlists =  ProductList::all();
+        return view('admin.product_details.product_details_add', compact('productlists'));
     }
 
     //Product Detail Display Page function
