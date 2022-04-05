@@ -273,12 +273,12 @@
                             <ul class="collapse" id="suppliers" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('supplier.show')}}">
                                             <span class="nav-text">Suppliers List</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('supplier.add.page')}}">
                                             <span class="nav-text">Supplier Add</span>
                                         </a>
                                     </li>
