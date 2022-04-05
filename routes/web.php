@@ -327,18 +327,6 @@ Route::prefix('product-detail')->group(function () {
     Route::post('/image/update/{id}', [ProductDetailController::class, 'productDetailImageUpdate'])->name('product.detail.image.update');
 });
 
-//Product Coupon route
-Route::prefix('coupon')->group(function () {
-    Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
-    Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
-    Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
-    Route::get('/status/{id}', [CouponController::class, 'couponStatus'])->name('coupon.status');
-    Route::get('/delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
-
-    Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
-    Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
-});
-
 //Slider route
 Route::prefix('slider')->group(function () {
     Route::get('/show', [SliderController::class, 'sliderShow'])->name('slider.show');
@@ -367,6 +355,17 @@ Route::prefix('campaign')->group(function () {
     Route::post('/image/update/{id}', [CampaignController::class, 'campaignImageUpdate'])->name('campaign.image.update');
 });
 
+//Product Coupon route
+Route::prefix('coupon')->group(function () {
+    Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
+    Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
+    Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
+    Route::get('/status/{id}', [CouponController::class, 'couponStatus'])->name('coupon.status');
+    Route::get('/delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
+
+    Route::post('/add', [CouponController::class, 'couponAdd'])->name('coupon.add');
+    Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
+});
 
 ############################################ Product MGT End ################################################################################
 
