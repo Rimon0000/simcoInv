@@ -136,7 +136,7 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#expanse" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Expanse</span> <b class="caret"></b>
+                                <span class="nav-text">Expanse MGMT</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="expanse" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -159,7 +159,7 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#employee" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Employee MGT</span> <b class="caret"></b>
+                                <span class="nav-text">Employee MGMT</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="employee" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -268,7 +268,7 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#suppliers" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Suppliers</span> <b class="caret"></b>
+                                <span class="nav-text">Suppliers MGMT</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="suppliers" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -278,7 +278,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('supplier.add.page')}}">
+                                        <a class="sidenav-item-link" href="{{route('supplier.add')}}">
                                             <span class="nav-text">Supplier Add</span>
                                         </a>
                                     </li>
@@ -290,22 +290,22 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#customers" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Customers</span> <b class="caret"></b>
+                                <span class="nav-text">Customers MGMT</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="customers" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('customer.show')}}">
                                             <span class="nav-text">Customer Type</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('customer.show')}}">
                                             <span class="nav-text">Customer List</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('customer.add.page')}}">
                                             <span class="nav-text">Customer Add</span>
                                         </a>
                                     </li>
