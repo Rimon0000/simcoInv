@@ -400,7 +400,7 @@
                             <ul class="collapse" id="purchase" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('purchase.show')}}">
                                             <span class="nav-text">Product Purchase</span>
                                         </a>
                                     </li>

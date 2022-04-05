@@ -22,6 +22,7 @@ use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SubCategoriesController;
@@ -435,6 +436,21 @@ Route::prefix('employee')->group(function () {
 });
 
 
+
+
+
+Route::prefix('purchase')->group(function () {
+    Route::get('/show', [PurchaseController::class, 'purchaseShow'])->name('purchase.show');
+    Route::get('/add/page', [PurchaseController::class, 'purchaseAddPage'])->name('purchase.add.page');
+    Route::get('/edit/{id}', [PurchaseController::class, 'purchaseEdit'])->name('purchase.edit');
+    Route::get('/edit/image/{id}', [PurchaseController::class, 'purchaseEditImage'])->name('purchase.edit.image');
+    Route::get('/status/{id}', [PurchaseController::class, 'purchaseStatus'])->name('purchase.status');
+    Route::get('/delete/{id}', [PurchaseController::class, 'purchaseDelete'])->name('purchase.delete');
+
+    Route::post('/add', [PurchaseController::class, 'purchaseAdd'])->name('purchase.add');
+    Route::post('/update/{id}', [PurchaseController::class, 'purchaseUpdate'])->name('purchase.update');
+    Route::post('/image/update/{id}', [PurchaseController::class, 'purchaseImageUpdate'])->name('purchase.image.update');
+});
 
 
 
