@@ -24,9 +24,9 @@ class CreateCouponsTable extends Migration
             $table->string('coupon_amount');
             $table->string('cart_min_value');
             $table->string('expired_date');
-            $table->string('coupon_use_date')->nullable();
-            $table->string('coupon_use_by')->nullable();
             $table->string('coupon_use');
+            $table->string('coupon_use_date')->nullable();
+            $table->string('coupon_used_by')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
