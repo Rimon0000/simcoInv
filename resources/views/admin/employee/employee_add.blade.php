@@ -204,7 +204,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">NID</label>
-                            <input type="text" name="nid" class="form-control" id="validationServer01" placeholder="NID" required>
+                            <input type="text" name="nid" class="form-control" id="validationServer01" placeholder="NID">
                             <div class="pt-1">
                                 @error('nid')
                                 <span class="text-danger">{{ $message }}</span>
@@ -242,7 +242,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Salary Type</label>
                             
-                            <select class="form-control js-example-basic-single" name="salary_type">
+                            <select class="form-control js-example-basic-single" name="salary_type" required>
                                 <option value="">Select Salary Type</option>
                                 <option value="Monthly">Monthly</option>
                                 <option value="Daily">Daily</option>
