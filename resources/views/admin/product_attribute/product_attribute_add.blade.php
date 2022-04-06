@@ -26,8 +26,8 @@
                                 <span class="text-danger" value=""> Product Code </span>
                                 <option value="">Product Code</option>
 
-                                @foreach($Productlists as $ProductList)
-                                <option value="{{ $ProductList->id }}">{{ $ProductList->product_id }}</option>
+                                @foreach($productLists as $productList)
+                                <option value="{{ $productList->id }}">{{ $productList->product_id }}</option>
                                 @endforeach
 
                             </select>
@@ -49,9 +49,9 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Stock Alert</label>
-                            <input type="text" class="form-control form-control-sm" name="stock_alert" id="validationServer01" placeholder="Stock Alert" required>
+                            <input type="text" class="form-control form-control-sm" name="alert_stock" id="validationServer01" placeholder="Stock Alert" required>
                             <div class="pt-1">
-                                @error('stock_alert')
+                                @error('alert_stock')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>

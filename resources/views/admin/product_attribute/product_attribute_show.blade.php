@@ -39,7 +39,7 @@
                             <td scope="row">{{ $count }}</td>
                             <td>
                                 <img src="{{ $datum->product_img_1 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_1) }}" alt="default image" width="80px" height="60px">
-                                || <img src="{{ $datum->product_img_1 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_2) }}" alt="default image" width="80px" height="60px">
+                                || <img src="{{ $datum->product_img_2 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_2) }}" alt="default image" width="80px" height="60px">
                             </td>
                             <td>{{ $datum->product_id}}</td>
                             <td>{{ $datum->price}}</td>
@@ -110,9 +110,9 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
-                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('product.attribute.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('product.attribute.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
+                                            <li class="p-1"><a href="{{ route('product.attribute.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
