@@ -309,8 +309,6 @@ class ProductListController extends Controller
         $tax              = $request->tax;
         $tags             = $request->tags;
         $promotion        = $request->promotion;
-        $product_img      = $request->file('product_img');
-        $product_alt      = $request->product_alt;
         $warranty         = $request->warranty;
 
         $dataUpdated = DB::table('product_lists')
@@ -341,8 +339,6 @@ class ProductListController extends Controller
                     'tax'              => $tax,
                     'tags'             => $tags,
                     'promotion'        => $promotion,
-                    'product_img'      => $product_img,
-                    'product_alt'      => $product_alt,
                     'warranty'         => $warranty,
                     'created_by'       => Auth::user()->id,
                     'created_at'       => Carbon::now(),

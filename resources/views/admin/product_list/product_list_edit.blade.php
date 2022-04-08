@@ -324,8 +324,8 @@
                             <label for="validationServer01">Variation Swatches</label>
                             <select class="form-control" name="variation_swatch">
                                 <span class="text-danger" value=""> Variation Swatches </span>
-                                <option value="0" {{ ($data->variation_swatch == 'No') ? "Selected" : "" }}>No</option>
-                                <option value="1">Yes</option>
+                                <option value="0" {{ ($data->variation_swatch == '0') ? "Selected" : "" }}>No</option>
+                                <option value="1" {{ ($data->variation_swatch == '1') ? "Selected" : "" }}>Yes</option>
                             </select>
 
                             <div class="pt-1">
