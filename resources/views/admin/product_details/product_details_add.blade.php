@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('about.add') }}">
+<form method="POST" action="{{ route('product.detail.add') }}">
     @csrf
     <!-- Product Code Start -->
     <div class="row p-3">
@@ -26,18 +26,18 @@
         </div>
         <div class="col-md-12 mb-3">
             <label for="validationServer01">Product Facebook Url</label>
-            <input type="text" class="form-control form-control-sm" name="quantity" placeholder="Product Facebook Url">
+            <input type="text" class="form-control form-control-sm" name="fb_url" placeholder="Product Facebook Url">
             <div class="pt-1">
-                @error('quantity')
+                @error('fb_url')
                 <span class="text-danger"> {{$message}} </span>
                 @enderror
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <label for="validationServer01">Product WhatsApp Link</label>
-            <input type="text" class="form-control form-control-sm" name="stock_alert" placeholder="Product WhatsApp Link">
+            <input type="text" class="form-control form-control-sm" name="whatsapp_url" placeholder="Product WhatsApp Link">
             <div class="pt-1">
-                @error('stock_alert')
+                @error('whatsapp_url')
                 <span class="text-danger"> {{$message}} </span>
                 @enderror
             </div>
@@ -60,9 +60,9 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <textarea name="about_us" class="summernote" cols="145" style="padding: 10px;"></textarea>
+                                    <textarea name="short_details" class="summernote" cols="145" style="padding: 10px;"></textarea>
                                     <div class="pt-1">
-                                        @error('about_us')
+                                        @error('short_details')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -91,9 +91,9 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <textarea name="about_us" class="summernote" cols="145" style="padding: 10px;"></textarea>
+                                    <textarea name="long_details" class="summernote" cols="145" style="padding: 10px;"></textarea>
                                     <div class="pt-1">
-                                        @error('about_us')
+                                        @error('long_details')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -120,9 +120,9 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <textarea name="about_us" class="summernote" cols="145" style="padding: 10px;"></textarea>
+                                    <textarea name="faq" class="summernote" cols="145" style="padding: 10px;"></textarea>
                                     <div class="pt-1">
-                                        @error('about_us')
+                                        @error('faq')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -150,9 +150,9 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <textarea name="about_us" class="summernote" cols="145" style="padding: 10px;"></textarea>
+                                    <textarea name="warranty_policy" class="summernote" cols="145" style="padding: 10px;"></textarea>
                                     <div class="pt-1">
-                                        @error('about_us')
+                                        @error('warranty_policy')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -196,9 +196,9 @@
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="validationServer01">Image Alt One</label>
-                                            <input type="text" class="form-control" name="product_img_alt_1" id="validationServer01" placeholder="Image Alt One">
+                                            <input type="text" class="form-control" name="product_alt_1" id="validationServer01" placeholder="Image Alt One">
                                             <div class="pt-1">
-                                                @error('product_img_alt_1')
+                                                @error('product_alt_1')
                                                 <span class="text-danger"> {{$message}} </span>
                                                 @enderror
                                             </div>
@@ -224,9 +224,9 @@
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="validationServer01">Image Alt Two</label>
-                                            <input type="text" class="form-control" name="product_img_alt_2" id="validationServer01" placeholder="Image Alt Two">
+                                            <input type="text" class="form-control" name="product_alt_2" id="validationServer01" placeholder="Image Alt Two">
                                             <div class="pt-1">
-                                                @error('product_img_alt_2')
+                                                @error('product_alt_2')
                                                 <span class="text-danger"> {{$message}} </span>
                                                 @enderror
                                             </div>
@@ -240,10 +240,10 @@
                                     <!-- Product Details Image One Start -->
                                     <div class="row card m-1">
                                         <div class="col-md-12 mb-3">
-                                            <label for="validationServer02">Product Image One</label>
-                                            <input type="file" class="form-control" name="product_img_1" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreviewImg1(event)">
+                                            <label for="validationServer02">Product Image Three</label>
+                                            <input type="file" class="form-control" name="product_img_3" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreviewImg1(event)">
                                             <div class="pt-1">
-                                                @error('product_img_1')
+                                                @error('product_img_3')
                                                 <span class="text-danger"> {{$message}} </span>
                                                 @enderror
                                             </div>
@@ -252,10 +252,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <label for="validationServer01">Image Alt One</label>
-                                            <input type="text" class="form-control" name="product_img_alt_1" id="validationServer01" placeholder="Image Alt One">
+                                            <label for="validationServer01">Image Alt Three</label>
+                                            <input type="text" class="form-control" name="product_alt_3" id="validationServer01" placeholder="Image Alt One">
                                             <div class="pt-1">
-                                                @error('product_img_alt_1')
+                                                @error('product_alt_3')
                                                 <span class="text-danger"> {{$message}} </span>
                                                 @enderror
                                             </div>
@@ -268,10 +268,10 @@
                                     <!-- Product Details Image Two Start -->
                                     <div class="row card m-1">
                                         <div class="col-md-12 mb-3">
-                                            <label for="validationServer02">Product Image Two</label>
-                                            <input type="file" class="form-control" name="product_img_2" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreviewImg2(event)">
+                                            <label for="validationServer02">Product Image Four</label>
+                                            <input type="file" class="form-control" name="product_img_4" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreviewImg2(event)">
                                             <div class="pt-1">
-                                                @error('product_img_2')
+                                                @error('product_img_4')
                                                 <span class="text-danger"> {{$message}} </span>
                                                 @enderror
                                             </div>
@@ -280,10 +280,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <label for="validationServer01">Image Alt Two</label>
-                                            <input type="text" class="form-control" name="product_img_alt_2" id="validationServer01" placeholder="Image Alt Two">
+                                            <label for="validationServer01">Image Alt Four</label>
+                                            <input type="text" class="form-control" name="product_alt_4" id="validationServer01" placeholder="Image Alt Two">
                                             <div class="pt-1">
-                                                @error('product_img_alt_2')
+                                                @error('product_alt_4')
                                                 <span class="text-danger"> {{$message}} </span>
                                                 @enderror
                                             </div>

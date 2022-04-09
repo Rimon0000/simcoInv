@@ -209,7 +209,7 @@ class ProductAttributeController extends Controller
             ->where('id', $id)
             ->update(
                 [
-                    'product_id'       => $product_id,
+            'product_id'       => $product_id,
             'quantity'         => $quantity,
             'alert_stock'      => $alert_stock,
             'unit_id'          => $unit_id,

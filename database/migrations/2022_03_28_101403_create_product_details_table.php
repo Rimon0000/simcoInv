@@ -17,6 +17,8 @@ class CreateProductDetailsTable extends Migration
             $table->id();
 
             $table->integer('product_id');
+            $table->string('fb_url');
+            $table->string('whatsapp_url');
             $table->text('short_details');
             $table->text('long_details');
             $table->text('faq')->nullable();
