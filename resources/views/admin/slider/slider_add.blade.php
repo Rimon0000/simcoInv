@@ -19,16 +19,16 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Slider Name</label>
-                            <input type="text" class="form-control" name="cat_name" id="validationServer01" placeholder="Slider Name" required>
+                            <input type="text" class="form-control" name="slider_name" id="validationServer01" placeholder="Slider Name" required>
                             <div class="pt-1">
-                                @error('cat_name')
+                                @error('slider_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Code</label>
-                            <select class="form-control js-example-basic-single" name="product_id">
+                            <select class="form-control js-example-basic-single" name="product_code">
                                 <span class="text-danger" value=""> Product Code </span>
                                 <option value="">Product Code</option>
 
@@ -39,16 +39,16 @@
                             </select>
 
                             <div class="pt-1">
-                                @error('product_id')
+                                @error('product_code')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer02">Slider Image</label>
-                            <input type="file" class="form-control" name="cat_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="slider_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
                             <div class="pt-1">
-                                @error('cat_img')
+                                @error('slider_img')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -60,9 +60,9 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Image Alt</label>
-                            <input type="text" class="form-control" name="product_img_alt" id="validationServer01" placeholder="Image Alt">
+                            <input type="text" class="form-control" name="slider_alt" id="validationServer01" placeholder="Image Alt">
                             <div class="pt-1">
-                                @error('product_img_alt_1')
+                                @error('slider_alt')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>

@@ -18,23 +18,11 @@ class CategoriesController extends Controller
         return view('admin.category.category_show', compact('data'));
     }
 
-    
     //category Add Page function
     public function categoryAddPage()
     {
         return view('admin.category.category_add');
     }
-
-    //category edit image function
-    public function categoryEditImage($id)
-    {
-
-        //fetching data from category table
-        $data = category::find($id);
-
-        return view('admin.category.category_edit_image', compact('data'));
-    }
-
 
     //category add function
     public function categoryAdd(Request $request)
@@ -172,6 +160,16 @@ class CategoriesController extends Controller
             return redirect()->route('category.show')->with($notification);
         }
     }
+
+     //category edit image function
+     public function categoryEditImage($id)
+     {
+ 
+         //fetching data from category table
+         $data = category::find($id);
+ 
+         return view('admin.category.category_edit_image', compact('data'));
+     }
 
     //category image update function
     public function categoryImageUpdate(Request $request, $id)
