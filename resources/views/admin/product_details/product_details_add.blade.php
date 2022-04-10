@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('product.detail.add') }}">
+<form method="POST" action="{{ route('product.detail.add') }}" enctype="multipart/form-data">
     @csrf
     <!-- Product Code Start -->
     <div class="row p-3">
@@ -13,7 +13,7 @@
                 <option value="">Product Code</option>
 
                 @foreach($productlists as $productlist)
-                <option value="{{ $productlist->id }}">{{ $productlist->product_id }}</option>
+                <option value="{{ $productlist->product_id }}">{{ $productlist->title }}</option>
                 @endforeach
 
             </select>
