@@ -34,9 +34,9 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td><img src="{{ $datum->slider_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->slider_img) }}" alt="default image" width="100px" height="80px"></td>
+                            <td><img class="img img-thumbnail" src="{{ $datum->slider_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->slider_img) }}" alt="default image" width="150px" height="50px"></td>
                             <td>{{ $datum->slider_name}}</td>
-                            <td>{{ $datum->productListName->product_code }}</td>
+                            <td>{{ !empty($datum->product_code) ? $datum->productListName->product_code : 'NA' }}</td>
                             <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
                             <div class="btn-group">
