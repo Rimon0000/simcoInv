@@ -221,7 +221,7 @@ Route::prefix('product-mgt/category')->group(function () {
 });
 
 //sub-category route
-Route::prefix('subcategory')->group(function () {
+Route::prefix('product-mgt/subcategory')->group(function () {
     Route::get('/show', [SubCategoriesController::class, 'subCategoryShow'])->name('subcategory.show');
     Route::get('/add/page', [SubCategoriesController::class, 'subCategoryAddPage'])->name('subcategory.add.page');
     Route::get('/edit/{id}', [SubCategoriesController::class, 'subCategoryEdit'])->name('subcategory.edit');
@@ -235,7 +235,7 @@ Route::prefix('subcategory')->group(function () {
 });
 
 //sub-sub-category route
-Route::prefix('subsubcategory')->group(function () {
+Route::prefix('product-mgt/subsubcategory')->group(function () {
     Route::get('/show', [SubSubCategoryController::class, 'subSubCategoryShow'])->name('subsubcategory.show');
     Route::get('/add/page', [SubSubCategoryController::class, 'subSubCategoryAddPage'])->name('subsubcategory.add.page');
     Route::get('/edit/{id}', [SubSubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
@@ -249,7 +249,7 @@ Route::prefix('subsubcategory')->group(function () {
 });
 
 //Brand route
-Route::prefix('brand')->group(function () {
+Route::prefix('product-mgt/brand')->group(function () {
     Route::get('/show', [BrandController::class, 'brandShow'])->name('brand.show');
     Route::get('/add/page', [BrandController::class, 'brandAddPage'])->name('brand.add.page');
     Route::get('/edit/{id}', [BrandController::class, 'brandEdit'])->name('brand.edit');
@@ -263,7 +263,7 @@ Route::prefix('brand')->group(function () {
 });
 
 //Display Section route
-Route::prefix('displaysection')->group(function () {
+Route::prefix('product-mgt/displaysection')->group(function () {
     Route::get('/show', [DisplaySectionController::class, 'displaySectionShow'])->name('displaysection.show');
     Route::get('/add/page', [DisplaySectionController::class, 'displaySectionAddPage'])->name('displaysection.add.page');
     Route::get('/edit/{id}', [DisplaySectionController::class, 'displaySectionEdit'])->name('displaysection.edit');
@@ -275,7 +275,7 @@ Route::prefix('displaysection')->group(function () {
 });
 
 //Product Unit route
-Route::prefix('unit')->group(function () {
+Route::prefix('product-mgt/unit')->group(function () {
     Route::get('/show', [UnitController::class, 'unitShow'])->name('unit.show');
     Route::get('/add/page', [UnitController::class, 'unitAddPage'])->name('unit.add.page');
     Route::get('/edit/{id}', [UnitController::class, 'unitEdit'])->name('unit.edit');
@@ -287,7 +287,7 @@ Route::prefix('unit')->group(function () {
 });
 
 //Product List route
-Route::prefix('product-list')->group(function () {
+Route::prefix('product-mgt/product-list')->group(function () {
     Route::get('/show', [ProductListController::class, 'productListShow'])->name('product.list.show');
     Route::get('/add/page', [ProductListController::class, 'productListAddPage'])->name('product.list.add.page');
     Route::get('/edit/{id}', [ProductListController::class, 'productListEdit'])->name('product.list.edit');
@@ -301,7 +301,7 @@ Route::prefix('product-list')->group(function () {
 });
 
 //Product attribute route
-Route::prefix('product-attribute')->group(function () {
+Route::prefix('product-mgt/product-attribute')->group(function () {
     Route::get('/show', [ProductAttributeController::class, 'productAttributeShow'])->name('product.attribute.show');
     Route::get('/add/page', [ProductAttributeController::class, 'productAttributeAddPage'])->name('product.attribute.add.page');
     Route::get('/edit/{id}', [ProductAttributeController::class, 'productAttributeEdit'])->name('product.attribute.edit');
@@ -315,7 +315,7 @@ Route::prefix('product-attribute')->group(function () {
 });
 
 //Product Detail route
-Route::prefix('product-detail')->group(function () {
+Route::prefix('product-mgt/product-detail')->group(function () {
     Route::get('/show', [ProductDetailController::class, 'productDetailShow'])->name('product.detail.show');
     Route::get('/display/{id}', [ProductDetailController::class, 'productDetailDisplayShow'])->name('product.detail.display');
     Route::get('/add/page', [ProductDetailController::class, 'productDetailAddPage'])->name('product.detail.add.page');
@@ -330,7 +330,7 @@ Route::prefix('product-detail')->group(function () {
 });
 
 //Slider route
-Route::prefix('slider')->group(function () {
+Route::prefix('product-mgt/slider')->group(function () {
     Route::get('/show', [SliderController::class, 'sliderShow'])->name('slider.show');
     Route::get('/add/page', [SliderController::class, 'sliderAddPage'])->name('slider.add.page');
     Route::get('/edit/{id}', [SliderController::class, 'sliderEdit'])->name('slider.edit');
@@ -344,7 +344,7 @@ Route::prefix('slider')->group(function () {
 });
 
 //Product Campaign route
-Route::prefix('campaign')->group(function () {
+Route::prefix('product-mgt/campaign')->group(function () {
     Route::get('/show', [CampaignController::class, 'campaignShow'])->name('campaign.show');
     Route::get('/add/page', [CampaignController::class, 'campaignAddPage'])->name('campaign.add.page');
     Route::get('/edit/{id}', [CampaignController::class, 'campaignEdit'])->name('campaign.edit');
@@ -358,7 +358,7 @@ Route::prefix('campaign')->group(function () {
 });
 
 //Product Coupon route
-Route::prefix('coupon')->group(function () {
+Route::prefix('product-mgt/coupon')->group(function () {
     Route::get('/show', [CouponController::class, 'couponShow'])->name('coupon.show');
     Route::get('/add/page', [CouponController::class, 'couponAddPage'])->name('coupon.add.page');
     Route::get('/edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
@@ -369,12 +369,8 @@ Route::prefix('coupon')->group(function () {
     Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
 });
 
-############################################ Product MGT End ################################################################################
-
-
-
-//Origin route
-Route::prefix('origin')->group(function () {
+//Product Origin route
+Route::prefix('product-mgt/origin')->group(function () {
     Route::get('/show', [OriginController::class, 'originShow'])->name('origin.show');
     Route::get('/add/page', [OriginController::class, 'originAddPage'])->name('origin.add.page');
     Route::get('/edit/{id}', [OriginController::class, 'originEdit'])->name('origin.edit');
@@ -385,42 +381,9 @@ Route::prefix('origin')->group(function () {
     Route::post('/update/{id}', [OriginController::class, 'originUpdate'])->name('origin.update');
 });
 
-//Area route
-Route::prefix('area')->group(function () {
-    Route::get('/show', [AreaController::class, 'areaShow'])->name('area.show');
-    Route::get('/add/page', [AreaController::class, 'areaAddPage'])->name('area.add.page');
-    Route::get('/edit/{id}', [AreaController::class, 'areaEdit'])->name('area.edit');
-    Route::get('/status/{id}', [AreaController::class, 'areaStatus'])->name('area.status');
-    Route::get('/delete/{id}', [AreaController::class, 'areaDelete'])->name('area.delete');
+############################################ Product MGT End ################################################################################
 
-    Route::post('/add', [AreaController::class, 'areaAdd'])->name('area.add');
-    Route::post('/update/{id}', [AreaController::class, 'areaUpdate'])->name('area.update');
-});
-
-//Designation route
-Route::prefix('designation')->group(function () {
-    Route::get('/show', [DesignationController::class, 'designationShow'])->name('designation.show');
-    Route::get('/add/page', [DesignationController::class, 'designationAddPage'])->name('designation.add.page');
-    Route::get('/edit/{id}', [DesignationController::class, 'designationEdit'])->name('designation.edit');
-    Route::get('/status/{id}', [DesignationController::class, 'designationStatus'])->name('designation.status');
-    Route::get('/delete/{id}', [DesignationController::class, 'designationDelete'])->name('designation.delete');
-
-    Route::post('/add', [DesignationController::class, 'designationAdd'])->name('designation.add');
-    Route::post('/update/{id}', [DesignationController::class, 'designationUpdate'])->name('designation.update');
-});
-
-//Department route
-Route::prefix('department')->group(function () {
-    Route::get('/show', [DepartmentController::class, 'departmentShow'])->name('department.show');
-    Route::get('/add/page', [DepartmentController::class, 'departmentAddPage'])->name('department.add.page');
-    Route::get('/edit/{id}', [DepartmentController::class, 'departmentEdit'])->name('department.edit');
-    Route::get('/status/{id}', [DepartmentController::class, 'departmentStatus'])->name('department.status');
-    Route::get('/delete/{id}', [DepartmentController::class, 'departmentDelete'])->name('department.delete');
-
-    Route::post('/add', [DepartmentController::class, 'departmentAdd'])->name('department.add');
-    Route::post('/update/{id}', [DepartmentController::class, 'departmentUpdate'])->name('department.update');
-});
-
+############################################ Emp MGT Start ##################################################################################
 //Employee route
 Route::prefix('employee')->group(function () {
     Route::get('/show', [EmployeeController::class, 'employeeShow'])->name('employee.show');
@@ -436,7 +399,43 @@ Route::prefix('employee')->group(function () {
     Route::post('/image/update/{id}', [EmployeeController::class, 'employeeImageUpdate'])->name('employee.image.update');
 });
 
+//Area route
+Route::prefix('employee/area')->group(function () {
+    Route::get('/show', [AreaController::class, 'areaShow'])->name('area.show');
+    Route::get('/add/page', [AreaController::class, 'areaAddPage'])->name('area.add.page');
+    Route::get('/edit/{id}', [AreaController::class, 'areaEdit'])->name('area.edit');
+    Route::get('/status/{id}', [AreaController::class, 'areaStatus'])->name('area.status');
+    Route::get('/delete/{id}', [AreaController::class, 'areaDelete'])->name('area.delete');
 
+    Route::post('/add', [AreaController::class, 'areaAdd'])->name('area.add');
+    Route::post('/update/{id}', [AreaController::class, 'areaUpdate'])->name('area.update');
+});
+
+//Designation route
+Route::prefix('employee/designation')->group(function () {
+    Route::get('/show', [DesignationController::class, 'designationShow'])->name('designation.show');
+    Route::get('/add/page', [DesignationController::class, 'designationAddPage'])->name('designation.add.page');
+    Route::get('/edit/{id}', [DesignationController::class, 'designationEdit'])->name('designation.edit');
+    Route::get('/status/{id}', [DesignationController::class, 'designationStatus'])->name('designation.status');
+    Route::get('/delete/{id}', [DesignationController::class, 'designationDelete'])->name('designation.delete');
+
+    Route::post('/add', [DesignationController::class, 'designationAdd'])->name('designation.add');
+    Route::post('/update/{id}', [DesignationController::class, 'designationUpdate'])->name('designation.update');
+});
+
+//Department route
+Route::prefix('employee/department')->group(function () {
+    Route::get('/show', [DepartmentController::class, 'departmentShow'])->name('department.show');
+    Route::get('/add/page', [DepartmentController::class, 'departmentAddPage'])->name('department.add.page');
+    Route::get('/edit/{id}', [DepartmentController::class, 'departmentEdit'])->name('department.edit');
+    Route::get('/status/{id}', [DepartmentController::class, 'departmentStatus'])->name('department.status');
+    Route::get('/delete/{id}', [DepartmentController::class, 'departmentDelete'])->name('department.delete');
+
+    Route::post('/add', [DepartmentController::class, 'departmentAdd'])->name('department.add');
+    Route::post('/update/{id}', [DepartmentController::class, 'departmentUpdate'])->name('department.update');
+});
+
+############################################ Emp MGT End ##################################################################################
 
 
 

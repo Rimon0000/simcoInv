@@ -39,7 +39,6 @@
             </div>
         </div>
 
-
         <!-- Categories, subCategories, subsubcategory, brands start -->
         <div class="row">
             <div class="col-xl-3 col-sm-6">
@@ -115,10 +114,7 @@
 
         </div>
         <!-- Product List, slider, coupons, campaign end -->
-
-
     </div>
-
 </div>
 
 @endsection

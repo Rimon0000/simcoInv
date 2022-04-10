@@ -97,14 +97,14 @@
                         </li>
                         <!-- POS end -->
                         <!-- Dashboard start -->
-                        <li class="has-sub active expand">
+                        <li class="has-sub {{ (request()->is('dashboard')) ? 'active expand' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Dashboard</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
+                            <ul class="collapse {{ (request()->is('dashboard')) ? 'show' : '' }}" id="dashboard" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-                                    <li class="active">
+                                    <li class="{{ (request()->segment(1) == 'dashboard') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('dashboard') }}">
                                             <span class="nav-text">Report</span>
                                         </a>
@@ -133,19 +133,19 @@
                         <!-- Attribute end -->
 
                         <!-- Expanse start -->
-                        <li class="has-sub">
+                        <li class="has-sub {{ (request()->is('expanse/*')) ? 'active expand' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#expanse" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
                                 <span class="nav-text">Expanse MGMT</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="expanse" data-parent="#sidebar-menu">
+                            <ul class="collapse {{ (request()->is('expanse/*')) ? 'show' : '' }} " id="expanse" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'type') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('expanse.show')}}">
                                             <span class="nav-text">Expanse Type</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'detail') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
                                             <span class="nav-text">Expanse Details</span>
                                         </a>
@@ -156,40 +156,40 @@
                         <!-- Expanse end -->
 
                         <!-- Employee start -->
-                        <li class="has-sub active expand">
+                        <li class="has-sub {{ (request()->is('employee/*')) ? 'active expand' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#employee" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
                                 <span class="nav-text">Employee MGMT</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse show" id="employee" data-parent="#sidebar-menu">
+                            <ul class="collapse {{ (request()->is('employee/*')) ? 'show' : '' }}" id="employee" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'area') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('area.show')}}">
                                             <span class="nav-text">Area</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'designation') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('designation.show')}}">
                                             <span class="nav-text">Designation</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'department') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('department.show')}}">
                                             <span class="nav-text">Department</span>
                                         </a>
                                     </li>
 
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'show') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('employee.show')}}">
                                             <span class="nav-text">Employee List</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'add') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('employee.add.page')}}">
                                             <span class="nav-text">Employee Add</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'loan') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('expanse.detail.show')}}">
                                             <span class="nav-text">Employee Advance Salary</span>
                                         </a>
@@ -314,74 +314,74 @@
                         </li>
                         <!-- Customers end -->
                         <!-- Product start -->
-                        <li class="has-sub active expand">
+                        <li class="has-sub {{ (request()->is('product-mgt/*')) ? 'active expand' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#products" aria-expanded="false" aria-controls="charts">
                                 <i class="mdi mdi-chart-pie"></i>
                                 <span class="nav-text">Product MGMT</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse show" id="products" data-parent="#sidebar-menu">
+                            <ul class="collapse {{ (request()->is('product-mgt/*')) ? 'show' : '' }}" id="products" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'category') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('category.show')}}">
                                             <span class="nav-text">Category</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'subcategory') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('subcategory.show')}}">
                                             <span class="nav-text">Sub Category One</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'subsubcategory') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('subsubcategory.show')}}">
                                             <span class="nav-text">Sub Category Two</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'brand') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('brand.show')}}">
                                             <span class="nav-text">Brand List</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'displaysection') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('displaysection.show')}}">
                                             <span class="nav-text">Varity Section</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'unit') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('unit.show')}}">
                                             <span class="nav-text">Product Unit</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'origin') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{route('origin.show')}}">
                                             <span class="nav-text">Product Origin</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'product-list') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('product.list.show') }}">
                                             <span class="nav-text">Product List</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'product-attribute') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('product.attribute.show') }}">
                                             <span class="nav-text">Product Attribute</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'product-detail') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('product.detail.show') }}">
                                             <span class="nav-text">Product Details</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'slider') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('slider.show') }}">
                                             <span class="nav-text">Slider</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'campaign') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('campaign.show') }}">
                                             <span class="nav-text">Campaign</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->segment(2) == 'coupon') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('coupon.show') }}">
                                             <span class="nav-text">Coupon</span>
                                         </a>
