@@ -78,7 +78,7 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Sub Category Two </em></th>
-                                                            <td scope="col">{{ empty($datum->sub_category) ? 'NA' : $datum->subSubCategoryName->sub_sub_cat_name }}</td>
+                                                            <td scope="col">{{ empty($datum->sub_sub_category) ? 'NA' : $datum->subSubCategoryName->sub_sub_cat_name }}</td>
                                                             <th scope="col"><em>Brand</em></th>
                                                             <td scope="col">{{ $datum->brandName->brand_name }}</td>
                                                         </tr>

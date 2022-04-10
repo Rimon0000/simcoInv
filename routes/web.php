@@ -16,6 +16,7 @@ use App\Http\Controllers\DisplaySectionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OriginController;
 use App\Http\Controllers\PolicyController;
@@ -55,9 +56,7 @@ Route::get('/', function () {
 ###################################################################################################
 
 // Home Page Route
-Route::get('/home', function () {
-    return view('frontend.index');
-})->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Shop Page Route
 Route::get('/shop', function () {
