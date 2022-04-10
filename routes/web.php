@@ -53,6 +53,28 @@ Route::get('/', function () {
 ##################################################################################################
 // Frontend start
 ###################################################################################################
+
+// Home Page Route
+Route::get('/home', function () {
+    return view('frontend.index');
+})->name('home');
+
+// Shop Page Route
+Route::get('/shop', function () {
+    return view('frontend.shop');
+})->name('shop');
+
+// Blog Page Route
+Route::get('/blog', function () {
+    return view('frontend.blog');
+})->name('blog');
+
+// Blog Page Route
+Route::get('/product-details', function () {
+    return view('frontend.product-details');
+})->name('product-details');
+
+
 //contact route
 Route::get('/contact/show', [ContactController::class, 'contactShow'])->name('contact.show');
 Route::get('/contact/status/{id}', [ContactController::class, 'contactStatus'])->name('contact.status');
