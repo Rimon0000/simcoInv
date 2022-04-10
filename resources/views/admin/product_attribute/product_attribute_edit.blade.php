@@ -158,37 +158,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Product Price, Sale, Discount and % End -->
-                    <hr>
-                    <!-- Product Attribute Image One Start -->
-                    <div class="form-row">
-                        <div class="col-md-8 mb-3">
-                            <label for="validationServer01">Image Alt One</label>
-                            <input type="text" class="form-control" value="{{ $data->product_img_alt_1 }}" name="product_img_alt_1" id="validationServer01" placeholder="Image Alt One">
-                            <div class="pt-1">
-                                @error('product_img_alt_1')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <!-- Product List Image End -->
-                    <!-- Product List Image Start -->
-                    <div class="form-row">
-                        <div class="col-md-8 mb-3">
-                            <label for="validationServer01">Image Alt Two</label>
-                            <input type="text" class="form-control" value="{{ $data->product_img_alt_2 }}" name="product_img_alt_2" id="validationServer01" placeholder="Image Alt Two">
-                            <div class="pt-1">
-                                @error('product_img_alt_2')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product List Image End -->
-
                     <hr>
                     <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                 </form>

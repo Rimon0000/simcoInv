@@ -32,6 +32,18 @@
                     <div class="preview">
                         <img class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px">
                     </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Image Alt One</label>
+                            <input type="text" class="form-control" value="{{ $data->product_img_alt_1 }}" name="product_img_alt_1" id="validationServer01" placeholder="Image Alt One">
+                            <div class="pt-1">
+                                @error('product_img_alt_1')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <button class="btn btn-primary btn-sm" type="submit">Update</button>
                 </form>
@@ -59,7 +71,7 @@
     <div class="col-lg-6">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Edit Attribute Image</h2>
+                <h2>Previous Attribute Image</h2>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{route('product.attribute.image.update', ['id'=> $data->id])}}" enctype="multipart/form-data">
@@ -67,9 +79,9 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer02">Product Attribute Image</label>
-                            <input type="file" class="form-control" name="product_img_1" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="product_img_2" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview2(event)">
                             <div class="pt-1">
-                                @error('product_img_1')
+                                @error('product_img_2')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -77,8 +89,24 @@
                     </div>
 
                     <div class="preview">
-                        <img class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px">
+                        <img class="img img-thumbnail" id="file-ip-2-preview" width="150px" height="80px">
                     </div>
+
+                    <br>
+                    <!-- Product List Image Start -->
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Image Alt Two</label>
+                            <input type="text" class="form-control" value="{{ $data->product_img_alt_2 }}" name="product_img_alt_2" id="validationServer01" placeholder="Image Alt Two">
+                            <div class="pt-1">
+                                @error('product_img_alt_2')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product List Image End -->
                     <hr>
                     <button class="btn btn-primary btn-sm" type="submit">Update</button>
                 </form>
@@ -94,7 +122,7 @@
                 <h6 class="pb-3">Previous Image:</h6>
                 <div class="row">
                     <div class="col-lg-12">
-                        <img src="{{ empty($data->product_img_1) ? asset('backend/assets/img/default-img.png') : asset($data->product_img_1) }}" class="img-thumbnail" alt="..." width="200px" height="200px">
+                        <img src="{{ empty($data->product_img_2) ? asset('backend/assets/img/default-img.png') : asset($data->product_img_2) }}" class="img-thumbnail" alt="..." width="200px" height="200px">
                     </div>
                 </div>
                 <br>
@@ -108,6 +136,16 @@
         if (event.target.files.length > 0) {
             var src = URL.createObjectURL(event.target.files[0]);
             var preview = document.getElementById("file-ip-1-preview");
+            preview.src = src;
+            preview.style.display = "block";
+
+        }
+    }
+
+    function showPreview2(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-2-preview");
             preview.src = src;
             preview.style.display = "block";
 

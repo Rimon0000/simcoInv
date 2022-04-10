@@ -201,31 +201,27 @@ class ProductAttributeController extends Controller
         $sale_price         = $request->sale_price;
         $discount_price     = $request->discount_price;
         $discount_percent   = $request->discount_percent;
-        $product_img_alt_1  = $request->file('product_img_alt_1');
-        $product_img_alt_2  = $request->file('product_img_alt_2');
-        
+
 
         $dataUpdated = DB::table('product_attributes')
             ->where('id', $id)
             ->update(
                 [
-            'product_id'       => $product_id,
-            'quantity'         => $quantity,
-            'alert_stock'      => $alert_stock,
-            'unit_id'          => $unit_id,
-            'color'            => $color,
-            'size'             => $size,
-            'piece'            => $piece,
-            'weight'           => $weight,
-            'price'            => $price,
-            'sale_price'       => $sale_price,
-            'discount_price'   => $discount_price,
-            'discount_percent' => $discount_percent,
-            'product_img_alt_1' => $product_img_alt_1,
-            'product_img_alt_2' => $product_img_alt_2,
-            'created_by'       => Auth::user()->id,
-            'created_at'       => Carbon::now(),
-                    
+                    'product_id'       => $product_id,
+                    'quantity'         => $quantity,
+                    'alert_stock'      => $alert_stock,
+                    'unit_id'          => $unit_id,
+                    'color'            => $color,
+                    'size'             => $size,
+                    'piece'            => $piece,
+                    'weight'           => $weight,
+                    'price'            => $price,
+                    'sale_price'       => $sale_price,
+                    'discount_price'   => $discount_price,
+                    'discount_percent' => $discount_percent,
+                    'created_by'       => Auth::user()->id,
+                    'created_at'       => Carbon::now(),
+
                 ]
             );
 
@@ -244,19 +240,19 @@ class ProductAttributeController extends Controller
         }
     }
 
-     //product attribute edit image function
-     public function productAttributeEditImage($id)
-     {
- 
-         //fetching data from category table
-         $data = ProductAttribute::find($id);
- 
-         return view('admin.product_attribute.product_attribute_edit_image', compact('data'));
-     }
- 
-     //Product List image update function
-     public function productAttributeImageUpdate(Request $request, $id)
-     {
+    //product attribute edit image function
+    public function productAttributeEditImage($id)
+    {
+
+        //fetching data from category table
+        $data = ProductAttribute::find($id);
+
+        return view('admin.product_attribute.product_attribute_edit_image', compact('data'));
+    }
+
+    //Product List image update function
+    public function productAttributeImageUpdate(Request $request, $id)
+    {
         //  //validate the input item
         //  $validated = $request->validate(
         //      [
@@ -273,60 +269,104 @@ class ProductAttributeController extends Controller
         //          'product_img_2.image' => 'image should be .png, .jpeg, .jpg',
         //      ]
         //  );
- 
-         //Getting the data form the form
-         $product_img_1 = $request->file('product_img_1');
- 
-         //Find the image
-         $image = ProductAttribute::find($id);
- 
-         if (!empty($image->product_img_1)) {
-             //Unlink the image from the folder
-             unlink($image->product_img_1);
-         }
- 
-         // //unique ID generate
-         $img_name_gen = hexdec(uniqid());
- 
-         // //Original ext
-         $img_ext      = strtolower($product_img_1->getClientOriginalExtension());
- 
-         // //img new create
-         $img_name =  $img_name_gen . '.' . $img_ext;
- 
-         // //where I'll keep the image --path
-         $upload_to    = 'backend/assets/img/product_attribute/';
- 
-         // //Moving the image to a folder path 
-         $product_img_1->move($upload_to, $img_name);
- 
-         $product_img_1 =   $upload_to . $img_name;
- 
-         $dataUpdated = DB::table('product_attributes')
-             ->where('id', $id)
-             ->update(
-                 [
-                     'product_img_1'    => $product_img_1,
- 
-                 ]
-             );
- 
-         if ($dataUpdated) {
-             $notification = [
-                 'message' => 'Image Updated Successfully',
-                 'alert-type' => 'success'
-             ];
-             return redirect()->route('product.attribute.show')->with($notification);
-         } else {
-             $notification = [
-                 'message' => 'Something Went Wrong!!',
-                 'alert-type' => 'warning'
-             ];
-             return redirect()->route('product.attribute.show')->with($notification);
-         }
-     }
 
-      //product attribute delete function
+        //Getting the data form the form
+        $product_img_1 = $request->file('product_img_1');
+        $product_img_2 = $request->file('product_img_2');
+
+        $product_img_alt_1  = $request->product_img_alt_1;
+        $product_img_alt_2  = $request->product_img_alt_2;
+
+        if (!empty($product_img_1)) {
+            //Find the image
+            $image = ProductAttribute::find($id);
+
+            if (!empty($image->product_img_1)) {
+                //Unlink the image from the folder
+                unlink($image->product_img_1);
+            }
+
+            // //unique ID generate
+            $img_name_gen = hexdec(uniqid());
+
+            // //Original ext
+            $img_ext      = strtolower($product_img_1->getClientOriginalExtension());
+
+            // //img new create
+            $img_name =  $img_name_gen . '.' . $img_ext;
+
+            // //where I'll keep the image --path
+            $upload_to    = 'backend/assets/img/product_attribute/';
+
+            // //Moving the image to a folder path 
+            $product_img_1->move($upload_to, $img_name);
+
+            $product_img_1 =   $upload_to . $img_name;
+
+            $dataUpdated = DB::table('product_attributes')
+                ->where('id', $id)
+                ->update(
+                    [
+                        'product_img_1'     => $product_img_1,
+                        'product_img_alt_1' => $product_img_alt_1,
+
+                    ]
+                );
+        } else if (!empty($product_img_2)) {
+            //Find the image
+            $image = ProductAttribute::find($id);
+
+            if (!empty($image->product_img_2)) {
+                //Unlink the image from the folder
+                unlink($image->product_img_2);
+            }
+
+            // //unique ID generate
+            $img_name_gen = hexdec(uniqid());
+
+            // //Original ext
+            $img_ext      = strtolower($product_img_2->getClientOriginalExtension());
+
+            // //img new create
+            $img_name =  $img_name_gen . '.' . $img_ext;
+
+            // //where I'll keep the image --path
+            $upload_to    = 'backend/assets/img/product_attribute/';
+
+            // //Moving the image to a folder path 
+            $product_img_2->move($upload_to, $img_name);
+
+            $product_img_2 = $upload_to . $img_name;
+
+            $dataUpdated = DB::table('product_attributes')
+                ->where('id', $id)
+                ->update(
+                    [
+                        'product_img_2' => $product_img_2,
+                        'product_img_alt_2' => $product_img_alt_2,
+
+                    ]
+                );
+        }
+
+
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Image Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong!!',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('product.attribute.show')->with($notification);
+        }
+    }
+
+    //product attribute delete function
     public function productAttributeDelete($id)
     {
         //find the image
