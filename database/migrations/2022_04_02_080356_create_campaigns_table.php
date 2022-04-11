@@ -20,6 +20,7 @@ class CreateCampaignsTable extends Migration
             $table->string('start_date');
             $table->string('end_date');
             $table->string('camp_img');
+            $table->string('camp_alt');
             $table->string('discount');
             $table->string('month');
             $table->string('year');

@@ -46,6 +46,33 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Discount</label>
+                            <input type="text" class="form-control" name="discount" id="validationServer01" placeholder="Discount" required>
+                            <div class="pt-1">
+                                @error('discount')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Month</label>
+                            <input type="text" class="form-control" name="month" id="validationServer01" placeholder="Month" required>
+                            <div class="pt-1">
+                                @error('month')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Year</label>
+                            <input type="text" class="form-control" name="year" id="validationServer01" placeholder="Year" required>
+                            <div class="pt-1">
+                                @error('year')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="col-md-12 mb-3">
                             <label for="validationServer02">Campaign Image</label>
@@ -62,9 +89,9 @@
 
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Image Alt</label>
-                            <input type="text" class="form-control" name="product_img_alt" id="validationServer01" placeholder="Image Alt">
+                            <input type="text" class="form-control" name="camp_alt" id="validationServer01" placeholder="Image Alt">
                             <div class="pt-1">
-                                @error('product_img_alt_1')
+                                @error('camp_alt')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>

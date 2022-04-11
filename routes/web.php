@@ -374,7 +374,7 @@ Route::prefix('product-mgt/campaign')->group(function () {
     Route::get('/delete/{id}', [CampaignController::class, 'campaignDelete'])->name('campaign.delete');
 
     Route::post('/add', [CampaignController::class, 'campaignAdd'])->name('campaign.add');
-    Route::post('/update/{id}', [CampaignControllerr::class, 'campaignUpdate'])->name('campaign.update');
+    Route::post('/update/{id}', [CampaignController::class, 'campaignUpdate'])->name('campaign.update');
     Route::post('/image/update/{id}', [CampaignController::class, 'campaignImageUpdate'])->name('campaign.image.update');
 });
 

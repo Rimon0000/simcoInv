@@ -35,25 +35,22 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td><img src="{{ $datum->cat_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->cat_img) }}" alt="default image" width="100px" height="80px"></td>
-                            <td>{{ $datum->cat_name}}</td>
-                            <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
+                            <td><img src="{{ $datum->camp_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->camp_img) }}" alt="default image" width="100px" height="80px"></td>
+                            <td>{{ $datum->title}}</td>
+                            <td>{{ $datum->start_date}}</td>
+                            <td>{{ $datum->end_date}}</td>
+                            <td><a href="{{ route ('campaign.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
-                            <div class="btn-group">
+                                <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         More..
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
+                                            <li class="p-1"><a href="{{ route('campaign.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('campaign.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
 
-                                            @php
-                                            $countData = App\Models\subCategory::where('cat_id',$datum->id)->count();
-                                            @endphp
-                                            @if($countData<1)
-                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
-                                            @endif
+                                            <li class="p-1"><a href="{{ route('campaign.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
