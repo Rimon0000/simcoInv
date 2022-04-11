@@ -19,6 +19,8 @@ class CreateSlidersTable extends Migration
             $table->string('slider_name')->unique();
             $table->string('slider_img');
             $table->string('slider_alt')->nullable();
+            $table->string('slider_subtitle')->nullable();
+            $table->string('slider_text')->nullable();
             $table->integer('product_code')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by');

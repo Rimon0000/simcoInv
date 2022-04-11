@@ -31,9 +31,11 @@
                             <select class="form-control js-sub-category-edit" name="cat_id">
                                 <span class="text-danger" value=""> Select Category </span>
                                 <option value="">select category</option>
+
                                 @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ ($data->cat_id == $category->id) ? "Selected":"" }} >{{ $category->cat_name }}</option>
                                 @endforeach
+                                
                             </select>
 
                             <div class="pt-1">

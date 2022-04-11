@@ -21,27 +21,27 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Campaign Name</label>
-                            <input type="text" class="form-control" name="cat_name" id="validationServer01" placeholder="Category Name" required>
+                            <input type="text" class="form-control" name="title" id="validationServer01" placeholder="Campaign Name" required>
                             <div class="pt-1">
-                                @error('cat_name')
+                                @error('title')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Campaign Start Date</label>
-                            <input type="date" class="form-control" name="cat_name" id="validationServer01" placeholder="Category Name" required>
+                            <input type="date" class="form-control" name="start_date" id="validationServer01" placeholder="Campaign Start Date" required>
                             <div class="pt-1">
-                                @error('cat_name')
+                                @error('start_date')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Campaign End Date</label>
-                            <input type="date" class="form-control" name="cat_name" id="validationServer01" placeholder="Category Name" required>
+                            <input type="date" class="form-control" name="end_date" id="validationServer01" placeholder="Campaign end Date" required>
                             <div class="pt-1">
-                                @error('cat_name')
+                                @error('end_date')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
@@ -49,9 +49,9 @@
 
                         <div class="col-md-12 mb-3">
                             <label for="validationServer02">Campaign Image</label>
-                            <input type="file" class="form-control" name="cat_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="camp_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
                             <div class="pt-1">
-                                @error('cat_img')
+                                @error('camp_img')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>

@@ -27,13 +27,31 @@
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Slider Sub Title</label>
+                            <input type="text" class="form-control" name="slider_subtitle" id="validationServer01" placeholder="Slider Sub Title" required>
+                            <div class="pt-1">
+                                @error('slider_subtitle')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Slider Text</label>
+                            <input type="text" class="form-control" name="slider_text" id="validationServer01" placeholder="Slider Text" required>
+                            <div class="pt-1">
+                                @error('slider_text')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Code</label>
                             <select class="form-control js-example-basic-single" name="product_code">
                                 <span class="text-danger" value=""> Product Code </span>
                                 <option value="">Product Code</option>
 
                                 @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->id }}">{{ $productlist->product_id }}</option>
+                                <option value="{{ $productlist->product_id }}">{{ $productlist->title }}</option>
                                 @endforeach
 
                             </select>

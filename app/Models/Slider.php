@@ -11,6 +11,6 @@ class Slider extends Model
     public function productListName()
     {
         # code...
-        return $this->hasOne(ProductList::class, 'id', 'product_code');
+        return $this->hasOne(ProductList::class, 'product_id', 'product_code');
     }
 }
