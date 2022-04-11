@@ -44,7 +44,7 @@ class BrandController extends Controller
         $validated = $request->validate(
             [
                 'brand_name' => 'required|unique:brands|max:50',
-                'brand_img' => 'image|mimes:jpg,png,jpeg',
+                'brand_img' => 'image|mimes:jpg,png,jpeg,svg',
             ],
 
             // modified msg
@@ -53,7 +53,7 @@ class BrandController extends Controller
                 'brand_name.unique'   => 'Brand name alreay taken',
                 'brand_name.max'      => 'Brand name should not be more than 30 characters',
 
-                'brand_img.image'      => 'Image should be .png, .jpg, .jpeg',
+                'brand_img.image'      => 'Image should be .png, .jpg, .jpeg, .svg',
             ],
         );
 

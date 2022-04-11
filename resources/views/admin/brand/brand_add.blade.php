@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer02">Brand Image</label>
-                            <input type="file" class="form-control" name="brand_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
+                            <input type="file" class="form-control" name="brand_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg, image/svg+xml" onchange="showPreview(event)">
                             <div class="pt-1">
                                 @error('brand_img')
                                 <span class="text-danger"> {{$message}} </span>
