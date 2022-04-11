@@ -4,7 +4,7 @@
 
 <div class="row p-3">
     <div class="col-lg-6">
-        <a href="{{ route('employee.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back </a>
+        <a href="{{ route('supplier.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back </a>
     </div>
 </div>
 
@@ -22,18 +22,18 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Supplier ID</label>
-                            <input type="text" name="emp_id" class="form-control" id="validationServer01" placeholder="Employee ID" required>
+                            <input type="text" name="supplier_id" class="form-control" id="validationServer01" placeholder="Supplier ID" required>
                             <div class="pt-1">
-                                @error('emp_id')
+                                @error('supplier_id')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Supplier Name</label>
-                            <input type="text" name="emp_name" class="form-control" id="validationServer01" placeholder="Employee Name" required>
+                            <input type="text" name="supplier_name" class="form-control" id="validationServer01" placeholder="Supplier Name" required>
                             <div class="pt-1">
-                                @error('emp_name')
+                                @error('supplier_name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -45,18 +45,18 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Owner Name</label>
-                            <input type="text" name="salary" class="form-control" id="validationServer01" placeholder="Salary" required>
+                            <input type="text" name="owner_name" class="form-control" id="validationServer01" placeholder="Owner Name" required>
                             <div class="pt-1">
-                                @error('salary')
+                                @error('owner_name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Previous Due</label>
-                            <input type="number" name="salary" class="form-control" id="validationServer01" placeholder="Salary" required>
+                            <input type="number" name="previous_due" class="form-control" id="validationServer01" placeholder="Previous Due" required>
                             <div class="pt-1">
-                                @error('salary')
+                                @error('previous_due')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -77,9 +77,9 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">WhatsApp</label>
-                            <input type="text" name="father_name" class="form-control" id="validationServer01" placeholder="Father's Name" required>
+                            <input type="text" name="whatsapp" class="form-control" id="validationServer01" placeholder="Whatsapp" required>
                             <div class="pt-1">
-                                @error('father_name')
+                                @error('whatsapp')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -101,9 +101,9 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Website</label>
-                            <input type="text" name="mother_name" class="form-control" id="validationServer01" placeholder="Mother's Name" required>
+                            <input type="text" name="website" class="form-control" id="validationServer01" placeholder="Website" required>
                             <div class="pt-1">
-                                @error('mother_name')
+                                @error('website')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -115,7 +115,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Present Office Address</label>
-                            <input type="text" name="present_address" class="form-control" id="validationServer01" placeholder="Present Address" required>
+                            <input type="text" name="present_address" class="form-control" id="validationServer01" placeholder="Present Office Address" required>
                             <div class="pt-1">
                                 @error('present_address')
                                 <span class="text-danger">{{ $message }}</span>
@@ -143,9 +143,9 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer02">Supplier Image</label>
-                            <input type="file" name="emp_img" class="form-control" id="validationServer02" accept="image/png , image/gif, image/jpeg" onchange="showPreview(event);">
+                            <input type="file" name="supplier_img" class="form-control" id="validationServer02" accept="image/png , image/gif, image/jpeg" onchange="showPreview(event);">
                             <div class="pt-1">
-                                @error('emp_img')
+                                @error('supplier_img')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

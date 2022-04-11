@@ -44,22 +44,24 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td><img src="{{ $datum->emp_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->emp_img) }}" alt="default image" width="50px" height="50px"></td>
-                            <td>{{ $datum->emp_name }}</td>
-                            <td>{{ $datum->designationName->designation }}</td>
-                            <td>{{ $datum->departmentName->department }}</td>
+                            <td><img src="{{ $datum->supplier_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->supplier_img) }}" alt="default image" width="50px" height="50px"></td>
+                            <td>{{ $datum->supplier_name }}</td>
+                            <td>{{ $datum->supplier_id }}</td>
+                            <td>{{ $datum->contact }}</td>
+                            <td>{{ $datum->whatsapp }}</td>
+                            <td>{{ $datum->previous_due }}</td>
+                            <td>{{ $datum->email }}</td>
                             <td></td>
                             <td>{{ $datum->userName->name }}</td>
-                            <td><a href="{{ route('employee.payment', ['id' => $datum->id]) }}" class="btn btn-sm btn-success">Payment</a></td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"></button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('employee.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('employee.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
+                                            <li class="p-1"><a href="{{ route('supplier.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('supplier.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
                                            
-                                            <li class="p-1"><a href="{{ route('employee.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('supplier.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                           
                                         </ul>
                                     </div>

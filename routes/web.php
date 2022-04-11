@@ -186,7 +186,7 @@ Route::prefix('supplier')->group(function () {
     Route::get('/edit/{id}', [SupplierController::class, 'supplierEdit'])->name('supplier.edit');
     Route::get('/edit/image/{id}', [SupplierController::class, 'supplierEditImage'])->name('supplier.edit.image');
     Route::get('/status/{id}', [SupplierController::class, 'supplierStatus'])->name('supplier.status');
-    Route::get('/delete/{id}', [SupplierController::class, 'categoryDelete'])->name('supplier.delete');
+    Route::get('/delete/{id}', [SupplierController::class, 'supplierDelete'])->name('supplier.delete');
 
     Route::post('/add', [SupplierController::class, 'supplierAdd'])->name('supplier.add');
     Route::post('/update/{id}', [SupplierController::class, 'supplierUpdate'])->name('supplier.update');

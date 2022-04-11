@@ -5,7 +5,7 @@
 <div class="row p-3">
     <div class="col-lg-6">
 
-        <a href="{{ route('employee.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back </a>
+        <a href="{{ route('supplier.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back </a>
 
 
     </div>
@@ -16,30 +16,28 @@
     <div class="col-lg-8">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2><i class="fa-solid fa-circle-plus text-danger"></i> Edit Employee Image</h2>
+                <h2><i class="fa-solid fa-circle-plus text-danger"></i> Edit Supplier Image</h2>
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{ route('employee.image.update', ['id' => $data->id] ) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('supplier.image.update', ['id'=> $data->id])}}" enctype="multipart/form-data">
                     @csrf
 
-                    <br>
-                    <h6 class="pb-3">Previous Image : </h6>
+                    <h6 class="pb-3">Previous Image:</h6>
                     <div class="row">
                         <div class="col-lg-12">
-
-                            <img src="{{ empty($data->emp_img) ? asset('backend/assets/img/default-img.png') : asset($data->emp_img) }}" class="img-thumbnail" alt="" width="200px" height="200px">
+                        <img src="{{ empty($data->supplier_img) ? asset('backend/assets/img/default-img.png') : asset($data->supplier_img) }}" class="img-thumbnail" alt="..." width="200px" height="200px">
                         </div>
                     </div>
+                    <br>
 
                     <div class="form-row">
-
                         <div class="col-md-12 mb-3">
-                            <label for="validationServer02">Employee Image</label>
-                            <input type="file" name="emp_img" class="form-control" id="validationServer02" accept="image/png , image/gif, image/jpeg" onchange="showPreview(event)">
+                            <label for="validationServer02">Supplier Image</label>
+                            <input type="file" class="form-control" name="supplier_img" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview(event)">
                             <div class="pt-1">
-                                @error('emp_img')
-                                <span class="text-danger">{{ $message }}</span>
+                                @error('supplier_img')
+                                <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
@@ -48,9 +46,8 @@
                     <div class="preview">
                         <img class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px">
                     </div>
-
                     <hr>
-                    <button class="btn btn-warning btn-sm" type="submit">Update</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Update</button>
                 </form>
             </div>
         </div>
