@@ -31,7 +31,7 @@ class CategoriesController extends Controller
         $validated = $request->validate(
             [
                 'cat_name' => 'required|unique:categories|max:50',
-                'cat_img' => 'image|mimes:jpg,png,jpeg',
+                'cat_img'  => 'image|mimes:jpg,png,jpeg,svg',
             ],
 
             // modified msg
@@ -40,7 +40,7 @@ class CategoriesController extends Controller
                 'cat_name.unique'   => 'Category name alreay taken',
                 'cat_name.max'      => 'Category name should not be more than 30 characters',
 
-                'cat_img.image'      => 'Image should be .png, .jpg, .jpeg',
+                'cat_img.image'      => 'Image should be .png, .jpg, .jpeg, .svg',
             ],
         );
 
