@@ -177,13 +177,13 @@ class CategoriesController extends Controller
         //validate the input item
         $validated = $request->validate(
             [
-                'cat_img' => 'required|image|mimes:jpg,png,jpeg',
+                'cat_img' => 'required|image|mimes:jpg,png,jpeg,svg',
             ],
             //modified msg
             [
                 //cat img msg
                 'cat_img.required' => 'please choose an image',
-                'cat_img.image' => 'image should be .png, .jpeg, .jpg',
+                'cat_img.image' => 'image should be .png, .jpeg, .jpg, .svg',
             ]
         );
 
