@@ -22,7 +22,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Supplier ID</label>
-                            <input type="text" name="supplier_id" class="form-control" id="validationServer01" placeholder="Supplier ID" required>
+                            <input type="text" name="supplier_id" class="form-control"  placeholder="Supplier ID" required>
                             <div class="pt-1">
                                 @error('supplier_id')
                                 <span class="text-danger">{{ $message }}</span>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Supplier Name</label>
-                            <input type="text" name="supplier_name" class="form-control" id="validationServer01" placeholder="Supplier Name" required>
+                            <input type="text" name="supplier_name" class="form-control"  placeholder="Supplier Name" required>
                             <div class="pt-1">
                                 @error('supplier_name')
                                 <span class="text-danger">{{ $message }}</span>
@@ -45,7 +45,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Owner Name</label>
-                            <input type="text" name="owner_name" class="form-control" id="validationServer01" placeholder="Owner Name" required>
+                            <input type="text" name="owner_name" class="form-control"  placeholder="Owner Name" required>
                             <div class="pt-1">
                                 @error('owner_name')
                                 <span class="text-danger">{{ $message }}</span>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Previous Due</label>
-                            <input type="number" name="previous_due" class="form-control" id="validationServer01" placeholder="Previous Due" required>
+                            <input type="number" name="previous_due" class="form-control" value="0"  placeholder="Previous Due" required>
                             <div class="pt-1">
                                 @error('previous_due')
                                 <span class="text-danger">{{ $message }}</span>
@@ -68,7 +68,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Contact</label>
-                            <input type="text" name="contact" class="form-control" id="validationServer01" placeholder="Contact" required>
+                            <input type="text" name="contact" class="form-control"  placeholder="Contact" required>
                             <div class="pt-1">
                                 @error('contact')
                                 <span class="text-danger">{{ $message }}</span>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">WhatsApp</label>
-                            <input type="text" name="whatsapp" class="form-control" id="validationServer01" placeholder="Whatsapp" required>
+                            <input type="text" name="whatsapp" class="form-control"  placeholder="Whatsapp">
                             <div class="pt-1">
                                 @error('whatsapp')
                                 <span class="text-danger">{{ $message }}</span>
@@ -92,7 +92,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Email</label>
-                            <input type="email" name="email" class="form-control" id="validationServer01" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control"  placeholder="Email">
                             <div class="pt-1">
                                 @error('email')
                                 <span class="text-danger">{{ $message }}</span>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Website</label>
-                            <input type="text" name="website" class="form-control" id="validationServer01" placeholder="Website" required>
+                            <input type="text" name="website" class="form-control"  placeholder="Website">
                             <div class="pt-1">
                                 @error('website')
                                 <span class="text-danger">{{ $message }}</span>
@@ -115,7 +115,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Present Office Address</label>
-                            <input type="text" name="present_address" class="form-control" id="validationServer01" placeholder="Present Office Address" required>
+                            <input type="text" name="present_address" class="form-control"  placeholder="Present Office Address" required>
                             <div class="pt-1">
                                 @error('present_address')
                                 <span class="text-danger">{{ $message }}</span>
@@ -126,7 +126,7 @@
                             <label for="validationServer01">Status</label>
                             <select class="form-control" name="status">
                                 <option value="">Select Status</option>
-                                <option value="1">Yes</option>
+                                <option value="1" selected>Yes</option>
                                 <option value="0">No</option>
                             </select>
 
