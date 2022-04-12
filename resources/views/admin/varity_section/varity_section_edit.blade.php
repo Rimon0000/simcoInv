@@ -28,6 +28,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Display</label>
+                            <select class="form-control js-sub-category-edit" name="display">
+                                <option value="1" {{ ($data->cat_id == 'Yes') ? "Selected":"" }}>Yes</option>
+                                <option value="0" {{ ($data->cat_id == 'No') ? "Selected":"" }}>No</option>
+                            </select>
+
+                            <div class="pt-1">
+                                @error('display')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn btn-warning btn-sm" type="submit">Update</button>
                 </form>
             </div>

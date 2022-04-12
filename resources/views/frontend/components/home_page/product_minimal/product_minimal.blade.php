@@ -1,3 +1,51 @@
+@foreach($displaysections as $displaysection)
+
+<div class="product-minimal">
+    <div class="product-showcase">
+        <h2 class="title">{{ $displaysection->display_section }}</h2>
+        <div class="showcase-wrapper has-scrollbar">
+            <div class="container">
+                <div class="row">
+
+                    @foreach($productlists as $productlist)
+                        @if($productlist->display_section == $displaysection->id)
+                        <div class="col-lg-6">
+                            <div class="m-1">
+                                <div class="showcase">
+                                    <a href="#" class="showcase-img-box">
+                                        <img src="{{ $productlist->product_img }}" alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img" />
+                                    </a>
+
+                                    <div class="showcase-content">
+                                        <a href="#">
+                                            <h4 class="showcase-title">
+                                                {{ $productlist->title }}
+                                            </h4>
+                                        </a>
+
+                                        <a href="#" class="showcase-category"> {{ $productlist->categoryName->cat_name }} </a>
+
+                                        <div class="price-box">
+                                            <p class="price">$ {{ $productlist->sale_price }}</p>
+                                            <del>$ {{ $productlist->discount_price }}</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endforeach
+
+
+
 <div class="product-minimal">
     <div class="product-showcase">
         <h2 class="title">New Medical Arrivals</h2>

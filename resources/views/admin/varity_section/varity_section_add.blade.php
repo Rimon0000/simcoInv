@@ -27,6 +27,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            <label for="validationServer01">Display</label>
+                            <select class="form-control" name="display">
+                                <option value="1" selected>Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                            <div class="pt-1">
+                                @error('display')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                 </form>

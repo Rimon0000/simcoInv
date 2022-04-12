@@ -2,13 +2,21 @@
     <h2 class="title">New Products</h2>
 
     <div class="product-grid">
+
+        @foreach($newproductlists as $newproductlist)
+        @if($newproductlist->displaySection->display_section == "New Products")
         <div class="showcase">
+
             <div class="showcase-banner">
-                <img src="{{ asset('frontend/assets/images/products/jacket-3.jpg') }}" alt="Mens Winter Leathers Jackets" width="300" class="product-img default" />
+                <img src="{{ $newproductlist->product_img }}" alt="{{ $newproductlist->product_alt }}" width="300" class="product-img default" />
                 <img src="{{ asset('frontend/assets/images/products/jacket-4.jpg') }}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover" />
 
-                <p class="showcase-badge">15%</p>
-
+                @if(!empty($newproductlist->discount_percent))
+                <p class="showcase-badge">{{ $newproductlist->discount_percent }}%</p>
+                @elseif(!empty($newproductlist->discount_price))
+                <p class="showcase-badge angle black">sale</p>
+                <!-- <p class="showcase-badge angle pink">new</p> -->
+                @endif
                 <div class="showcase-actions">
                     <button class="btn-action">
                         <ion-icon name="heart-outline"></ion-icon>
@@ -29,11 +37,11 @@
             </div>
 
             <div class="showcase-content">
-                <a href="#" class="showcase-category">jacket</a>
+                <a href="#" class="showcase-category">{{ $newproductlist->categoryName->cat_name }}</a>
 
                 <a href="#">
                     <h3 class="showcase-title">
-                        Mens Winter Leathers Jackets
+                        {{ $newproductlist->title }}
                     </h3>
                 </a>
 
@@ -46,13 +54,21 @@
                 </div>
 
                 <div class="price-box">
-                    <p class="price">$48.00</p>
-                    <del>$75.00</del>
+                    @if(empty($newproductlist->discount_price))
+                    <p class="price">$ {{ $newproductlist->sale_price }}</p>
+                    @else
+                    <p class="price">$ {{ $newproductlist->discount_price }}</p>
+                    <del>$ {{ $newproductlist->sale_price }}</del>
+                    @endif
+
                 </div>
             </div>
         </div>
+        @endif
+        @endforeach
 
-        <div class="showcase">
+
+        <!-- <div class="showcase">
             <div class="showcase-banner">
                 <img src="{{ asset('frontend/assets/images/products/shirt-1.jpg') }}" alt="Pure Garment Dyed Cotton Shirt" class="product-img default" width="300" />
                 <img src="{{ asset('frontend/assets/images/products/shirt-2.jpg') }}" alt="Pure Garment Dyed Cotton Shirt" class="product-img hover" width="300" />
@@ -568,6 +584,6 @@
                     <del>$85.00</del>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

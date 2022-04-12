@@ -281,7 +281,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount Price</label>
-                            <input type="text" class="form-control" name="discount_price" value="0" id="validationServer01" value="{{ $data->discount_price }}" placeholder="Discount Price">
+                            <input type="text" class="form-control" name="discount_price" id="validationServer01" value="{{ $data->discount_price }}" placeholder="Discount Price">
                             <div class="pt-1">
                                 @error('discount_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -290,7 +290,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Discount %</label>
-                            <input type="text" class="form-control" name="discount_percent" value="0" id="validationServer01" value="{{ $data->discount_percent }}" placeholder="Discount %">
+                            <input type="text" class="form-control" name="discount_percent" id="validationServer01" value="{{ $data->discount_percent }}" placeholder="Discount %">
                             <div class="pt-1">
                                 @error('discount_percent')
                                 <span class="text-danger"> {{$message}} </span>
