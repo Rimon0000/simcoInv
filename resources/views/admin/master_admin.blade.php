@@ -295,7 +295,7 @@
                             <ul class="collapse" id="customers" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('customer.show')}}">
+                                        <a class="sidenav-item-link" href="{{route('customer.type.show')}}">
                                             <span class="nav-text">Customer Type</span>
                                         </a>
                                     </li>
