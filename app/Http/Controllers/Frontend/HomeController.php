@@ -19,7 +19,7 @@ class HomeController extends Controller
         $categories      = Category::where('status',1)->get();
         $subcategories   = SubCategory::where('status',1)->get();
         $displaysections = DisplaySection::where('status',1)->get();
-        $productlists    = ProductList::where('status',1)->take(8)->get();
+        $productlists    = ProductList::where('status',1)->get();
         $newproductlists = ProductList::where('status',1)->get();
 
         return view('frontend.index', compact('banners', 'categories','subcategories','displaysections','productlists','newproductlists'));

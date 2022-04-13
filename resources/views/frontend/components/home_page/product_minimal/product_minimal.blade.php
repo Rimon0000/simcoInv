@@ -8,7 +8,7 @@
                 <div class="row">
 
                     @foreach($productlists as $productlist)
-                        @if($productlist->display_section == $displaysection->id)
+                        @if( empty($productlist->displaySection->display_section) ? '' : $productlist->displaySection->display_section == $displaysection->display_section)
                         <div class="col-lg-6">
                             <div class="m-1">
                                 <div class="showcase">

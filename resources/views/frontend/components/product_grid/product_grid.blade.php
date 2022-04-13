@@ -4,7 +4,7 @@
     <div class="product-grid">
 
         @foreach($newproductlists as $newproductlist)
-        @if($newproductlist->displaySection->display_section == "New Products")
+        @if(!empty($newproductlist->displaySection->display_section) ? $newproductlist->displaySection->display_section == "New Products" : '')
         <div class="showcase">
 
             <div class="showcase-banner">
