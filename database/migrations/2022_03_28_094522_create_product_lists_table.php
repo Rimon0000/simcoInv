@@ -42,6 +42,8 @@ class CreateProductListsTable extends Migration
             $table->text('promotion')->nullable();
             $table->string('product_img')->nullable();
             $table->string('product_alt')->nullable();
+            $table->string('product_img_2')->nullable();
+            $table->string('product_alt_2')->nullable();
             $table->string('warranty')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by');

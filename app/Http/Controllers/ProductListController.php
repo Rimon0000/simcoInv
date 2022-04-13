@@ -86,6 +86,8 @@ class ProductListController extends Controller
         $promotion        = $request->promotion;
         $product_img      = $request->file('product_img');
         $product_alt      = $request->product_alt;
+        $product_img_2     = $request->file('product_img_2');
+        $product_alt_2      = $request->product_alt_2;
         $warranty         = $request->warranty;
 
         if ($product_img == null) {
@@ -105,6 +107,26 @@ class ProductListController extends Controller
             $product_img->move($upload_to, $img_name);
             $product_img =   $upload_to . $img_name;
         }
+
+        //image 2
+        if ($product_img_2 == null) {
+            // check if the user had choosen the image or not
+            $product_img_2 = ($product_img_2 == null) ? null : $product_img_2;
+        } else {
+            // //unique ID generate
+            $img_name_gen = hexdec(uniqid());
+            // //Original ext
+            $img_ext      = strtolower($product_img_2->getClientOriginalExtension());
+            // //img new create
+            $img_name =  $img_name_gen . '.' . $img_ext;
+            // //where I'll keep the image --path
+            $upload_to    = 'backend/assets/img/product_list/';
+
+            // //Moving the image to a folder path 
+            $product_img_2->move($upload_to, $img_name);
+            $product_img_2 =   $upload_to . $img_name;
+        }
+
 
         $result = DB::table('product_lists')->insert([
             'product_id'       => $product_id,
@@ -133,6 +155,8 @@ class ProductListController extends Controller
             'promotion'        => $promotion,
             'product_img'      => $product_img,
             'product_alt'      => $product_alt,
+            'product_img_2'    => $product_img_2,
+            'product_alt_2'    => $product_alt_2,
             'warranty'         => $warranty,
             'created_by'       => Auth::user()->id,
             'created_at'       => Carbon::now(),
@@ -190,7 +214,7 @@ class ProductListController extends Controller
     {
 
         //fetching data from category table
-        $data = ProductList ::find($id);
+        $data = ProductList::find($id);
 
         return view('admin.product_list.product_list_edit_image', compact('data'));
     }

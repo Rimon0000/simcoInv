@@ -355,7 +355,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Product Promotion</label>
-                            <input type="text" class="form-control" name="promotion" id="validationServer01" placeholder="Product Promotion" >
+                            <input type="text" class="form-control" name="promotion" id="validationServer01" placeholder="Product Promotion">
                             <div class="pt-1">
                                 @error('promotion')
                                 <span class="text-danger"> {{$message}} </span>
@@ -390,6 +390,31 @@
                     <div class="preview">
                         <img class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px">
                     </div>
+                    <br> <br>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer02">Product List Image Two</label>
+                            <input type="file" class="form-control" name="product_img_2" id="validationServer02" accept="image/png, image/jpg, image/jpeg" onchange="showPreview2(event)">
+                            <div class="pt-1">
+                                @error('product_img_2')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label for="validationServer01">Image Alt Two</label>
+                            <input type="text" class="form-control" name="product_alt_2" id="validationServer01" placeholder="Image Alt Two">
+                            <div class="pt-1">
+                                @error('product_alt_2')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview">
+                        <img class="img img-thumbnail" id="file-ip-2-preview" width="150px" height="80px">
+                    </div>
                     <!-- Product List Image End -->
 
                     <hr>
@@ -411,6 +436,15 @@
 
         }
     }
+    function showPreview2(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-ip-2-preview");
+            preview.src = src;
+            preview.style.display = "block";
+
+        }
+    }
 </script>
 
 
@@ -419,7 +453,9 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-single').select2({ width: '100%' });
+        $('.js-example-basic-single').select2({
+            width: '100%'
+        });
     });
 </script>
 @endsection

@@ -37,7 +37,9 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td><img src="{{ $datum->product_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img) }}" alt="default image" width="60px" height="40px"></td>
+                            <td><img src="{{ $datum->product_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img) }}" alt="default image" width="60px" height="40px">
+                                || <img src="{{ $datum->product_img_2 == null ? asset('backend/assets/img/default-img.png') : asset($datum->product_img_2) }}" alt="default image" width="60px" height="40px">
+                            </td>
                             <td>{{ $datum->product_id }}</td>
                             <td>{{ $datum->title}}</td>
                             <td>{{ $datum->price}}</td>
@@ -115,7 +117,7 @@
                                                             <th scope="col"><em>Unit</em></th>
                                                             <td scope="col">{{ $datum->unitName->unit_name }}</td>
                                                             <th scope="col"><em>Bar Code</em></th>
-                                                            <td scope="col">{{  empty($datum->bar_code) ? 'NA' :  $datum->bar_code }}</td>
+                                                            <td scope="col">{{ empty($datum->bar_code) ? 'NA' :  $datum->bar_code }}</td>
                                                         </tr>
 
                                                         <tr>
