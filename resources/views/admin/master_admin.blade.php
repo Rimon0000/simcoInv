@@ -278,7 +278,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('supplier.add')}}">
+                                        <a class="sidenav-item-link" href="{{route('supplier.add.page')}}">
                                             <span class="nav-text">Supplier Add</span>
                                         </a>
                                     </li>

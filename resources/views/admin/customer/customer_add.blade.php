@@ -16,24 +16,24 @@
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{ route('supplier.add') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('customer.add') }}" enctype="multipart/form-data">
                     @csrf
                     <!-- Customer id and name start -->
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Customer ID</label>
-                            <input type="text" name="emp_id" class="form-control" id="validationServer01" placeholder="Employee ID" required>
+                            <input type="text" name="customer_id" class="form-control" id="validationServer01" placeholder="Customer ID" required>
                             <div class="pt-1">
-                                @error('emp_id')
+                                @error('customer_id')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Customer Name</label>
-                            <input type="text" name="emp_name" class="form-control" id="validationServer01" placeholder="Employee Name" required>
+                            <input type="text" name="customer_name" class="form-control" id="validationServer01" placeholder="Customer Name" required>
                             <div class="pt-1">
-                                @error('emp_name')
+                                @error('customer_name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -45,18 +45,18 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Credit Limit</label>
-                            <input type="text" name="salary" class="form-control" id="validationServer01" placeholder="Salary" required>
+                            <input type="text" name="credit_limit" class="form-control" id="validationServer01" placeholder="Credit Limit" required>
                             <div class="pt-1">
-                                @error('salary')
+                                @error('credit_limit')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Previous Due</label>
-                            <input type="number" name="salary" class="form-control" id="validationServer01" placeholder="Salary" required>
+                            <input type="number" name="previous_due" class="form-control" id="validationServer01" placeholder="Previous Due" required>
                             <div class="pt-1">
-                                @error('salary')
+                                @error('previous_due')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -68,18 +68,18 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Mobile</label>
-                            <input type="text" name="contact" class="form-control" id="validationServer01" placeholder="Contact" required>
+                            <input type="text" name="mobile" class="form-control" id="validationServer01" placeholder="Mobile" required>
                             <div class="pt-1">
-                                @error('contact')
+                                @error('mobile')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Office Phone</label>
-                            <input type="text" name="father_name" class="form-control" id="validationServer01" placeholder="Father's Name" required>
+                            <input type="text" name="office_phone" class="form-control" id="validationServer01" placeholder="Office Phone" required>
                             <div class="pt-1">
-                                @error('father_name')
+                                @error('office_phone')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -101,9 +101,9 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Website</label>
-                            <input type="text" name="mother_name" class="form-control" id="validationServer01" placeholder="Mother's Name" required>
+                            <input type="text" name="website" class="form-control" id="validationServer01" placeholder="Website" required>
                             <div class="pt-1">
-                                @error('mother_name')
+                                @error('website')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -115,28 +115,28 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Customer Type</label>
-                            <select class="form-control" name="status">
+                            <select class="form-control" name="customer_type">
                                 <option value="">Select Customer Type</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
 
                             <div class="pt-1">
-                                @error('status')
+                                @error('customer_type')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Area</label>
-                            <select class="form-control" name="status">
+                            <select class="form-control" name="area">
                                 <option value="">Select Area</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
 
                             <div class="pt-1">
-                                @error('status')
+                                @error('area')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -148,7 +148,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Present Office Address</label>
-                            <input type="text" name="present_address" class="form-control" id="validationServer01" placeholder="Present Address" required>
+                            <input type="text" name="present_address" class="form-control" id="validationServer01" placeholder="Present Office Address" required>
                             <div class="pt-1">
                                 @error('present_address')
                                 <span class="text-danger">{{ $message }}</span>
@@ -175,10 +175,10 @@
                     <!-- Employee Image start -->
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
-                            <label for="validationServer02">Supplier Image</label>
-                            <input type="file" name="emp_img" class="form-control" id="validationServer02" accept="image/png , image/gif, image/jpeg" onchange="showPreview(event);">
+                            <label for="validationServer02">Customer Image</label>
+                            <input type="file" name="customer_img" class="form-control" id="validationServer02" accept="image/png , image/gif, image/jpeg" onchange="showPreview(event);">
                             <div class="pt-1">
-                                @error('emp_img')
+                                @error('customer_img')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

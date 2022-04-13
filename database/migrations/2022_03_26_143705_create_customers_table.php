@@ -20,14 +20,15 @@ class CreateCustomersTable extends Migration
 
             $table->string('customer_id');
             $table->string('customer_name');
-            $table->text('present_address')->nullable();
+            $table->double('credit_limit')->nullable();
+            $table->double('previous_due')->nullable();
             $table->string('mobile')->nullable();
             $table->string('office_phone')->nullable();
-            $table->double('previous_due')->nullable();
-            $table->double('credit_limit')->nullable();
-            $table->integer('customer_type');
             $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->integer('customer_type');
             $table->string('area')->nullable();
+            $table->text('present_address')->nullable();
             $table->string('customer_img')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by');

@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomerTypeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
@@ -194,6 +195,8 @@ Route::prefix('supplier')->group(function () {
 });
 
 
+
+
 //Customer route
 Route::prefix('customer')->group(function () {
     Route::get('/show', [CustomerController::class, 'customerShow'])->name('customer.show');
@@ -206,6 +209,18 @@ Route::prefix('customer')->group(function () {
     Route::post('/add', [CustomerController::class, 'customerAdd'])->name('customer.add');
     Route::post('/update/{id}', [CustomerController::class, 'customerUpdate'])->name('customer.update');
     Route::post('/image/update/{id}', [CustomerController::class, 'customerImageUpdate'])->name('customer.image.update');
+});
+
+//Customer Type route
+Route::prefix('customer/type')->group(function () {
+    Route::get('/show', [CustomerTypeController::class, 'customerTypeShow'])->name('customer.type.show');
+    Route::get('/add/page', [CustomerTypeController::class, 'customerTypeAddPage'])->name('customer.type.add.page');
+    Route::get('/edit/{id}', [CustomerTypeController::class, 'customerTypeEdit'])->name('customer.type.edit');
+    Route::get('/status/{id}', [CustomerTypeController::class, 'customerTypeStatus'])->name('customer.type.status');
+    Route::get('/delete/{id}', [CustomerTypeController::class, 'customerTypeDelete'])->name('customer.type.delete');
+
+    Route::post('/add', [CustomerTypeController::class, 'customerTypeAdd'])->name('customer.type.add');
+    Route::post('/update/{id}', [CustomerTypeController::class, 'customerTypeUpdate'])->name('customer.type.update');
 });
 
 //Order route
