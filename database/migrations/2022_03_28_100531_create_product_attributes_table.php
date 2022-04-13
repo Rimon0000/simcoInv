@@ -17,6 +17,7 @@ class CreateProductAttributesTable extends Migration
             $table->id();
 
             $table->integer('product_id');
+            $table->string('product_attr');
             $table->integer('quantity');
             $table->integer('alert_stock');
             $table->integer('unit_id');

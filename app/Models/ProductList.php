@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductList extends Model
 {
     use HasFactory;
+    
     public function userName()
     {
         # code...

@@ -123,12 +123,11 @@ class CategoriesController extends Controller
     //category Edit function
     public function  categoryEdit($id)
     {
-
         $data = category::find($id);
         return view('admin.category.category_edit', compact('data'));
     }
 
-     //category Update function
+    //category Update function
     public function categoryUpdate(Request $request, $id)
     {
 
@@ -161,15 +160,15 @@ class CategoriesController extends Controller
         }
     }
 
-     //category edit image function
-     public function categoryEditImage($id)
-     {
- 
-         //fetching data from category table
-         $data = category::find($id);
- 
-         return view('admin.category.category_edit_image', compact('data'));
-     }
+    //category edit image function
+    public function categoryEditImage($id)
+    {
+
+        //fetching data from category table
+        $data = category::find($id);
+
+        return view('admin.category.category_edit_image', compact('data'));
+    }
 
     //category image update function
     public function categoryImageUpdate(Request $request, $id)
@@ -245,43 +244,26 @@ class CategoriesController extends Controller
         //find the image
         $image = category::find($id);
 
-        if ($image->cat_img == null) {
-            //delete the row from thr table
-            $deleted = DB::table('categories')->where('id', '=', $id)->delete();
-
-            if ($deleted) {
-                $notification = [
-                    'message' => 'Category Deleted Successfully',
-                    'alert-type' => 'error'
-                ];
-                return redirect()->route('category.show')->with($notification);
-            } else {
-                $notification = [
-                    'message' => 'Something Went Wrong',
-                    'alert-type' => 'warning'
-                ];
-                return redirect()->route('category.show')->with($notification);
-            };
-        } else {
-
-            //Unlink the image from the folder 
+        if (!empty($image->cat_img)) {
+            //Unlink the image from the folder
             unlink($image->cat_img);
-            //delete the row from thr table
-            $deleted = DB::table('categories')->where('id', '=', $id)->delete();
-
-            if ($deleted) {
-                $notification = [
-                    'message' => 'Category Deleted Successfully',
-                    'alert-type' => 'error'
-                ];
-                return redirect()->route('category.show')->with($notification);
-            } else {
-                $notification = [
-                    'message' => 'Something Went Wrong',
-                    'alert-type' => 'warning'
-                ];
-                return redirect()->route('category.show')->with($notification);
-            };
         }
+
+        $deleted = DB::table('categories')->where('id', '=', $id)->delete();
+
+        if ($deleted) {
+            $notification = [
+                'message' => 'Category Deleted Successfully',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('category.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('category.show')->with($notification);
+        };
+
     }
 }
