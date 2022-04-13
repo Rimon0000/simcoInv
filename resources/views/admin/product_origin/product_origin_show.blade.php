@@ -27,9 +27,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php $count = 0;  @endphp
                         @foreach($data as $datum)
+                        @php $count++;  @endphp
                         <tr>
-                            <td scope="row">#</td>
+                            <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->origin}}</td>
                             <td>{{ $datum->short_name }}</td>
                             <td>{{ $datum->userName->name }}</td>

@@ -27,9 +27,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php $count = 0;  @endphp
                         @foreach($data as $datum)
+                        @php $count++;  @endphp
                         <tr>
-                            <td scope="row">#</td>
+                            <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->sub_sub_cat_name}}</td>
                             <td>{{ $datum->categoryName->cat_name }}</td>
                             <td>{{ $datum->subCategoryName->sub_cat_name }}</td>

@@ -26,9 +26,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php $count = 0; @endphp
                         @foreach($data as $datum)
+                        @php $count++; @endphp
                         <tr>
-                            <td scope="row">#</td>
+                            <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->display_section}}</td>
                             <td>{{ $datum->userName->name }}</td>
                             <td><a href="{{ route ('displaysection.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
