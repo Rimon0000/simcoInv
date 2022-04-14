@@ -113,6 +113,23 @@
                             </ul>
                         </li>
                         <!-- Dashboard end -->
+                        <!-- Invoice start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#invoice" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Invoice Mgmt</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="invoice" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('invoice.show')}}">
+                                            <span class="nav-text">Manage Invoice</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Invoice end -->
 
                         <!-- Attribute start -->
                         <li class="has-sub">
@@ -429,23 +446,7 @@
                             </ul>
                         </li>
                         <!-- Product Purchase end -->
-                        <!-- Invoice start -->
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#invoice" aria-expanded="false" aria-controls="charts">
-                                <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Invoice Mgmt</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse" id="invoice" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('category.show')}}">
-                                            <span class="nav-text">Manage Invoice</span>
-                                        </a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                        <!-- Invoice end -->
+
                         <!-- Product Stock start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Stock" aria-expanded="false" aria-controls="charts">

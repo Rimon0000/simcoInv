@@ -18,6 +18,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OriginController;
 use App\Http\Controllers\PolicyController;
@@ -494,6 +495,32 @@ Route::prefix('purchase')->group(function () {
     Route::get('/order/add/{id}', [PurchaseController::class, 'purchaseOrderAddPage'])->name('purchase.add.page');
     
     Route::post('/order/add', [PurchaseController::class, 'purchaseOrderAdd'])->name('purchase.order.add');
+
+});
+
+
+Route::prefix('invoice')->group(function () {
+
+    // invoice order
+
+    Route::get('/show', [InvoiceController::class, 'invoiceShow'])->name('invoice.show');
+
+    Route::get('/edit/{id}', [InvoiceController::class, 'invoiceEdit'])->name('invoice.edit');
+    Route::get('/status/{id}', [InvoiceController::class, 'invoiceStatus'])->name('invoice.status');
+    Route::get('/delete/{id}', [InvoiceController::class, 'invoiceDelete'])->name('invoice.delete');
+
+    Route::post('/add', [InvoiceController::class, 'invoiceAdd'])->name('invoice.add');
+    Route::post('/update/{id}', [InvoiceController::class, 'invoiceUpdate'])->name('invoice.update');
+
+
+    Route::post('/store', [InvoiceController::class, 'invoiceStore'])->name('invoice.store');
+
+    
+    // invoice details
+    Route::get('/order/edit/{id}', [InvoiceController::class, 'invoiceOrderEdit'])->name('invoice.order.edit');
+    Route::get('/order/add/{id}', [InvoiceController::class, 'invoiceOrderAddPage'])->name('invoice.add.page');
+    
+    Route::post('/order/add', [InvoiceController::class, 'invoiceOrderAdd'])->name('invoice.order.add');
 
 });
 

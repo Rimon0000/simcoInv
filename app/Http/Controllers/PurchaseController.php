@@ -188,7 +188,6 @@ class PurchaseController extends Controller
         return view('admin.purchase.purchase_add', compact('purchaseOrder', 'units', 'data', 'categories', 'productlists', 'productAttrs', 'sub_total_price'));
     }
 
-
     //purchaseOrderEdit Add Page function
     public function purchaseOrderEdit($id)
     {
