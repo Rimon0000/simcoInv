@@ -11,26 +11,27 @@
     <div class="col-lg-12 ">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Add Product Purchase</h2>
+                <h2>Add Product Purchase - {{ $purchaseOrder->purchase_no }}</h2>
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{route('purchase.store')}}" >
+                <form method="POST" action="{{route('purchase.store')}}">
                     @csrf
 
                     <!-- Product Color, Size, Pieces, Weight Section Start -->
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase Date</label>
-                            <input type="date" class="form-control form-control-sm" name="purchase_date" value="{{ $purchaseOrder->purchase_date }}" readonly>
+                            <input type="date" class="form-control form-control-sm" name="purchase_date" value="{{ $purchaseOrder->purchase_date }}" style="background-color:#95caff;" readonly>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control form-control-sm" name="purchase_no"  value="{{ $purchaseOrder->purchase_no }}" readonly>
+                            <input type="text" class="form-control form-control-sm" name="purchase_no" value="{{ $purchaseOrder->purchase_no }}" style="background-color:#95caff;" readonly>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Supplier Name</label>
-                            <input type="text" class="form-control form-control-sm" name="supplier_id"  value="{{ $purchaseOrder->supplier_id }}" readonly>
+                            <input type="hidden" name="supplier_id" value="{{ $purchaseOrder->supplier_id }}">
+                            <input type="text" class="form-control form-control-sm" value="{{ $purchaseOrder->supplierName->supplier_name }}" style="background-color:#95caff;" readonly>
                         </div>
                     </div>
                     <hr>
@@ -136,7 +137,7 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Unit Price</label>
-                            <input type="text" class="form-control form-control-sm" name="unit_price"  placeholder="Unit Price" required>
+                            <input type="number" class="form-control form-control-sm" id="unit_price" value="0" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
                             <div class="pt-1">
                                 @error('unit_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -145,7 +146,7 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Qty</label>
-                            <input type="text" class="form-control form-control-sm" name="quantity"  placeholder="Quantity" required>
+                            <input type="number" class="form-control form-control-sm" id="quantity" value="0" name="quantity" onchange="inputQty()" placeholder="Quantity" required>
                             <div class="pt-1">
                                 @error('quantity')
                                 <span class="text-danger"> {{$message}} </span>
@@ -154,11 +155,11 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Total price</label>
-                            <input type="text" class="form-control form-control-sm" name="total_price"  readonly>
+                            <input type="number" class="form-control form-control-sm" value="0" id="total_price" name="total_price" style="background-color:#95caff;" readonly>
                         </div>
                         <div class="col-md-5 mb-3">
                             <label for="validationServer01">Description</label>
-                            <input type="text" class="form-control form-control-sm" name="description"  placeholder="Total Price">
+                            <input type="text" class="form-control form-control-sm" id="quantity" name="description" placeholder="Total Price">
                             <div class="pt-1">
                                 @error('description')
                                 <span class="text-danger"> {{$message}} </span>
@@ -247,7 +248,7 @@
                                                             <td scope="col">{{ $datum->description }}</td>
                                                             <th scope="col"><em>Created_by</em></th>
                                                             <td scope="col">{{ $datum->userName->name }}</td>
-                                                        </tr>                                                      
+                                                        </tr>
 
                                                     </thead>
                                                 </table>
@@ -257,16 +258,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        More..
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
                                             <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
                                             <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                         </ul>
                                     </div>
@@ -295,6 +295,26 @@
     </div>
 </div>
 
+<script>
+    var unit_price;
+    var quantity;
+
+    function unitPrice() {
+        unit_price = document.getElementById('unit_price').value;
+        document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity));
+    }
+
+    function inputQty() {
+        quantity = document.getElementById('quantity').value;
+        document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity));
+
+        console.log(document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity)));
+    }
+
+
+
+</script>
+
 @endsection
 
 @section('scripts')
@@ -305,5 +325,4 @@
         });
     });
 </script>
-
 @endsection

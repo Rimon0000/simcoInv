@@ -71,9 +71,8 @@ class PurchaseController extends Controller
         $quantity         = $request->quantity;
         $unit_price       = $request->unit_price;
         $description      = $request->description;
-        
-        $total_price      = $quantity * $unit_price;
 
+        $total_price      = $quantity * $unit_price;
 
         $result = DB::table('purchases')->insert([
             'purchase_date'   => $purchase_date,
@@ -94,17 +93,28 @@ class PurchaseController extends Controller
         ]);
 
         if ($result) {
+
+            $sub_total_price = Purchase::where('purchase_no', $purchase_no)->sum('total_price');
+
+            DB::table('purchase_orders')
+                ->where('purchase_no', $purchase_no)
+                ->update(
+                    [
+                        'total_price'  => $sub_total_price,
+                    ]
+                );
+
             $notification = [
                 'message'    => 'Purchase Orders Added Successfully',
                 'alert-type' => 'success'
             ];
-            return redirect()->route('purchase.show')->with($notification);
+            return redirect()->back()->with($notification);
         } else {
             $notification = [
                 'message' => 'Something Went Wrong',
                 'alert-type' => 'warning'
             ];
-            return redirect()->route('purchase.show')->with($notification);
+            return redirect()->back()->with($notification);
         }
     }
 
@@ -141,7 +151,6 @@ class PurchaseController extends Controller
         $purchase_no   = $request->purchase_no;
         $supplier_id   = $request->supplier_id;
 
-
         $result = DB::table('purchase_orders')->insert([
             'purchase_date' => $purchase_date,
             'purchase_no'   => $purchase_no,
@@ -176,6 +185,19 @@ class PurchaseController extends Controller
         $data            = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
         $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
 
-        return view('admin.purchase.purchase_add', compact('purchaseOrder', 'units', 'data','categories', 'productlists', 'productAttrs' , 'sub_total_price'));
+        return view('admin.purchase.purchase_add', compact('purchaseOrder', 'units', 'data', 'categories', 'productlists', 'productAttrs', 'sub_total_price'));
+    }
+
+
+    //purchaseOrderEdit Add Page function
+    public function purchaseOrderEdit($id)
+    {
+        $purchaseOrder  = PurchaseOrder::find($id);
+        $supplier_names = Supplier::all();
+        // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
+        // $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
+        // 'data','sub_total_price'
+        
+        return view('admin.purchase.purchase_order_edit', compact('purchaseOrder','supplier_names',));
     }
 }
