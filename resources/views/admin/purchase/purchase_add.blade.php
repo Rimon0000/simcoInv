@@ -46,7 +46,7 @@
                                 <option value="">Product Code</option>
 
                                 @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->id }}">{{ $productlist->product_id }}</option>
+                                <option value="{{ $productlist->product_id  }}">{{ $productlist->product_id }}</option>
                                 @endforeach
 
                             </select>
@@ -61,7 +61,7 @@
                             <label for="validationServer01">Unit</label>
                             <select class="form-control js-example-basic-single" name="unit_id" required>
                                 <span class="text-danger" value=""> Unit </span>
-                                <option value="">Product Code</option>
+                                <option value="">Product Unit</option>
 
                                 @foreach($units as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
@@ -261,16 +261,18 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="btn-group">
+
+                                <a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($purchaseOrder->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                                <!-- <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>                                            
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
                         @endforeach
@@ -310,9 +312,6 @@
 
         console.log(document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity)));
     }
-
-
-
 </script>
 
 @endsection

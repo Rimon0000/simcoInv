@@ -196,7 +196,61 @@ class PurchaseController extends Controller
         // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
         // $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
         // 'data','sub_total_price'
-        
-        return view('admin.purchase.purchase_order_edit', compact('purchaseOrder','supplier_names',));
+
+        return view('admin.purchase.purchase_order_edit', compact('purchaseOrder', 'supplier_names',));
+    }
+
+
+
+    public function purchaseOrderApprove($id)
+    {
+        # code...
+        $data = PurchaseOrder::find($id);
+
+        if (empty($data->approved)) {
+
+            $approved = DB::table('purchase_orders')
+                ->where('id', $id)
+                ->where('approved', 0)
+                ->update([
+                    'approved' => 1
+                ]);
+
+            if ($approved) {
+
+                $purchase_data = Purchase::where('purchase_no', $data->purchase_no)->get(['product_code','quantity']);
+
+                foreach ($purchase_data as $purchase_datum) {
+
+                    $product_qtys = DB::table('product_lists')->where('product_id', $purchase_datum->product_code)->get('stock');
+
+                    foreach ($product_qtys as $product_qty) {
+
+                        (float) $new_qty = (float)$product_qty->stock + (float)$purchase_datum->quantity;
+
+                        DB::table('product_lists')->where('product_id', $purchase_datum->product_code)
+                            ->update(['stock' => $new_qty]);
+                    }
+                }
+
+                $notification = [
+                    'message'    => 'Purchase Orders Approved.',
+                    'alert-type' => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                $notification = [
+                    'message' => 'Something Went Wrong.',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->back()->with($notification);
+            }
+        } else {
+            $notification = [
+                'message' => 'All Ready Approved.',
+                'alert-type' => 'info'
+            ];
+            return redirect()->back()->with($notification);
+        }
     }
 }

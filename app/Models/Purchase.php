@@ -36,6 +36,6 @@ class Purchase extends Model
     public function productName()
     {
         # code...
-        return $this->hasOne(ProductList::class, 'id', 'product_code');
+        return $this->hasOne(ProductList::class, 'product_id', 'product_code');
     }
 }

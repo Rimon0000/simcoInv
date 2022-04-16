@@ -491,6 +491,8 @@ Route::prefix('purchase')->group(function () {
 
     
     // Purchase order
+    
+    Route::get('/order/approve/{id}', [PurchaseController::class, 'purchaseOrderApprove'])->name('purchase.order.approve');
     Route::get('/order/edit/{id}', [PurchaseController::class, 'purchaseOrderEdit'])->name('purchase.order.edit');
     Route::get('/order/add/{id}', [PurchaseController::class, 'purchaseOrderAddPage'])->name('purchase.add.page');
     

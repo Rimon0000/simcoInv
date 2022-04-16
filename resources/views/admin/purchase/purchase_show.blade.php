@@ -71,8 +71,8 @@
                             <th scope="col">Purchase No.</th>
                             <th scope="col">Supplier Name</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Approved</th>
-                            <th scope="col">Add Purchase Items</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"><i class="fa-solid fa-circle-plus"></i> Purchase Items</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -88,18 +88,20 @@
                             <td>{{ $datum->purchase_no}}</td>
                             <td>{{ $datum->supplierName->supplier_name }}</td>
                             <td>{{ $datum->total_price}}</td>
-                            <td>Not Approved</td>
-                            <td><a href="{{ route ('purchase.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i> Purchase Items</a></td>
+                            <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
+                            <td><a href="{{ route ('purchase.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus"></i> Add Items</a></td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        More..
+                                    
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"></li>
+                                            <li class="p-1"><a href="{{ route('purchase.order.approve', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-primary">Check</a></li>
+                                            @if(empty($datum->approved))
                                             <li class="p-1"><a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
                                             <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>

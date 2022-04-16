@@ -20,7 +20,7 @@ class CreatePurchaseOrdersTable extends Migration
             $table->string('purchase_no')->uniqid();
             $table->integer('supplier_id');
             $table->double('total_price')->default(0);
-            $table->integer('approved')->nullable();
+            $table->integer('approved')->default(0);
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
 
