@@ -17,7 +17,43 @@ use Illuminate\Support\Facades\DB;
 
 class ProductListController extends Controller
 {
-    //
+    // API
+
+    public function productListSingle($id)
+    {
+        # code...
+        $product_stock = DB::table('product_lists')->where('product_id', $id)->get(['id','stock', 'title', 'category']);
+        $category_name = DB::table('categories')->find($product_stock[0]->category);
+
+        $data = [
+
+
+            'cat_name' => $category_name->cat_name,
+            'p_id'     => $product_stock[0]->id,
+            'cat_id'   => $product_stock[0]->category,
+            'title'    => $product_stock[0]->title,
+            'stock'    => $product_stock[0]->stock,
+
+        ];
+        
+        // return $product_stock[0];
+        // return $category_name->cat_name;
+        return $data;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // API End
+
+
     //Product List show function
     public function productListShow()
     {

@@ -31,6 +31,33 @@ class InvoiceController extends Controller
         return view('admin.invoice.invoice_show', compact('data', 'customers', 'units'));
     }
 
+    //invoice approve show function
+    public function invoiceApprove()
+    {
+        $units     = Unit::orderByDesc('id')->get();
+        $data      = Invoice::orderByDesc('id')->get();
+        $customers = Customer::orderByDesc('id')->get();
+
+        return view('admin.invoice.invoice_approve_show', compact('data', 'customers', 'units'));
+    }
+
+
+
+
+    //invoiceApproveStatus Add Page function
+    public function invoiceApproveStatus($id)
+    {
+        $invoiceOrder    = Invoice::find($id);
+        $units           = Unit::orderBy('unit_name', 'asc')->get();
+        $categories      = Category::orderBy('cat_name', 'asc')->get();
+        $productlists    = ProductList::orderBy('title', 'asc')->get();
+        $productAttrs    = ProductAttribute::orderByDesc('id')->get();
+        $data            = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->orderByDesc('id')->get();
+        $sub_total_price = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->sum('total_price');
+
+        return view('admin.invoice.invoice_approve', compact('invoiceOrder', 'units', 'data', 'categories', 'productlists', 'productAttrs', 'sub_total_price'));
+    }
+
 
     //Invoice Order add function
     public function invoiceOrderAdd(Request $request)
@@ -134,7 +161,7 @@ class InvoiceController extends Controller
 
         if (empty($productStock->stock) || $productStock->stock < $quantity) {
             $notification = [
-                'message'    => 'Out of Stock',
+                'message'    => 'Out of Stock Or Limit Exceeded',
                 'alert-type' => 'warning'
             ];
             return redirect()->back()->with($notification);
@@ -188,6 +215,7 @@ class InvoiceController extends Controller
         $paid_status     = $request->paid_status;
 
 
+
         $result = DB::table('payments')->insert([
             'invoice_date'     => $invoice_date,
             'invoice_id'       => $invoice_id,
@@ -214,7 +242,18 @@ class InvoiceController extends Controller
                 'created_at'          => Carbon::now(),
             ]);
 
+            $sub_total_price = InvoiceDetail::where('invoice_no', $invoice_no)->sum('total_price');
+
+            DB::table('invoices')
+                ->where('invoice_no', $invoice_no)
+                ->update(
+                    [
+                        'total_price'  => $sub_total_price,
+                    ]
+                );
+
             $notification = [
+
                 'message'    => 'Invoice Payment Added Successfully',
                 'alert-type' => 'success'
             ];
@@ -226,5 +265,117 @@ class InvoiceController extends Controller
             ];
             return redirect()->back()->with($notification);
         }
+    }
+
+
+    public function invoiceApproveStore(Request $request)
+    {
+
+        $invoice_no = $request->invoice_no;
+
+        $approved = DB::table('invoices')
+            ->where('invoice_no', $invoice_no)
+            ->where('approved', 0)
+            ->update([
+                'approved' => 1,
+                'approved_by' => Auth::user()->id,
+            ]);
+        # code...
+
+        if ($approved) {
+
+            $invoice_data = InvoiceDetail::where('invoice_no', $invoice_no)->get(['product_id', 'quantity']);
+
+            foreach ($invoice_data as $invoice_datum) {
+
+                $product_qtys = DB::table('product_lists')->where('product_id', $invoice_datum->product_id)->get('stock');
+
+                foreach ($product_qtys as $product_qty) {
+
+                    (float) $new_qty = (float)$product_qty->stock - (float)$invoice_datum->quantity;
+
+                    DB::table('product_lists')->where('product_id', $invoice_datum->product_id)
+                        ->update(['stock' => $new_qty]);
+                }
+            }
+
+            $notification = [
+                'message'    => 'Invoice Orders Approved.',
+                'alert-type' => 'success'
+            ];
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong.',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->back()->with($notification);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $data = PurchaseOrder::find($id);
+
+        // if (empty($data->approved)) {
+
+        //     $approved = DB::table('purchase_orders')
+        //         ->where('id', $id)
+        //         ->where('approved', 0)
+        //         ->update([
+        //             'approved' => 1
+        //         ]);
+
+        //     if ($approved) {
+
+        //         $purchase_data = Purchase::where('purchase_no', $data->purchase_no)->get(['product_code','quantity']);
+
+        //         foreach ($purchase_data as $purchase_datum) {
+
+        //             $product_qtys = DB::table('product_lists')->where('product_id', $purchase_datum->product_code)->get('stock');
+
+        //             foreach ($product_qtys as $product_qty) {
+
+        //                 (float) $new_qty = (float)$product_qty->stock + (float)$purchase_datum->quantity;
+
+        //                 DB::table('product_lists')->where('product_id', $purchase_datum->product_code)
+        //                     ->update(['stock' => $new_qty]);
+        //             }
+        //         }
+
+        //         $notification = [
+        //             'message'    => 'Purchase Orders Approved.',
+        //             'alert-type' => 'success'
+        //         ];
+        //         return redirect()->back()->with($notification);
+        //     } else {
+        //         $notification = [
+        //             'message' => 'Something Went Wrong.',
+        //             'alert-type' => 'warning'
+        //         ];
+        //         return redirect()->back()->with($notification);
+        //     }
+        // } else {
+        //     $notification = [
+        //         'message' => 'All Ready Approved.',
+        //         'alert-type' => 'info'
+        //     ];
+        //     return redirect()->back()->with($notification);
+        // }
     }
 }

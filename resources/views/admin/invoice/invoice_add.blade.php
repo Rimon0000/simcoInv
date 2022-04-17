@@ -41,7 +41,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Product Code</label>
-                            <select class="form-control js-example-basic-single" name="product_id" required>
+                            <select class="form-control js-example-basic-single" name="product_id" id="product_id" onchange="unitStock()" required>
                                 <span class="text-danger" value=""> Product Code </span>
                                 <option value="">Product Code</option>
 
@@ -59,7 +59,9 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Product Name</label>
-                            <select class="form-control js-example-basic-single" name="product_name" required>
+                            <input type="hidden" id="p_id" name="product_name">
+                            <input type="text" class="form-control form-control-sm" id="product_name" readonly>
+                            <!-- <select class="form-control js-example-basic-single" name="product_name" required>
                                 <span class="text-danger" value=""> Product Name </span>
                                 <option value="">Product Name</option>
 
@@ -73,12 +75,14 @@
                                 @error('product_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Category</label>
-                            <select class="form-control js-example-basic-single" name="cat_id" required>
+                            <input type="hidden" id="cat_id" name="cat_id">
+                            <input type="text" class="form-control form-control-sm" id="cat_name" readonly>
+                            <!-- <select class="form-control js-example-basic-single" name="cat_id" required>
                                 <span class="text-danger" value=""> Product Category </span>
                                 <option value="">Product Category</option>
 
@@ -92,7 +96,7 @@
                                 @error('cat_id')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -125,6 +129,10 @@
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Unit Stock</label>
+                            <input type="number" class="form-control form-control-sm" id="unit_stock" value="0" readonly>
                         </div>
 
                         <div class="col-md-2 mb-3">
@@ -311,7 +319,7 @@
                     <strong>Enter Paid Amount:</strong>
                 </div>
                 <div>
-                    <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" id="paid_amount" value="0" name="paid_amount" onchange="sum()" placeholder="Paid Amount">
+                    <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" id="paid_amount" value="0" name="paid_amount" onchange="sum()" placeholder="Paid Amount" required>
                 </div>
                 <div class="pb-1 pt-1">
                     <strong> Due Amount (Tk):</strong>
@@ -326,7 +334,7 @@
                     <strong> Paid Status:</strong>
                 </div>
                 <div>
-                    <select class="form-control js-example-basic-single" name="paid_status">
+                    <select class="form-control js-example-basic-single" name="paid_status" required>
                         <span class="text-danger" value=""> Paid Status </span>
                         <option value="">Paid Status</option>
                         <option value="Full Paid">Full Paid</option>
@@ -401,6 +409,22 @@
 
 
 
+    function unitStock() {
+        var product_id = document.getElementById('product_id').value;
+
+        axios.get('http://127.0.0.1:8000/product-mgt/product-list/single-product/' + product_id)
+            .then(function(response) {
+                document.getElementById('unit_stock').value = response.data.stock;
+                document.getElementById('product_name').value = response.data.title;
+                document.getElementById('cat_name').value = response.data.cat_name;
+                document.getElementById('p_id').value = response.data.p_id;
+                document.getElementById('cat_id').value = response.data.cat_id;
+                document.getElementById('cat_name').value = response.data.cat_name;
+            });
+    }
+
+
+
     // function paidAmount() {
 
     //     sub_total_price = document.getElementById('sub_total_price').value;
@@ -416,9 +440,6 @@
     //     }
 
     // }
-
-
-
 </script>
 
 @endsection

@@ -332,6 +332,10 @@ Route::prefix('product-mgt/product-list')->group(function () {
     Route::get('/status/{id}', [ProductListController::class, 'productListStatus'])->name('product.list.status');
     Route::get('/delete/{id}', [ProductListController::class, 'productListDelete'])->name('product.list.delete');
 
+    Route::get('/single-product/{id}', [ProductListController::class, 'productListSingle']);
+
+
+
     Route::post('/add', [ProductListController::class, 'productListAdd'])->name('product.list.add');
     Route::post('/update/{id}', [ProductListController::class, 'productListUpdate'])->name('product.list.update');
     Route::post('/image/update/{id}', [ProductListController::class, 'productListImageUpdate'])->name('product.list.image.update');
@@ -505,6 +509,8 @@ Route::prefix('invoice')->group(function () {
 
     // invoice order
 
+    Route::get('/approve', [InvoiceController::class, 'invoiceApprove'])->name('invoice.approve');
+    Route::get('/approve/{id}', [InvoiceController::class, 'invoiceApproveStatus'])->name('invoice.approve.status');
     Route::get('/show', [InvoiceController::class, 'invoiceShow'])->name('invoice.show');
 
     Route::get('/edit/{id}', [InvoiceController::class, 'invoiceEdit'])->name('invoice.edit');
@@ -516,6 +522,7 @@ Route::prefix('invoice')->group(function () {
 
 
     Route::post('/store', [InvoiceController::class, 'invoiceStore'])->name('invoice.store');
+    Route::post('/approve/store', [InvoiceController::class, 'invoiceApproveStore'])->name('invoice.approve.store');
 
     
     // invoice details

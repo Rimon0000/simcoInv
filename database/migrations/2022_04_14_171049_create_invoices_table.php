@@ -21,6 +21,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('customer_id');
             $table->integer('total_price')->default(0);
             $table->string('description')->nullable();
+            $table->integer('approved')->default(0);
             $table->integer('approved_by')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();

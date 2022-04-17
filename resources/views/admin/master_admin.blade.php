@@ -41,6 +41,8 @@
     <link href="assets/img/favicon.png" rel="shortcut icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
   -->
@@ -141,6 +143,11 @@
                                     <li>
                                         <a class="sidenav-item-link" href="{{route('invoice.show')}}">
                                             <span class="nav-text">Manage Invoice</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('invoice.approve')}}">
+                                            <span class="nav-text">Approved Invoice</span>
                                         </a>
                                     </li>
                                 </div>
