@@ -31,7 +31,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Customer Name</label>
                             <input type="hidden" name="customer_id" value="{{ $invoiceOrder->customer_id }}">
-                            <input type="text" class="form-control form-control-sm" value="{{ $invoiceOrder->customer_id }}" style="background-color:#95caff;" readonly>
+                            <input type="text" class="form-control form-control-sm" name="customer_id" value="{{ $invoiceOrder->customer_id }}" style="background-color:#95caff;" readonly>
                         </div>
                     </div>
                     <hr>
@@ -46,7 +46,7 @@
                                 <option value="">Product Code</option>
 
                                 @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->id }}">{{ $productlist->product_id }}</option>
+                                <option value="{{ $productlist->product_id }}">{{ $productlist->product_id }}</option>
                                 @endforeach
 
                             </select>
@@ -159,7 +159,7 @@
                 <h2>Invoice Item Table</h2>
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="categoryTable" class="display" style="width:100%">
+                <table class="table table-striped" id="invoiceTable" class="display" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -249,99 +249,107 @@
                             </td>
                         </tr>
                         @endforeach
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td> <em>Sub Total:</em> </td>
-                            <td style="color: black;"><strong id="sub_total_price">{{ $sub_total_price }}</strong></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Discount Price:</td>
-                            <td>
-                                <input type="number" class="form-control form-control-sm" id="discount_price" min="0" max="{{ $sub_total_price  }}" value="0" name="discount_price" onchange="discountPrice()" placeholder="Discount Price" required>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Enter Paid Amount:</td>
-                            <td>
-                                <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" id="paid_amount" name="paid_amount" placeholder="Paid Amount">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Paid Status:</td>
-                            <td>
-
-                                <select class="form-control js-example-basic-single" name="paid_status">
-                                    <span class="text-danger" value=""> Paid Status </span>
-                                    <option value="">Paid Status</option>
-                                    <option value="1">Full Paid</option>
-                                    <option value="2">Full Due</option>
-                                    <option value="3">Partial Paid</option>
-                                </select>
-
-                                <div class="pt-1">
-                                    @error('paid_status')
-                                    <span class="text-danger"> {{$message}} </span>
-                                    @enderror
-                                </div>
-
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-
-                                <input type="submit" class="btn btn-block btn-sm btn-danger" value="Submit">
-
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td> <em>Sub Total (Tk):</em> </td>
+                            <td style="color: black;"><strong>{{ $sub_total_price }}</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
-
     </div>
 </div>
 
+<div class="row m-3">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-6">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <form action="{{ route('invoice.order.payment', ['id' => $invoiceOrder->id]) }}" method="POST">
+                @csrf
+
+                <div class="pb-1 pt-1">
+                    <strong>Invoice Date:</strong>
+                </div>
+                <div>
+                    <input type="date" class="form-control form-control-sm" name="invoice_date" value="{{ $invoiceOrder->invoice_date }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Invoice No.</strong>
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-sm" name="invoice_no" value="{{ $invoiceOrder->invoice_no }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Customer Name</strong>
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-sm" name="customer_id" value="{{ $invoiceOrder->customer_id }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Sub Total (Tk):</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" id="sub_total_price" name="sub_total_price" value="{{ $sub_total_price }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Discount Price (Tk):</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" id="discount_price" min="0" max="{{ $sub_total_price  }}" value="0" name="discount_price" onchange="discountPrice()" placeholder="Discount Price" required>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Enter Paid Amount:</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" id="paid_amount" value="0" name="paid_amount" onchange="sum()" placeholder="Paid Amount">
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong> Due Amount (Tk):</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" value="0" id="due_amount" name="due_amount" onchange="sum()" placeholder="Due Amount">
+                </div>
+                <div id="sum" class="pt-2 pb-2">
+
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong> Paid Status:</strong>
+                </div>
+                <div>
+                    <select class="form-control js-example-basic-single" name="paid_status">
+                        <span class="text-danger" value=""> Paid Status </span>
+                        <option value="">Paid Status</option>
+                        <option value="Full Paid">Full Paid</option>
+                        <option value="Full Due">Full Due</option>
+                        <option value="Partial Paid">Partial Paid</option>
+                    </select>
+
+                    <div class="pt-1">
+                        @error('paid_status')
+                        <span class="text-danger"> {{$message}} </span>
+                        @enderror
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <input type="submit" class="btn btn-block btn-sm btn-danger" value="Submit">
+                </div>
+
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     // ####################### Part one
     var unit_price;
@@ -355,8 +363,6 @@
     function inputQty() {
         quantity = document.getElementById('quantity').value;
         document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity));
-
-        console.log(document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity)));
     }
 
 
@@ -365,17 +371,54 @@
     var discount_price;
     var paid_amount;
 
+
     function discountPrice() {
-        sub_total_price = document.getElementById('sub_total_price').innerHTML;
+        sub_total_price = document.getElementById('sub_total_price').value;
         discount_price = document.getElementById('discount_price').value;
+        paid_amount = document.getElementById('paid_amount').value;
+        due_amount = document.getElementById('due_amount').value;
 
         if (discount_price == 0) {
             document.getElementById('paid_amount').value = parseInt(sub_total_price);
+            document.getElementById('due_amount').value = 0;
+
         } else {
             document.getElementById('paid_amount').value = (parseInt(sub_total_price) - parseInt(discount_price));
+            document.getElementById('due_amount').value = 0;
         }
-
+        sum();
     }
+
+
+    function sum() {
+        sub_total_price = document.getElementById('sub_total_price').value;
+        discount_price = document.getElementById('discount_price').value;
+        paid_amount = document.getElementById('paid_amount').value;
+        due_amount = document.getElementById('due_amount').value;
+
+        document.getElementById('sum').innerHTML = `<small><strong>Summition Tk:</strong> ${(parseInt(discount_price) + parseInt(paid_amount) + parseInt(due_amount))}</small>`;
+    }
+
+
+
+    // function paidAmount() {
+
+    //     sub_total_price = document.getElementById('sub_total_price').value;
+    //     discount_price = document.getElementById('discount_price').value;
+    //     due_amount = document.getElementById('due_amount').value;
+    //     paid_amount = document.getElementById('paid_amount').value;
+
+    //     if (discount_price == 0) {
+    //         document.getElementById('due_amount').value = parseInt(sub_total_price) - (parseInt(discount_price) + parseInt(paid_amount));
+    //     } else if (discount_price > 0) {
+    //         document.getElementById('due_amount').value = parseInt(sub_total_price) - (parseInt(discount_price) + parseInt(paid_amount));
+
+    //     }
+
+    // }
+
+
+
 </script>
 
 @endsection
@@ -386,6 +429,10 @@
         $('.js-example-basic-single').select2({
             width: '100%'
         });
+    });
+
+    $(document).ready(function() {
+        $('#invoiceTable').DataTable();
     });
 </script>
 @endsection

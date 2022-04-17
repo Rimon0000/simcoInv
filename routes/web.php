@@ -523,6 +523,7 @@ Route::prefix('invoice')->group(function () {
     Route::get('/order/add/{id}', [InvoiceController::class, 'invoiceOrderAddPage'])->name('invoice.add.page');
     
     Route::post('/order/add', [InvoiceController::class, 'invoiceOrderAdd'])->name('invoice.order.add');
+    Route::post('/order/payment/{id}', [InvoiceController::class, 'invoiceOrderPayment'])->name('invoice.order.payment');
 
 });
 

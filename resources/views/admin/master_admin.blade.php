@@ -113,6 +113,23 @@
                             </ul>
                         </li>
                         <!-- Dashboard end -->
+                        <!-- Product Purchase start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#purchase" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Purchase Mgmt</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="purchase" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('purchase.show')}}">
+                                            <span class="nav-text">Product Purchase</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Product Purchase end -->
                         <!-- Invoice start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#invoice" aria-expanded="false" aria-controls="charts">
@@ -429,23 +446,7 @@
                             </ul>
                         </li>
                         <!-- Product order end -->
-                        <!-- Product Purchase start -->
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#purchase" aria-expanded="false" aria-controls="charts">
-                                <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Purchase Mgmt</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse" id="purchase" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('purchase.show')}}">
-                                            <span class="nav-text">Product Purchase</span>
-                                        </a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                        <!-- Product Purchase end -->
+
 
                         <!-- Product Stock start -->
                         <li class="has-sub">

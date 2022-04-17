@@ -25,8 +25,6 @@ class InvoiceController extends Controller
     public function invoiceShow()
     {
         $units     = Unit::orderByDesc('id')->get();
-
-
         $data      = Invoice::orderByDesc('id')->get();
         $customers = Customer::orderByDesc('id')->get();
 
@@ -132,36 +130,92 @@ class InvoiceController extends Controller
 
         $total_price  = $quantity * $unit_price;
 
-        $result = DB::table('invoice_details')->insert([
-            'invoice_date'    => $invoice_date,
-            'invoice_no'      => $invoice_no,
-            'customer_id'     => $customer_id,
-            'cat_id'          => $cat_id,
-            'unit_id'         => $unit_id,
-            'product_id'      => $product_id,
-            'product_name'    => $product_name,
-            'quantity'        => $quantity,
-            'unit_price'      => $unit_price,
-            'total_price'     => $total_price,
+        $productStock = DB::table('product_lists')->where('product_id', $product_id)->get('stock')->first();
 
-            'created_by'      => Auth::user()->id,
-            'created_at'      => Carbon::now(),
+        if (empty($productStock->stock) || $productStock->stock < $quantity) {
+            $notification = [
+                'message'    => 'Out of Stock',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->back()->with($notification);
+        }
+
+        if ($productStock->stock >= $quantity) {
+            $result = DB::table('invoice_details')->insert([
+                'invoice_date' => $invoice_date,
+                'invoice_no'   => $invoice_no,
+                'customer_id'  => $customer_id,
+                'cat_id'       => $cat_id,
+                'unit_id'      => $unit_id,
+                'product_id'   => $product_id,
+                'product_name' => $product_name,
+                'quantity'     => $quantity,
+                'unit_price'   => $unit_price,
+                'total_price'  => $total_price,
+
+                'created_by'   => Auth::user()->id,
+                'created_at'   => Carbon::now(),
+            ]);
+
+            if ($result) {
+                $notification = [
+                    'message'    => 'Item Added Successfully',
+                    'alert-type' => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                $notification = [
+                    'message' => 'Something Went Wrong',
+                    'alert-type' => 'warning'
+                ];
+                return redirect()->back()->with($notification);
+            }
+        }
+    }
+
+
+    public function invoiceOrderPayment(Request $request, $id)
+    {
+        # code...
+        $invoice_date    = $request->invoice_date;
+        $invoice_id      = $id;
+        $invoice_no      = $request->invoice_no;
+        $customer_id     = $request->customer_id;
+        $sub_total_price = $request->sub_total_price;
+        $discount_price  = $request->discount_price;
+        $paid_amount     = $request->paid_amount;
+        $due_amount      = $request->due_amount;
+        $paid_status     = $request->paid_status;
+
+
+        $result = DB::table('payments')->insert([
+            'invoice_date'     => $invoice_date,
+            'invoice_id'       => $invoice_id,
+            'invoice_no'       => $invoice_no,
+            'customer_id'      => $customer_id,
+            'sub_total_amount' => $sub_total_price,
+            'discount_amount'  => $discount_price,
+            'paid_amount'      => $paid_amount,
+            'due_amount'       => $due_amount,
+            'paid_status'      => $paid_status,
+
+            'created_by'       => Auth::user()->id,
+            'created_at'       => Carbon::now(),
         ]);
 
         if ($result) {
 
-            // $sub_total_price = Purchase::where('purchase_no', $purchase_no)->sum('total_price');
-
-            // DB::table('purchase_orders')
-            //     ->where('purchase_no', $purchase_no)
-            //     ->update(
-            //         [
-            //             'total_price'  => $sub_total_price,
-            //         ]
-            //     );
+            DB::table('payment_details')->insert([
+                'invoice_date'        => $invoice_date,
+                'invoice_id'          => $invoice_id,
+                'invoice_no'          => $invoice_no,
+                'current_paid_amount' => $paid_amount,
+                'updated_by'          => Auth::user()->id,
+                'created_at'          => Carbon::now(),
+            ]);
 
             $notification = [
-                'message'    => 'Item Added Successfully',
+                'message'    => 'Invoice Payment Added Successfully',
                 'alert-type' => 'success'
             ];
             return redirect()->back()->with($notification);
