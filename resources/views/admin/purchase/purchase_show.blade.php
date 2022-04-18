@@ -100,7 +100,7 @@
                                             <li class="p-1"><a href="{{ route('purchase.order.approve', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-primary">Check</a></li>
                                             @if(empty($datum->approved))
                                             <li class="p-1"><a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('purchase.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                             @endif
                                         </ul>
                                     </div>

@@ -2,6 +2,12 @@
 @section ('content')
 
 <div class="row p-3">
+    <div class="col-lg-6">
+        <a href="{{ route ('purchase.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
+    </div>
+</div>
+
+<div class="row p-3">
     <div class="col-lg-12">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
@@ -9,7 +15,7 @@
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{route('purchase.order.add')}}">
+                <form method="POST" action="{{route('purchase.order.update', ['id'=> $purchaseOrder->id])}}">
                     @csrf
                     <!-- Purchase Date, Purchase No., supplier_name Section Start -->
                     <div class="form-row">

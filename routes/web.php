@@ -487,6 +487,7 @@ Route::prefix('purchase')->group(function () {
     Route::get('/status/{id}', [PurchaseController::class, 'purchaseStatus'])->name('purchase.status');
     Route::get('/delete/{id}', [PurchaseController::class, 'purchaseDelete'])->name('purchase.delete');
 
+
     Route::post('/add', [PurchaseController::class, 'purchaseAdd'])->name('purchase.add');
     Route::post('/update/{id}', [PurchaseController::class, 'purchaseUpdate'])->name('purchase.update');
 
@@ -499,8 +500,10 @@ Route::prefix('purchase')->group(function () {
     Route::get('/order/approve/{id}', [PurchaseController::class, 'purchaseOrderApprove'])->name('purchase.order.approve');
     Route::get('/order/edit/{id}', [PurchaseController::class, 'purchaseOrderEdit'])->name('purchase.order.edit');
     Route::get('/order/add/{id}', [PurchaseController::class, 'purchaseOrderAddPage'])->name('purchase.add.page');
+    Route::get('/delete/{id}', [PurchaseController::class, 'purchaseOrderDelete'])->name('purchase.order.delete');
     
     Route::post('/order/add', [PurchaseController::class, 'purchaseOrderAdd'])->name('purchase.order.add');
+    Route::post('/update/{id}', [PurchaseController::class, 'purchaseOrderUpdate'])->name('purchase.order.update');
 
 });
 

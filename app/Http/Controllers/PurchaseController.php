@@ -188,9 +188,10 @@ class PurchaseController extends Controller
         return view('admin.purchase.purchase_add', compact('purchaseOrder', 'units', 'data', 'categories', 'productlists', 'productAttrs', 'sub_total_price'));
     }
 
-    //purchaseOrderEdit Add Page function
+    //purchase Order Edit function
     public function purchaseOrderEdit($id)
     {
+        // $data = Purchase::find($id);
         $purchaseOrder  = PurchaseOrder::find($id);
         $supplier_names = Supplier::all();
         // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
@@ -198,6 +199,44 @@ class PurchaseController extends Controller
         // 'data','sub_total_price'
 
         return view('admin.purchase.purchase_order_edit', compact('purchaseOrder', 'supplier_names',));
+    }
+
+    //Purchase Order Update function
+    public function purchaseOrderUpdate(Request $request, $id)
+    {
+
+
+        #code ...
+        $purchase_date = $request->purchase_date;
+        $purchase_no   = $request->purchase_no;
+        $supplier_id   = $request->supplier_id;
+
+
+        $dataUpdated = DB::table('purchase_orders')
+            ->where('id', $id)
+            ->update(
+                [
+                    'purchase_date' => $purchase_date,
+                    'purchase_no'   => $purchase_no,
+                    'supplier_id'   => $supplier_id,
+                    'updated_by'    => Auth::user()->id,
+                    'updated_at'    => Carbon::now(),
+                ]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Purchase Order Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('purchase.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('purchase.show')->with($notification);
+        }
     }
 
 
@@ -218,7 +257,7 @@ class PurchaseController extends Controller
 
             if ($approved) {
 
-                $purchase_data = Purchase::where('purchase_no', $data->purchase_no)->get(['product_code','quantity']);
+                $purchase_data = Purchase::where('purchase_no', $data->purchase_no)->get(['product_code', 'quantity']);
 
                 foreach ($purchase_data as $purchase_datum) {
 
@@ -262,7 +301,7 @@ class PurchaseController extends Controller
 
         if ($deleted) {
             $notification = [
-                'message' => 'Purchase Deleted Successfully',
+                'message' => 'Purchase Item Deleted Successfully',
                 'alert-type' => 'error'
             ];
             return redirect()->back()->with($notification);
@@ -272,6 +311,27 @@ class PurchaseController extends Controller
                 'alert-type' => 'warning'
             ];
             return redirect()->back()->with($notification);
+        };
+    }
+
+    //Purchase Order delete function
+    public function purchaseOrderDelete($id)
+    {
+        //delete the row from thr table
+        $deleted = DB::table('purchase_orders')->where('id', '=', $id)->delete();
+
+        if ($deleted) {
+            $notification = [
+                'message' => 'Purchase Order Item Deleted Successfully',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('purchase.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('purchase.show')->with($notification);
         };
     }
 }
