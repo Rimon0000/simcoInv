@@ -28,6 +28,14 @@ class PurchaseController extends Controller
         return view('admin.purchase.purchase_show', compact('data', 'supplier_names', 'units'));
     }
 
+    
+    //purchase approve show function
+    public function purchaseApproveShow()
+    {
+        $data = PurchaseOrder::where('approved', 0)->orderByDesc('id')->get();
+        return view('admin.purchase.purchase_approve', compact('data',));
+    }
+
     //purchase Add Page function
     public function purchaseAddPage()
     {
@@ -191,12 +199,9 @@ class PurchaseController extends Controller
     //purchase Order Edit function
     public function purchaseOrderEdit($id)
     {
-        // $data = Purchase::find($id);
+
         $purchaseOrder  = PurchaseOrder::find($id);
         $supplier_names = Supplier::all();
-        // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
-        // $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
-        // 'data','sub_total_price'
 
         return view('admin.purchase.purchase_order_edit', compact('purchaseOrder', 'supplier_names',));
     }
@@ -294,12 +299,23 @@ class PurchaseController extends Controller
     }
 
     //Purchase delete function
-    public function purchaseDelete($id)
+    public function purchaseDelete($id, $purchase_no)
     {
         //delete the row from thr table
         $deleted = DB::table('purchases')->where('id', '=', $id)->delete();
 
         if ($deleted) {
+
+            $sub_total_price = Purchase::where('purchase_no', $purchase_no)->sum('total_price');
+
+            DB::table('purchase_orders')
+                ->where('purchase_no', $purchase_no)
+                ->update(
+                    [
+                        'total_price'  => $sub_total_price,
+                    ]
+                );
+
             $notification = [
                 'message' => 'Purchase Item Deleted Successfully',
                 'alert-type' => 'error'

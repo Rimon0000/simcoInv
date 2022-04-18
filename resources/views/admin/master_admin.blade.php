@@ -128,6 +128,11 @@
                                             <span class="nav-text">Product Purchase</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('purchase.approve.show')}}">
+                                            <span class="nav-text">Approved Purchase</span>
+                                        </a>
+                                    </li>
                                 </div>
                             </ul>
                         </li>

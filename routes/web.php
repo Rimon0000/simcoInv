@@ -482,10 +482,11 @@ Route::prefix('employee/department')->group(function () {
 
 Route::prefix('purchase')->group(function () {
     Route::get('/show', [PurchaseController::class, 'purchaseShow'])->name('purchase.show');
+    Route::get('/approve/show', [PurchaseController::class, 'purchaseApproveShow'])->name('purchase.approve.show');
 
     Route::get('/edit/{id}', [PurchaseController::class, 'purchaseEdit'])->name('purchase.edit');
     Route::get('/status/{id}', [PurchaseController::class, 'purchaseStatus'])->name('purchase.status');
-    Route::get('/delete/{id}', [PurchaseController::class, 'purchaseDelete'])->name('purchase.delete');
+    Route::get('/delete/{id}/{purchase_no}', [PurchaseController::class, 'purchaseDelete'])->name('purchase.delete');
 
 
     Route::post('/add', [PurchaseController::class, 'purchaseAdd'])->name('purchase.add');
@@ -500,7 +501,7 @@ Route::prefix('purchase')->group(function () {
     Route::get('/order/approve/{id}', [PurchaseController::class, 'purchaseOrderApprove'])->name('purchase.order.approve');
     Route::get('/order/edit/{id}', [PurchaseController::class, 'purchaseOrderEdit'])->name('purchase.order.edit');
     Route::get('/order/add/{id}', [PurchaseController::class, 'purchaseOrderAddPage'])->name('purchase.add.page');
-    Route::get('/delete/{id}', [PurchaseController::class, 'purchaseOrderDelete'])->name('purchase.order.delete');
+    Route::get('/order/delete/{id}', [PurchaseController::class, 'purchaseOrderDelete'])->name('purchase.order.delete');
     
     Route::post('/order/add', [PurchaseController::class, 'purchaseOrderAdd'])->name('purchase.order.add');
     Route::post('/update/{id}', [PurchaseController::class, 'purchaseOrderUpdate'])->name('purchase.order.update');
