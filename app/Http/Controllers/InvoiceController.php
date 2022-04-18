@@ -185,6 +185,17 @@ class InvoiceController extends Controller
             ]);
 
             if ($result) {
+
+                $sub_total_price = InvoiceDetail::where('invoice_no', $invoice_no)->sum('total_price');
+
+                DB::table('invoices')
+                    ->where('invoice_no', $invoice_no)
+                    ->update(
+                        [
+                            'total_price'  => $sub_total_price,
+                        ]
+                    );
+
                 $notification = [
                     'message'    => 'Item Added Successfully',
                     'alert-type' => 'success'
@@ -379,78 +390,90 @@ class InvoiceController extends Controller
         // }
     }
 
-     //Invoice Order Edit function
-     public function invoiceOrderEdit($id)
-     {
-         $data = Invoice::find($id);
-         $customers = Customer::all();
-         // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
-         // $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
-         // 'data','sub_total_price'
- 
-         return view('admin.invoice.invoice_edit', compact('data', 'customers',));
-     }
- 
-     //Invoice Order Update function
-     public function invoiceOrderUpdate(Request $request, $id)
-     {
- 
- 
-         #code ...
-         $invoice_date = $request->invoice_date;
-         $invoice_no   = $request->invoice_no;
-         $customer_id  = $request->customer_id;
-         $description  = $request->description;
- 
- 
-         $dataUpdated = DB::table('invoices')
-             ->where('id', $id)
-             ->update(
-                 [
-                     'invoice_date' => $invoice_date,
-                     'invoice_no'   => $invoice_no,
-                     'customer_id'   => $customer_id,
-                     'description'   => $description,
-                     'updated_by'    => Auth::user()->id,
-                     'updated_at'    => Carbon::now(),
-                 ]
-             );
- 
-         if ($dataUpdated) {
-             $notification = [
-                 'message' => 'Invoice Order Updated Successfully',
-                 'alert-type' => 'success'
-             ];
-             return redirect()->route('invoice.show')->with($notification);
-         } else {
-             $notification = [
-                 'message' => 'Something Went Wrong',
-                 'alert-type' => 'warning'
-             ];
-             return redirect()->route('invoice.show')->with($notification);
-         }
-     }
+    //Invoice Order Edit function
+    public function invoiceOrderEdit($id)
+    {
+        $data = Invoice::find($id);
+        $customers = Customer::all();
+        // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
+        // $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
+        // 'data','sub_total_price'
 
-     //Invoice delete function
-     public function invoiceDelete($id)
-     {
-         //delete the row from thr table
-         $deleted = DB::table('invoice_details')->where('id', '=', $id)->delete();
- 
-         if ($deleted) {
-             $notification = [
-                 'message' => 'Invoice Item Deleted Successfully',
-                 'alert-type' => 'error'
-             ];
-             return redirect()->back()->with($notification);
-         } else {
-             $notification = [
-                 'message' => 'Something Went Wrong',
-                 'alert-type' => 'warning'
-             ];
-             return redirect()->back()->with($notification);
-         };
-     }
+        return view('admin.invoice.invoice_edit', compact('data', 'customers',));
+    }
+
+    //Invoice Order Update function
+    public function invoiceOrderUpdate(Request $request, $id)
+    {
+
+
+        #code ...
+        $invoice_date = $request->invoice_date;
+        $invoice_no   = $request->invoice_no;
+        $customer_id  = $request->customer_id;
+        $description  = $request->description;
+
+
+        $dataUpdated = DB::table('invoices')
+            ->where('id', $id)
+            ->update(
+                [
+                    'invoice_date' => $invoice_date,
+                    'invoice_no'   => $invoice_no,
+                    'customer_id'   => $customer_id,
+                    'description'   => $description,
+                    'updated_by'    => Auth::user()->id,
+                    'updated_at'    => Carbon::now(),
+                ]
+            );
+
+        if ($dataUpdated) {
+            $notification = [
+                'message' => 'Invoice Order Updated Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('invoice.show')->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->route('invoice.show')->with($notification);
+        }
+    }
+
+    //Invoice delete function
+    public function invoiceDelete($id, $invoice_no)
+    {
+        //delete the row from thr table
+        $deleted = DB::table('invoice_details')->where('id', '=', $id)->delete();
+
+        if ($deleted) {
+
+            $sub_total_price = InvoiceDetail::where('invoice_no', $invoice_no)->sum('total_price');
+
+            DB::table('invoices')
+                ->where('invoice_no', $invoice_no)
+                ->update(
+                    [
+                        'total_price' => $sub_total_price,
+                    ]
+                );
+
+
+            $notification = [
+                'message' => 'Invoice Item Deleted Successfully',
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->back()->with($notification);
+        };
+    }
 
     //Invoice Order delete function
     public function invoiceOrderDelete($id)

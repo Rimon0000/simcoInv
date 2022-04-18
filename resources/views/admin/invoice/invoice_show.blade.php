@@ -39,7 +39,7 @@
                                 @foreach($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
                                 @endforeach
-                            
+
 
                             </select>
 
@@ -101,21 +101,11 @@
                             <td>{{ $datum->invoice_no}}</td>
                             <td>{{ $datum->customer_id }}</td>
                             <td>{{ $datum->total_price}}</td>
-                            <td>Not Approved</td>
+                            <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
                             <td><a href="{{ route ('invoice.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i> Invoice Items</a></td>
                             <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        More..
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            <li class="p-1"></li>
-                                            <li class="p-1"><a href="{{ route('invoice.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('invoice.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="{{ route('invoice.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->total_price) ? '' : 'disabled' }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('invoice.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($datum->total_price) ? '' : 'disabled' }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         @endforeach

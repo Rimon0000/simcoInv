@@ -519,7 +519,7 @@ Route::prefix('invoice')->group(function () {
 
     Route::get('/edit/{id}', [InvoiceController::class, 'invoiceEdit'])->name('invoice.edit');
     Route::get('/status/{id}', [InvoiceController::class, 'invoiceStatus'])->name('invoice.status');
-    Route::get('/delete/{id}', [InvoiceController::class, 'invoiceDelete'])->name('invoice.delete');
+    Route::get('/delete/{id}/{invoice_no}', [InvoiceController::class, 'invoiceDelete'])->name('invoice.delete');
 
     Route::post('/add', [InvoiceController::class, 'invoiceAdd'])->name('invoice.add');
     Route::post('/update/{id}', [InvoiceController::class, 'invoiceUpdate'])->name('invoice.update');

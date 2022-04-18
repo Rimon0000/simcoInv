@@ -244,16 +244,7 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('invoice.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="{{ route('invoice.delete', ['id' => $datum->id, 'invoice_no' => $datum->invoice_no ]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         @endforeach
