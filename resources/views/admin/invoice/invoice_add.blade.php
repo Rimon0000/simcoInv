@@ -123,7 +123,7 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Unit Price</label>
-                            <input type="number" class="form-control form-control-sm" id="unit_price" value="0" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
+                            <input type="number" class="form-control form-control-sm" id="unit_price" min="0" value="0" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
                             <div class="pt-1">
                                 @error('unit_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -137,7 +137,7 @@
 
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Qty</label>
-                            <input type="number" class="form-control form-control-sm" id="quantity" value="0" name="quantity" onchange="inputQty()" placeholder="Quantity" required>
+                            <input type="number" class="form-control form-control-sm" id="quantity" min="0" value="0" name="quantity" onchange="inputQty()" placeholder="Quantity" required>
                             <div class="pt-1">
                                 @error('quantity')
                                 <span class="text-danger"> {{$message}} </span>
@@ -191,9 +191,9 @@
                         <tr>
                             <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->product_id }}</td>
-                            <td>{{ $datum->product_name }}</td>
-                            <td>{{ $datum->cat_id }}</td>
-                            <td>{{ $datum->unit_id }}</td>
+                            <td>{{ $datum->productName->title }}</td>
+                            <td>{{ $datum->categoryName->cat_name }}</td>
+                            <td>{{ $datum->unitName->unit_name }}</td>
                             <td>{{ $datum->unit_price }}</td>
                             <td>{{ $datum->quantity }}</td>
                             <td>{{ $datum->total_price }}</td>
@@ -250,7 +250,7 @@
                                     <div class="dropdown-menu">
                                         <ul>
                                             <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('invoice.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
