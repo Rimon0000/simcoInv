@@ -11,7 +11,7 @@
     <div class="col-lg-12 ">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Add Product Purchase - {{ $purchaseOrder->purchase_no }}</h2>
+                <h2>Purchase Details - {{ $purchaseOrder->purchase_no }}</h2>
             </div>
             <div class="card-body">
 
@@ -36,7 +36,8 @@
                     </div>
                     <hr>
                     <!-- Product Color, Size, Pieces, Weight Section End -->
-
+                    <h5>Add Product:</h5>
+                    <br>
                     <!-- Product Code, Stock Qty, Stock Alert, Units Start -->
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
@@ -76,7 +77,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 mb-3">
+                        <!-- <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Attribute Number</label>
                             <select class="form-control js-example-basic-single" name="product_attr_id">
                                 <span class="text-danger" value=""> Product Attribute </span>
@@ -93,7 +94,7 @@
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Category</label>
                             <select class="form-control js-example-basic-single" name="cat_id" required>
