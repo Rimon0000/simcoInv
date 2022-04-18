@@ -17,8 +17,8 @@
                             <th scope="col">Customer Name</th>
                             <th scope="col">Total</th>
                             <th scope="col">Approved</th>
-                            <th scope="col">Add Invoice Items</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Approve Invoice</th>
+                            <!-- <th scope="col">Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -33,9 +33,9 @@
                             <td>{{ $datum->invoice_no}}</td>
                             <td>{{ $datum->customer_id }}</td>
                             <td>{{ $datum->total_price}}</td>
-                            <td>Not Approved</td>
-                            <td><a href="{{ route ('invoice.approve.status', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i> Invoice Items</a></td>
-                            <td>
+                            <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
+                            <td><a href="{{ route ('invoice.approve.status', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-check text-danger"></i> Approve</a></td>
+                            <!-- <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         More..
@@ -48,7 +48,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </td>
+                            </td> -->
                         </tr>
                         @endforeach
                     </tbody>
