@@ -43,14 +43,13 @@ class InvoiceController extends Controller
     //invoiceApproveStatus Add Page function
     public function invoiceApproveStatus($id)
     {
-        $invoiceOrder    = Invoice::find($id);
-        $data            = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->orderByDesc('id')->get();
+        $invoiceOrder    = Invoice::with(['invoiceDetails'])->find($id);
         $sub_total_price = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->sum('total_price');
         $discount_amount = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('discount_amount');
         $paid_amount     = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('paid_amount');
         $due_amount      = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('due_amount');
 
-        return view('admin.invoice.invoice_approve', compact('invoiceOrder', 'data', 'sub_total_price','discount_amount','paid_amount','due_amount'));
+        return view('admin.invoice.invoice_approve', compact('invoiceOrder', 'sub_total_price','discount_amount','paid_amount','due_amount'));
     }
 
 

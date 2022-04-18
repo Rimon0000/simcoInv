@@ -59,12 +59,12 @@
                                         <tbody>
                                             @php $count = 0; @endphp
 
-                                            @foreach($data as $datum)
+                                            @foreach($invoiceOrder['invoiceDetails'] as $key => $datum)
 
                                             @php $count++; @endphp
                                             <tr>
                                                 <td scope="row">{{ $count }}</td>
-                                                <td>{{ $datum->product_id }}</td>
+                                                <td>{{ $datum->product_id}}</td>
                                                 <td>{{ $datum->productName->title }}</td>
                                                 <td>{{ $datum->cat_id }}</td>
                                                 <td>{{ $datum->unit_id }}</td>
@@ -77,66 +77,54 @@
                                             @endforeach
                                         </tbody>
                                         <tfoot>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td> <em>Sub Total (Tk):</em> </td>
-                                                <td style="color: black;"><strong>{{ $sub_total_price }}</strong></td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td> <em>Discount (Tk):</em> </td>
-                                                <td style="color: black;"><strong>{{ $discount_amount }}</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td> <em>Paid Amount (Tk):</em> </td>
-                                                <td style="color: black;"><strong>{{ $paid_amount }}</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td> <em>Due Amount (Tk):</em> </td>
-                                                <td style="color: black;"><strong>{{ $due_amount }}</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td> <em>Grand Total (Tk):</em> </td>
-                                                <td style="color: black;"><strong>{{ $sub_total_price - $discount_amount}}</strong></td>
-                                            </tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><em>Sub Total (Tk)</em></td>
+                                            <td><strong>{{ $sub_total_price }}</strong></td>
                                         </tfoot>
                                     </table>
                                 </div>
+
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6 d-flex justify-content-end">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><h5>Sub Total (Tk) :</h5> </td>
+                                        <th><h5 class="mx-2">{{ $sub_total_price }}</h5></th>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Discount (Tk) :</h5></td>
+                                        <th><h5 class="mx-2">{{ $discount_amount }}</h5></th>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Paid Amount (Tk) :</h5> </td>
+                                        <th><h5 class="mx-2">{{ $paid_amount }}</h5></th>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Due Amount (Tk) :</h5> </td>
+                                        <th><h5 class="mx-2">{{ $due_amount }}</h5></th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><hr></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Grand Total (Tk) :</h5> </td>
+                                        <th><h5 class="mx-2">{{ $sub_total_price - $discount_amount }}</h5></th>
+                                    </tr>
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
                     <hr>
