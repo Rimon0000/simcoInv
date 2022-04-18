@@ -532,9 +532,11 @@ Route::prefix('invoice')->group(function () {
     // invoice details
     Route::get('/order/edit/{id}', [InvoiceController::class, 'invoiceOrderEdit'])->name('invoice.order.edit');
     Route::get('/order/add/{id}', [InvoiceController::class, 'invoiceOrderAddPage'])->name('invoice.add.page');
+    Route::get('/order/delete/{id}', [InvoiceController::class, 'invoiceOrderDelete'])->name('invoice.order.delete');
     
     Route::post('/order/add', [InvoiceController::class, 'invoiceOrderAdd'])->name('invoice.order.add');
     Route::post('/order/payment/{id}', [InvoiceController::class, 'invoiceOrderPayment'])->name('invoice.order.payment');
+    Route::post('/order/update/{id}', [InvoiceController::class, 'invoiceOrderUpdate'])->name('invoice.order.update');
 
 });
 
