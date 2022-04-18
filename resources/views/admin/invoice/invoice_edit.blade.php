@@ -7,6 +7,11 @@
             <div class="card-header card-header-border-bottom">
                 <h2>Edit Invoice Order</h2>
             </div>
+
+
+
+
+            
             <div class="card-body">
 
                 <form method="POST" action="{{route('invoice.order.update', ['id'=> $data->id])}}">
