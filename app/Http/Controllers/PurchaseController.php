@@ -253,4 +253,25 @@ class PurchaseController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+    //Purchase delete function
+    public function purchaseDelete($id)
+    {
+        //delete the row from thr table
+        $deleted = DB::table('purchases')->where('id', '=', $id)->delete();
+
+        if ($deleted) {
+            $notification = [
+                'message' => 'Purchase Deleted Successfully',
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->back()->with($notification);
+        };
+    }
 }

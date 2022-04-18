@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-md-5 mb-3">
                             <label for="validationServer01">Description</label>
-                            <input type="text" class="form-control form-control-sm" id="quantity" name="description" placeholder="Total Price">
+                            <input type="text" class="form-control form-control-sm" id="quantity" name="description" placeholder="Description">
                             <div class="pt-1">
                                 @error('description')
                                 <span class="text-danger"> {{$message}} </span>
@@ -262,7 +262,7 @@
                             </td>
                             <td>
 
-                                <a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($purchaseOrder->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                <a href="{{ route('purchase.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($purchaseOrder->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
 
                                 <!-- <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -284,7 +284,8 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td> <em>Sub Total:</em> </td>
+                        <td></td>
+                        <td> <em>Sub Total (TK):</em> </td>
                         <td style="color: black;"><strong>{{ $sub_total_price }}</strong></td>
                         <td></td>
                         <td></td>
