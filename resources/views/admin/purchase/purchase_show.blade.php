@@ -84,7 +84,7 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td>{{ $datum->purchase_date}}</td>
+                            <td>{{ date('d-m-y', strtotime($datum->purchase_date)) }}</td>
                             <td>{{ $datum->purchase_no}}</td>
                             <td>{{ $datum->supplierName->supplier_name }}</td>
                             <td>{{ $datum->total_price}}</td>
@@ -93,14 +93,12 @@
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('purchase.order.approve', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-primary">Check</a></li>
                                             @if(empty($datum->approved))
-                                            <li class="p-1"><a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('purchase.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->total_price) ? '' : 'disabled' }}">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('purchase.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($datum->total_price) ? '' : 'disabled' }} " >Delete</a></li>
                                             @endif
                                         </ul>
                                     </div>

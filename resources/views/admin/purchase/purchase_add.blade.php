@@ -181,7 +181,7 @@
     <div class="col-lg-12">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Purchase Table</h2>
+                <h2>Purchase Items Table</h2>
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="categoryTable" class="display" style="width:100%">
@@ -262,7 +262,7 @@
                             </td>
                             <td>
 
-                                <a href="{{ route('purchase.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($purchaseOrder->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                <a href="{{ route('purchase.delete', ['id' => $datum->id, 'purchase_no' => $datum->purchase_no ]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($purchaseOrder->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
 
                                 <!-- <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
