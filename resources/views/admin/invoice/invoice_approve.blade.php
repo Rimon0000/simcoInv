@@ -3,7 +3,7 @@
 
 <div class="row m-3">
     <div class="col-lg-6">
-        <a href="{{ route ('invoice.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
+        <a href="{{ route ('invoice.approve')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
     </div>
 </div>
 
@@ -12,7 +12,6 @@
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
                 <h2>Invoice No. - {{ $invoiceOrder->invoice_no }}</h2>
-                <h2 class="float-right">Invoice No. - {{ $invoiceOrder->invoice_no }}</h2>
             </div>
             <div class="card-body">
 
@@ -23,16 +22,15 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Invoice Date: {{ $invoiceOrder->invoice_date }}</label>
-                            <input type="hidden" name="invoice_no">
+                            <input type="hidden" name="invoice_no" value="{{ $invoiceOrder->invoice_no }}">
                         </div>
+                    </div>
+                    <div class="form-row">
+
                         <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Customer Name: {{ $invoiceOrder->customer_id }}</label>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Customer Mobile: {{ $invoiceOrder->customer_id }}</label>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Customer Address: {{ $invoiceOrder->customer_id }}</label>
+                            <label for="validationServer01">Customer Name: {{ $invoiceOrder->customerName->customer_name }}</label>
+                            <label for="validationServer01">Customer Mobile: {{ $invoiceOrder->customerName->mobile }}</label>
+                            <label for="validationServer01">Customer Address: {{ $invoiceOrder->customerName->present_address }}</label>
                         </div>
                     </div>
                     <hr>
@@ -44,7 +42,7 @@
                                     <h2>Invoice Item Table</h2>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table table-striped" class="display" style="width:100%">
+                                    <table class="table table-striped" id="invoiceTable" class="display" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -52,6 +50,7 @@
                                                 <th scope="col">Product Name</th>
                                                 <th scope="col">Category</th>
                                                 <th scope="col">Unit</th>
+                                                <th scope="col">Current Stock</th>
                                                 <th scope="col">Unit Price</th>
                                                 <th scope="col">Qty</th>
                                                 <th scope="col">Total</th>
@@ -66,9 +65,10 @@
                                             <tr>
                                                 <td scope="row">{{ $count }}</td>
                                                 <td>{{ $datum->product_id }}</td>
-                                                <td>{{ $datum->product_name }}</td>
+                                                <td>{{ $datum->productName->title }}</td>
                                                 <td>{{ $datum->cat_id }}</td>
                                                 <td>{{ $datum->unit_id }}</td>
+                                                <td>{{ $datum->productName->stock }}</td>
                                                 <td>{{ $datum->unit_price }}</td>
                                                 <td>{{ $datum->quantity }}</td>
                                                 <td>{{ $datum->total_price }}</td>
@@ -84,8 +84,54 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                                 <td> <em>Sub Total (Tk):</em> </td>
                                                 <td style="color: black;"><strong>{{ $sub_total_price }}</strong></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td> <em>Discount (Tk):</em> </td>
+                                                <td style="color: black;"><strong>{{ $discount_amount }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td> <em>Paid Amount (Tk):</em> </td>
+                                                <td style="color: black;"><strong>{{ $paid_amount }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td> <em>Due Amount (Tk):</em> </td>
+                                                <td style="color: black;"><strong>{{ $due_amount }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td> <em>Grand Total (Tk):</em> </td>
+                                                <td style="color: black;"><strong>{{ $sub_total_price - $discount_amount}}</strong></td>
                                             </tr>
                                         </tfoot>
                                     </table>
