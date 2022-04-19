@@ -31,4 +31,5 @@ class InvoiceDetail extends Model
         # code...
         return $this->hasOne(Unit::class, 'id', 'unit_id');
     }
+
 }

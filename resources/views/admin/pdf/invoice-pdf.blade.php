@@ -38,8 +38,8 @@
             top: -60px;
             left: -90px;
             right: -80px;
-            height: 50px;
-            font-size: 20px !important;
+            height: 70px;
+            font-size: 30px !important;
 
             /** Extra personal styles **/
             background-color: #008B8B;
@@ -68,7 +68,9 @@
 
     <!-- Define header and footer blocks before your content -->
     <header>
-        Simco IT Soltuions Ltd
+        <h2>Simco IT Soltuions Ltd</h2>
+        <address style="font-size: 24px;">Fulkoli building 4th floor , opposite moti complex , chawkbazar chittagong</address>
+        <br>
     </header>
     <br>
 
@@ -112,7 +114,7 @@
                                     <h2>Invoice Item Table</h2>
                                 </div>
                                 <div class="card-body">
-                                    <table style="border: 1px solid red;" class="table table-striped" id="invoiceTable" class="display" style="width:100%">
+                                    <table style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -120,7 +122,6 @@
                                                 <th scope="col">Product Name</th>
                                                 <th scope="col">Category</th>
                                                 <th scope="col">Unit</th>
-                                                <th scope="col">Current Stock</th>
                                                 <th scope="col">Unit Price</th>
                                                 <th scope="col">Qty</th>
                                                 <th scope="col">Total</th>
@@ -136,9 +137,8 @@
                                                 <td class="td__height" scope="row">{{ $count }}</td>
                                                 <td class="td__height">{{ $datum->product_id}}</td>
                                                 <td class="td__height">{{ $datum->productName->title }}</td>
-                                                <td class="td__height">{{ $datum->cat_id }}</td>
+                                                <td class="td__height">{{ $datum->categoryName->cat_name }}</td>
                                                 <td class="td__height">{{ $datum->unit_id }}</td>
-                                                <td class="td__height">{{ $datum->productName->stock }}</td>
                                                 <td class="td__height">{{ $datum->unit_price }}</td>
                                                 <td class="td__height">{{ $datum->quantity }}</td>
                                                 <td class="td__height">{{ $datum->total_price }}</td>
