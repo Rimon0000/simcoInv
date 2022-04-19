@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class InvoiceController extends Controller
 {
@@ -49,7 +50,7 @@ class InvoiceController extends Controller
         $paid_amount     = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('paid_amount');
         $due_amount      = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('due_amount');
 
-        return view('admin.invoice.invoice_approve', compact('invoiceOrder', 'sub_total_price','discount_amount','paid_amount','due_amount'));
+        return view('admin.invoice.invoice_approve', compact('invoiceOrder', 'sub_total_price', 'discount_amount', 'paid_amount', 'due_amount'));
     }
 
 
@@ -422,4 +423,41 @@ class InvoiceController extends Controller
             return redirect()->route('invoice.show')->with($notification);
         };
     }
+
+
+
+
+
+
+
+
+
+
+    // Inovice Print ########################################################################################################
+
+    public function invoicePrintShow()
+    {
+        # code...
+        $data = Invoice::all();
+        return view('admin.invoice.invoice_print.invoice_print_show', compact('data'));
+    }
+
+
+
+
+    public function invoicePrint($id)
+    {
+        $data['invoiceOrder']    = Invoice::with(['invoiceDetails'])->find($id);
+        $data['sub_total_price'] = InvoiceDetail::where('invoice_no', $data['invoiceOrder']->invoice_no)->sum('total_price');
+        $data['discount_amount'] = Payment::where('invoice_no', $data['invoiceOrder']->invoice_no)->sum('discount_amount');
+        $data['paid_amount']     = Payment::where('invoice_no', $data['invoiceOrder']->invoice_no)->sum('paid_amount');
+        $data['due_amount']      = Payment::where('invoice_no', $data['invoiceOrder']->invoice_no)->sum('due_amount');
+
+        $pdf  = PDF::loadView('admin.pdf.invoice-pdf', $data);
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
+    }
+
+    // Inovice Print ########################################################################################################
+
 }

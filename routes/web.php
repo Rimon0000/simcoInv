@@ -495,26 +495,22 @@ Route::prefix('purchase')->group(function () {
 
     Route::post('/store', [PurchaseController::class, 'purchaseStore'])->name('purchase.store');
 
-    
+
     // Purchase order
-    
+
     Route::get('/order/approve/{id}', [PurchaseController::class, 'purchaseOrderApprove'])->name('purchase.order.approve');
     Route::get('/order/edit/{id}', [PurchaseController::class, 'purchaseOrderEdit'])->name('purchase.order.edit');
     Route::get('/order/add/{id}', [PurchaseController::class, 'purchaseOrderAddPage'])->name('purchase.add.page');
     Route::get('/order/delete/{id}', [PurchaseController::class, 'purchaseOrderDelete'])->name('purchase.order.delete');
-    
+
     Route::post('/order/add', [PurchaseController::class, 'purchaseOrderAdd'])->name('purchase.order.add');
     Route::post('/update/{id}', [PurchaseController::class, 'purchaseOrderUpdate'])->name('purchase.order.update');
-
 });
 
 
 Route::prefix('invoice')->group(function () {
 
     // invoice order
-
-    Route::get('/approve', [InvoiceController::class, 'invoiceApprove'])->name('invoice.approve');
-    Route::get('/approve/{id}', [InvoiceController::class, 'invoiceApproveStatus'])->name('invoice.approve.status');
     Route::get('/show', [InvoiceController::class, 'invoiceShow'])->name('invoice.show');
 
     Route::get('/edit/{id}', [InvoiceController::class, 'invoiceEdit'])->name('invoice.edit');
@@ -524,20 +520,29 @@ Route::prefix('invoice')->group(function () {
     Route::post('/add', [InvoiceController::class, 'invoiceAdd'])->name('invoice.add');
     Route::post('/update/{id}', [InvoiceController::class, 'invoiceUpdate'])->name('invoice.update');
 
-
     Route::post('/store', [InvoiceController::class, 'invoiceStore'])->name('invoice.store');
     Route::post('/approve/store', [InvoiceController::class, 'invoiceApproveStore'])->name('invoice.approve.store');
 
-    
+
     // invoice details
     Route::get('/order/edit/{id}', [InvoiceController::class, 'invoiceOrderEdit'])->name('invoice.order.edit');
     Route::get('/order/add/{id}', [InvoiceController::class, 'invoiceOrderAddPage'])->name('invoice.add.page');
     Route::get('/order/delete/{id}', [InvoiceController::class, 'invoiceOrderDelete'])->name('invoice.order.delete');
-    
+
     Route::post('/order/add', [InvoiceController::class, 'invoiceOrderAdd'])->name('invoice.order.add');
     Route::post('/order/payment/{id}', [InvoiceController::class, 'invoiceOrderPayment'])->name('invoice.order.payment');
     Route::post('/order/update/{id}', [InvoiceController::class, 'invoiceOrderUpdate'])->name('invoice.order.update');
 
+
+    // invoice approve
+    Route::get('/approve', [InvoiceController::class, 'invoiceApprove'])->name('invoice.approve');
+    Route::get('/approve/{id}', [InvoiceController::class, 'invoiceApproveStatus'])->name('invoice.approve.status');
+});
+
+Route::prefix('invoice/print')->group(function () {
+    // invoice print
+    Route::get('/show', [InvoiceController::class, 'invoicePrintShow'])->name('invoice.print.show');
+    Route::get('/{id}', [InvoiceController::class, 'invoicePrint'])->name('invoice.print');
 });
 
 
@@ -546,7 +551,8 @@ Route::prefix('invoice')->group(function () {
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -104,6 +104,7 @@
                             <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
                             <td><a href="{{ route ('invoice.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i> Invoice Items</a></td>
                             <td>
+                                <a href="{{ route ('invoice.print', ['id' => $datum->id])}}" target="blank" class="btn btn-info btn-sm"><i class="fa fa-print" aria-hidden="true"></i></a>
                                 <a href="{{ route('invoice.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->total_price) ? '' : 'disabled' }}"><i class="fas fa-edit"></i></a>
                                 <a href="{{ route('invoice.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($datum->total_price) ? '' : 'disabled' }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
