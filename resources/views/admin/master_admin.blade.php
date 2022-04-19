@@ -160,6 +160,11 @@
                                             <span class="nav-text">Print Invoice</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('invoice.daily.report')}}">
+                                            <span class="nav-text">Daily Invoice Report</span>
+                                        </a>
+                                    </li>
                                 </div>
                             </ul>
                         </li>

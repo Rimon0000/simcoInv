@@ -545,7 +545,11 @@ Route::prefix('invoice/print')->group(function () {
     Route::get('/{id}', [InvoiceController::class, 'invoicePrint'])->name('invoice.print');
 });
 
-
+Route::prefix('invoice/daily/report')->group(function () {
+    // invoice Daily report
+    Route::get('/show', [InvoiceController::class, 'invoiceDailyReportShow'])->name('invoice.daily.report');
+    Route::post('/pdf', [InvoiceController::class, 'invoiceDailyReportPdf'])->name('invoice.daily.report.pdf');
+});
 
 
 

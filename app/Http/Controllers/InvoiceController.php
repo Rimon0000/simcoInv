@@ -442,9 +442,6 @@ class InvoiceController extends Controller
         return view('admin.invoice.invoice_print.invoice_print_show', compact('data'));
     }
 
-
-
-
     public function invoicePrint($id)
     {
         $data['invoiceOrder']    = Invoice::with(['invoiceDetails'])->find($id);
@@ -460,4 +457,31 @@ class InvoiceController extends Controller
 
     // Inovice Print ########################################################################################################
 
+
+    // invoiceDailyReportShow invoiceDailyReportShow ########################################################################################################
+
+    public function invoiceDailyReportShow()
+    {
+        # code...
+        return view('admin.invoice.daily_invoice_report');
+    }
+
+    public function invoiceDailyReportPdf(Request $request)
+    {
+        # code...
+        $start_date = date('Y-m-d', strtotime($request->start_date));
+        $end_date   = date('Y-m-d', strtotime($request->end_date));
+
+        $data['allData']     = Invoice::whereBetween('invoice_date', [$start_date, $end_date])->where('approved', 1)->get();
+        $data['grand_total'] = Invoice::whereBetween('invoice_date', [$start_date, $end_date])->where('approved', 1)->sum('total_price');
+        $data['start_date'] = $start_date;
+        $data['end_date']   = $end_date;
+
+        $pdf  = PDF::loadView('admin.pdf.daily-invoice-report-pdf', $data);
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
+
+    }
+
+    // invoiceDailyReportShow invoiceDailyReportShow ########################################################################################################
 }
