@@ -58,6 +58,60 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer01">Product Name</label>
+                            <select class="form-control js-example-basic-single" name="product_name" required>
+                                <span class="text-danger" value=""> Product Name </span>
+                                <option value="">Product Name</option>
+
+                                @foreach($productlists as $productlist)
+                                <option value="{{ $productlist->id }}">{{ $productlist->title }}</option>
+                                @endforeach
+
+                            </select>
+
+                            <div class="pt-1">
+                                @error('product_name')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationServer01">Product Attribute Number</label>
+                            <select class="form-control js-example-basic-single" name="product_attr_id">
+                                <span class="text-danger" value=""> Product Attribute </span>
+                                <option value="">Product Attribute</option>
+
+                                @foreach($productAttrs as $productAttr)
+                                <option value="{{ $productAttr->id }}">{{ $productAttr->product_attr }}</option>
+                                @endforeach
+
+                            </select>
+
+                            <div class="pt-1">
+                                @error('product_attr_id')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationServer01">Category</label>
+                            <select class="form-control js-example-basic-single" name="cat_id" required>
+                                <span class="text-danger" value=""> Product Category </span>
+                                <option value="">Product Category</option>
+
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
+                                @endforeach
+
+                            </select>
+
+                            <div class="pt-1">
+                                @error('cat_id')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Unit</label>
                             <select class="form-control js-example-basic-single" name="unit_id" required>
@@ -77,65 +131,14 @@
                             </div>
                         </div>
 
-                        <!-- <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Product Attribute Number</label>
-                            <select class="form-control js-example-basic-single" name="product_attr_id">
-                                <span class="text-danger" value=""> Product Attribute </span>
-                                <option value="">Product Attribute</option>
 
-                                @foreach($productAttrs as $productAttr)
-                                <option value="{{ $productAttr->id }}">{{ $productAttr->product_attr }}</option>
-                                @endforeach
 
-                            </select>
-
-                            <div class="pt-1">
-                                @error('product_attr_id')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div>
-                        </div> -->
-                        <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Category</label>
-                            <select class="form-control js-example-basic-single" name="cat_id" required>
-                                <span class="text-danger" value=""> Product Category </span>
-                                <option value="">Product Category</option>
-
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
-                                @endforeach
-
-                            </select>
-
-                            <div class="pt-1">
-                                @error('cat_id')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div>
-                        </div>
 
                     </div>
                     <!-- Product Category, Sub Category, Sub Sub Categroy End -->
                     <!-- Product Code, Stock Qty, Stock Alert, Units Start -->
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationServer01">Product Name</label>
-                            <select class="form-control js-example-basic-single" name="product_name" required>
-                                <span class="text-danger" value=""> Product Name </span>
-                                <option value="">Product Name</option>
 
-                                @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->id }}">{{ $productlist->title }}</option>
-                                @endforeach
-
-                            </select>
-
-                            <div class="pt-1">
-                                @error('product_name')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Unit Price</label>
                             <input type="number" class="form-control form-control-sm" id="unit_price" value="0" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
@@ -262,18 +265,7 @@
                                 </div>
                             </td>
                             <td>
-
                                 <a href="{{ route('purchase.delete', ['id' => $datum->id, 'purchase_no' => $datum->purchase_no ]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($purchaseOrder->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
-
-                                <!-- <div class="btn-group">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>                                            
-                                        </ul>
-                                    </div>
-                                </div> -->
                             </td>
                         </tr>
                         @endforeach

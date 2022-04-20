@@ -13,7 +13,7 @@
                     @csrf
                     <!-- Purchase Date, Purchase No., supplier_name Section Start -->
                     <div class="form-row">
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase Date</label>
                             <input type="date" class="form-control" name="purchase_date">
                             <div class="pt-1">
@@ -22,16 +22,16 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control" name="purchase_no" placeholder="Purchase No.">
+                            <input type="text" class="form-control" name="purchase_no" value="{{ 'PNO_'.uniqid() . mt_rand(100,999) }}" placeholder="Purchase No.">
                             <div class="pt-1">
                                 @error('purchase_no')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="validationServer01">Supplier Name</label>
                             <select class="form-control js-example-basic-single" name="supplier_id" required>
                                 <span class="text-danger"> Select Supplier </span>

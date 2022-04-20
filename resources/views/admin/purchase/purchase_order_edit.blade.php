@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control" value="{{ $purchaseOrder->purchase_no }}" name="purchase_no" placeholder="Purchase No." >
+                            <input type="text" class="form-control" value="{{ $purchaseOrder->purchase_no }}" name="purchase_no" placeholder="Purchase No."  {{ (empty($purchaseOrder->approved)) ? '' : 'readonly' }}>
                             <div class="pt-1">
                                 @error('purchase_no')
                                 <span class="text-danger"> {{$message}} </span>

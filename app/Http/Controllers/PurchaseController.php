@@ -28,7 +28,7 @@ class PurchaseController extends Controller
         return view('admin.purchase.purchase_show', compact('data', 'supplier_names', 'units'));
     }
 
-    
+
     //purchase approve show function
     public function purchaseApproveShow()
     {
