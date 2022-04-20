@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Invoice No.</label>
-                            <input type="text" class="form-control" name="invoice_no" placeholder="Invoice No.">
+                            <input type="text" class="form-control" name="invoice_no" value="{{ 'INV_'.uniqid() . mt_rand(100,999) }}" placeholder="Invoice No.">
                             <div class="pt-1">
                                 @error('invoice_no')
                                 <span class="text-danger"> {{$message}} </span>
