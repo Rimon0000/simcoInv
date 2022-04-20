@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Area;
+use App\Models\CustomerType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +23,9 @@ class CustomerController extends Controller
     //customer Add Page function
     public function customerAddPage()
     {
-        return view('admin.customer.customer_add');
+        $areas = Area::where('status',1)->orderByDesc('id')->get();
+        $customertypes =CustomerType::where('status',1)->orderByDesc('id')->get();
+        return view('admin.customer.customer_add', compact('areas', 'customertypes'));
     }
 
     //customer add function

@@ -45,7 +45,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Credit Limit</label>
-                            <input type="text" name="credit_limit" class="form-control" id="validationServer01" placeholder="Credit Limit" required>
+                            <input type="number" min="0" value="0" name="credit_limit" class="form-control" id="validationServer01" placeholder="Credit Limit">
                             <div class="pt-1">
                                 @error('credit_limit')
                                 <span class="text-danger">{{ $message }}</span>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Previous Due</label>
-                            <input type="number" name="previous_due" class="form-control" id="validationServer01" placeholder="Previous Due" required>
+                            <input type="number" min="0" value="0" name="previous_due" class="form-control" id="validationServer01" placeholder="Previous Due">
                             <div class="pt-1">
                                 @error('previous_due')
                                 <span class="text-danger">{{ $message }}</span>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Office Phone</label>
-                            <input type="text" name="office_phone" class="form-control" id="validationServer01" placeholder="Office Phone" required>
+                            <input type="text" name="office_phone" class="form-control" id="validationServer01" placeholder="Office Phone">
                             <div class="pt-1">
                                 @error('office_phone')
                                 <span class="text-danger">{{ $message }}</span>
@@ -92,7 +92,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Email</label>
-                            <input type="email" name="email" class="form-control" id="validationServer01" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" id="validationServer01" placeholder="Email">
                             <div class="pt-1">
                                 @error('email')
                                 <span class="text-danger">{{ $message }}</span>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Website</label>
-                            <input type="text" name="website" class="form-control" id="validationServer01" placeholder="Website" required>
+                            <input type="text" name="website" class="form-control" id="validationServer01" placeholder="Website">
                             <div class="pt-1">
                                 @error('website')
                                 <span class="text-danger">{{ $message }}</span>
@@ -117,8 +117,10 @@
                             <label for="validationServer01">Customer Type</label>
                             <select class="form-control" name="customer_type">
                                 <option value="">Select Customer Type</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+
+                                @foreach($customertypes as $customertype)
+                                <option value="{{ $customertype->id }}">{{ $customertype->customer_type }}</option>
+                                @endforeach
                             </select>
 
                             <div class="pt-1">
@@ -131,8 +133,11 @@
                             <label for="validationServer01">Area</label>
                             <select class="form-control" name="area">
                                 <option value="">Select Area</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+
+                                @foreach($areas as $area)
+                                <option value="{{ $area->id }}">{{ $area->area }}</option>
+                                @endforeach
+
                             </select>
 
                             <div class="pt-1">
@@ -159,7 +164,7 @@
                             <label for="validationServer01">Status</label>
                             <select class="form-control" name="status">
                                 <option value="">Select Status</option>
-                                <option value="1">Yes</option>
+                                <option value="1" selected>Yes</option>
                                 <option value="0">No</option>
                             </select>
 
