@@ -88,7 +88,7 @@
                             <td>{{ $datum->purchase_no}}</td>
                             <td>{{ $datum->supplierName->supplier_name }}</td>
                             <td>{{ $datum->total_price}}</td>
-                            <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
+                            <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ ($datum->approved == 1) ? 'Approved' : 'Pending'  }}</strong> </td>
                             <td><a href="{{ route ('purchase.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus"></i> Add Items</a></td>
                             <td>
                                 <a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->approved) ? '' : 'disabled' }}"><i class="fas fa-edit"></i></a>

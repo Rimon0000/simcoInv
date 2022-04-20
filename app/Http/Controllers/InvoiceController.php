@@ -289,6 +289,13 @@ class InvoiceController extends Controller
 
         if ($approved) {
 
+            DB::table('invoice_details')
+            ->where('invoice_no', $invoice_no)
+            ->where('approved', 0)
+            ->update([
+                'approved' => 1
+            ]);
+
             $invoice_data = InvoiceDetail::where('invoice_no', $invoice_no)->get(['product_id', 'quantity']);
 
             foreach ($invoice_data as $invoice_datum) {

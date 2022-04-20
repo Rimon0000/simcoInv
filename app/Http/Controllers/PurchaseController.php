@@ -261,6 +261,13 @@ class PurchaseController extends Controller
                 ]);
 
             if ($approved) {
+                
+                DB::table('purchases')
+                ->where('purchase_no', $data->purchase_no)
+                ->where('approved', 0)
+                ->update([
+                    'approved' => 1
+                ]);
 
                 $purchase_data = Purchase::where('purchase_no', $data->purchase_no)->get(['product_code', 'quantity']);
 

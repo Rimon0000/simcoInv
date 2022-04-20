@@ -57,7 +57,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @php $count = 0; @endphp
+                                            @php $count = 0; @endphp                                           
 
                                             @foreach($invoiceOrder['invoiceDetails'] as $key => $datum)
 

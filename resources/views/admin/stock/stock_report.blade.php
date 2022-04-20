@@ -22,10 +22,12 @@
                             <th scope="col">Category</th>
                             <th scope="col">Product Code</th>
                             <th scope="col">Product Name</th>
+                            <th scope="col">In Stock</th>
+                            <th scope="col">Out Stock</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Unit</th>
-                            <th scope="col">Buy Price</th>
-                            <th scope="col">Sale Price</th>
+                            <!-- <th scope="col">Buy Price</th>
+                            <th scope="col">Sale Price</th> -->
                             <th scope="col">Product Details</th>
                         </tr>
                     </thead>
@@ -40,10 +42,23 @@
                             <td scope="col">{{ $datum->categoryName->cat_name }}</td>
                             <td>{{ $datum->product_id }}</td>
                             <td>{{ $datum->title}}</td>
+
+                            @php
+
+                            $purchase_qty = App\Models\Purchase::where('product_code',$datum->product_id)->where('approved', '1')->sum('quantity');
+                            $invoice_qty  = App\Models\InvoiceDetail::where('product_id',$datum->product_id)->where('approved', '1')->sum('quantity');
+
+                            @endphp
+
+
+                            <td>{{ $purchase_qty }}</td>
+                            <td>{{ $invoice_qty }}</td>
+
+
                             <td>{{ $datum->stock }}</td>
                             <td>{{ $datum->unitName->unit_name }}</td>
-                            <td>{{ $datum->price}}</td>
-                            <td>{{ $datum->sale_price}}</td>
+                            <!-- <td>{{ $datum->price}}</td>
+                            <td>{{ $datum->sale_price}}</td> -->
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal{{$datum->id}}">

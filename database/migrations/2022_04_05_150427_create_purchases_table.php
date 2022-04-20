@@ -28,7 +28,7 @@ class CreatePurchasesTable extends Migration
             $table->double('unit_price');
             $table->double('total_price');
             $table->string('description')->nullable();
-            $table->integer('approved')->nullable();
+            $table->integer('approved')->default(0);
 
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();

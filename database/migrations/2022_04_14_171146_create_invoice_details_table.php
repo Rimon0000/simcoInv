@@ -29,6 +29,7 @@ class CreateInvoiceDetailsTable extends Migration
             $table->integer('paid_status')->nullable();
             $table->integer('discount_price')->nullable();
             $table->double('paid_amount')->nullable();
+            $table->integer('approved')->default(0);
 
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
