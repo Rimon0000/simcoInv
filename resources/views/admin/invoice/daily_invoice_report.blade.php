@@ -15,7 +15,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Start Date</label>
-                            <input type="date" class="form-control" name="start_date">
+                            <input type="date" class="form-control" name="start_date" required>
                             <div class="pt-1">
                                 @error('start_date')
                                 <span class="text-danger"> {{$message}} </span>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">End Date</label>
-                            <input type="date" class="form-control" name="end_date">
+                            <input type="date" class="form-control" name="end_date" required>
                             <div class="pt-1">
                                 @error('end_date')
                                 <span class="text-danger"> {{$message}} </span>

@@ -474,8 +474,8 @@ class InvoiceController extends Controller
 
         $data['allData']     = Invoice::whereBetween('invoice_date', [$start_date, $end_date])->where('approved', 1)->get();
         $data['grand_total'] = Invoice::whereBetween('invoice_date', [$start_date, $end_date])->where('approved', 1)->sum('total_price');
-        $data['start_date'] = $start_date;
-        $data['end_date']   = $end_date;
+        $data['start_date']  = $start_date;
+        $data['end_date']    = $end_date;
 
         $pdf  = PDF::loadView('admin.pdf.daily-invoice-report-pdf', $data);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
