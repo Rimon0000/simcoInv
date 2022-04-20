@@ -26,9 +26,7 @@
                             <th scope="col">Customer ID</th>
                             <th scope="col">Mobile</th>
                             <th scope="col">Previous Due</th>
-                            <th scope="col">Email</th>
                             <th scope="col">Details</th>
-                            <th scope="col">Created By</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -45,7 +43,7 @@
                             <td>{{ $datum->customer_id }}</td>
                             <td>{{ $datum->mobile }}</td>
                             <td>{{ $datum->previous_due }}</td>
-                            <td>{{ $datum->email }}</td>
+                            
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal{{$datum->id}}">
@@ -57,7 +55,7 @@
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Customer Details</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Customer Details - {{ $datum->customer_name }}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -69,28 +67,42 @@
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Credit Limit:</em></th>
                                                             <td scope="col">{{ $datum->credit_limit }}</td>
-                                                            <th scope="col"><em>website</em></th>
-                                                            <td scope="col"><a href="{{ $datum->website }}">{{ $datum->website }}</a></td>
+                                                            <th scope="col"><em>Previous Due:</em></th>
+                                                            <td scope="col">{{ $datum->previous_due }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Office Phone:</em></th>
                                                             <td scope="col">{{ $datum->office_phone }}</td>
+                                                            <th scope="col"><em>website</em></th>
+                                                            <td scope="col"><a href="{{ $datum->website }}">{{ $datum->website }}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Status</em></th>
+                                                            <td scope="col">{{ $datum->status }}</td>
                                                             <th scope="col"><em>Customer Type</em></th>
-                                                            <td scope="col"><a href="{{ $datum->customer_type }}">{{ $datum->customer_type }}</a></td>
+                                                            <td scope="col">{{ $datum->customer_type }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Area:</em></th>
-                                                            <td scope="col">{{ $datum->areaName->area }}</td>
-                                                            <th scope="col"><em>Present Office Address</em></th>
-                                                            <td scope="col"><a href="{{ $datum->present_address }}">{{ $datum->present_address }}</a></td>
+                                                            <td scope="col">{{ (empty($datum->areaName->area)) ? 'Nill' : $datum->areaName->area }}</td>
+                                                            <th scope="col">Email</th>
+                                                            <td>{{ $datum->email }}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="col">#</th>                                                            
-                                                            <th scope="col"><em>Status</em></th>
-                                                            <td scope="col" colspan="3">{{ $datum->status }}</td>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Present Office Address</em></th>
+                                                            <td scope="col" colspan="3">{{ $datum->present_address }}</td>
                                                         </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>                                                     
+                                                            
+                                                            <th scope="col"><em>Created By</em></th>
+                                                            <td scope="col" colspan="3" >{{ $datum->userName->name }}</td>
+                                                        </tr>
+                                                        
                                                     </thead>
                                                 </table>
                                                 <div class="modal-footer">
@@ -100,16 +112,17 @@
                                         </div>
                                     </div>
                             </td>
-                            <td>{{ $datum->userName->name }}</td>
+                            
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"></button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('customer.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('customer.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
-                                           
-                                            <li class="p-1"><a href="{{ route('customer.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1">
+                                                <a href="{{ route('customer.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a> ||
+                                                <a href="{{ route('customer.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="p-1"><a href="{{ route('customer.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Image</a></li>
                                           
                                         </ul>
                                     </div>

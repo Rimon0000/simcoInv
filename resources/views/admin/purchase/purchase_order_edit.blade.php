@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control" value="{{ $purchaseOrder->purchase_no }}" name="purchase_no" placeholder="Purchase No."  {{ (empty($purchaseOrder->approved)) ? '' : 'readonly' }}>
+                            <input type="text" class="form-control" value="{{ $purchaseOrder->purchase_no }}" name="purchase_no" placeholder="Purchase No." {{ (empty($purchaseOrder->total_price)) ? '' : 'readonly' }}>
                             <div class="pt-1">
                                 @error('purchase_no')
                                 <span class="text-danger"> {{$message}} </span>
@@ -39,6 +39,9 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Supplier Name</label>
+
+                            @if(empty($purchaseOrder->total_price))
+
                             <select class="form-control js-example-basic-single" name="supplier_id" required>
                                 <span class="text-danger"> Select Supplier </span>
                                 <option value="">Select Units</option>
@@ -46,6 +49,14 @@
                                 <option value="{{ $supplier_name->id }}" {{ ($purchaseOrder->supplier_id == $supplier_name->id ) ? "selected" : "" }}>{{ $supplier_name->supplier_name }}</option>
                                 @endforeach
                             </select>
+                            @else
+                                <input type="hidden" value="{{ $purchaseOrder->supplier_id }}" name="supplier_id">
+                                <input type="text" class="form-control" value="{{ $purchaseOrder->supplierName->supplier_name }}" {{ (empty($purchaseOrder->total_price)) ? '' : 'readonly' }}>
+
+                            @endif
+
+
+
 
                             <div class="pt-1">
                                 @error('supplier_id')

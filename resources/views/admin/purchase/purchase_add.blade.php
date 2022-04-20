@@ -255,9 +255,12 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Description</em></th>
-                                                            <td scope="col">{{ $datum->description }}</td>
+                                                            <td scope="col" colspan="3">{{ $datum->description }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
                                                             <th scope="col"><em>Created_by</em></th>
-                                                            <td scope="col">{{ $datum->userName->name }}</td>
+                                                            <td scope="col" colspan="3">{{ $datum->userName->name }}</td>
                                                         </tr>
 
                                                     </thead>

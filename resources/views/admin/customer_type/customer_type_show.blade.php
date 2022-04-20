@@ -1,10 +1,32 @@
 @extends('admin.master_admin')
 @section ('content')
 
-
 <div class="row p-3">
     <div class="col-lg-6">
-        <a href="{{ route ('customer.type.add.page')}}" class="btn btn-info btn-sm"> <i class="fa-solid fa-circle-plus text-danger"></i>Add Customer Type</a>
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Add Customer Type</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{route('customer.type.add')}}">
+                    @csrf
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <label for="validationServer01">Customer Type Name</label>
+                            <input type="text" class="form-control" name="customer_type" id="validationServer01" placeholder="Customer Type Name" required>
+                            <div class="pt-1">
+                                @error('customer_type')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -37,18 +59,8 @@
                             <td>{{ $datum->userName->name}}</td>
                             <td><a href="{{ route ('customer.type.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
-                            <div class="btn-group">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        More..
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            <li class="p-1"><a href="{{ route('customer.type.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('customer.type.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
-                                         
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="{{ route('customer.type.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                <a href="{{ route('customer.type.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         @endforeach
