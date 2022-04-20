@@ -105,7 +105,7 @@
                     <div class="form-row">
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Unit</label>
-                            <select class="form-control js-example-basic-single" name="unit_id" required>
+                            <!-- <select class="form-control js-example-basic-single" name="unit_id" required>
                                 <span class="text-danger" value=""> Unit </span>
                                 <option value="">Product Unit</option>
 
@@ -113,7 +113,9 @@
                                 <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
                                 @endforeach
 
-                            </select>
+                            </select> -->
+                            <input type="hidden" id="unit_id" name="unit_id">
+                            <input type="text" class="form-control form-control-sm" id="unit_name" readonly>
 
                             <div class="pt-1">
                                 @error('unit_id')
@@ -411,6 +413,8 @@
                 document.getElementById('p_id').value = response.data.p_id;
                 document.getElementById('cat_id').value = response.data.cat_id;
                 document.getElementById('cat_name').value = response.data.cat_name;
+                document.getElementById('unit_id').value = response.data.unit;
+                document.getElementById('unit_name').value = response.data.unit_name;
             });
     }
 

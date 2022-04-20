@@ -42,12 +42,12 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Code</label>
-                            <select class="form-control js-example-basic-single" name="product_code" required>
+                            <select class="form-control js-example-basic-single" name="product_code" id="product_id"  onchange="unitStock()" required>
                                 <span class="text-danger" value=""> Product Code </span>
                                 <option value="">Product Code</option>
 
                                 @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->product_id  }}">{{ $productlist->product_id }}</option>
+                                <option value="{{ $productlist->product_id  }}" >{{ $productlist->product_id }}</option>
                                 @endforeach
 
                             </select>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Product Name</label>
-                            <select class="form-control js-example-basic-single" name="product_name" required>
+                            <!-- <select class="form-control js-example-basic-single" name="product_name" id="product_name" required>
                                 <span class="text-danger" value=""> Product Name </span>
                                 <option value="">Product Name</option>
 
@@ -68,7 +68,9 @@
                                 <option value="{{ $productlist->id }}">{{ $productlist->title }}</option>
                                 @endforeach
 
-                            </select>
+                            </select> -->
+                            <input type="hidden" id="p_id" name="product_name">
+                            <input type="text" class="form-control form-control-sm" id="product_name" readonly>
 
                             <div class="pt-1">
                                 @error('product_name')
@@ -76,7 +78,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <!-- <div class="col-md-3 mb-3">
                             <label for="validationServer01">Product Attribute Number</label>
                             <select class="form-control js-example-basic-single" name="product_attr_id">
                                 <span class="text-danger" value=""> Product Attribute </span>
@@ -93,10 +95,10 @@
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Category</label>
-                            <select class="form-control js-example-basic-single" name="cat_id" required>
+                            <!-- <select class="form-control js-example-basic-single" name="cat_id" required>
                                 <span class="text-danger" value=""> Product Category </span>
                                 <option value="">Product Category</option>
 
@@ -104,7 +106,9 @@
                                 <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
                                 @endforeach
 
-                            </select>
+                            </select> -->
+                            <input type="hidden" id="cat_id" name="cat_id">
+                            <input type="text" class="form-control form-control-sm" id="cat_name" readonly>
 
                             <div class="pt-1">
                                 @error('cat_id')
@@ -114,7 +118,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Unit</label>
-                            <select class="form-control js-example-basic-single" name="unit_id" required>
+                            <!-- <select class="form-control js-example-basic-single" name="unit_id" required>
                                 <span class="text-danger" value=""> Unit </span>
                                 <option value="">Product Unit</option>
 
@@ -122,7 +126,9 @@
                                 <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
                                 @endforeach
 
-                            </select>
+                            </select> -->
+                            <input type="hidden" id="unit_id" name="unit_id">
+                            <input type="text" class="form-control form-control-sm" id="unit_name" readonly>
 
                             <div class="pt-1">
                                 @error('unit_id')
@@ -147,6 +153,10 @@
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Unit Stock</label>
+                            <input type="number" class="form-control form-control-sm" id="unit_stock" value="0" readonly>
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Qty</label>
@@ -306,7 +316,32 @@
 
         console.log(document.getElementById('total_price').value = (parseInt(unit_price) * parseInt(quantity)));
     }
+
+
+
+
+
+    function unitStock() {
+
+        var product_id = document.getElementById('product_id').value;
+
+
+        axios.get('http://127.0.0.1:8000/product-mgt/product-list/single-product/' + product_id)
+            .then(function(response) {
+                console.log(response.data);
+                document.getElementById('p_id').value = response.data.p_id;
+                document.getElementById('product_name').value = response.data.title;
+                document.getElementById('unit_stock').value = response.data.stock;
+                document.getElementById('cat_id').value = response.data.cat_id;
+                document.getElementById('cat_name').value = response.data.cat_name;
+                document.getElementById('unit_id').value = response.data.unit;
+                document.getElementById('unit_name').value = response.data.unit_name;
+            });
+
+    }
 </script>
+
+
 
 @endsection
 
