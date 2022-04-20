@@ -13,4 +13,10 @@ class Customer extends Model
         # code...
         return $this->hasOne(user::class, 'id', 'created_by');
     }
+
+    public function areaName()
+    {
+        # code...
+        return $this->hasOne(Area::class, 'id', 'area');
+    }
 }

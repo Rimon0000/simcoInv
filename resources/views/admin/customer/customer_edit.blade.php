@@ -98,16 +98,22 @@
                             <label for="validationServer01">Customer Type</label>
                             <select class="form-control js-example-basic-single" name="customer_type" value="{{ $data->customer_type }}">
                                 <option value="">Select Customer Type</option>
-                                <option value="1" {{ ($data->status == "1") ? 'Selected' : ''}}>Yes</option>
-                                <option value="0" {{ ($data->status == "0") ? 'Selected' : ''}}>No</option>
+
+                                @foreach($customertypes as $customertype)
+                                <option value="{{ $customertype->id }}" {{ ($data->customer_type == $customertype->id) ? "Selected":"" }}>{{ $customertype->customer_type }}</option>
+                                @endforeach
+                                
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Area</label>
                             <select class="form-control js-example-basic-single" name="area" value="{{ $data->area }}">
                                 <option value="">Select Area</option>
-                                <option value="1" {{ ($data->status == "1") ? 'Selected' : ''}}>Yes</option>
-                                <option value="0" {{ ($data->status == "0") ? 'Selected' : ''}}>No</option>
+
+                                @foreach($areas as $area)
+                                <option value="{{ $area->id }}" {{ ($data->area == $area->id) ? "Selected":"" }}>{{ $area->area }}</option>
+                                @endforeach
+                                
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">

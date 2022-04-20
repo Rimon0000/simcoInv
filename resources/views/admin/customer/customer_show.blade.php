@@ -46,7 +46,60 @@
                             <td>{{ $datum->mobile }}</td>
                             <td>{{ $datum->previous_due }}</td>
                             <td>{{ $datum->email }}</td>
-                            <td></td>
+                            <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal{{$datum->id}}">
+                                    Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{$datum->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$datum->id}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Customer Details</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Credit Limit:</em></th>
+                                                            <td scope="col">{{ $datum->credit_limit }}</td>
+                                                            <th scope="col"><em>website</em></th>
+                                                            <td scope="col"><a href="{{ $datum->website }}">{{ $datum->website }}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Office Phone:</em></th>
+                                                            <td scope="col">{{ $datum->office_phone }}</td>
+                                                            <th scope="col"><em>Customer Type</em></th>
+                                                            <td scope="col"><a href="{{ $datum->customer_type }}">{{ $datum->customer_type }}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Area:</em></th>
+                                                            <td scope="col">{{ $datum->areaName->area }}</td>
+                                                            <th scope="col"><em>Present Office Address</em></th>
+                                                            <td scope="col"><a href="{{ $datum->present_address }}">{{ $datum->present_address }}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>                                                            
+                                                            <th scope="col"><em>Status</em></th>
+                                                            <td scope="col" colspan="3">{{ $datum->status }}</td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </td>
                             <td>{{ $datum->userName->name }}</td>
                             <td>
                                 <div class="btn-group">

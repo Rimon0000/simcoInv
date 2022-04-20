@@ -120,7 +120,9 @@ class CustomerController extends Controller
     {
 
         $data = Customer::find($id);
-        return view('admin.customer.customer_edit', compact('data'));
+        $areas = Area::where('status',1)->orderByDesc('id')->get();
+        $customertypes =CustomerType::where('status',1)->orderByDesc('id')->get();
+        return view('admin.customer.customer_edit', compact('data', 'areas', 'customertypes'));
     }
 
     //customer Update function
