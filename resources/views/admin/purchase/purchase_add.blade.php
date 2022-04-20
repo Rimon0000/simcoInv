@@ -136,10 +136,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
-
                     </div>
                     <!-- Product Category, Sub Category, Sub Sub Categroy End -->
                     <!-- Product Code, Stock Qty, Stock Alert, Units Start -->
@@ -183,7 +179,7 @@
                     </div>
                     <!-- Product Category, Sub Category, Sub Sub Categroy End -->
                     <hr>
-                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                    <button class="btn btn-primary btn-sm {{ empty($datum->approved) ? '' : 'disabled' }}" type="submit">Submit</button>
                 </form>
             </div>
         </div>

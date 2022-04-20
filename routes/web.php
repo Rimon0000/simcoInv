@@ -29,6 +29,7 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\SubCategoriesController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\SubSubCategoryController;
@@ -334,8 +335,6 @@ Route::prefix('product-mgt/product-list')->group(function () {
 
     Route::get('/single-product/{id}', [ProductListController::class, 'productListSingle']);
 
-
-
     Route::post('/add', [ProductListController::class, 'productListAdd'])->name('product.list.add');
     Route::post('/update/{id}', [ProductListController::class, 'productListUpdate'])->name('product.list.update');
     Route::post('/image/update/{id}', [ProductListController::class, 'productListImageUpdate'])->name('product.list.image.update');
@@ -549,6 +548,12 @@ Route::prefix('invoice/daily/report')->group(function () {
     // invoice Daily report
     Route::get('/show', [InvoiceController::class, 'invoiceDailyReportShow'])->name('invoice.daily.report');
     Route::post('/pdf', [InvoiceController::class, 'invoiceDailyReportPdf'])->name('invoice.daily.report.pdf');
+});
+
+Route::prefix('stock')->group(function () {
+    // stock mgmt report
+    Route::get('/report/show', [StockController::class, 'stockReportShow'])->name('stock.report.show');
+    Route::get('/report/pdf', [StockController::class, 'stockReportShowPdf'])->name('stock.report.pdf');
 });
 
 

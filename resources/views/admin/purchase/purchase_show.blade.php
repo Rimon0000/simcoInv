@@ -91,18 +91,8 @@
                             <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
                             <td><a href="{{ route ('purchase.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus"></i> Add Items</a></td>
                             <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            @if(empty($datum->approved))
-                                            <li class="p-1"><a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->total_price) ? '' : 'disabled' }}">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('purchase.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($datum->total_price) ? '' : 'disabled' }} " >Delete</a></li>
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->approved) ? '' : 'disabled' }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('purchase.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($datum->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         @endforeach

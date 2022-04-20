@@ -21,7 +21,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Product Code</label>
-                            <input type="text" class="form-control" name="product_id" id="validationServer01" placeholder="Product Code" required>
+                            <input type="text" class="form-control" name="product_id" value="{{ 'PNO_'.uniqid() . mt_rand(100,999) }}" id="validationServer01" placeholder="Product Code" required>
                             <div class="pt-1">
                                 @error('product_id')
                                 <span class="text-danger"> {{$message}} </span>

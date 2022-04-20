@@ -169,6 +169,28 @@
                             </ul>
                         </li>
                         <!-- Invoice end -->
+                        <!-- Stock Mgmt start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#stock" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Stock Mgmt</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="stock" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{ route('stock.report.show') }}">
+                                            <span class="nav-text">Stock Report</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('purchase.approve.show')}}">
+                                            <span class="nav-text">Approved Purchase</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Stock Mgmt end -->
 
                         <!-- Attribute start -->
                         <li class="has-sub">

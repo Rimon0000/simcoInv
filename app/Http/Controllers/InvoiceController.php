@@ -323,10 +323,6 @@ class InvoiceController extends Controller
     {
         $data = Invoice::find($id);
         $customers = Customer::all();
-        // $data           = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
-        // $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
-        // 'data','sub_total_price'
-
         return view('admin.invoice.invoice_edit', compact('data', 'customers',));
     }
 
@@ -423,15 +419,7 @@ class InvoiceController extends Controller
             return redirect()->route('invoice.show')->with($notification);
         };
     }
-
-
-
-
-
-
-
-
-
+    
 
     // Inovice Print ########################################################################################################
 
@@ -484,4 +472,7 @@ class InvoiceController extends Controller
     }
 
     // invoiceDailyReportShow invoiceDailyReportShow ########################################################################################################
+
+
+
 }
