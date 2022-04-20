@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control" name="purchase_no" value="{{ 'PNO_'.uniqid() . mt_rand(100,999) }}" placeholder="Purchase No.">
+                            <input type="text" class="form-control" name="purchase_no" value="{{ 'PNO_'.uniqid() . mt_rand(100,999) }}" placeholder="Purchase No." required>
                             <div class="pt-1">
                                 @error('purchase_no')
                                 <span class="text-danger"> {{$message}} </span>
