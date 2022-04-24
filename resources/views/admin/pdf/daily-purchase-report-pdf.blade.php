@@ -86,8 +86,9 @@
                                     <div class="card-header card-header-border-bottom">
                                         <h2>Daily Purchase Report</h2>
                                     </div>
+                                    <br>
                                     <div class="col-md-3 mb-3">
-                                        <label for="validationServer01"><strong>Purchase Date: {{ $start_date }} to {{ $end_date }}</strong> </label>
+                                        <label for="validationServer01"><strong>Purchase Date: <span style="font-size: 18px;">{{ date('d-M-Y', strtotime($start_date)) }}</span> to <span style="font-size: 18px;">{{ date('d-M-Y', strtotime($end_date)) }}</span></strong> </label>
                                     </div>
                                 </td>
                             </tr>
@@ -97,20 +98,20 @@
                             </tr>
                         </table>
                     </div>
-                    <br><br><br>
+                    <br><br>
                     <div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card card-default">
                                     <div class="card-body">
                                         <table style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Customer Name</th>
-                                                    <th scope="col">Purchase No.</th>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Amount</th>
+                                            <thead >
+                                                <tr >
+                                                    <th scope="col" style="height: 50px;">#</th>
+                                                    <th scope="col" style="height: 50px; width:35%">Customer Name</th>
+                                                    <th scope="col" style="height: 50px;">Purchase No.</th>
+                                                    <th scope="col" style="height: 50px; width:15%">Date</th>
+                                                    <th scope="col" style="height: 50px;">Amount</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -122,8 +123,8 @@
                                                 <tr>
                                                     <td class="td__height" scope="row">{{ $count }}</td>
                                                     <td class="td__height">{{ $datum->supplierName->supplier_name}}</td>
-                                                    <td class="td__height">{{ $datum->purchase_no }}</td>
-                                                    <td class="td__height">{{ date('d-M-Y', strtotime($datum->purchase_date)) }}</td>
+                                                    <td class="td__height">{{ $datum->purchaseOrderNo->purchase_no }}</td>
+                                                    <td class="td__height">{{ date('d-m-y', strtotime($datum->purchase_date)) }}</td>
                                                     <td class="td__height">{{ $datum->total_price }}</td>
                                                 </tr>
                                                 @endforeach

@@ -38,4 +38,10 @@ class Purchase extends Model
         # code...
         return $this->hasOne(ProductList::class, 'product_id', 'product_code');
     }
+
+    public function purchaseOrderNo()
+    {
+        # code...
+        return $this->hasOne(PurchaseOrder::class, 'id', 'purchase_no');
+    }
 }

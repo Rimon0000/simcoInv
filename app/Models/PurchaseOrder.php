@@ -20,4 +20,5 @@ class PurchaseOrder extends Model
         # code...
         return $this->hasOne(Supplier::class, 'id', 'supplier_id');
     }
+
 }

@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control" name="purchase_no" value="{{ 'PUR_'.uniqid() . mt_rand(100,999) }}" placeholder="Purchase No." required>
+                            <input type="text" class="form-control" name="purchase_no" value="{{ strtoupper('PUR_'.uniqid() . mt_rand(10,99)) }}" placeholder="Purchase No." required>
                             <div class="pt-1">
                                 @error('purchase_no')
                                 <span class="text-danger"> {{$message}} </span>
@@ -69,7 +69,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Purchase Date</th>
                             <th scope="col">Purchase No.</th>
-                            <th scope="col">Supplier Name</th>
+                            <th scope="col" style="width: 170px;">Supplier Name</th>
                             <th scope="col">Total</th>
                             <th scope="col">Status</th>
                             <th scope="col"><i class="fa-solid fa-circle-plus"></i> Purchase Items</th>
@@ -85,14 +85,16 @@
                         <tr>
                             <td scope="row">{{ $count }}</td>
                             <td>{{ date('d-m-y', strtotime($datum->purchase_date)) }}</td>
-                            <td>{{ $datum->purchase_no}}</td>
+                            <td>{{ $datum->purchase_no }}</td>
                             <td>{{ $datum->supplierName->supplier_name }}</td>
                             <td>{{ $datum->total_price}}</td>
                             <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ ($datum->approved == 1) ? 'Approved' : 'Pending'  }}</strong> </td>
                             <td><a href="{{ route ('purchase.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus"></i> Add Items</a></td>
                             <td>
+
                                 <a href="{{ route('purchase.order.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning {{ empty($datum->approved) ? '' : 'disabled' }}"><i class="fas fa-edit"></i></a>
                                 <a href="{{ route('purchase.order.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger {{ empty($datum->approved) ? '' : 'disabled' }} "><i class="fa fa-trash" aria-hidden="true"></i></a>
+
                             </td>
                         </tr>
                         @endforeach
@@ -100,7 +102,6 @@
                 </table>
             </div>
         </div>
-
     </div>
 </div>
 

@@ -43,7 +43,6 @@ class PurchaseController extends Controller
         $units        = Unit::orderByDesc('id')->get();
         $data         = Purchase::orderByDesc('id')->get();
         $productlists = ProductList::orderByDesc('id')->get();
-
         return view('admin.purchase.purchase_add', compact('data', 'units', 'productlists'));
     }
 
@@ -81,6 +80,9 @@ class PurchaseController extends Controller
         $unit_price       = $request->unit_price;
         $description      = $request->description;
 
+        
+
+
         $total_price      = $quantity * $unit_price;
 
         $result = DB::table('purchases')->insert([
@@ -106,7 +108,7 @@ class PurchaseController extends Controller
             $sub_total_price = Purchase::where('purchase_no', $purchase_no)->sum('total_price');
 
             DB::table('purchase_orders')
-                ->where('purchase_no', $purchase_no)
+                ->where('id', $purchase_no)
                 ->update(
                     [
                         'total_price'  => $sub_total_price,
@@ -191,8 +193,8 @@ class PurchaseController extends Controller
         $categories      = Category::orderBy('cat_name', 'asc')->get();
         $productlists    = ProductList::orderBy('title', 'asc')->get();
         $productAttrs    = ProductAttribute::orderByDesc('id')->get();
-        $data            = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->orderByDesc('id')->get();
-        $sub_total_price = Purchase::where('purchase_no', $purchaseOrder->purchase_no)->sum('total_price');
+        $data            = Purchase::where('purchase_no', $id)->orderByDesc('id')->get();
+        $sub_total_price = Purchase::where('purchase_no', $id)->sum('total_price');
 
         return view('admin.purchase.purchase_add', compact('purchaseOrder', 'units', 'data', 'categories', 'productlists', 'productAttrs', 'sub_total_price'));
     }
@@ -262,13 +264,13 @@ class PurchaseController extends Controller
             if ($approved) {
                 
                 DB::table('purchases')
-                ->where('purchase_no', $data->purchase_no)
+                ->where('purchase_no', $id)
                 ->where('approved', 0)
                 ->update([
                     'approved' => 1
                 ]);
 
-                $purchase_data = Purchase::where('purchase_no', $data->purchase_no)->get(['product_code', 'quantity']);
+                $purchase_data = Purchase::where('purchase_no', $id)->get(['product_code', 'quantity']);
 
                 foreach ($purchase_data as $purchase_datum) {
 
@@ -312,7 +314,7 @@ class PurchaseController extends Controller
 
         if ($deleted) {
 
-            $sub_total_price = Purchase::where('purchase_no', $purchase_no)->sum('total_price');
+            $sub_total_price = Purchase::where('purchase_no', $id)->sum('total_price');
 
             DB::table('purchase_orders')
                 ->where('purchase_no', $purchase_no)
@@ -372,7 +374,7 @@ class PurchaseController extends Controller
          # code...
          $start_date = date('Y-m-d', strtotime($request->start_date));
          $end_date   = date('Y-m-d', strtotime($request->end_date));
- 
+
          $data['allData']     = Purchase::whereBetween('purchase_date', [$start_date, $end_date])->where('approved', 1)->get();
          $data['grand_total'] = Purchase::whereBetween('purchase_date', [$start_date, $end_date])->where('approved', 1)->sum('total_price');
          $data['start_date']  = $start_date;

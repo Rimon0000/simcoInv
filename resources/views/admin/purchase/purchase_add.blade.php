@@ -26,7 +26,8 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Purchase No.</label>
-                            <input type="text" class="form-control form-control-sm" name="purchase_no" value="{{ $purchaseOrder->purchase_no }}" style="background-color:#95caff;" readonly>
+                            <input type="hidden" name="purchase_no" value="{{ $purchaseOrder->id }}">
+                            <input type="text" class="form-control form-control-sm" value="{{ $purchaseOrder->purchase_no }}" style="background-color:#95caff;" readonly>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Supplier Name</label>
@@ -60,15 +61,6 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Product Name</label>
-                            <!-- <select class="form-control js-example-basic-single" name="product_name" id="product_name" required>
-                                <span class="text-danger" value=""> Product Name </span>
-                                <option value="">Product Name</option>
-
-                                @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->id }}">{{ $productlist->title }}</option>
-                                @endforeach
-
-                            </select> -->
                             <input type="hidden" id="p_id" name="product_name">
                             <input type="text" class="form-control form-control-sm" id="product_name" readonly>
 
@@ -98,15 +90,6 @@
                         </div> -->
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Category</label>
-                            <!-- <select class="form-control js-example-basic-single" name="cat_id" required>
-                                <span class="text-danger" value=""> Product Category </span>
-                                <option value="">Product Category</option>
-
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
-                                @endforeach
-
-                            </select> -->
                             <input type="hidden" id="cat_id" name="cat_id">
                             <input type="text" class="form-control form-control-sm" id="cat_name" readonly>
 
@@ -118,15 +101,6 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationServer01">Unit</label>
-                            <!-- <select class="form-control js-example-basic-single" name="unit_id" required>
-                                <span class="text-danger" value=""> Unit </span>
-                                <option value="">Product Unit</option>
-
-                                @foreach($units as $unit)
-                                <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
-                                @endforeach
-
-                            </select> -->
                             <input type="hidden" id="unit_id" name="unit_id">
                             <input type="text" class="form-control form-control-sm" id="unit_name" readonly>
 
@@ -237,7 +211,7 @@
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Product SKU - {{ $datum->productName->title }}</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Product Name - {{ $datum->productName->title }}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -250,7 +224,7 @@
                                                             <th scope="col"><em>Purchase Date</em></th>
                                                             <td scope="col">{{ $datum->purchase_date }}</td>
                                                             <th scope="col"><em>Purchase No.</em></th>
-                                                            <td scope="col">{{ $datum->purchase_no }}</td>
+                                                            <td scope="col">{{ $datum->purchaseOrderNo->purchase_no }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
