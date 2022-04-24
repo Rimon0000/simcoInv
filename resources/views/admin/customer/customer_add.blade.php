@@ -22,7 +22,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Customer ID</label>
-                            <input type="text" name="customer_id" class="form-control" value="{{ 'CNO_'.uniqid() . mt_rand(100,999) }}" id="validationServer01" placeholder="Customer ID" required>
+                            <input type="text" name="customer_id" class="form-control" value="{{ strtoupper('CNO_'.uniqid() . mt_rand(10,99)) }}" id="validationServer01" placeholder="Customer ID" required>
                             <div class="pt-1">
                                 @error('customer_id')
                                 <span class="text-danger">{{ $message }}</span>
