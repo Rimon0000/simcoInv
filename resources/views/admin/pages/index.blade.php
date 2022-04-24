@@ -114,6 +114,73 @@
 
         </div>
         <!-- Product List, slider, coupons, campaign end -->
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Purchase Report: </h4>
+                <br>
+            </div>
+        </div>
+
+        <!-- Product List, slider, coupons, campaign start -->
+        <div class="row">
+            <div class="col-xl-4 col-sm-6">
+                <div class="card card-mini">
+                    <div class="card-body">
+                        <p class="text-danger">Total Purchase Amount</p><br>
+                        <h2 class="mb-1">{{ $purchaseOrder }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card card-mini">
+                    <div class="card-body">
+                        <p class="text-danger">Total Purchase Unapproved </p><br>
+                        <h2 class="mb-1">{{ $purchaseOrderUnapproved }}</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <!-- Product List, slider, coupons, campaign end -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Invoice Report: </h4>
+                <br>
+            </div>
+        </div>
+        <!-- Product List, slider, coupons, campaign start -->
+        <div class="row">
+            <div class="col-xl-4 col-sm-6">
+                <div class="card card-mini">
+                    <div class="card-body">
+                        <p class="text-danger">Total Invoice Amount</p><br>
+                        <h2 class="mb-1">{{ $invoiceOrder }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card card-mini">
+                    <div class="card-body">
+                        <p class="text-danger">Total Invoice Pending </p><br>
+                        <h2 class="mb-1">{{ $invoiceOrderUnapproved }}</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Product List, slider, coupons, campaign end -->
+
+
+
+
+
+
+
+
     </div>
 </div>
 
