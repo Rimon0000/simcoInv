@@ -91,7 +91,7 @@
                                 </td>
                                 <td style="text-align: right;">
                                     <div class="card-header card-header-border-bottom">
-                                        <h2>Invoice No. - {{ $invoiceOrder->invoice_no }}</h2>
+                                        <h3>Invoice No. - {{ strtoupper($invoiceOrder->invoice_no) }}</h3>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationServer01"><strong>Invoice Date:</strong> {{ date("d M Y", strtotime($invoiceOrder->invoice_date))  }}</label>
@@ -118,8 +118,8 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Product SKU</th>
-                                                <th scope="col">Product Name</th>
+                                                <th scope="col" style="height: 50px; width:25%">Product SKU</th>
+                                                <th scope="col" style="height: 50px; width:25%">Product Name</th>
                                                 <th scope="col">Category</th>
                                                 <th scope="col">Unit</th>
                                                 <th scope="col">Unit Price</th>

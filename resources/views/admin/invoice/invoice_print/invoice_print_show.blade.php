@@ -11,10 +11,10 @@
                 <table class="table table-striped" id="categoryTable" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Invoice Date</th>
+                            <th scope="col" >#</th>
+                            <th scope="col" style="width: 100px;">Invoice Date</th>
                             <th scope="col">Invoice No.</th>
-                            <th scope="col">Customer Name</th>
+                            <th scope="col" style="width: 170px;">Customer Name</th>
                             <th scope="col">Total</th>
                             <th scope="col">Print Invoice</th>
                             <!-- <th scope="col">Action</th> -->
@@ -28,7 +28,7 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td>{{ $datum->invoice_date}}</td>
+                            <td>{{ date('d-m-y', strtotime($datum->invoice_date)) }}</td>
                             <td>{{ $datum->invoice_no}}</td>
                             <td>{{ $datum->customerName->customer_name }}</td>
                             <td>{{ $datum->total_price}}</td>

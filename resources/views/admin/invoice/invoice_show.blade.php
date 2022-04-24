@@ -82,7 +82,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Invoice Date</th>
                             <th scope="col">Invoice No.</th>
-                            <th scope="col">Customer Name</th>
+                            <th scope="col" style="width: 170px;">Customer Name</th>
                             <th scope="col">Total</th>
                             <th scope="col">Approved</th>
                             <th scope="col">Add Invoice Items</th>
@@ -97,7 +97,7 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td>{{ $datum->invoice_date}}</td>
+                            <td>{{ date('d-m-y', strtotime($datum->invoice_date)) }}</td>
                             <td>{{ $datum->invoice_no}}</td>
                             <td>{{ $datum->customerName->customer_name }}</td>
                             <td>{{ $datum->total_price}}</td>
