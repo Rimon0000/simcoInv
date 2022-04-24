@@ -113,8 +113,8 @@ class InvoiceController extends Controller
         $categories      = Category::orderBy('cat_name', 'asc')->get();
         $productlists    = ProductList::orderBy('title', 'asc')->get();
         $productAttrs    = ProductAttribute::orderByDesc('id')->get();
-        $data            = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->orderByDesc('id')->get();
-        $sub_total_price = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->sum('total_price');
+        $data            = InvoiceDetail::where('invoice_id', $id)->orderByDesc('id')->get();
+        $sub_total_price = InvoiceDetail::where('invoice_id', $id)->sum('total_price');
 
         return view('admin.invoice.invoice_add', compact('invoiceOrder', 'units', 'data', 'categories', 'productlists', 'productAttrs', 'sub_total_price'));
     }
@@ -141,6 +141,7 @@ class InvoiceController extends Controller
 
         // //getting data from invoice add form
         $invoice_date = $request->invoice_date;
+        $invoice_id   = $request->invoice_id;
         $invoice_no   = $request->invoice_no;
         $customer_id  = $request->customer_id;
         $product_id   = $request->product_id;
@@ -165,6 +166,7 @@ class InvoiceController extends Controller
         if ($productStock->stock >= $quantity) {
             $result = DB::table('invoice_details')->insert([
                 'invoice_date' => $invoice_date,
+                'invoice_id'   => $invoice_id,
                 'invoice_no'   => $invoice_no,
                 'customer_id'  => $customer_id,
                 'cat_id'       => $cat_id,

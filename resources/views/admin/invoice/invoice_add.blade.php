@@ -26,7 +26,8 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Invoice No.</label>
-                            <input type="text" class="form-control form-control-sm" name="invoice_no" value="{{ $invoiceOrder->invoice_no }}" style="background-color:#95caff;" readonly>
+                            <input type="hidden" name="invoice_id" value="{{ $invoiceOrder->id }}" readonly>
+                            <input type="text" class="form-control form-control-sm" name="invoice_no" value="{{ strtoupper($invoiceOrder->invoice_no) }}" style="background-color:#95caff;" readonly>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationServer01">Customer Name</label>
@@ -61,42 +62,12 @@
                             <label for="validationServer01">Product Name</label>
                             <input type="hidden" id="p_id" name="product_name">
                             <input type="text" class="form-control form-control-sm" id="product_name" readonly>
-                            <!-- <select class="form-control js-example-basic-single" name="product_name" required>
-                                <span class="text-danger" value=""> Product Name </span>
-                                <option value="">Product Name</option>
-
-                                @foreach($productlists as $productlist)
-                                <option value="{{ $productlist->id }}">{{ $productlist->title }}</option>
-                                @endforeach
-
-                            </select>
-
-                            <div class="pt-1">
-                                @error('product_name')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div> -->
                         </div>
 
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Category</label>
                             <input type="hidden" id="cat_id" name="cat_id">
                             <input type="text" class="form-control form-control-sm" id="cat_name" readonly>
-                            <!-- <select class="form-control js-example-basic-single" name="cat_id" required>
-                                <span class="text-danger" value=""> Product Category </span>
-                                <option value="">Product Category</option>
-
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
-                                @endforeach
-
-                            </select>
-
-                            <div class="pt-1">
-                                @error('cat_id')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div> -->
                         </div>
 
                     </div>
@@ -105,15 +76,6 @@
                     <div class="form-row">
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Unit</label>
-                            <!-- <select class="form-control js-example-basic-single" name="unit_id" required>
-                                <span class="text-danger" value=""> Unit </span>
-                                <option value="">Product Unit</option>
-
-                                @foreach($units as $unit)
-                                <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
-                                @endforeach
-
-                            </select> -->
                             <input type="hidden" id="unit_id" name="unit_id">
                             <input type="text" class="form-control form-control-sm" id="unit_name" readonly>
 
@@ -125,7 +87,7 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Unit Price</label>
-                            <input type="number" class="form-control form-control-sm" id="unit_price" min="0" value="0" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
+                            <input type="number" class="form-control form-control-sm" id="unit_price" min="0" value="1" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
                             <div class="pt-1">
                                 @error('unit_price')
                                 <span class="text-danger"> {{$message}} </span>
@@ -139,7 +101,7 @@
 
                         <div class="col-md-2 mb-3">
                             <label for="validationServer01">Qty</label>
-                            <input type="number" class="form-control form-control-sm" id="quantity" min="0" value="0" name="quantity" onchange="inputQty()" placeholder="Quantity" required>
+                            <input type="number" class="form-control form-control-sm" id="quantity" min="0" value="1" name="quantity" onchange="inputQty()" placeholder="Quantity" required>
                             <div class="pt-1">
                                 @error('quantity')
                                 <span class="text-danger"> {{$message}} </span>

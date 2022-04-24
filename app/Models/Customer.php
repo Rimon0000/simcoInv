@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    
     public function userName()
     {
         # code...
@@ -19,4 +20,12 @@ class Customer extends Model
         # code...
         return $this->hasOne(Area::class, 'id', 'area');
     }
+
+    public function customerName()
+    {
+        # code...
+        return $this->hasOne(Payment::class, 'customer_id', 'id');
+    }
+
+
 }

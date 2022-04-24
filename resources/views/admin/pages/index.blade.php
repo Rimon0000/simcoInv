@@ -115,16 +115,15 @@
         </div>
         <!-- Product List, slider, coupons, campaign end -->
 
+        
 
-
+        <!-- Product List, slider, coupons, campaign start -->
         <div class="row">
             <div class="col-lg-12">
                 <h4>Purchase Report: </h4>
                 <br>
             </div>
         </div>
-
-        <!-- Product List, slider, coupons, campaign start -->
         <div class="row">
             <div class="col-xl-4 col-sm-6">
                 <div class="card card-mini">

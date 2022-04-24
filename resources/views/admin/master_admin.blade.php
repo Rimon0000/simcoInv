@@ -115,6 +115,38 @@
                             </ul>
                         </li>
                         <!-- Dashboard end -->
+                        <!-- Customers start -->
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#customers" aria-expanded="false" aria-controls="charts">
+                                <i class="mdi mdi-chart-pie"></i>
+                                <span class="nav-text">Customers MGMT</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="customers" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('customer.type.show')}}">
+                                            <span class="nav-text">Customer Type</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('customer.show')}}">
+                                            <span class="nav-text">Customer List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('customer.add.page')}}">
+                                            <span class="nav-text">Customer Add</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('customer.credit.show')}}">
+                                            <span class="nav-text">Customer Credit</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- Customers end -->
                         <!-- Product Purchase start -->
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#purchase" aria-expanded="false" aria-controls="charts">
@@ -192,7 +224,7 @@
                                             <span class="nav-text">Approved Purchase</span>
                                         </a>
                                     </li>
-                                    
+
                                 </div>
                             </ul>
                         </li>
@@ -370,33 +402,7 @@
                             </ul>
                         </li>
                         <!-- Supplier end -->
-                        <!-- Customers start -->
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#customers" aria-expanded="false" aria-controls="charts">
-                                <i class="mdi mdi-chart-pie"></i>
-                                <span class="nav-text">Customers MGMT</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse" id="customers" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('customer.type.show')}}">
-                                            <span class="nav-text">Customer Type</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('customer.show')}}">
-                                            <span class="nav-text">Customer List</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{route('customer.add.page')}}">
-                                            <span class="nav-text">Customer Add</span>
-                                        </a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                        <!-- Customers end -->
+
                         <!-- Product start -->
                         <li class="has-sub {{ (request()->is('product-mgt/*')) ? 'active expand' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#products" aria-expanded="false" aria-controls="charts">

@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+
+    public function userName()
+    {
+        # code...
+        return $this->hasOne(user::class, 'id', 'created_by');
+    }
+
+    public function customerName()
+    {
+        # code...
+        return $this->hasOne(Customer::class, 'id', 'customer_id');
+    }
+
+    
 }

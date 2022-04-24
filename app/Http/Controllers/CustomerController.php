@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Area;
 use App\Models\CustomerType;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
+use App\Models\Payment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class CustomerController extends Controller
 {
@@ -23,8 +27,8 @@ class CustomerController extends Controller
     //customer Add Page function
     public function customerAddPage()
     {
-        $areas = Area::where('status',1)->orderByDesc('id')->get();
-        $customertypes =CustomerType::where('status',1)->orderByDesc('id')->get();
+        $areas = Area::where('status', 1)->orderByDesc('id')->get();
+        $customertypes = CustomerType::where('status', 1)->orderByDesc('id')->get();
         return view('admin.customer.customer_add', compact('areas', 'customertypes'));
     }
 
@@ -120,8 +124,8 @@ class CustomerController extends Controller
     {
 
         $data = Customer::find($id);
-        $areas = Area::where('status',1)->orderByDesc('id')->get();
-        $customertypes =CustomerType::where('status',1)->orderByDesc('id')->get();
+        $areas = Area::where('status', 1)->orderByDesc('id')->get();
+        $customertypes = CustomerType::where('status', 1)->orderByDesc('id')->get();
         return view('admin.customer.customer_edit', compact('data', 'areas', 'customertypes'));
     }
 
@@ -143,7 +147,7 @@ class CustomerController extends Controller
         $area            = $request->area;
         $present_address = $request->present_address;
         $status          = $request->status;
-     
+
 
         $dataUpdated = DB::table('customers')
             ->where('id', $id)
@@ -161,7 +165,7 @@ class CustomerController extends Controller
                     'area'            => $area,
                     'present_address' => $present_address,
                     'status'          => $status,
-                    
+
                     'created_by'      => Auth::user()->id,
                     'created_at'      => Carbon::now(),
 
@@ -305,5 +309,57 @@ class CustomerController extends Controller
                 return redirect()->route('customer.show')->with($notification);
             };
         }
+    }
+
+
+
+    //customer credit function
+    public function customerCreditShow()
+    {
+        $data = Payment::whereIn('paid_status', ['Full Due', 'Partial Paid'])->get();
+
+        return view('admin.customer_credit.customer_credit_show', compact('data'));
+    }
+
+    //customer credit function
+    public function customerCreditPdf()
+    {
+
+        $data['allData'] = Payment::whereIn('paid_status', ['Full Due', 'Partial Paid'])->get();
+
+        $pdf  = PDF::loadView('admin.pdf.credit-report-pdf', $data);
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
+
+    }
+
+    
+
+    //customer credit edit function
+    public function customerCreditEdit($id)
+    {
+        $data = Payment::whereIn('paid_status', ['Full Due', 'Partial Paid'])->get();
+
+        $invoiceOrder    = Invoice::with(['invoiceDetails'])->find($id);
+        dd($invoiceOrder);
+        $sub_total_price = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->sum('total_price');
+        $discount_amount = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('discount_amount');
+        $paid_amount     = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('paid_amount');
+        $due_amount      = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('due_amount');
+
+        return view('admin.customer_credit.customer_credit_update', compact('invoiceOrder', 'sub_total_price', 'discount_amount', 'paid_amount', 'due_amount'));
+    }
+
+
+    //invoiceApproveStatus Add Page function
+    public function invoiceApproveStatus($id)
+    {
+        $invoiceOrder    = Invoice::with(['invoiceDetails'])->find($id);
+        $sub_total_price = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->sum('total_price');
+        $discount_amount = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('discount_amount');
+        $paid_amount     = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('paid_amount');
+        $due_amount      = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('due_amount');
+
+        return view('admin.invoice.invoice_approve', compact('invoiceOrder', 'sub_total_price', 'discount_amount', 'paid_amount', 'due_amount'));
     }
 }
