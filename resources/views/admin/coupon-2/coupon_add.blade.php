@@ -16,45 +16,48 @@
             <div class="card-body">
 
 
-                <form method="POST" action="{{route('coupon.add')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('campaign.add')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Offer Name</label>
-                            <input type="text" class="form-control" name="offer_name" id="validationServer01" placeholder="Offer Name" required>
+                            <input type="text" class="form-control" name="cat_name" id="validationServer01" placeholder="Category Name" required>
                             <div class="pt-1">
-                                @error('offer_name')
+                                @error('cat_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="validationServer01">Product Title</label>
+                            <label for="validationServer01">Product Code</label>
                             <select class="form-control js-example-basic-single" name="product_id">
-                                <option value="">Select Product Title</option>
-                                @foreach($productLists as $productList)
-                                <option value="{{$productList->product_id }}">{{ $productList->title }}</option>
+                                <span class="text-danger" value=""> Product Code </span>
+                                <option value="">Product Code</option>
+
+                                @foreach($productlists as $productlist)
+                                <option value="{{ $productlist->id }}">{{ $productlist->product_id }}</option>
                                 @endforeach
+
                             </select>
+
                             <div class="pt-1">
                                 @error('product_id')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
-
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Coupon Code</label>
-                            <input type="text" class="form-control" name="coupon_code" value="{{ 'C-'.strtoupper(uniqid()) }}" id="validationServer01" placeholder="Coupon Code" required>
+                            <input type="text" class="form-control" name="cat_name" id="validationServer01" placeholder="Category Name" required>
                             <div class="pt-1">
-                                @error('coupon_code')
+                                @error('cat_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Coupon Type</label>
-                            <select class="form-control" name="coupon_type">
+                            <select class="form-control" name="product_id">
                                 <span class="text-danger" value="">Coupon Type</span>
                                 <option value="percent" selected>Coupon Percent</option>
                                 <option value="cash">Coupon Cash</option>
@@ -62,43 +65,43 @@
                             </select>
 
                             <div class="pt-1">
-                                @error('coupon_type')
+                                @error('product_id')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Coupon Limit</label>
-                            <input type="number" class="form-control" name="coupon_limit" min="1" value="1" placeholder="Coupon Limit" required>
+                            <input type="number" class="form-control" name="cat_name" min="1" value="1" placeholder="Category Name" required>
                             <div class="pt-1">
-                                @error('coupon_limit')
+                                @error('cat_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Coupon Amount</label>
-                            <input type="number" class="form-control" name="coupon_amount" min="1" value="10" placeholder="Coupon Amoun" required>
+                            <input type="number" class="form-control" name="cat_name" min="1" value="10" placeholder="Category Name" required>
                             <div class="pt-1">
-                                @error('coupon_amount')
+                                @error('cat_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Cart Min Value</label>
-                            <input type="number" class="form-control" name="cart_min_value" min="1" value="100" placeholder="Cart Min Value" required>
+                            <input type="number" class="form-control" name="cat_name" min="1" placeholder="Category Name" required>
                             <div class="pt-1">
-                                @error('cart_min_value')
+                                @error('cat_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Coupon Expired Date</label>
-                            <input type="date" class="form-control" name="expired_date" id="validationServer01" placeholder="Coupon Expired Date" required>
+                            <input type="date" class="form-control" name="cat_name" id="validationServer01" placeholder="Category Name" required>
                             <div class="pt-1">
-                                @error('expired_date')
+                                @error('cat_name')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>

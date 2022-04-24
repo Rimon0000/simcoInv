@@ -17,14 +17,14 @@ class CreateCouponsTable extends Migration
             $table->id();
 
             $table->string('offer_name')->unique();
-            $table->string('product_id');
+            $table->string('product_id')->nullable();
             $table->string('coupon_code');
             $table->string('coupon_type');
             $table->string('coupon_limit');
             $table->string('coupon_amount');
             $table->string('cart_min_value');
             $table->string('expired_date');
-            $table->string('coupon_use');
+            $table->string('coupon_use')->default(0);
             $table->string('coupon_use_date')->nullable();
             $table->string('coupon_used_by')->nullable();
             $table->integer('status')->default(1);

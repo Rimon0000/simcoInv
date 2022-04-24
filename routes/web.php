@@ -409,6 +409,7 @@ Route::prefix('product-mgt/coupon')->group(function () {
     Route::post('/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
 });
 
+
 //Product Origin route
 Route::prefix('product-mgt/origin')->group(function () {
     Route::get('/show', [OriginController::class, 'originShow'])->name('origin.show');
@@ -506,6 +507,12 @@ Route::prefix('purchase')->group(function () {
     Route::post('/update/{id}', [PurchaseController::class, 'purchaseOrderUpdate'])->name('purchase.order.update');
 });
 
+
+
+Route::prefix('purchase/report')->group(function () {
+    Route::get('/show', [PurchaseController::class, 'purchaseReportShow'])->name('purchase.report.show');
+    Route::post('/pdf', [PurchaseController::class, 'purchaseDailyReportPdf'])->name('purchase.daily.report.pdf');
+});
 
 Route::prefix('invoice')->group(function () {
 

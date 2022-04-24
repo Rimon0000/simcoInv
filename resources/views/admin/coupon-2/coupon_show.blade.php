@@ -20,14 +20,13 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Offer Name</th>
-                            <th scope="col">Product Title</th>
+                            <th scope="col">Product ID</th>
                             <th scope="col">Coupon Code</th>
                             <th scope="col">Coupon Type</th>
                             <th scope="col">Coupon Limit</th>
                             <th scope="col">Coupon Amount</th>
                             <th scope="col">Cart Min Value</th>
                             <th scope="col">Expired Date</th>
-                            <th scope="col">Created By</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -40,16 +39,12 @@
                         @php $count++; @endphp
                         <tr>
                             <td scope="row">{{ $count }}</td>
-                            <td>{{ $datum->offer_name}}</td>
-                            <td>{{  !empty($datum->product_id) ? $datum->productListName->title : '' }}</td>
-                            <td>{{ $datum->coupon_code}}</td>
-                            <td>{{ $datum->coupon_type}}</td>
-                            <td>{{ $datum->coupon_limit}}</td>
-                            <td>{{ $datum->coupon_amount}}</td>
-                            <td>{{ $datum->cart_min_value}}</td>
-                            <td>{{ $datum->expired_date}}</td>
-                            <td>{{ $datum->userName->name}}</td>
-                            <td><a href="{{ route ('coupon.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
+                            <td>{{ $datum->cat_name}}</td>
+                            <td>{{ $datum->cat_name}}</td>
+                            <td>{{ $datum->cat_name}}</td>
+                            <td>{{ $datum->cat_name}}</td>
+                            <td>{{ $datum->cat_name}}</td>
+                            <td><a href="{{ route ('category.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>
                             <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -57,8 +52,9 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="p-1"><a href="{{ route('coupon.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
-                                            <li class="p-1"><a href="{{ route('coupon.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
+                                            <li class="p-1"><a href="{{ route('category.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit</a></li>
+                                            <li class="p-1"><a href="{{ route('category.edit.image', ['id' => $datum->id]) }}" class="btn btn-sm btn-warning">Edit Image</a></li>
+                                            <li class="p-1"><a href="{{ route('category.delete', ['id' => $datum->id]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger">Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>

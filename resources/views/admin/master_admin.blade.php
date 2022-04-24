@@ -133,6 +133,11 @@
                                             <span class="nav-text">Approved Purchase</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{route('purchase.report.show')}}">
+                                            <span class="nav-text">Daily Purchase Report</span>
+                                        </a>
+                                    </li>
                                 </div>
                             </ul>
                         </li>
@@ -187,6 +192,7 @@
                                             <span class="nav-text">Approved Purchase</span>
                                         </a>
                                     </li>
+                                    
                                 </div>
                             </ul>
                         </li>

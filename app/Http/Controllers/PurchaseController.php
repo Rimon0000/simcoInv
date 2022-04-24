@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PurchaseController extends Controller
 {
@@ -244,8 +245,6 @@ class PurchaseController extends Controller
         }
     }
 
-
-
     public function purchaseOrderApprove($id)
     {
         # code...
@@ -357,4 +356,34 @@ class PurchaseController extends Controller
             return redirect()->route('purchase.show')->with($notification);
         };
     }
+
+
+
+     // invoiceDailyReportShow invoiceDailyReportShow ########################################################################################################
+
+     public function purchaseReportShow()
+     {
+         # code...
+         return view('admin.purchase.daily_purchase_report');
+     }
+ 
+     public function purchaseDailyReportPdf(Request $request)
+     {
+         # code...
+         $start_date = date('Y-m-d', strtotime($request->start_date));
+         $end_date   = date('Y-m-d', strtotime($request->end_date));
+ 
+         $data['allData']     = Purchase::whereBetween('purchase_date', [$start_date, $end_date])->where('approved', 1)->get();
+         $data['grand_total'] = Purchase::whereBetween('purchase_date', [$start_date, $end_date])->where('approved', 1)->sum('total_price');
+         $data['start_date']  = $start_date;
+         $data['end_date']    = $end_date;
+ 
+         $pdf  = PDF::loadView('admin.pdf.daily-purchase-report-pdf', $data);
+         $pdf->SetProtection(['copy', 'print'], '', 'pass');
+         return $pdf->stream('document.pdf');
+ 
+     }
+ 
+     // invoiceDailyReportShow invoiceDailyReportShow ########################################################################################################
+ 
 }
