@@ -50,17 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationServer01">Description</label>
-                            <input type="text" class="form-control" name="description" placeholder="Description">
-                            <div class="pt-1">
-                                @error('description')
-                                <span class="text-danger"> {{$message}} </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
+                   
                     <hr>
                     <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                 </form>

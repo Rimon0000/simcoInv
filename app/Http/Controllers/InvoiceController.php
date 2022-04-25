@@ -78,13 +78,12 @@ class InvoiceController extends Controller
         $invoice_date = $request->invoice_date;
         $invoice_no   = $request->invoice_no;
         $customer_id  = $request->customer_id;
-        $description  = $request->description;
+    
 
         $result = DB::table('invoices')->insert([
             'invoice_date' => $invoice_date,
             'invoice_no'   => $invoice_no,
             'customer_id'  => $customer_id,
-            'description'  => $description,
             'created_by'   => Auth::user()->id,
             'created_at'   => Carbon::now(),
         ]);
@@ -150,6 +149,7 @@ class InvoiceController extends Controller
         $unit_id      = $request->unit_id;
         $unit_price   = $request->unit_price;
         $quantity     = $request->quantity;
+        $description  = $request->description;
 
         $total_price  = $quantity * $unit_price;
 
@@ -176,6 +176,7 @@ class InvoiceController extends Controller
                 'quantity'     => $quantity,
                 'unit_price'   => $unit_price,
                 'total_price'  => $total_price,
+                'description'  => $description,
 
                 'created_by'   => Auth::user()->id,
                 'created_at'   => Carbon::now(),
@@ -208,7 +209,7 @@ class InvoiceController extends Controller
         }
     }
 
-
+//invoice order payment
     public function invoiceOrderPayment(Request $request, $id)
     {
         # code...

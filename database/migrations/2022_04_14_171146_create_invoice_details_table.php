@@ -18,6 +18,7 @@ class CreateInvoiceDetailsTable extends Migration
 
             $table->date('invoice_date');
             $table->string('invoice_no');
+            $table->integer('invoice_id');
             $table->integer('customer_id');
             $table->string('product_id');
             $table->string('product_name');
@@ -30,6 +31,7 @@ class CreateInvoiceDetailsTable extends Migration
             $table->integer('discount_price')->nullable();
             $table->double('paid_amount')->nullable();
             $table->integer('approved')->default(0);
+            $table->string('description')->nullable();
 
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
