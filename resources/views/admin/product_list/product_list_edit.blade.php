@@ -199,17 +199,19 @@
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Bar Code</label>
-                            <select class="form-control js-example-basic-single" name="bar_code" >
-                                <span class="text-danger" value=""> Select Bar Code </span>
-                                <option value="">Select Bar Code</option>
+                            <label for="validationServer01">Supplier</label>
+                            <select class="form-control js-example-basic-single" name="supplier_id" >
+                                <span class="text-danger" value=""> Select Supplier </span>
+                                <option value="">Select Supplier</option>
 
-                                <option value="1">Test</option>
+                                @foreach($suppliers as $supplier)
+                                <option value="{{ $supplier->id }}" {{ ($data->supplier_id == $supplier->id) ? "Selected" : "" }} >{{ $supplier->supplier_name }}</option>
+                                @endforeach
 
                             </select>
 
                             <div class="pt-1">
-                                @error('bar_code')
+                                @error('supplier_id')
                                 <span class="text-danger"> {{$message}} </span>
                                 @enderror
                             </div>

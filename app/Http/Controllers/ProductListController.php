@@ -9,6 +9,7 @@ use App\Models\Origin;
 use App\Models\ProductList;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
+use App\Models\Supplier;
 use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -71,7 +72,8 @@ class ProductListController extends Controller
         $units            = Unit::all();
         $displaysections  = DisplaySection::all();
         $origins          = Origin::all();
-        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins'));
+        $suppliers        = Supplier::all();
+        return view('admin.product_list.product_list_add', compact('categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins', 'suppliers'));
     }
 
     //product list add function
@@ -115,7 +117,7 @@ class ProductListController extends Controller
         $unit             = $request->unit;
         $stock            = $request->stock;
         $alert_stock      = $request->alert_stock;
-        $bar_code         = $request->bar_code;
+        $supplier_id      = $request->supplier_id;
         $tax              = $request->tax;
         $tags             = $request->tags;
         $promotion        = $request->promotion;
@@ -184,7 +186,7 @@ class ProductListController extends Controller
             'unit'             => $unit,
             'stock'            => $stock,
             'alert_stock'      => $alert_stock,
-            'bar_code'         => $bar_code,
+            'supplier_id'      => $supplier_id,
             'tax'              => $tax,
             'tags'             => $tags,
             'promotion'        => $promotion,
@@ -334,8 +336,9 @@ class ProductListController extends Controller
         $units            = Unit::all();
         $origins          = Origin::all();
         $displaysections  = DisplaySection::all();
+        $suppliers        = Supplier::all();
 
-        return view('admin.product_list.product_list_edit', compact('data', 'categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins'));
+        return view('admin.product_list.product_list_edit', compact('data', 'categories', 'subcategories', 'subsubcategories', 'brands', 'units', 'displaysections', 'origins', 'suppliers'));
     }
 
     //Product List Update function
@@ -364,7 +367,7 @@ class ProductListController extends Controller
         $unit             = $request->unit;
         $stock            = $request->stock;
         $alert_stock      = $request->alert_stock;
-        $bar_code         = $request->bar_code;
+        $supplier_id      = $request->supplier_id;
         $tax              = $request->tax;
         $tags             = $request->tags;
         $promotion        = $request->promotion;
@@ -394,7 +397,7 @@ class ProductListController extends Controller
                     'unit'             => $unit,
                     'stock'            => $stock,
                     'alert_stock'      => $alert_stock,
-                    'bar_code'         => $bar_code,
+                    'supplier_id'      => $supplier_id,
                     'tax'              => $tax,
                     'tags'             => $tags,
                     'promotion'        => $promotion,

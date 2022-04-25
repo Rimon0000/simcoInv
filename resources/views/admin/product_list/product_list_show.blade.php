@@ -116,8 +116,8 @@
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Unit</em></th>
                                                             <td scope="col">{{ $datum->unitName->unit_name }}</td>
-                                                            <th scope="col"><em>Bar Code</em></th>
-                                                            <td scope="col">{{ empty($datum->bar_code) ? 'NA' :  $datum->bar_code }}</td>
+                                                            <th scope="col"><em>Supplier</em></th>
+                                                            <td scope="col">{{ $datum->supplierName->supplier_name }}</td>
                                                         </tr>
 
                                                         <tr>

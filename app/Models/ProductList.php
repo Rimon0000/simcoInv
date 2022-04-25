@@ -56,5 +56,10 @@ class ProductList extends Model
         # code...
         return $this->hasOne(Origin::class, 'id', 'origin');
     }
+    public function supplierName()
+    {
+        # code...
+        return $this->hasOne(Supplier::class, 'id', 'supplier_id');
+    }
 
 }

@@ -36,7 +36,7 @@ class CreateProductListsTable extends Migration
             $table->integer('unit')->default(0);
             $table->integer('stock')->nullable();
             $table->integer('alert_stock')->nullable();
-            $table->string('bar_code')->nullable();
+            $table->integer('supplier_id')->nullable();
             $table->integer('tax')->nullable();
             $table->text('tags')->nullable();
             $table->text('promotion')->nullable();
