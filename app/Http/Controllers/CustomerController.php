@@ -336,16 +336,15 @@ class CustomerController extends Controller
     
 
     //customer credit edit function
-    public function customerCreditEdit($id)
+    public function customerCreditEdit($id, $invoice_id)
     {
         $data = Payment::whereIn('paid_status', ['Full Due', 'Partial Paid'])->get();
 
-        $invoiceOrder    = Invoice::with(['invoiceDetails'])->find($id);
-        dd($invoiceOrder);
-        $sub_total_price = InvoiceDetail::where('invoice_no', $invoiceOrder->invoice_no)->sum('total_price');
-        $discount_amount = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('discount_amount');
-        $paid_amount     = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('paid_amount');
-        $due_amount      = Payment::where('invoice_no', $invoiceOrder->invoice_no)->sum('due_amount');
+        $invoiceOrder    = Invoice::with(['invoiceDetails'])->find($invoice_id);
+        $sub_total_price = InvoiceDetail::where('invoice_id', $id)->sum('total_price');
+        $discount_amount = Payment::where('invoice_id', $id)->sum('discount_amount');
+        $paid_amount     = Payment::where('invoice_id', $id)->sum('paid_amount');
+        $due_amount      = Payment::where('invoice_id', $id)->sum('due_amount');
 
         return view('admin.customer_credit.customer_credit_update', compact('invoiceOrder', 'sub_total_price', 'discount_amount', 'paid_amount', 'due_amount'));
     }

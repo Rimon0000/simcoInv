@@ -43,7 +43,7 @@
                             <td>{{ $datum->invoice_date }}</td>
                             <td style="text-align: center">{{ $datum->due_amount }}</td>
                             <td style="text-align: center">
-                                <a href="{{ route('customer.credit.edit', ['id' => $datum->id]) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a> ||
+                                <a href="{{ route('customer.credit.edit', ['id' => $datum->id, 'invoice_id' => $datum->invoice_id]) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a> ||
                                 <a href="{{ route('customer.credit.details', ['id' => $datum->id]) }}" class="btn btn-sm btn-success"><i class="fa fa-eye" aria-hidden="true"></i></a>
                             </td>
                         </tr>

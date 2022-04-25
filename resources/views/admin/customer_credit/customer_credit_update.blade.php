@@ -3,7 +3,7 @@
 
 <div class="row m-3">
     <div class="col-lg-6">
-        <a href="{{ route ('invoice.approve')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
+        <a href="{{ route ('invoice.show')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-left text-dark"></i> Back</a>
     </div>
 </div>
 
@@ -11,130 +11,308 @@
     <div class="col-lg-12 ">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Invoice No. - {{ $invoiceOrder->invoice_no }}</h2>
+                <h2>Add Invoice Items - {{ $invoiceOrder->invoice_no }}</h2>
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{route('invoice.approve.store')}}">
+                <form method="POST" action="{{route('invoice.store')}}">
                     @csrf
 
                     <!-- Product Color, Size, Pieces, Weight Section Start -->
                     <div class="form-row">
-                        <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Invoice Date: {{ $invoiceOrder->invoice_date }}</label>
-                            <input type="hidden" name="invoice_no" value="{{ $invoiceOrder->invoice_no }}">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer01">Invoice Date</label>
+                            <input type="date" class="form-control form-control-sm" name="invoice_date" value="{{ $invoiceOrder->invoice_date }}" style="background-color:#95caff;" readonly>
                         </div>
-                    </div>
-                    <div class="form-row">
-
-                        <div class="col-md-3 mb-3">
-                            <label for="validationServer01">Customer Name: {{ $invoiceOrder->customerName->customer_name }}</label>
-                            <label for="validationServer01">Customer Mobile: {{ $invoiceOrder->customerName->mobile }}</label>
-                            <label for="validationServer01">Customer Address: {{ $invoiceOrder->customerName->present_address }}</label>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer01">Invoice No.</label>
+                            <input type="hidden" name="invoice_id" value="{{ $invoiceOrder->id }}" readonly>
+                            <input type="text" class="form-control form-control-sm" name="invoice_no" value="{{ strtoupper($invoiceOrder->invoice_no) }}" style="background-color:#95caff;" readonly>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer01">Customer Name</label>
+                            <input type="hidden" name="customer_id" value="{{ $invoiceOrder->customer_id }}">
+                            <input type="text" class="form-control form-control-sm" name="customer_id" value="{{ $invoiceOrder->customer_id }}" style="background-color:#95caff;" readonly>
                         </div>
                     </div>
                     <hr>
                     <!-- Product Color, Size, Pieces, Weight Section End -->
+
+                    <!-- Product Code, Stock Qty, Stock Alert, Units Start -->
                     <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="card card-default">
-                                <div class="card-header card-header-border-bottom">
-                                    <h2>Invoice Item Table</h2>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table table-striped" id="invoiceTable" class="display" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Product SKU</th>
-                                                <th scope="col">Product Name</th>
-                                                <th scope="col">Category</th>
-                                                <th scope="col">Unit</th>
-                                                <th scope="col">Current Stock</th>
-                                                <th scope="col">Unit Price</th>
-                                                <th scope="col">Qty</th>
-                                                <th scope="col">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php $count = 0; @endphp                                           
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer01">Product Code</label>
+                            <select class="form-control js-example-basic-single" name="product_id" id="product_id" onchange="unitStock()" required>
+                                <span class="text-danger" value=""> Product Code </span>
+                                <option value="">Product Code</option>
 
-                                            @foreach($invoiceOrder['invoiceDetails'] as $key => $datum)
+                                @foreach($productlists as $productlist)
+                                <option value="{{ $productlist->product_id }}">{{ $productlist->product_id }}</option>
+                                @endforeach
 
-                                            @php $count++; @endphp
-                                            <tr>
-                                                <td scope="row">{{ $count }}</td>
-                                                <td>{{ $datum->product_id}}</td>
-                                                <td>{{ $datum->productName->title }}</td>
-                                                <td>{{ $datum->cat_id }}</td>
-                                                <td>{{ $datum->unit_id }}</td>
-                                                <td>{{ $datum->productName->stock }}</td>
-                                                <td>{{ $datum->unit_price }}</td>
-                                                <td>{{ $datum->quantity }}</td>
-                                                <td>{{ $datum->total_price }}</td>
+                            </select>
 
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                        <tfoot>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><em>Sub Total (Tk)</em></td>
-                                            <td><strong>{{ $sub_total_price }}</strong></td>
-                                        </tfoot>
-                                    </table>
-                                </div>
-
+                            <div class="pt-1">
+                                @error('product_id')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-lg-6"></div>
-                        <div class="col-lg-6 d-flex justify-content-end">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td><h5>Sub Total (Tk) :</h5> </td>
-                                        <th><h5 class="mx-2">{{ $sub_total_price }}</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <td><h5>Discount (Tk) :</h5></td>
-                                        <th><h5 class="mx-2">{{ $discount_amount }}</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <td><h5>Paid Amount (Tk) :</h5> </td>
-                                        <th><h5 class="mx-2">{{ $paid_amount }}</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <td><h5>Due Amount (Tk) :</h5> </td>
-                                        <th><h5 class="mx-2">{{ $due_amount }}</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><hr></td>
-                                    </tr>
-                                    <tr>
-                                        <td><h5>Grand Total (Tk) :</h5> </td>
-                                        <th><h5 class="mx-2">{{ $sub_total_price - $discount_amount }}</h5></th>
-                                    </tr>
-                                </tbody>
-
-                            </table>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer01">Product Name</label>
+                            <input type="hidden" id="p_id" name="product_name">
+                            <input type="text" class="form-control form-control-sm" id="product_name" readonly>
                         </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Category</label>
+                            <input type="hidden" id="cat_id" name="cat_id">
+                            <input type="text" class="form-control form-control-sm" id="cat_name" readonly>
+                        </div>
+
                     </div>
+                    <!-- Product Category, Sub Category, Sub Sub Categroy End -->
+                    <!-- Product Code, Stock Qty, Stock Alert, Units Start -->
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Unit</label>
+                            <input type="hidden" id="unit_id" name="unit_id">
+                            <input type="text" class="form-control form-control-sm" id="unit_name" readonly>
+
+                            <div class="pt-1">
+                                @error('unit_id')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Unit Price</label>
+                            <input type="number" class="form-control form-control-sm" id="unit_price" min="0" value="1" name="unit_price" onchange="unitPrice()" placeholder="Unit Price" required>
+                            <div class="pt-1">
+                                @error('unit_price')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Unit Stock</label>
+                            <input type="number" class="form-control form-control-sm" id="unit_stock" value="0" readonly>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Qty</label>
+                            <input type="number" class="form-control form-control-sm" id="quantity" min="0" value="1" name="quantity" onchange="inputQty()" placeholder="Quantity" required>
+                            <div class="pt-1">
+                                @error('quantity')
+                                <span class="text-danger"> {{$message}} </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="validationServer01">Total price</label>
+                            <input type="number" class="form-control form-control-sm" value="0" id="total_price" name="total_price" style="background-color:#95caff;" readonly>
+                        </div>
+
+                    </div>
+                    <!-- Product Category, Sub Category, Sub Sub Categroy End -->
                     <hr>
-                    <button class="btn btn-primary btn-sm" type="submit">Approve Invoice</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+
+<div class="row m-3">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Invoice Item Table</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="invoiceTable" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product SKU</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $count = 0; @endphp
+
+                        @foreach($data as $datum)
+
+                        @php $count++; @endphp
+                        <tr>
+                            <td scope="row">{{ $count }}</td>
+                            <td>{{ $datum->product_id }}</td>
+                            <td>{{ $datum->productName->title }}</td>
+                            <td>{{ $datum->categoryName->cat_name }}</td>
+                            <td>{{ $datum->unitName->unit_name }}</td>
+                            <td>{{ $datum->unit_price }}</td>
+                            <td>{{ $datum->quantity }}</td>
+                            <td>{{ $datum->total_price }}</td>
+                            <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal{{$datum->id}}">
+                                    Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{$datum->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$datum->id}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel{{$datum->id}}">Product SKU - </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col"><em>Invoice Date</em></th>
+                                                            <td scope="col">{{ $datum->invoice_date }}</td>
+                                                            <th scope="col"><em>Invoice No.</em></th>
+                                                            <td scope="col">{{ $datum->invoice_no }}</td>
+                                                            <td scope="col"><em>Customer Name</em></td>
+                                                            <td scope="col">{{ $datum->customer_id }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <!-- <th scope="col"><em>Description</em></th>
+                                                            <td scope="col">{{ $datum->description }}</td> -->
+                                                            <th scope="col"><em>Created_by</em></th>
+                                                            <td scope="col">{{ $datum->user_id }}</td>
+                                                        </tr>
+
+                                                    </thead>
+                                                </table>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="{{ route('invoice.delete', ['id' => $datum->id, 'invoice_no' => $datum->invoice_no ]) }}" onclick="return confirm('Are You Sure?')" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td> <em>Sub Total (Tk):</em> </td>
+                            <td style="color: black;"><strong>{{ $sub_total_price }}</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-3">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-6">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <form action="{{ route('invoice.order.payment', ['id' => $invoiceOrder->id]) }}" method="POST">
+                @csrf
+
+                <div class="pb-1 pt-1">
+                    <strong>Invoice Date:</strong>
+                </div>
+                <div>
+                    <input type="date" class="form-control form-control-sm" name="invoice_date" value="{{ $invoiceOrder->invoice_date }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Invoice No.</strong>
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-sm" name="invoice_no" value="{{ $invoiceOrder->invoice_no }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Customer Name</strong>
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-sm" name="customer_id" value="{{ $invoiceOrder->customer_id }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Sub Total (Tk):</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" id="sub_total_price" name="sub_total_price" value="{{ $sub_total_price }}" readonly>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Discount Price (Tk):</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" id="discount_price" min="0" max="{{ $sub_total_price  }}" value="0" name="discount_price" onchange="discountPrice()" placeholder="Discount Price" required>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong>Enter Paid Amount:</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" id="paid_amount" value="0" name="paid_amount" onchange="sum()" placeholder="Paid Amount" required>
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong> Due Amount (Tk):</strong>
+                </div>
+                <div>
+                    <input type="number" class="form-control form-control-sm" min="0" max="{{ $sub_total_price  }}" value="0" id="due_amount" name="due_amount" onchange="sum()" placeholder="Due Amount">
+                </div>
+                <div id="sum" class="pt-2 pb-2">
+
+                </div>
+                <div class="pb-1 pt-1">
+                    <strong> Paid Status:</strong>
+                </div>
+                <div>
+                    <select class="form-control js-example-basic-single" name="paid_status" required>
+                        <span class="text-danger" value=""> Paid Status </span>
+                        <option value="">Paid Status</option>
+                        <option value="Full Paid">Full Paid</option>
+                        <option value="Full Due">Full Due</option>
+                        <option value="Partial Paid">Partial Paid</option>
+                    </select>
+
+                    <div class="pt-1">
+                        @error('paid_status')
+                        <span class="text-danger"> {{$message}} </span>
+                        @enderror
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <input type="submit" class="btn btn-block btn-sm btn-danger" value="Submit">
+                </div>
+
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     // ####################### Part one
     var unit_price;
@@ -197,6 +375,8 @@
                 document.getElementById('p_id').value = response.data.p_id;
                 document.getElementById('cat_id').value = response.data.cat_id;
                 document.getElementById('cat_name').value = response.data.cat_name;
+                document.getElementById('unit_id').value = response.data.unit;
+                document.getElementById('unit_name').value = response.data.unit_name;
             });
     }
 

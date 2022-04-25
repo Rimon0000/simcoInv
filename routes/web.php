@@ -228,7 +228,7 @@ Route::prefix('customer/credit')->group(function () {
     Route::get('/show', [CustomerController::class, 'customerCreditShow'])->name('customer.credit.show');
     Route::get('/pdf', [CustomerController::class, 'customerCreditPdf'])->name('customer.credit.pdf');
 
-    Route::get('/edit/{id}', [CustomerController::class, 'customerCreditEdit'])->name('customer.credit.edit');
+    Route::get('/edit/{id}/{invoice_id}', [CustomerController::class, 'customerCreditEdit'])->name('customer.credit.edit');
     Route::get('/details/{id}', [CustomerController::class, 'customerCreditDetails'])->name('customer.credit.details');
 });
 
