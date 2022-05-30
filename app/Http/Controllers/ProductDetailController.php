@@ -29,8 +29,9 @@ class ProductDetailController extends Controller
     public function productDetailDisplayShow($id)
     {
         $data = ProductDetail::find($id);
+        $productlists =  ProductList::all();
 
-        return view('admin.product_details.product_details_display', compact('data'));
+        return view('admin.product_details.product_details_display', compact('data', 'productlists'));
     }
 
     //product detail add function
@@ -262,6 +263,133 @@ class ProductDetailController extends Controller
                 ];
                 return redirect()->route('product.detail.show')->with($notification);
             };
+        }
+    }
+
+    // Product Detail Update function
+    public function productDetailUpdate(Request $request, $id)
+    {
+
+        // Getting data from Service Details Edit form
+
+        $product_id      = $request->product_id;
+        $short_details   = $request->short_details;
+        $long_details    = $request->long_details;
+        $whatsapp_url    = $request->whatsapp_url;
+        $fb_url          = $request->fb_url;
+        $faq             = $request->faq;
+        $warranty_policy = $request->warranty_policy;
+
+
+        if (!empty($product_id && $fb_url && $whatsapp_url)) {
+            $dataUpdated = DB::table('product_details')
+                ->where('id', $id)
+                ->update(
+                    [
+                        "product_id"   => $product_id,
+                        "whatsapp_url" => $whatsapp_url,
+                        "fb_url"       => $fb_url,
+                        'updated_by'   => Auth::user()->id,
+                        'updated_at'   => Carbon::now()
+                    ]
+                );
+            if ($dataUpdated) {
+                $notification = [
+                    'message'     => 'Product Details Updated Successfully.',
+                    'alert-type'  => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                return redirect()->back()->with('warning', 'Something Went Wrong !!');
+            }
+        }
+
+        if (!empty($short_details)) {
+            $dataUpdated = DB::table('product_details')
+                ->where('id', $id)
+                ->update(
+                    [
+                        "short_details" => $short_details,
+                        'updated_by'    => Auth::user()->id,
+                        'updated_at'    => Carbon::now()
+                    ]
+                );
+            if ($dataUpdated) {
+                $notification = [
+                    'message'     => 'Product Details Updated Successfully.',
+                    'alert-type'  => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                return redirect()->back()->with('warning', 'Something Went Wrong !!');
+            }
+        }
+
+        if (!empty($long_details)) {
+
+            $dataUpdated = DB::table('product_details')
+                ->where('id', $id)
+                ->update(
+                    [
+                        "long_details" => $long_details,
+                        'updated_by'   => Auth::user()->id,
+                        'updated_at'   => Carbon::now()
+                    ]
+                );
+            if ($dataUpdated) {
+                $notification = [
+                    'message'     => 'Long Details Updated Successfully.',
+                    'alert-type'  => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                return redirect()->back()->with('warning', 'Something Went Wrong !!');
+            }
+        }
+
+        if (!empty($faq)) {
+
+            $dataUpdated = DB::table('product_details')
+                ->where('id', $id)
+                ->update(
+                    [
+                        "faq"        => $faq,
+                        'updated_by' => Auth::user()->id,
+                        'updated_at' => Carbon::now()
+                    ]
+                );
+            if ($dataUpdated) {
+                $notification = [
+                    'message'     => 'Faq Updated Successfully.',
+                    'alert-type'  => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                return redirect()->back()->with('warning', 'Something Went Wrong !!');
+            }
+        }
+
+        if (!empty($warranty_policy)) {
+
+            $dataUpdated = DB::table('product_details')
+                ->where('id', $id)
+                ->update(
+                    [
+                        "warranty_policy" => $warranty_policy,
+                        'updated_by'      => Auth::user()->id,
+                        'updated_at'      => Carbon::now()
+                    ]
+                );
+
+            if ($dataUpdated) {
+                $notification = [
+                    'message'     => 'Warranty Policy Updated Successfully.',
+                    'alert-type'  => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            } else {
+                return redirect()->back()->with('warning', 'Something Went Wrong !!');
+            }
         }
     }
 }
