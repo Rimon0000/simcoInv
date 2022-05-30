@@ -86,7 +86,7 @@
                             <td scope="row">{{ $count }}</td>
                             <td>{{ date('d-m-y', strtotime($datum->purchase_date)) }}</td>
                             <td>{{ $datum->purchase_no }}</td>
-                            <td>{{ $datum->supplierName->supplier_name }}</td>
+                            <td>{{ empty($datum->supplierName->supplier_name) ? 'NA' : $datum->supplierName->supplier_name }}</td>
                             <td>{{ $datum->total_price}}</td>
                             <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ ($datum->approved == 1) ? 'Approved' : 'Pending'  }}</strong> </td>
                             <td><a href="{{ route ('purchase.add.page', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus"></i> Add Items</a></td>

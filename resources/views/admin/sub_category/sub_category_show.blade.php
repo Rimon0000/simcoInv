@@ -33,7 +33,7 @@
                         <tr>
                             <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->sub_cat_name}}</td>
-                            <td>{{ $datum->categoryName->cat_name }}</td>
+                            <td>{{ empty($datum->categoryName->cat_name) ? 'NA': $datum->categoryName->cat_name }}</td>
                             <td>{{ $datum->userName->name }}</td>
                             <td><a href="{{ route ('subcategory.status', ['id' => $datum -> id]) }}" class="btn btn-sm {{ $datum->status == 1 ? 'btn-info': 'btn-danger' }}"> {{ $datum->status == 1 ? 'Active': 'Deactive' }}</a></td>
                             <td>

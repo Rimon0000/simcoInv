@@ -22,7 +22,7 @@
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{ route('employee.add') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('employee.add.page') }}" enctype="multipart/form-data">
                     @csrf
 
 

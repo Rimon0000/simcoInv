@@ -29,7 +29,7 @@
 
                         <div class="col-md-12 mb-3">
                             <label for="validationServer01">Origin Short Name</label>
-                            <input type="text" class="form-control" name="short_name" id="validationServer01" placeholder="Product Short Name" required>
+                            <input type="text" class="form-control" name="short_name" id="validationServer01" placeholder="Origin Short Name" required>
                             <div class="pt-1">
                                 @error('short_name')
                                 <span class="text-danger"> {{$message}} </span>
