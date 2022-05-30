@@ -301,7 +301,7 @@
                                         </a>
                                     </li>
                                     <li class="{{ (request()->segment(2) == 'add') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{route('employee.add.page')}}">
+                                        <a class="sidenav-item-link" href="{{route('employee.add')}}">
                                             <span class="nav-text">Employee Add</span>
                                         </a>
                                     </li>

@@ -73,7 +73,7 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Category</em></th>
-                                                            <td scope="col">{{ $datum->categoryName->cat_name   }}</td>
+                                                            <td scope="col">{{ empty($datum->categoryName->cat_name) ? 'NA' : $datum->categoryName->cat_name   }}</td>
                                                             <th scope="col"><em>Sub Category</em></th>
                                                             <td scope="col">{{ empty($datum->sub_category) ? 'NA' : $datum->subCategoryName->sub_cat_name }}</td>
                                                         </tr>
@@ -82,7 +82,7 @@
                                                             <th scope="col"><em>Sub Category Two </em></th>
                                                             <td scope="col">{{ empty($datum->sub_sub_category) ? 'NA' : $datum->subSubCategoryName->sub_sub_cat_name }}</td>
                                                             <th scope="col"><em>Brand</em></th>
-                                                            <td scope="col">{{ $datum->brandName->brand_name }}</td>
+                                                            <td scope="col">{{ empty($datum->brandName->brand_name) ? 'NA' : $datum->brandName->brand_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="col">#</th>
@@ -115,9 +115,9 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Unit</em></th>
-                                                            <td scope="col">{{ $datum->unitName->unit_name }}</td>
+                                                            <td scope="col">{{ empty($datum->unitName->unit_name) ? 'NA' : $datum->unitName->unit_name }}</td>
                                                             <th scope="col"><em>Supplier</em></th>
-                                                            <td scope="col">{{ $datum->supplierName->supplier_name }}</td>
+                                                            <td scope="col">{{ empty($datum->supplierName->supplier_name) ? 'NA' : $datum->supplierName->supplier_name }}</td>
                                                         </tr>
 
                                                         <tr>

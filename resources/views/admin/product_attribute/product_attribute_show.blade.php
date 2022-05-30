@@ -89,7 +89,7 @@
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col"><em>Unit</em></th>
-                                                            <td scope="col">{{ $datum->unitName->unit_name }}</td>
+                                                            <td scope="col">{{ empty($datum->unitName->unit_name) ? 'NA' : $datum->unitName->unit_name }}</td>
                                                             <th scope="col"></th>
                                                             <td scope="col"></td>
                                                         </tr>

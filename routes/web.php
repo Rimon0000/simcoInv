@@ -436,13 +436,13 @@ Route::prefix('product-mgt/origin')->group(function () {
 Route::prefix('employee')->group(function () {
     Route::get('/show', [EmployeeController::class, 'employeeShow'])->name('employee.show');
     Route::get('/display/{id}', [EmployeeController::class, 'employeeDisplayShow'])->name('employee.display');
-    Route::get('/add/page', [EmployeeController::class, 'employeeAddPage'])->name('employee.add.page');
+    Route::get('/add/page', [EmployeeController::class, 'employeeAdd'])->name('employee.add');
     Route::get('/edit/{id}', [ProductDetailCoEmployeeControllertroller::class, 'employeeEdit'])->name('employee.edit');
     Route::get('/edit/image/{id}', [EmployeeController::class, 'employeeEditImage'])->name('employee.edit.image');
     Route::get('/status/{id}', [EmployeeController::class, 'employeeStatus'])->name('employee.status');
     Route::get('/delete/{id}', [EmployeeController::class, 'employeeDelete'])->name('employee.delete');
 
-    Route::post('/add', [EmployeeController::class, 'employeeAdd'])->name('employee.add');
+    Route::post('/add', [EmployeeController::class, 'employeeStore'])->name('employee.add.page');
     Route::post('/update/{id}', [EmployeeController::class, 'employeeUpdate'])->name('employee.update');
     Route::post('/image/update/{id}', [EmployeeController::class, 'employeeImageUpdate'])->name('employee.image.update');
 });

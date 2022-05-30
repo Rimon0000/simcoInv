@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('department')->nullable();
             $table->string('joint_date');
             $table->double('salary');
+            $table->string('salary_type');
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('gender');

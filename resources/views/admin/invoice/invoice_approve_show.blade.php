@@ -31,7 +31,7 @@
                             <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->invoice_date}}</td>
                             <td>{{ $datum->invoice_no}}</td>
-                            <td>{{ $datum->customerName->customer_name }}</td>
+                            <td>{{ empty($datum->customerName->customer_name) ? 'NA' : $datum->customerName->customer_name }}</td>
                             <td>{{ $datum->total_price}}</td>
                             <td> <strong class="{{ empty($datum->approved) ? 'text-danger' : 'text-success'}}">{{ empty($datum->approved) ? 'Pending' : 'Approved' }}</strong> </td>
                             <td><a href="{{ route ('invoice.approve.status', ['id' => $datum->id])}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-check text-danger"></i> Approve</a></td>

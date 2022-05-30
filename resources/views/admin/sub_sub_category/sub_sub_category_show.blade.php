@@ -33,8 +33,8 @@
                         <tr>
                             <td scope="row">{{ $count }}</td>
                             <td>{{ $datum->sub_sub_cat_name}}</td>
-                            <td>{{ $datum->categoryName->cat_name }}</td>
-                            <td>{{ $datum->subCategoryName->sub_cat_name }}</td>
+                            <td>{{ empty($datum->categoryName->cat_name) ? 'NA' : $datum->categoryName->cat_name }}</td>
+                            <td>{{ empty($datum->subCategoryName->sub_cat_name) ? 'NA' : $datum->subCategoryName->sub_cat_name}}</td>
                             <td>{{ $datum->userName->name }}</td>
                             <td>
                                 <div class="btn-group">

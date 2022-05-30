@@ -5,7 +5,7 @@
 <div class="row p-3">
     <div class="col-lg-6">
 
-        <a href="{{ route('employee.add.page')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i> Add Employee</a>
+        <a href="{{ route('employee.add')}}" class="btn btn-info btn-sm"><i class="fa-solid fa-circle-plus text-danger"></i> Add Employee</a>
 
 
     </div>
@@ -44,11 +44,11 @@
                             <td scope="row">{{ $count }}</td>
                             <td><img src="{{ $datum->emp_img == null ? asset('backend/assets/img/default-img.png') : asset($datum->emp_img) }}" alt="default image" width="50px" height="50px"></td>
                             <td>{{ $datum->emp_name }}</td>
-                            <td>{{ $datum->designationName->designation }}</td>
-                            <td>{{ $datum->departmentName->department }}</td>
+                            <td>{{ empty($datum->designationName->designation) ? 'NA' : $datum->designationName->designation }}</td>
+                            <td>{{ empty($datum->departmentName->department) ? 'NA' : $datum->departmentName->department }}</td>
                             <td></td>
                             <td>{{ $datum->userName->name }}</td>
-                            <td><a href="{{ route('employee.payment', ['id' => $datum->id]) }}" class="btn btn-sm btn-success">Payment</a></td>
+                            <td><a href="{{ route('employee.update', ['id' => $datum->id]) }}" class="btn btn-sm btn-success">Payment</a></td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"></button>
