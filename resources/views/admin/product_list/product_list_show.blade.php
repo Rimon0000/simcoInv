@@ -117,7 +117,7 @@
                                                             <th scope="col"><em>Unit</em></th>
                                                             <td scope="col">{{ $datum->unitName->unit_name }}</td>
                                                             <th scope="col"><em>Supplier</em></th>
-                                                            <td scope="col">{{ $datum->supplierName->supplier_name }}</td>
+                                                            <td scope="col">{{ empty($datum->supplierName->supplier_name) ? "NA" : $datum->supplierName->supplier_name }}</td>
                                                         </tr>
 
                                                         <tr>
