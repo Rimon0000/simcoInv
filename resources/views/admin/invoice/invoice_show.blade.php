@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <hr>
                     <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                 </form>
@@ -116,4 +116,5 @@
         $('#categoryTable').DataTable();
     });
 </script>
+
 @endsection

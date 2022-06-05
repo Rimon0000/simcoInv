@@ -78,7 +78,7 @@ class InvoiceController extends Controller
         $invoice_date = $request->invoice_date;
         $invoice_no   = $request->invoice_no;
         $customer_id  = $request->customer_id;
-    
+
 
         $result = DB::table('invoices')->insert([
             'invoice_date' => $invoice_date,
@@ -209,7 +209,7 @@ class InvoiceController extends Controller
         }
     }
 
-//invoice order payment
+    //invoice order payment
     public function invoiceOrderPayment(Request $request, $id)
     {
         # code...
@@ -293,11 +293,11 @@ class InvoiceController extends Controller
         if ($approved) {
 
             DB::table('invoice_details')
-            ->where('invoice_no', $invoice_no)
-            ->where('approved', 0)
-            ->update([
-                'approved' => 1
-            ]);
+                ->where('invoice_no', $invoice_no)
+                ->where('approved', 0)
+                ->update([
+                    'approved' => 1
+                ]);
 
             $invoice_data = InvoiceDetail::where('invoice_no', $invoice_no)->get(['product_id', 'quantity']);
 
@@ -429,7 +429,7 @@ class InvoiceController extends Controller
             return redirect()->route('invoice.show')->with($notification);
         };
     }
-    
+
 
     // Inovice Print ########################################################################################################
 
@@ -478,7 +478,6 @@ class InvoiceController extends Controller
         $pdf  = PDF::loadView('admin.pdf.daily-invoice-report-pdf', $data);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');
-
     }
 
     // invoiceDailyReportShow invoiceDailyReportShow ########################################################################################################
